@@ -1,3 +1,5 @@
+'use strict';
+
 import {pack, unpack} from "msgpackr";
 import {type Encoder, type Decoder} from "$lib/server/endec/endec";
 

@@ -1,3 +1,5 @@
+'use strict';
+
 export interface Encoder {
     marshal(a: any): Buffer;
     contentType(): string

@@ -1,3 +1,5 @@
+'use strict';
+
 import {type Encoder, type Decoder} from "$lib/server/endec/endec";
 
 export interface TextSearchPayload {
