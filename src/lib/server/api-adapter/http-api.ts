@@ -40,7 +40,7 @@ export class HttpApi<
         });
 
         if (!res.ok) {
-            throw new Error(`HTTP fail: ${res.status} ${res.statusText}`)
+            throw new Error(`HTTP fail: ${res.status} ${res.statusText}`);
         }
         
         const b = await res.arrayBuffer(); 
@@ -48,7 +48,24 @@ export class HttpApi<
         return result;
     }
 
-    vectorSearch(q: VectorQuery): Promise<QueryResult> {
-        throw new Error("Method not implemented.");
+    async vectorSearch(q: VectorQuery): Promise<QueryResult> {
+        const url = new URL('/vector', this._baseUrl);
+        const body = this._encoder.marshal(q);
+
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": this._encoder.contentType()
+            },
+            body
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP fail: ${res.status} ${res.statusText}`);
+        }
+
+        const b = await res.arrayBuffer();
+        const result = this._decoder.unmarshal<QueryResult>(Buffer.from(b));
+        return result;
     }
 }
