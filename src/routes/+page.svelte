@@ -1,6 +1,4 @@
 <script lang="ts">
-    import kenja from "$lib/server";
-
     'use strict'
 
 </script>
