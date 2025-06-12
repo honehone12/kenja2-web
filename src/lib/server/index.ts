@@ -8,6 +8,7 @@ import type { Decoder, Encoder } from "$lib/server/endec/endec";
 import  { Json } from "$lib/server/endec/json";
 import { HttpApi } from "$lib/server/api-adapter/http-api";
 import { LambdaApi, type LambdaFunctions } from "$lib/server/api-adapter/lambda-api";
+import logs from "$lib/server/logs";
 
 class Kenja {
     private _api: ApiAdapter | null = null;
@@ -16,6 +17,8 @@ class Kenja {
         E extends Encoder, 
         D extends Decoder
     >(e: E, d: D) {
+        logs.info('api adapter is being initialized as HTTP');
+
         if (this._api) {
             throw new Error('api is already initialized');
         }
@@ -32,6 +35,8 @@ class Kenja {
         E extends Encoder,
         D extends Decoder
     >(e: E, d: D) {
+        logs.info('api adapter is being initialized as LAMBDA');
+
         if (this._api) {
             throw new Error('api is already initialized');
         }
@@ -44,11 +49,11 @@ class Kenja {
         if (!vectorSearch) {
             throw new Error('env for lambda vector search is not set');
         }
-
         const functions: LambdaFunctions = {
             textSearch,
             vectorSearch
         };
+
         const config: LambdaClientConfig = {}; 
         const region = env.AWS_REGION;
         if (region) {
