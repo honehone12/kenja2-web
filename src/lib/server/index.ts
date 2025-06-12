@@ -10,7 +10,7 @@ import { HttpApi } from "$lib/server/api-adapter/http-api";
 class Kenja {
     private _api: ApiAdapter | null = null;
 
-    intiHttp<
+    useHttp<
         E extends Encoder, 
         D extends Decoder
     >(e: E, d: D) {
@@ -26,7 +26,7 @@ class Kenja {
         this._api = new HttpApi(e, d, baseUrl);
     }
 
-    initLambda<
+    useLambda<
         E extends Encoder,
         D extends Decoder
     >(e: E, d: D) {
@@ -48,7 +48,7 @@ class Kenja {
 const kenja = new Kenja();
 
 if (!building) {
-    kenja.intiHttp(
+    kenja.useHttp(
         new Json(), 
         new Json()
     );    
