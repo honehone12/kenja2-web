@@ -31,7 +31,7 @@ export class HttpApi<
         const res = await fetch(url, {
             method: 'GET',
             headers: {
-                "Content-Type": this._encoder.contentType()
+                'Content-Type': this._encoder.contentType()
             },
             body 
         });
