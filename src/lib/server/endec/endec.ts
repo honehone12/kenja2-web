@@ -1,5 +1,7 @@
 'use strict';
 
+import {Buffer} from "node:buffer";
+
 export interface Encoder {
     marshal(a: any): Buffer;
     contentType(): string

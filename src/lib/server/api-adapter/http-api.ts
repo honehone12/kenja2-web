@@ -1,7 +1,8 @@
 'use strict';
 
+import {Buffer} from "node:buffer";
 import type { Decoder, Encoder } from "$lib/server/endec/endec";
-import type { ApiAdapter } from "$lib/server/api-adapter/api-adapters";
+import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import type { TextQuery, QueryResult, VectorQuery } from "$lib/documents/queries";
 
 export class HttpApi<
@@ -10,12 +11,12 @@ export class HttpApi<
 > implements ApiAdapter {
     private _encoder: E;
     private _decoder: D;
-    private _url: string;
+    private _baseUrl: string;
 
-    constructor(e: E, d: D, url: string) {
+    constructor(e: E, d: D, baseUrl: string) {
         this._encoder = e;
         this._decoder = d;
-        this._url = url;
+        this._baseUrl = baseUrl;
     }
 
     encoder(): Encoder {
@@ -26,8 +27,25 @@ export class HttpApi<
         return this._decoder;
     }
 
-    textSearch(q: TextQuery): Promise<QueryResult> {
-        throw new Error("Method not implemented.");
+    async textSearch(q: TextQuery): Promise<QueryResult> {
+        const url = new URL('/text', this._baseUrl);
+        const body = this._encoder.marshal(q);
+    
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": this._encoder.contentType()
+            },
+            body 
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP fail: ${res.status} ${res.statusText}`)
+        }
+        
+        const b = await res.arrayBuffer(); 
+        const result = this._decoder.unmarshal<QueryResult>(Buffer.from(b));
+        return result;
     }
 
     vectorSearch(q: VectorQuery): Promise<QueryResult> {

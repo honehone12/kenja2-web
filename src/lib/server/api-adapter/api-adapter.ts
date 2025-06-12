@@ -1,7 +1,7 @@
 'use strict';
 
-import {type Encoder, type Decoder} from "$lib/server/endec/endec";
-import {type TextQuery, type VectorQuery, type QueryResult} from "$lib/documents/queries";
+import type {Encoder, Decoder} from "$lib/server/endec/endec";
+import type {TextQuery, VectorQuery, QueryResult} from "$lib/documents/queries";
 
 export interface ApiAdapter {
     textSearch(q: TextQuery): Promise<QueryResult>;

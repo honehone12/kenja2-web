@@ -2,25 +2,39 @@
 
 import {building} from "$app/environment";
 import {env} from "$env/dynamic/private";
-import { type ApiAdapter } from "$lib/server/api-adapter/api-adapters";
+import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
+import type { Decoder, Encoder } from "$lib/server/endec/endec";
+import  { Json } from "$lib/server/endec/json";
+import { HttpApi } from "$lib/server/api-adapter/http-api";
 
 class Kenja {
-    private _api: ApiAdapter | null;
+    private _api: ApiAdapter | null = null;
 
-    constructor() {
-        this._api = null;
-    }
-
-    intiHttp() {
+    intiHttp<
+        E extends Encoder, 
+        D extends Decoder
+    >(e: E, d: D) {
         if (this._api) {
             throw new Error("api is already initialized");
         }
+
+        const baseUrl = env.HTTP_API_BASE_URL;
+        if (!baseUrl) {
+            throw new Error("env for http api url is not set");
+        }
+
+        this._api = new HttpApi(e, d, baseUrl);
     }
 
-    initLambda() {
+    initLambda<
+        E extends Encoder,
+        D extends Decoder
+    >(e: E, d: D) {
         if (this._api) {
             throw new Error("api is already initialized");
         }
+
+        throw new Error("not implemented yet");
     }
 
     api(): ApiAdapter {
@@ -34,7 +48,10 @@ class Kenja {
 const kenja = new Kenja();
 
 if (!building) {
-    kenja.intiHttp();    
+    kenja.intiHttp(
+        new Json(), 
+        new Json()
+    );    
 }
 
 export default kenja;

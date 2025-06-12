@@ -1,6 +1,7 @@
 'use strict';
 
-import {type Encoder, type Decoder} from "$lib/server/endec/endec";
+import {Buffer} from "node:buffer";
+import type {Encoder, Decoder} from "$lib/server/endec/endec";
 
 export class Json implements Encoder, Decoder {
     marshal(a: any): Buffer {

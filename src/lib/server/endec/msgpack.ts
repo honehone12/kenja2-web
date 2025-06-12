@@ -1,7 +1,8 @@
 'use strict';
 
+import {Buffer} from "node:buffer";
 import {pack, unpack} from "msgpackr";
-import {type Encoder, type Decoder} from "$lib/server/endec/endec";
+import type {Encoder, Decoder} from "$lib/server/endec/endec";
 
 export class MsgPack implements Encoder, Decoder {
     marshal(a: any): Buffer {
