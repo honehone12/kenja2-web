@@ -46,14 +46,14 @@ export class HttpApi<
     }
 
     async textSearch(q: TextQuery): Promise<QueryResult> {
-        const url = new URL('/text', this._baseUrl);
+        const url = new URL('/search/buffer/text', this._baseUrl);
         const body = this._encoder.marshal(q);
     
         return this.httpQuery(url, body);
     }
 
     async vectorSearch(q: VectorQuery): Promise<QueryResult> {
-        const url = new URL('/vector', this._baseUrl);
+        const url = new URL('/search/buffer/vector', this._baseUrl);
         const body = this._encoder.marshal(q);
 
         return this.httpQuery(url, body);
