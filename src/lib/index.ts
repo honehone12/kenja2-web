@@ -1,3 +1,3 @@
 'use strict';
 
-const MAX_KEYWORDS_LENGTH = 100;
+export const MAX_KW_LEN = 100;

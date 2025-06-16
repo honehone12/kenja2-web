@@ -4,10 +4,11 @@ import { ITypeConv, RatingConv, type TextQuery } from "$lib/documents/queries.js
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
+import {MAX_KW_LEN} from "$lib/index.js";
 
 export function load({url, setHeaders}) {
     const keywords = url.searchParams.get('keyword');
-    if (!keywords || keywords.length > MAX_KEYWORDS_LENGTH) {
+    if (!keywords || keywords.length > MAX_KW_LEN) {
         return badRequest();
     }
 

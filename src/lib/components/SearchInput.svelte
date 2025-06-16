@@ -1,7 +1,8 @@
 <script lang="ts">
     'use strict';
-
+    
     import RatingToggle from "$lib/components/RatingToggle.svelte";
+    import { MAX_KW_LEN } from "$lib";
 
     let isHentai = $state(false);
 </script>
@@ -17,7 +18,7 @@
                 type="text"
                 name="keyword" 
                 required
-                maxlength={MAX_KEYWORDS_LENGTH}
+                maxlength={MAX_KW_LEN}
                 placeholder="Enter Keywords"
                 id="keyword"
             > 
