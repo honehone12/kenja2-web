@@ -6,7 +6,7 @@
     let isHentai = $state(false);
 </script>
 
-<form method="get" action="search/buffered/text">
+<form method="get" action="search/buffer/text">
     <div class="join">
         <label 
             for="keyword" 
