@@ -8,14 +8,14 @@ export const enum Rating {
 }
 
 export class RatingConv {
-    static fromString(s: string) {
+    static fromString(s: string | null) {
         switch (s) {
-        case 'all-ages':
-            return Rating.AllAges;
+        case 'all':
+            return undefined;
         case 'hentai':
             return Rating.Hentai;
         default:
-            return undefined;
+            return Rating.AllAges;
         }
     }
 }
@@ -26,7 +26,7 @@ export const enum VectorField {
 }
 
 export class VFieldConv {
-    static fromString(s: string) {
+    static fromString(s: string | null) {
         switch (s) {
         case 'text-vector':
             return VectorField.Txt;
@@ -44,7 +44,7 @@ export const enum ItemType {
 }
 
 export class ITypeConv {
-    static fromString(s: string) {
+    static fromString(s: string | null) {
         switch (s) {
         case 'anime':
             return ItemType.Anime;

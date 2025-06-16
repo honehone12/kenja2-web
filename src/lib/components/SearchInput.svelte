@@ -1,12 +1,12 @@
 <script lang="ts">
     'use strict';
 
-    import RatingToggle from "./RatingToggle.svelte";
+    import RatingToggle from "$lib/components/RatingToggle.svelte";
 
     let isHentai = $state(false);
 </script>
 
-<form method="get" action="search">
+<form method="get" action="search/buffered/text">
     <div class="join">
         <label 
             for="keyword" 
@@ -17,7 +17,7 @@
                 type="text"
                 name="keyword" 
                 required
-                maxlength="100"
+                maxlength={MAX_KEYWORDS_LENGTH}
                 placeholder="Enter Keywords"
                 id="keyword"
             > 
