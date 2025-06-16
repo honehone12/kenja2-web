@@ -6,14 +6,14 @@ import {env} from "$env/dynamic/private";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import type { Decoder, Encoder } from "$lib/server/endec/endec";
 import  { Json } from "$lib/server/endec/json";
-import { HttpBufferedApi } from "$lib/server/api-adapter/http-buffered";
+import { HttpBufferApi } from "$lib/server/api-adapter/http-buffer";
 import { LambdaApi, type LambdaFunctions } from "$lib/server/api-adapter/lambda";
 import logs from "./logs";
 
 class Kenja {
     private _api: ApiAdapter | null = null;
 
-    useHttp<
+    useHttpBuffer<
         E extends Encoder, 
         D extends Decoder
     >(e: E, d: D) {
@@ -26,7 +26,7 @@ class Kenja {
             throw new Error('env for http api url is not set');
         }
 
-        this._api = new HttpBufferedApi(e, d, baseUrl);
+        this._api = new HttpBufferApi(e, d, baseUrl);
     }
 
     useLambda<
@@ -71,7 +71,7 @@ const kenja = new Kenja();
 
 if (!building) {
     try {
-        kenja.useHttp(
+        kenja.useHttpBuffer(
             new Json(), 
             new Json()
         );    

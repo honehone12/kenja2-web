@@ -5,7 +5,7 @@ import type { Decoder, Encoder } from "$lib/server/endec/endec";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import type { TextQuery, QueryResult, VectorQuery } from "$lib/documents/queries";
 
-export class HttpBufferedApi<
+export class HttpBufferApi<
     E extends Encoder, 
     D extends Decoder
 > implements ApiAdapter {
