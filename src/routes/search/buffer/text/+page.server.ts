@@ -6,7 +6,7 @@ import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {MAX_KW_LEN} from "$lib/index.js";
 
-export function load({url, setHeaders}) {
+export function load({url}) {
     const keywords = url.searchParams.get('keyword');
     if (!keywords || keywords.length > MAX_KW_LEN) {
         return badRequest();
@@ -22,7 +22,7 @@ export function load({url, setHeaders}) {
 
     try {
         const bufferedStream = kenja.api().textSearch(query);
-        return { bufferedStream };
+        return {bufferedStream};
     } catch (err) {
         logs.error(err, 'error on text search');
         return internalError();
