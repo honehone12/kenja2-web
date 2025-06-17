@@ -1,8 +1,8 @@
 <script lang="ts">
 	'use strict';
     
-	import Footer from "$lib/components/layouts/Footer.svelte";
-    import Navbar from "$lib/components/layouts/Navbar.svelte";
+	import Footer from "$lib/layouts/Footer.svelte";
+    import Navbar from "$lib/layouts/Navbar.svelte";
 	import '../app.css';
 
 	let { children } = $props();
