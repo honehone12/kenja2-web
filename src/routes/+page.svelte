@@ -4,8 +4,8 @@
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
 </script>
 
-<div class="hero w-full h-screen">
-    <div class="hero-content flex flex-col mt-20 mb-20">
+<div class="hero w-full min-h-screen py-20">
+    <div class="hero-content flex flex-col">
         <figure class="mb-5 mt-20">
             <img
                 src="Kenja2Logo.png"

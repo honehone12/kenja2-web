@@ -13,7 +13,7 @@
     let {buffer}: Props = $props();
 </script>
 
-<div class="hero h-screen w-full">
+<div class="hero min-h-screen w-full">
     <div class="hero-content">
         {#await buffer}
             <LoadingDots/>

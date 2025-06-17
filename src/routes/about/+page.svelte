@@ -1,5 +1,5 @@
-<div class="w-full h-screen">
-    <div class="mt-30 mb-30 p-10 flex justify-center">
+<div class="w-full min-h-screen py-30 px-10">
+    <div class="flex justify-center">
         <div class="max-w-200">
             <h1 class="text-center text-accent text-2xl mb-30">Please don't be serious.</h1>
             <span class="text-lg">
