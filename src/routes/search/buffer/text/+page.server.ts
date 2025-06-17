@@ -14,11 +14,6 @@ export function load({url}) {
 
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
-
-    console.log('keywords', keywords);
-    console.log('item_type', item_type);
-    console.log('rating', rating);
-
     const query: TextQuery = {
         rating,
         item_type,
@@ -26,8 +21,8 @@ export function load({url}) {
     };
 
     try {
-        // const bufferedStream = kenja.api().textSearch(query);
-        return {bufferedStream: {}};
+        const bufferedStream = kenja.api().textSearch(query);
+        return {bufferedStream};
     } catch (err) {
         logs.error(err, 'error on text search');
         return internalError();
