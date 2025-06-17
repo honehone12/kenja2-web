@@ -10,7 +10,7 @@
             <img
                 src="Kenja2Logo.png"
                 alt="Kenja logo with illustration of wise man"
-                class="max-w-60" 
+                class="max-w-40" 
             />
         </figure>
         <div class="text-2xl text-center mb-10">
