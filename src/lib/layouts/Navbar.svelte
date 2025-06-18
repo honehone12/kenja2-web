@@ -21,7 +21,7 @@
 			<img
 				src="/Kenja2LogoSmall.png"
 				alt="Kenja logo with illustration of wise man"
-				class="max-w-10 mr-5" 
+				class="max-w-10 mr-5 drop-shadow-sm" 
 			/>
 		</a>
 	</div>

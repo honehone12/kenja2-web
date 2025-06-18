@@ -13,16 +13,16 @@
 <div class="card w-90 bg-base-200">
     <div class="card-body">
         {#if candidate.parent}
-            <div class="badge badge-secondary">
+            <div class="badge badge-outline badge-secondary">
                 <p>Character キャラクター</p>
             </div>
             <a href="/document/{candidate.parent.id}">
-                <h3 class="link">
+                <h3 class="link link-primary">
                     {candidate.parent.name} / {candidate.parent.name_japanese ?? ''}
                 </h3>    
             </a>
         {:else}
-            <div class="badge badge-primary">
+            <div class="badge badge-secondary">
                 <p>Anime アニメ</p>
             </div>
         {/if}
@@ -33,7 +33,7 @@
             <h2 class="text-lg">{candidate.name_japanese}</h2>
         {/if}
         <a href="/document/{candidate.id}">
-            <h1 class="card-title text-xl link link-primary">
+            <h1 class="card-title text-xl link link-accent">
                 {candidate.name}
             </h1>
         </a>

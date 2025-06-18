@@ -4,6 +4,7 @@
             <img
                 src="/Kenja2LogoSmall.png"
                 alt="Kenja logo with illustration of wise man"
+                class="drop-shadow-sm"
             />
         </a>
         <p>Copyright © {new Date().getFullYear()}</p>
