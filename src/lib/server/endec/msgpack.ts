@@ -1,16 +1,16 @@
 'use strict';
 
 import {Buffer} from "node:buffer";
-import {pack, unpack} from "msgpackr";
+import {encode, decode} from "@msgpack/msgpack";
 import type {Encoder, Decoder} from "$lib/server/endec/endec";
 
 export class MsgPack implements Encoder, Decoder {
     marshal(a: any): Buffer {
-        return pack(a);
+        return Buffer.from(encode(a, {ignoreUndefined: true}));
     }
 
     unmarshal<T>(b: Buffer): T {
-        return unpack(b);
+        return decode(b) as T;
     }
 
     contentType(): string {

@@ -5,10 +5,10 @@ import {building} from "$app/environment";
 import {env} from "$env/dynamic/private";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import type { Decoder, Encoder } from "$lib/server/endec/endec";
-import  { Json } from "$lib/server/endec/json";
+import  { MsgPack } from "$lib/server/endec/msgpack";
 import { HttpBufferApi } from "$lib/server/api-adapter/http-buffer";
 import { LambdaApi, type LambdaFunctions } from "$lib/server/api-adapter/lambda";
-import logs from "./logs";
+import logs from "$lib/server/logs";
 
 class Kenja {
     private _api: ApiAdapter | null = null;
@@ -72,8 +72,8 @@ const kenja = new Kenja();
 if (!building) {
     try {
         kenja.useHttpBuffer(
-            new Json(), 
-            new Json()
+            new MsgPack(), 
+            new MsgPack()
         );    
     } catch (err) {
         logs.error(err, 'api client initialization failed');

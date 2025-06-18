@@ -13,16 +13,16 @@
 <div class="card w-90 bg-base-200">
     <div class="card-body">
         {#if candidate.parent}
-            <div class="badge">
+            <div class="badge badge-secondary">
                 <p>Character キャラクター</p>
             </div>
             <a href="/document/{candidate.parent.id}">
-                <h3 class="link link-accent">
+                <h3 class="link">
                     {candidate.parent.name} / {candidate.parent.name_japanese ?? ''}
                 </h3>    
             </a>
         {:else}
-            <div class="badge">
+            <div class="badge badge-accent">
                 <p>Anime アニメ</p>
             </div>
         {/if}
