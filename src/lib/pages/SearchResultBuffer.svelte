@@ -4,7 +4,7 @@
     import ErrorMsg from "$lib/components/ErrorMsg.svelte";
     import LoadingDots from "$lib/components/LoadingDots.svelte";
     import type { QueryResult } from "$lib/documents/queries";
-    import {fmtItemLen} from "$lib/display/fmt";
+
     import CandidateCard from "$lib/components/CandidateCard.svelte";
 
     interface Props {
@@ -15,18 +15,21 @@
 </script>
 
 <div class="hero min-h-screen w-full">
-    <div class="hero-content">
-        {#await buffer}
+    {#await buffer}
+        <div class="hero-content">
             <LoadingDots/>
-        {:then {candidates}}
-            <h1 class="mt-3 text-2xl">{fmtItemLen(candidates?.length)}</h1>
-            {#if candidates}
+        </div>
+    {:then {candidates}}
+        {#if candidates}
+            <div class="hero-content flex flex-col my-10">
                 {#each candidates as candidate}
-                    <CandidateCard {candidate} />
+                    <div class="my-5">
+                        <CandidateCard {candidate} />
+                    </div>
                 {/each}
-            {/if}
-        {:catch}
-            <ErrorMsg/>
-        {/await}
-    </div>
+            </div>    
+        {/if}
+    {:catch}
+        <ErrorMsg/>
+    {/await}    
 </div>

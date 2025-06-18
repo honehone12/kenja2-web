@@ -2,7 +2,7 @@
     <aside>
         <a href="/">
             <img
-                src="Kenja2Logo.png"
+                src="/Kenja2Logo.png"
                 alt="Kenja logo with illustration of wise man"
                 class="max-w-20" 
             />

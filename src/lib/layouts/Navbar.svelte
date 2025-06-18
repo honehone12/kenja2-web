@@ -19,7 +19,7 @@
 	<div class="navbar-end">
 		<a href="/">
 			<img
-				src="Kenja2LogoSmall.png"
+				src="/Kenja2LogoSmall.png"
 				alt="Kenja logo with illustration of wise man"
 				class="max-w-10 mr-5" 
 			/>

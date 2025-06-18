@@ -29,7 +29,7 @@ export class HttpBufferApi<
 
     private async httpQuery(url: URL, body: Buffer): Promise<QueryResult> {
         const res = await fetch(url, {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': this._encoder.contentType()
             },

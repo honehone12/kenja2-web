@@ -8,7 +8,7 @@
     <div class="hero-content flex flex-col">
         <figure class="mb-5 mt-20">
             <img
-                src="Kenja2Logo.png"
+                src="/Kenja2Logo.png"
                 alt="Kenja logo with illustration of wise man"
                 class="max-w-40" 
             />
