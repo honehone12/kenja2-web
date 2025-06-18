@@ -21,7 +21,7 @@
     </label>
     <button
         type="submit" 
-        class="join-item btn btn-primary btn-lg"
+        class="join-item btn btn-accent btn-lg"
     >
         Search
     </button>

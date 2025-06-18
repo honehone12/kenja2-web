@@ -22,7 +22,7 @@
                 </h3>    
             </a>
         {:else}
-            <div class="badge badge-accent">
+            <div class="badge badge-primary">
                 <p>Anime アニメ</p>
             </div>
         {/if}

@@ -2,9 +2,8 @@
     <aside>
         <a href="/">
             <img
-                src="/Kenja2Logo.png"
+                src="/Kenja2LogoSmall.png"
                 alt="Kenja logo with illustration of wise man"
-                class="max-w-20" 
             />
         </a>
         <p>Copyright © {new Date().getFullYear()}</p>
