@@ -21,13 +21,13 @@
         </div>
     {:then {candidates}}
         {#if candidates}
-            <div class="hero-content flex flex-col my-10">
+            <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
                 {#each candidates as candidate}
-                    <div class="my-5">
-                        <CandidateCard {candidate} />
-                    </div>
+                    <CandidateCard {candidate} />
                 {/each}
-            </div>    
+            </div>
+        {:else}
+            <h2 class="hero-content text-xl">No Results</h2>
         {/if}
     {:catch}
         <ErrorMsg/>

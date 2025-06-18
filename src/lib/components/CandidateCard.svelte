@@ -10,21 +10,19 @@
     let {candidate}: Props = $props();
 </script>
 
-<div class="card w-90 md:w-180 lg:w-250 bg-base-200">
+<div class="card w-90 bg-base-200">
     <div class="card-body">
         {#if candidate.parent}
-            <div class="badge badge-outline badge-accent">
+            <div class="badge">
                 <p>Character キャラクター</p>
             </div>
             <a href="/document/{candidate.parent.id}">
-                <h3 class="link">
+                <h3 class="link link-accent">
                     {candidate.parent.name} / {candidate.parent.name_japanese ?? ''}
                 </h3>    
             </a>
-            
-            
         {:else}
-            <div class="badge badge-outline badge-accent">
+            <div class="badge">
                 <p>Anime アニメ</p>
             </div>
         {/if}
