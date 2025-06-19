@@ -5,7 +5,7 @@
     import ItemTypeRadio from "$lib/components/ItemTypeRadio.svelte";
 </script>
 
-<form method="get" action="search/buffer/text">
+<form method="get" action="/search/buffer/text">
     <KeywordInput/>
     <div class="mt-5 ml-5">
         <ItemTypeRadio/>

@@ -7,7 +7,7 @@
     import CandidateCard from "$lib/components/CandidateCard.svelte";
 
     interface Props {
-        buffer: Promise<SearchResult>
+        buffer: Promise<SearchResult>;
     }
 
     let {buffer}: Props = $props();

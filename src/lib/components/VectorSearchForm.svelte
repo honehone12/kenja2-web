@@ -4,8 +4,11 @@
 
 </script>
 
-<a href="/search/buffer/vector">
-    <button class="btn btn-xl btn-secondary">
+<form method="get" action="/search/buffer/vector">
+    <button 
+        type="submit"
+        class="btn btn-xl btn-secondary"
+    >
         Try Vector Search !
     </button>
-</a>
+</form>
