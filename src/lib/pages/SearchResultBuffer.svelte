@@ -3,12 +3,11 @@
     
     import ErrorMsg from "$lib/components/ErrorMsg.svelte";
     import LoadingDots from "$lib/components/LoadingDots.svelte";
-    import type { QueryResult } from "$lib/documents/queries";
-
+    import type { SearchResult } from "$lib/documents/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
 
     interface Props {
-        buffer: Promise<QueryResult>
+        buffer: Promise<SearchResult>
     }
 
     let {buffer}: Props = $props();
@@ -30,6 +29,8 @@
             <h2 class="hero-content text-xl">No Results</h2>
         {/if}
     {:catch}
-        <ErrorMsg/>
+        <div class="hero-content">
+            <ErrorMsg/>
+        </div>
     {/await}    
 </div>

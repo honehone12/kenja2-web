@@ -3,7 +3,8 @@
 import {Buffer} from "node:buffer";
 import type { Decoder, Encoder } from "$lib/server/endec/endec";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
-import type { TextQuery, QueryResult, VectorQuery } from "$lib/documents/queries";
+import type { DocumentQuery, TextQuery, VectorQuery } from "$lib/documents/queries";
+import type {SearchResult, SingleDocument} from "$lib/documents/documents";
 
 export class HttpBufferApi<
     E extends Encoder, 
@@ -27,7 +28,7 @@ export class HttpBufferApi<
         return this._decoder;
     }
 
-    private async httpQuery(url: URL, body: Buffer): Promise<QueryResult> {
+    private async httpQuery<T>(url: URL, body: Buffer): Promise<T> {
         const res = await fetch(url, {
             method: 'POST',
             headers: {
@@ -41,21 +42,28 @@ export class HttpBufferApi<
         }
         
         const b = await res.arrayBuffer(); 
-        const result = this._decoder.unmarshal<QueryResult>(Buffer.from(b));
+        const result = this._decoder.unmarshal<T>(Buffer.from(b));
         return result;
     }
 
-    async textSearch(q: TextQuery): Promise<QueryResult> {
+    async document(q: DocumentQuery): Promise<SingleDocument> {
+        const url = new URL('/document', this._baseUrl);
+        const body = this._encoder.marshal(q);
+
+        return this.httpQuery<SingleDocument>(url, body);
+    }
+
+    async textSearch(q: TextQuery): Promise<SearchResult> {
         const url = new URL('/search/buffer/text', this._baseUrl);
         const body = this._encoder.marshal(q);
     
-        return this.httpQuery(url, body);
+        return this.httpQuery<SearchResult>(url, body);
     }
 
-    async vectorSearch(q: VectorQuery): Promise<QueryResult> {
+    async vectorSearch(q: VectorQuery): Promise<SearchResult> {
         const url = new URL('/search/buffer/vector', this._baseUrl);
         const body = this._encoder.marshal(q);
 
-        return this.httpQuery(url, body);
+        return this.httpQuery<SearchResult>(url, body);
     }
 }

@@ -56,6 +56,10 @@ export class ITypeConv {
     }
 }
 
+export interface DocumentQuery {
+    id: string;
+}
+
 export interface TextQuery {
     rating: Rating | undefined;
     item_type: ItemType | undefined;
@@ -68,8 +72,4 @@ export interface VectorQuery {
     source_field: VectorField | undefined;
     target_field: VectorField | undefined;
     id: string;
-}
-
-export interface QueryResult {
-    candidates: Candidate[] | undefined;
 }
