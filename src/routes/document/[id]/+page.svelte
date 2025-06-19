@@ -1,24 +1,29 @@
 <script lang="ts">
     'use strict';
     
+    import MainDocument from '$lib/components/MainDocument.svelte';
     import ErrorMsg from '$lib/components/ErrorMsg.svelte';
     import LoadingDots from '$lib/components/LoadingDots.svelte';
 
     let {data} = $props();
 </script>
 
-<div class="hero min-h-screen w-full">
+<div class="min-h-screen w-full">
     {#await data.documentStream}
-        <div class="hero-content">
-            <LoadingDots/>
+        <div class="hero">
+            <div class="hero-content">
+                <LoadingDots/>
+            </div>    
         </div>
     {:then document}
-        <div class="hero-content">
-            {document.url}
+        <div class="flex flex-wrap">
+            <MainDocument {document}/>
         </div>
     {:catch}
-        <div class="hero-content">
-            <ErrorMsg/>
+        <div class="hero">
+            <div class="hero-content">
+                <ErrorMsg/>
+            </div>
         </div>
     {/await}
 </div>
