@@ -14,7 +14,7 @@ export function load({url}) {
         return badRequest();
     }
 
-    const item_type = ITypeConv.fromString(url.searchParams.get('item'));
+    const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
     const source_field = VFieldConv.fromString(url.searchParams.get('source'));
     const target_field = VFieldConv.fromString(url.searchParams.get('target'));

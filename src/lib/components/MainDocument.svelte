@@ -3,6 +3,7 @@
     
     import type { SingleDocument } from "$lib/documents/documents";
     import ParentDocument from "$lib/components/ParentDocument.svelte";
+    import VectorSearchForm from "./VectorSearchForm.svelte";
 
     interface Props {
         document: SingleDocument
@@ -11,28 +12,45 @@
     let {document}: Props = $props();
 </script>
 
-{#if document.parent}
-    <ParentDocument parent={document.parent}/>
-{/if} 
-<div class="mt-10 ml-10">
-    <div class="badge badge-accent mb-5">
-        {document.parent ? 'Character' : 'Anime'}
+<div class="flex flex-col">
+    <div class="flex flex-wrap">
+        <div class="mt-10 ml-10">
+            <div class="badge badge-accent mb-5">
+                {document.parent ? 'Character' : 'Anime'}
+            </div>
+            {#if document.name_english}
+                <h2 class="text-2xl mb-3">{document.name_english}</h2>
+            {/if}
+            <h1 class="text-3xl mb-2">{document.name}</h1>
+            {#if document.name_japanese}
+                <h1 class="text-3xl">{document.name_japanese}</h1>
+            {/if}
+        </div>
+        {#if document.aliases}
+            <div class="mt-10 ml-10">
+                <div class="badge badge-accent mb-5">
+                    Also known as...
+                </div>
+                {#each document.aliases as alias, i (i)}
+                    <h3 class="text-xl">{alias}</h3>
+                {/each}
+            </div>
+        {/if}
+        {#if document.parent}
+            <div class="mt-10 ml-10">
+                <ParentDocument parent={document.parent}/>
+            </div>
+        {/if}
     </div>
-    <h1 class="text-3xl">{document.name}</h1>
-    {#if document.name_japanese}
-        <h1 class="text-3xl">{document.name_japanese}</h1>
-    {/if}
-    {#if document.name_english}
-        <h2 class="text-2xl">{document.name_english}</h2>
-    {/if}
-</div>
-{#if document.aliases}
     <div class="mt-10 ml-10">
         <div class="badge badge-accent mb-5">
-            Also known as...
+            More infomation
         </div>
-        {#each document.aliases as alias, i (i)}
-            <h3 class="text-lg">{alias}</h3>
-        {/each}
+        <a href="{document.url}">
+            <h1 class="text-2xl link link-primary">Check this item at MyAnimeList</h1>
+        </a>
     </div>
-{/if}
+    <div class="mt-10 ml-10">
+        <VectorSearchForm />
+    </div>
+</div>

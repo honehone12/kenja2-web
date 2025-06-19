@@ -16,9 +16,7 @@
             </div>    
         </div>
     {:then document}
-        <div class="flex flex-wrap">
-            <MainDocument {document}/>
-        </div>
+        <MainDocument {document}/>
     {:catch}
         <div class="hero">
             <div class="hero-content">
