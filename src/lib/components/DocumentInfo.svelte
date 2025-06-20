@@ -20,7 +20,7 @@
     }: Props = $props();
 </script>
 
-<div class="mt-10 ml-10">
+<div class="mx-10 mt-10">
     <div class="badge badge-accent mb-5">
         {parent ? 'Character' : 'Anime'}
     </div>
@@ -33,7 +33,7 @@
     {/if}
 </div>
 {#if aliases}
-    <div class="mt-10 ml-10">
+    <div class="mx-10 mt-10">
         <div class="badge badge-accent mb-5">
             Also known as...
         </div>
@@ -43,14 +43,19 @@
     </div>
 {/if}
 {#if parent}
-    <div class="mt-10 ml-10">
+    <div class="mx-10 mt-10">
         <a href="/document/{parent.id}">
             <div class="badge badge-accent mb-5">
                 Anime
             </div>
             <h1 class="text-xl link link-primary">
-                {parent.name} / {#if parent.name_japanese}{parent.name_japanese}{/if}
+                {parent.name}
             </h1>
+            {#if parent.name_japanese}
+                <h1 class="text-xl link link-primary">
+                    {parent.name_japanese}
+                </h1>
+            {/if}
         </a>
     </div>            
 {/if}
