@@ -28,9 +28,9 @@ export const enum VectorField {
 export class VFieldConv {
     static fromString(s: string | null) {
         switch (s) {
-        case 'text-vector':
+        case 'text':
             return VectorField.Txt;
-        case 'image-vector':
+        case 'image':
             return VectorField.Img
         default:
             undefined

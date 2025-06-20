@@ -6,7 +6,7 @@
 
 <div class="hero w-full min-h-screen py-20">
     <div class="hero-content flex flex-col">
-        <figure class="mb-5 mt-20">
+        <figure class="mb-10">
             <img
                 src="/Kenja2Logo.png"
                 alt="Kenja logo with illustration of wise man"
