@@ -9,6 +9,7 @@ import logs from '$lib/server/logs.js';
 export function load({params}) {
     const id = params.id;
     if (id.length != OID_LEN) {
+        logs.warn('invalid oid')
         return badRequest();
     }
 

@@ -9,6 +9,7 @@ import {MAX_KW_LEN} from "$lib/index.js";
 export function load({url}) {
     const keywords = url.searchParams.get('keyword');
     if (!keywords || keywords.length > MAX_KW_LEN) {
+        logs.warn('keywords length over limit')
         return badRequest();
     }
 

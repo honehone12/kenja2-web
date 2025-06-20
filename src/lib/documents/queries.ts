@@ -1,7 +1,5 @@
 'use strict';
 
-import type { Candidate } from "$lib/documents/documents";
-
 export const enum Rating {
     AllAges = 1,
     Hentai = 2

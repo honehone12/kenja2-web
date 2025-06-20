@@ -1,22 +1,35 @@
+<script lang="ts">
+    'use strict';
+
+    interface Props {
+        useUnspecified: boolean;
+    }
+
+    let {useUnspecified}: Props = $props();
+</script>
+
 <div class="flex flex-col">
     <fieldset>
-        <div class="mb-2">
-            <input 
-                type="radio" 
-                name="item-type" 
-                id="all" 
-                value="all" 
-                checked={true} 
-                class="radio radio-lg radio-secondary" 
-            />
-            <label for="all" class="text-lg">All</label>
-        </div>
+        {#if useUnspecified}
+            <div class="mb-2">
+                <input 
+                    type="radio" 
+                    name="item-type" 
+                    id="all" 
+                    value="all" 
+                    checked={useUnspecified} 
+                    class="radio radio-lg radio-secondary" 
+                />
+                <label for="all" class="text-lg">All</label>
+            </div>    
+        {/if}
         <div class="mb-2">
             <input 
                 type="radio" 
                 name="item-type" 
                 id="anime" 
                 value="anime" 
+                checked={!useUnspecified}
                 class="radio radio-lg radio-secondary" 
             />
             <label for="anime" class="text-lg">Anime</label>

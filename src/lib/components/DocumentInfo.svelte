@@ -4,6 +4,7 @@
     import type { Parent } from "$lib/documents/documents";
 
     interface Props {
+        url: string;
         name: string;
         name_japanese: string | undefined;
         name_english: string | undefined;
@@ -12,6 +13,7 @@
     }
 
     let {
+        url,
         name,
         name_japanese,
         name_english,
@@ -59,3 +61,11 @@
         </a>
     </div>            
 {/if}
+<div class="mx-10 mt-10 ">
+    <div class="badge badge-accent mb-5">
+        More infomation
+    </div>
+    <a href="{url}">
+        <h1 class="text-xl link link-primary">Check this item at MyAnimeList</h1>
+    </a>
+</div>

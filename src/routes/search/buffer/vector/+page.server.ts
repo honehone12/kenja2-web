@@ -11,6 +11,7 @@ import type { VectorQuery } from "$lib/documents/queries";
 export function load({url}) {
     const id = url.searchParams.get('id');
     if (!id || id.length !== OID_LEN) {
+        logs.warn('invalid oid')
         return badRequest();
     }
 
