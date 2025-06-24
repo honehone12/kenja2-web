@@ -20,7 +20,8 @@ export class RatingConv {
 
 export const enum VectorField {
     Txt = 1,
-    Img = 2
+    Img = 2,
+    Stf = 3
 }
 
 export class VFieldConv {
@@ -29,7 +30,9 @@ export class VFieldConv {
         case 'text':
             return VectorField.Txt;
         case 'image':
-            return VectorField.Img
+            return VectorField.Img;
+        case 'staff':
+            return VectorField.Stf;
         default:
             undefined
         }

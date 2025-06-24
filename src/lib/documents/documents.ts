@@ -20,5 +20,6 @@ export interface SearchResult {
 export interface SingleDocument extends Candidate {
     url: string;
     name_english: string | undefined;
+    studios: string[] | undefined;
     aliases: string[] | undefined;
 }
