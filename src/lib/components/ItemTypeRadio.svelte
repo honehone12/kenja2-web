@@ -18,7 +18,7 @@
                     id="all" 
                     value="all" 
                     checked={useUnspecified} 
-                    class="radio radio-lg radio-secondary" 
+                    class="radio radio-lg radio-accent" 
                 />
                 <label for="all" class="text-lg">All</label>
             </div>    
@@ -30,7 +30,7 @@
                 id="anime" 
                 value="anime" 
                 checked={!useUnspecified}
-                class="radio radio-lg radio-secondary" 
+                class="radio radio-lg radio-accent" 
             />
             <label for="anime" class="text-lg">Anime</label>
         </div>
@@ -40,7 +40,7 @@
                 name="item-type" 
                 id="character" 
                 value="character" 
-                class="radio radio-lg radio-secondary" 
+                class="radio radio-lg radio-accent" 
             />
             <label for="character" class="text-lg">Character</label>
         </div>

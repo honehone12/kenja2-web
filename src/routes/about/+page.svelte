@@ -1,7 +1,7 @@
 <div class="w-full min-h-screen py-30 px-10">
     <div class="flex justify-center">
         <div class="max-w-200">
-            <h1 class="text-center text-accent text-2xl mb-30">Please don't be serious.</h1>
+            <h1 class="text-center text-info text-2xl mb-30">Please don't be serious.</h1>
             <span class="text-lg">
                 <p>
                     Kenja is a "Anime Search Engine" being developed by individual.<br>
@@ -25,7 +25,7 @@
                 <p>I hope I'll work on it and it'll be improved. </p>
                 <p>So, please don't expect so much.</p>   
             </span>
-            <h2 class=" text-center text-accent text-xl mt-30">Thank you for your understanding.</h2>
+            <h2 class=" text-center text-info text-xl mt-30">Thank you for your understanding.</h2>
         </div>
     </div>
 </div>

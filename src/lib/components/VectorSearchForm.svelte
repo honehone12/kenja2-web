@@ -27,7 +27,7 @@
     </div>
     <button 
         type="submit"
-        class="btn btn-xl btn-secondary"
+        class="btn btn-xl btn-accent"
     >
         Let's go !
     </button>
