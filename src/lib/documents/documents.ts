@@ -10,7 +10,6 @@ export interface Candidate{
     id: string;
     parent: Parent | undefined;
     name: string;
-    name_english: string | undefined;
     name_japanese: string | undefined;
 }
 
@@ -20,5 +19,6 @@ export interface SearchResult {
 
 export interface SingleDocument extends Candidate {
     url: string;
+    name_english: string | undefined;
     aliases: string[] | undefined;
 }

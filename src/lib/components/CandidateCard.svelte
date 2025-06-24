@@ -26,9 +26,6 @@
                 <p>Anime アニメ</p>
             </div>
         {/if}
-        {#if candidate.name_english}
-            <h2 class="text-lg">{candidate.name_english}</h2>
-        {/if}
         {#if candidate.name_japanese}
             <h2 class="text-lg">{candidate.name_japanese}</h2>
         {/if}
