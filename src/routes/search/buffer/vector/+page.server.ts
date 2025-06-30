@@ -17,13 +17,12 @@ export function load({url}) {
 
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
-    const source_field = VFieldConv.fromString(url.searchParams.get('source'));
-    const target_field = VFieldConv.fromString(url.searchParams.get('target'));
+    const vfield = VFieldConv.fromString(url.searchParams.get('vector'));
     const query: VectorQuery = {
         rating,
         item_type,
-        source_field,
-        target_field,
+        source_field: vfield,
+        target_field: vfield,
         id
     };
 
