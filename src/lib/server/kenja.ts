@@ -45,18 +45,18 @@ class Kenja {
         if (!vectorSearch) {
             throw new Error('env for lambda vector search is not set');
         }
+        const document = env.LAMBDA_DOCUMENT;
+        if (!document) {
+            throw new Error('env for lambda vector search is not set');
+        }
+
         const functions: LambdaFunctions = {
+            document,
             textSearch,
             vectorSearch
         };
-
-        const config: LambdaClientConfig = {}; 
-        const region = env.AWS_REGION;
-        if (region) {
-            config.region = region;
-        }
-
-        this._api = new LambdaApi(e, d, functions, config);
+ 
+        this._api = new LambdaApi(e, d, functions);
     }
 
     api(): ApiAdapter {

@@ -27,13 +27,12 @@ export class LambdaApi<
     constructor(
         e: E, 
         d: D, 
-        functions: LambdaFunctions, 
-        config: LambdaClientConfig
+        functions: LambdaFunctions
     ) {
         this._encoder = e;
         this._decoder = d;
         this._functions = functions;
-        this._lambda = new LambdaClient(config);
+        this._lambda = new LambdaClient();
     }
 
     encoder(): Encoder {
