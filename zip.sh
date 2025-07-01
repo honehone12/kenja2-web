@@ -1,3 +1,6 @@
 #!/bin/bash
 
-zip -r kenja2-web.zip build/*
+cd build
+zip -r kenja2-web.zip ./*
+cd ..
+mv build/kenja2-web.zip .
