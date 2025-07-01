@@ -1,6 +1,5 @@
 'use strict';
 
-import type { LambdaClientConfig } from "@aws-sdk/client-lambda";
 import {building} from "$app/environment";
 import {env} from "$env/dynamic/private";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
@@ -71,10 +70,17 @@ const kenja = new Kenja();
 
 if (!building) {
     try {
-        kenja.useHttpBuffer(
-            new MsgPack(), 
-            new MsgPack()
-        );    
+        if (env.HTTP_API_BASE_URL) {
+            kenja.useHttpBuffer(
+                new MsgPack(), 
+                new MsgPack()
+            );  
+        } else {
+            kenja.useLambda(
+                new MsgPack(), 
+                new MsgPack()
+            )
+        }
     } catch (err) {
         logs.error(err, 'api client initialization failed');
     }
