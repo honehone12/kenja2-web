@@ -15,13 +15,13 @@
     <input type="hidden" id="id" name="id" value="{id}">
     <input type="hidden" id="item-type" name="item-type" value="{item_type}"/>
     <div class="mb-10">
-        <h2 class="text-2xl mb-3">Target vector</h2>
+        <h2 class="text-2xl mb-3">Select source</h2>
         <VectorFieldRadio name="vector"/>
     </div>
     <button 
         type="submit"
         class="btn btn-xl btn-accent"
     >
-        Let's go !
+        Search
     </button>
 </form>

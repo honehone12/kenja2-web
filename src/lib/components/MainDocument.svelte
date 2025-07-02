@@ -26,7 +26,7 @@
         />
     </div>
     <div class="mt-15 mb-20">
-        <h1 class="text-3xl text-info mx-10 mb-10">Try to find similar items</h1>
+        <h1 class="text-3xl text-info mx-10 mb-10">Search similar items</h1>
         <div class="mx-15">
             <VectorSearchForm 
                 id={document.id}
