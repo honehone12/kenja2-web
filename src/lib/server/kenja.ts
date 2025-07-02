@@ -71,11 +71,13 @@ const kenja = new Kenja();
 if (!building) {
     try {
         if (env.HTTP_API_BASE_URL) {
+            logs.info('http env is found, initializing http api')
             kenja.useHttpBuffer(
                 new MsgPack(), 
                 new MsgPack()
             );  
         } else {
+            logs.info('initializing lambda api')
             kenja.useLambda(
                 new MsgPack(), 
                 new MsgPack()
