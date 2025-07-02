@@ -44,7 +44,7 @@
                 <br>
                 <p>
                     Second reason is that I wanted to create search engine independent from reviews by other people.<br>
-                    Reading reviews is fun. But I just don't wanted to read them before watching the title.<br> 
+                    Reading reviews is fun. But I sometimes don't wanted to read them before watching the title.<br> 
                     I can say same thing to recommendation systems. People tend to watch same new titles when recommendation system is on.
                     Then, the fashion of our time is being generated in this way. It's fun. But I sometimes want to "dig" legacy animes and believe that you too.
                 </p>
