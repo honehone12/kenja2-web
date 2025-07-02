@@ -1,7 +1,7 @@
 <div class="w-full min-h-screen py-30 px-10">
     <div class="flex justify-center">
         <div class="max-w-200">
-            <h1 class="text-center text-info text-3xl mb-20">What is this ??</h1>
+            <h1 class="text-center text-info text-3xl mb-20">What is this?</h1>
             <span class="text-lg">
                 <p>
                     Kenja is a "Anime Search Engine" being developed by individual.
@@ -31,7 +31,7 @@
                     If you have a specific prefered creater or seiyu san, full text search is generally better.   
                 </p>
             </span>
-            <h1 class="text-center text-info text-3xl mt-20 mb-20">Why is this exist ??</h1>
+            <h1 class="text-center text-info text-3xl mt-20 mb-20">Why is this exist?</h1>
             <span class="text-lg">
                 <p>
                     Because I just wanted.<br>
@@ -49,7 +49,22 @@
                     Then, the fashion of our time is being generated in this way. It's fun. But I sometimes want to "dig" legacy animes and believe that you too.
                 </p>
             </span>
-            <h1 class="text-center text-info text-3xl mt-20 mb-20">Why not AI ??</h1>
+            <h1 class="text-center text-info text-3xl mt-20 mb-20">When should I use this?</h1>
+            <span class="text-lg">
+                <p>
+                    First, kenja is NOT good for getting infomations about new animes. Insead, its purpose is to help finding relatively old titles.<br>
+                    Second, kenja is NOT good for catching up current popular animes. It needs some your ideas and hands for searching.<br>
+                    Third, kenja is NOT good for finding animes with surprising story lines. Because its index does not containing spoilers. 
+                </p>
+            </span>
+            <h1 class="text-center text-info text-3xl mt-20 mb-20">What does kenja mean?</h1>
+            <span class="text-lg">
+                <p>
+                    kenja (賢者) means wise person or philosopher.<br> 
+                    99% of actual usage of the word in nowadays is "kenja time" (賢者 タイム).
+                </p>
+            </span>
+            <h1 class="text-center text-info text-3xl mt-20 mb-20">Why not AI?</h1>
             <span class="text-lg">
                 <p>
                     Kenja is actually using AI. But they all are for precomputing. I'm not touching runtime AI computing incliding LLM because of cost.
