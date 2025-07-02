@@ -61,7 +61,7 @@
             <span class="text-lg">
                 <p>
                     kenja (賢者) means wise person or philosopher.<br> 
-                    99% of actual usage of the word in nowadays is "kenja time" (賢者 タイム).
+                    99% of actual usage of the word in nowadays is joking "kenja time" (賢者 タイム).
                 </p>
             </span>
             <h1 class="text-center text-info text-3xl mt-20 mb-20">Why not AI?</h1>
