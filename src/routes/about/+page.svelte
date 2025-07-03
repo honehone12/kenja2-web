@@ -43,10 +43,10 @@
                 <br>
                 <br>
                 <p>
-                    Second reason is that I wanted to create search engine independent from reviews by other people.<br>
+                    Second reason is that I wanted to create search engine independent from reviews nor recommendation systems.
                     Reading reviews is fun. But I sometimes don't wanted to read them before watching the title.<br> 
-                    I can say same thing to recommendation systems. People tend to watch same new titles when recommendation system is on.
-                    Then, the fashion of our time is being generated in this way. It's fun. But I sometimes want to "dig" legacy animes and believe that you too.
+                    I can say same thing to recommendation systems. We tend to watch same new titles when recommendation system is on.
+                    It's fun. But I sometimes want to "dig" legacy animes and believe that you too.
                 </p>
             </span>
             <h1 class="text-center text-info text-3xl mt-20 mb-20">When should I use this?</h1>
