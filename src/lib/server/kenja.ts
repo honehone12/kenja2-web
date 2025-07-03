@@ -3,8 +3,6 @@
 import {building} from "$app/environment";
 import {env} from "$env/dynamic/private";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
-import type { Decoder, Encoder } from "$lib/server/endec/endec";
-import  { Json } from "$lib/server/endec/json";
 import { HttpBufferApi } from "$lib/server/api-adapter/http-buffer";
 import { LambdaApi, type LambdaFunctions } from "$lib/server/api-adapter/lambda";
 import logs from "$lib/server/logs";
@@ -12,10 +10,7 @@ import logs from "$lib/server/logs";
 class Kenja {
     private _api: ApiAdapter | null = null;
 
-    useHttpBuffer<
-        E extends Encoder, 
-        D extends Decoder
-    >(e: E, d: D) {
+    useHttpBuffer() {
         if (this._api) {
             throw new Error('api client is already initialized');
         }
@@ -25,13 +20,10 @@ class Kenja {
             throw new Error('env for http api url is not set');
         }
 
-        this._api = new HttpBufferApi(e, d, baseUrl);
+        this._api = new HttpBufferApi(baseUrl);
     }
 
-    useLambda<
-        E extends Encoder,
-        D extends Decoder
-    >(e: E, d: D) {
+    useLambda() {
         if (this._api) {
             throw new Error('api client is already initialized');
         }
@@ -55,7 +47,7 @@ class Kenja {
             vectorSearch
         };
  
-        this._api = new LambdaApi(e, d, functions);
+        this._api = new LambdaApi(functions);
     }
 
     api(): ApiAdapter {
@@ -72,16 +64,10 @@ if (!building) {
     try {
         if (env.HTTP_API_BASE_URL) {
             logs.info('http env is found, initializing http api')
-            kenja.useHttpBuffer(
-                new Json(), 
-                new Json()
-            );  
+            kenja.useHttpBuffer();  
         } else {
             logs.info('initializing lambda api')
-            kenja.useLambda(
-                new Json(), 
-                new Json()
-            )
+            kenja.useLambda();
         }
     } catch (err) {
         logs.error(err, 'api client initialization failed');

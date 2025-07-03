@@ -4,7 +4,6 @@ import {
     InvokeCommand, LambdaClient, 
     type LambdaClientConfig, type InvokeCommandInput 
 } from "@aws-sdk/client-lambda";
-import type { Decoder, Encoder } from "$lib/server/endec/endec";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import type { DocumentQuery, TextQuery, VectorQuery } from "$lib/documents/queries";
 import type {SearchResult, SingleDocument} from "$lib/documents/documents";
@@ -15,32 +14,13 @@ export interface LambdaFunctions {
     vectorSearch: string;
 }
 
-export class LambdaApi<
-    E extends Encoder, 
-    D extends Decoder
-> implements ApiAdapter {
-    private _encoder: E;
-    private _decoder: D;
+export class LambdaApi implements ApiAdapter {
     private _lambda: LambdaClient;
     private _functions: LambdaFunctions;
 
-    constructor(
-        e: E, 
-        d: D, 
-        functions: LambdaFunctions
-    ) {
-        this._encoder = e;
-        this._decoder = d;
+    constructor(functions: LambdaFunctions) {
         this._functions = functions;
         this._lambda = new LambdaClient();
-    }
-
-    encoder(): Encoder {
-        return this._encoder;
-    }
-
-    decoder(): Decoder {
-        return this._decoder;
     }
     
     private ok(code: number | undefined): boolean {
@@ -63,12 +43,12 @@ export class LambdaApi<
         }
 
         const b = Buffer.from(res.Payload);
-        const result = this._decoder.unmarshal<T>(b);
+        const result: T = JSON.parse(b.toString()); 
         return result;
     }
 
     async document(q: DocumentQuery): Promise<SingleDocument> {
-        const payload = this._encoder.marshal(q);
+        const payload = Buffer.from(JSON.stringify(q));
         const input: InvokeCommandInput = {
             FunctionName: this._functions.document,
             Payload: payload
@@ -78,7 +58,7 @@ export class LambdaApi<
     }
 
     async textSearch(q: TextQuery): Promise<SearchResult> {
-        const payload = this._encoder.marshal(q);
+        const payload = Buffer.from(JSON.stringify(q));
         const input: InvokeCommandInput = {
             FunctionName: this._functions.textSearch,
             Payload:  payload
@@ -88,7 +68,7 @@ export class LambdaApi<
     }
 
     async vectorSearch(q: VectorQuery): Promise<SearchResult> {
-        const payload = this._encoder.marshal(q);
+        const payload = Buffer.from(JSON.stringify(q));
         const input: InvokeCommandInput = {
             FunctionName: this._functions.vectorSearch,
             Payload: payload
