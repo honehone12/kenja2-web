@@ -8,7 +8,6 @@ const config = {
 		csp: {
 			directives: {
 				'script-src': ['self'],
-				'style-src': ['self'],
 				'font-src': ['self'],
 				'img-src': ['self', 'data:'],
 				'worker-src': ['self'],
