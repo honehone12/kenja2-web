@@ -5,7 +5,6 @@ import {env} from "$env/dynamic/private";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import type { Decoder, Encoder } from "$lib/server/endec/endec";
 import  { Json } from "$lib/server/endec/json";
-import  { MsgPack } from "$lib/server/endec/msgpack";
 import { HttpBufferApi } from "$lib/server/api-adapter/http-buffer";
 import { LambdaApi, type LambdaFunctions } from "$lib/server/api-adapter/lambda";
 import logs from "$lib/server/logs";
@@ -75,13 +74,13 @@ if (!building) {
             logs.info('http env is found, initializing http api')
             kenja.useHttpBuffer(
                 new Json(), 
-                new MsgPack()
+                new Json()
             );  
         } else {
             logs.info('initializing lambda api')
             kenja.useLambda(
                 new Json(), 
-                new MsgPack()
+                new Json()
             )
         }
     } catch (err) {
