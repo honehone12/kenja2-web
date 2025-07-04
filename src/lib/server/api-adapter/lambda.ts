@@ -2,7 +2,7 @@
 
 import { 
     InvokeCommand, LambdaClient, 
-    type LambdaClientConfig, type InvokeCommandInput 
+    type InvokeCommandInput 
 } from "@aws-sdk/client-lambda";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import type { DocumentQuery, TextQuery, VectorQuery } from "$lib/documents/queries";
