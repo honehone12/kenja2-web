@@ -8,20 +8,20 @@
     let {data} = $props();
 </script>
 
-<div class="min-h-screen w-full">
-    {#await data.documentStream}
-        <div class="hero">
-            <div class="hero-content">
-                <LoadingDots/>
-            </div>    
+{#await data.documentStream}
+    <div class="min-h-screen w-full hero">
+        <div class="hero-content">
+            <LoadingDots/>
         </div>
-    {:then document}
+    </div>
+{:then document}
+    <div class="min-h-screen w-full">
         <MainDocument {document}/>
-    {:catch}
-        <div class="hero">
-            <div class="hero-content">
-                <ErrorMsg/>
-            </div>
+    </div>
+{:catch}
+    <div class="min-h-screen w-full hero">
+        <div class="hero-content">
+            <ErrorMsg/>
         </div>
-    {/await}
-</div>
+    </div>
+{/await}
