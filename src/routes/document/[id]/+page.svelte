@@ -3,7 +3,7 @@
     
     import MainDocument from '$lib/components/MainDocument.svelte';
     import ErrorMsg from '$lib/components/ErrorMsg.svelte';
-    import LoadingDots from '$lib/components/LoadingDots.svelte';
+    import LoadingMsg from '$lib/components/LoadingMsg.svelte';
 
     let {data} = $props();
 </script>
@@ -11,7 +11,7 @@
 {#await data.documentStream}
     <div class="min-h-screen w-full hero">
         <div class="hero-content">
-            <LoadingDots/>
+            <LoadingMsg/>
         </div>
     </div>
 {:then document}

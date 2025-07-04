@@ -2,7 +2,7 @@
     'use strict';
     
     import ErrorMsg from "$lib/components/ErrorMsg.svelte";
-    import LoadingDots from "$lib/components/LoadingDots.svelte";
+    import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import type { SearchResult } from "$lib/documents/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
 
@@ -16,7 +16,7 @@
 <div class="hero min-h-screen w-full">
     {#await buffer}
         <div class="hero-content">
-            <LoadingDots/>
+            <LoadingMsg/>
         </div>
     {:then {candidates}}
         {#if candidates}
