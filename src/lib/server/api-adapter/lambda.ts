@@ -2,7 +2,7 @@
 
 import { 
     InvokeCommand, LambdaClient, 
-    type InvokeCommandInput 
+    type InvokeCommandInput, type LambdaClientConfig 
 } from "@aws-sdk/client-lambda";
 import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import type { DocumentQuery, TextQuery, VectorQuery } from "$lib/documents/queries";
@@ -18,9 +18,9 @@ export class LambdaApi implements ApiAdapter {
     private _lambda: LambdaClient;
     private _functions: LambdaFunctions;
 
-    constructor(functions: LambdaFunctions) {
+    constructor(functions: LambdaFunctions, config: LambdaClientConfig) {
         this._functions = functions;
-        this._lambda = new LambdaClient();
+        this._lambda = new LambdaClient(config);
     }
     
     private ok(code: number | undefined): boolean {

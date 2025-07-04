@@ -6,6 +6,7 @@ import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
 import { HttpBufferApi } from "$lib/server/api-adapter/http-buffer";
 import { LambdaApi, type LambdaFunctions } from "$lib/server/api-adapter/lambda";
 import logs from "$lib/server/logs";
+import type { LambdaClientConfig } from "@aws-sdk/client-lambda";
 
 class Kenja {
     private _api: ApiAdapter | null = null;
@@ -40,14 +41,21 @@ class Kenja {
         if (!document) {
             throw new Error('env for lambda vector search is not set');
         }
+        const region = env.AWS_REGION;
+        if (!region) {
+            throw new Error('env for aws region is not set')
+        }
 
         const functions: LambdaFunctions = {
             document,
             textSearch,
             vectorSearch
         };
+        const config: LambdaClientConfig = {
+            region
+        }; 
  
-        this._api = new LambdaApi(functions);
+        this._api = new LambdaApi(functions, config);
     }
 
     api(): ApiAdapter {
