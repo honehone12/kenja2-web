@@ -21,12 +21,14 @@
     {:then {documents}}
         {#if documents}
             <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-                {#each documents as docs}
-                    <CandidateCard 
-                        id={docs.id}
-                        parent={docs.parent}
-                        name={docs.name}
-                        name_japanese={docs.name_japanese}
+                {#each documents as doc}
+                    <CandidateCard
+                        doc={{
+                            id: doc.id,
+                            parent: doc.parent,
+                            name: doc.name,
+                            name_japanese: doc.name_japanese
+                        }}
                     />
                 {/each}
             </div>
