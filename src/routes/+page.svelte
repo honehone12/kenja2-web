@@ -8,7 +8,7 @@
     async function ping() {
         try {
             await data.pingStream;
-        } catch (error) {
+        } catch {
             console.warn('ping failed');
         }
     }
