@@ -2,14 +2,14 @@
 
 import {building} from "$app/environment";
 import {env} from "$env/dynamic/private";
-import type { ApiAdapter } from "$lib/server/api-adapter/api-adapter";
-import { HttpBufferApi } from "$lib/server/api-adapter/http-buffer";
-import { LambdaApi, type LambdaFunctions } from "$lib/server/api-adapter/lambda";
+import type { AnimeSearch } from "$lib/server/api-adapter/api-adapter";
+import { HttpBufferApi } from "$lib/server/api-adapter/anime-search/http-buffer";
+import { LambdaApi } from "$lib/server/api-adapter/anime-search/lambda";
 import logs from "$lib/server/logs";
 import type { LambdaClientConfig } from "@aws-sdk/client-lambda";
 
 class Kenja {
-    private _api: ApiAdapter | null = null;
+    private _api: AnimeSearch | null = null;
 
     useHttpBuffer() {
         if (this._api) {
@@ -29,36 +29,23 @@ class Kenja {
             throw new Error('api client is already initialized');
         }
 
-        const textSearch = env.LAMBDA_TEXT_SEARCH;
-        if (!textSearch) {
-            throw new Error('env for lambda text search is no set');
-        }
-        const vectorSearch = env.LAMBDA_VECTOR_SEARCH;
-        if (!vectorSearch) {
-            throw new Error('env for lambda vector search is not set');
-        }
-        const document = env.LAMBDA_DOCUMENT;
-        if (!document) {
-            throw new Error('env for lambda vector search is not set');
+        const functionName = env.LAMBDA_FUNCTION_NAME;
+        if (!functionName) {
+            throw new Error('env for lambda function name is no set');
         }
         const region = env.AWS_REGION;
         if (!region) {
             throw new Error('env for aws region is not set')
         }
 
-        const functions: LambdaFunctions = {
-            document,
-            textSearch,
-            vectorSearch
-        };
         const config: LambdaClientConfig = {
             region
         }; 
  
-        this._api = new LambdaApi(functions, config);
+        this._api = new LambdaApi(functionName, config);
     }
 
-    api(): ApiAdapter {
+    api(): AnimeSearch {
         if (!this._api) {
             throw new Error('api client is not initialized');
         }

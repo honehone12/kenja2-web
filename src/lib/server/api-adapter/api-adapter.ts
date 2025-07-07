@@ -1,10 +1,19 @@
 'use strict';
 
-import type {TextQuery, VectorQuery, DocumentQuery} from "$lib/documents/queries";
-import type { SearchResult, SingleDocument } from "$lib/documents/documents";
+import type {Rating, ItemType, VectorField} from "$lib/documents/anime-search/queries";
+import type { SearchResult } from "$lib/documents/anime-search/documents";
 
-export interface ApiAdapter {
-    textSearch(q: TextQuery): Promise<SearchResult>;
-    vectorSearch(q: VectorQuery): Promise<SearchResult>;
-    document(q: DocumentQuery): Promise<SingleDocument>;
+export interface AnimeSearch {
+    ping(): Promise<SearchResult>
+    textSearch(
+        rating: Rating | undefined,
+        item_type: ItemType | undefined,
+        keywords: string 
+    ): Promise<SearchResult>;
+    vectorSearch(
+        rating: Rating | undefined,
+        item_type: ItemType,
+        vector_field: VectorField,
+    ): Promise<SearchResult>;
+    document(id: string): Promise<SearchResult>;
 }

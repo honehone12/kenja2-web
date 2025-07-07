@@ -1,7 +1,6 @@
 'use strict'
 
 import { OID_LEN } from '$lib';
-import type { DocumentQuery } from '$lib/documents/queries.js';
 import { badRequest, internalError } from '$lib/server/errors.js';
 import kenja from '$lib/server/kenja.js';
 import logs from '$lib/server/logs.js';
@@ -13,12 +12,8 @@ export function load({params}) {
         return badRequest();
     }
 
-    const query: DocumentQuery = {
-        id
-    };
-
     try {
-        const documentStream = kenja.api().document(query);
+        const documentStream = kenja.api().document(id);
         return {documentStream};
     } catch (err) {
         logs.error(err, 'error on document');

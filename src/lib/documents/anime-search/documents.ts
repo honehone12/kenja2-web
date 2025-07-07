@@ -6,20 +6,17 @@ export interface Parent {
     name_japanese: string | undefined;
 }
 
-export interface Candidate{
+export interface FlatDocument {
     id: string;
     parent: Parent | undefined;
     name: string;
+    name_english: string | undefined;
     name_japanese: string | undefined;
+    url: string | undefined;
+    studios: string[] | undefined;
+    aliases: string[] | undefined;
 }
 
 export interface SearchResult {
-    candidates: Candidate[] | undefined;
-}
-
-export interface SingleDocument extends Candidate {
-    url: string;
-    name_english: string | undefined;
-    studios: string[] | undefined;
-    aliases: string[] | undefined;
+    documents: FlatDocument[] | undefined;
 }

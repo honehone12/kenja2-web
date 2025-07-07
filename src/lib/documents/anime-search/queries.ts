@@ -8,12 +8,12 @@ export const enum Rating {
 export class RatingConv {
     static fromString(s: string | null) {
         switch (s) {
-        case 'all':
-            return undefined;
+        case 'all-ages':
+            return Rating.AllAges;
         case 'hentai':
             return Rating.Hentai;
         default:
-            return Rating.AllAges;
+            return undefined;
         }
     }
 }
@@ -34,7 +34,7 @@ export class VFieldConv {
         case 'staff':
             return VectorField.Stf;
         default:
-            undefined
+            return undefined;
         }
     }
 }
@@ -52,25 +52,23 @@ export class ITypeConv {
         case 'character':
             return ItemType.Character;
         default:
-            undefined
+            return undefined;
         }
     }
 }
 
-export interface DocumentQuery {
-    id: string;
+export const enum FunctionId {
+    Ping = 1,
+    Document = 65537,
+    TextSearchBuffer = 131073,
+    VectorSearchBuffer = 131074
 }
 
-export interface TextQuery {
-    rating: Rating | undefined;
-    item_type: ItemType | undefined;
-    keywords: string;
-}
-
-export interface VectorQuery {
-    rating: Rating | undefined;
-    item_type: ItemType | undefined;
-    source_field: VectorField | undefined;
-    target_field: VectorField | undefined;
-    id: string;
+export interface SearchQuery {
+    function_id: FunctionId;
+    rating?: Rating | undefined;
+    item_type?: ItemType | undefined;
+    vector_field?: VectorField | undefined;
+    id?: string | undefined;
+    keywords?: string | undefined;
 }
