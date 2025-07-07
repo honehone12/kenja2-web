@@ -1,89 +1,75 @@
 <script lang="ts">
     'use strict';
     
-    import type { Parent } from "$lib/documents/anime-search/documents";
+    import type { FlatDocument, Parent } from "$lib/documents/anime-search/documents";
 
     interface Props {
-        url: string | undefined;
-        name: string;
-        name_japanese: string | undefined;
-        name_english: string | undefined;
-        aliases: string[] | undefined;
-        studios: string[] | undefined;
-        parent: Parent | undefined;
+        doc: FlatDocument;
     }
 
-    let {
-        url,
-        name,
-        name_japanese,
-        name_english,
-        aliases, 
-        studios,
-        parent
-    }: Props = $props();
+    let {doc}: Props = $props();
 </script>
 
 <div class="mx-10 mt-10">
     <div class="badge badge-info mb-5">
         {parent ? 'Character' : 'Anime'}
     </div>
-    <h1 class="text-3xl mb-2">{name}</h1>
-    {#if name_japanese}
-        <h1 class="text-3xl">{name_japanese}</h1>
+    <h1 class="text-3xl mb-2">{doc.name}</h1>
+    {#if doc.name_japanese}
+        <h1 class="text-3xl">{doc.name_japanese}</h1>
     {/if}
 </div>
-{#if name_english}
+{#if doc.name_english}
         <div class="mx-10 mt-10">
             <div class="badge badge-info mb-5">
                 Name in English
             </div>
-            <h2 class="text-2xl mb-3">{name_english}</h2>
+            <h2 class="text-2xl mb-3">{doc.name_english}</h2>
         </div>
 {/if}
-{#if studios}
+{#if doc.studios}
     <div class="mx-10 mt-10">
         <div class="badge badge-info mb-5">
             Studios
         </div>
-        {#each studios as studio, i (i)}
+        {#each doc.studios as studio, i (i)}
             <h3 class="text-xl">{studio}</h3>
         {/each}
     </div>
 {/if}
-{#if aliases}
+{#if doc.aliases}
     <div class="mx-10 mt-10">
         <div class="badge badge-info mb-5">
             Also known as
         </div>
-        {#each aliases as alias, i (i)}
+        {#each doc.aliases as alias, i (i)}
             <h3 class="text-xl">{alias}</h3>
         {/each}
     </div>
 {/if}
-{#if parent}
+{#if doc.parent}
     <div class="mx-10 mt-10">
-        <a href="/document/{parent.id}">
+        <a href="/document/{doc.parent.id}">
             <div class="badge badge-info mb-5">
                 Anime
             </div>
             <h1 class="text-xl link link-primary">
-                {parent.name}
+                {doc.parent.name}
             </h1>
-            {#if parent.name_japanese}
+            {#if doc.parent.name_japanese}
                 <h1 class="text-xl link link-primary">
-                    {parent.name_japanese}
+                    {doc.parent.name_japanese}
                 </h1>
             {/if}
         </a>
     </div>            
 {/if}
-{#if url}
+{#if doc.url}
     <div class="mx-10 mt-10 ">
         <div class="badge badge-info mb-5">
             More infomation
         </div>
-        <a href="{url}">
+        <a href="{doc.url}">
             <h1 class="text-xl link link-primary">Check this item at MyAnimeList</h1>
         </a>
     </div>    

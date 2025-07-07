@@ -3,30 +3,29 @@
     
     import type { Parent } from "$lib/documents/anime-search/documents";
     
-    interface Props {
+    interface Candidate {
         parent: Parent | undefined;
         id: string;
         name: string;
         name_japanese: string | undefined;
     }
 
-    let {
-        parent,
-        id,
-        name,
-        name_japanese
-    }: Props = $props();
+    interface Props {
+        doc: Candidate;
+    }
+
+    let {doc}: Props = $props();
 </script>
 
 <div class="card w-90 bg-base-200">
     <div class="card-body">
-        {#if parent}
+        {#if doc.parent}
             <div class="badge badge-dash badge-info mb-5">
                 <p>Character キャラクター</p>
             </div>
-            <a href="/document/{parent.id}">
+            <a href="/document/{doc.parent.id}">
                 <h3 class="link link-primary">
-                    {parent.name} / {parent.name_japanese ?? ''}
+                    {doc.parent.name} / {doc.parent.name_japanese ?? ''}
                 </h3>    
             </a>
         {:else}
@@ -34,12 +33,12 @@
                 <p>Anime アニメ</p>
             </div>
         {/if}
-        {#if name_japanese}
-            <h2 class="text-xl">{name_japanese}</h2>
+        {#if doc.name_japanese}
+            <h2 class="text-xl">{doc.name_japanese}</h2>
         {/if}
-        <a href="/document/{id}">
+        <a href="/document/{doc.id}">
             <h1 class="card-title text-xl link link-accent">
-                {name}
+                {doc.name}
             </h1>
         </a>
     </div>

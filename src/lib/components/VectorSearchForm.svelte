@@ -5,7 +5,7 @@
 
     interface Props {
         id: string;
-        item_type: string
+        item_type: string;
     }
 
     let {id, item_type}: Props = $props();
