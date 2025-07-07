@@ -2,6 +2,18 @@
     'use strict'
 
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
+
+    let {data} = $props();
+
+    async function ping() {
+        try {
+            await data.pingStream;
+        } catch (error) {
+            console.warn('ping failed');
+        }
+    }
+
+    ping();
 </script>
 
 <div class="hero w-full min-h-screen py-20">

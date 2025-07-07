@@ -1,6 +1,6 @@
 'use strict';
 
-import { ItemType, ITypeConv, RatingConv} from "$lib/documents/anime-search/queries.js";
+import {ITypeConv, RatingConv} from "$lib/documents/anime-search/queries.js";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
@@ -32,7 +32,8 @@ export function load({url}) {
         const bufferedStream = kenja.api().vectorSearch(
             rating,
             item_type,
-            vfield            
+            vfield,
+            id            
         );
         return {bufferedStream};
     } catch (err) {

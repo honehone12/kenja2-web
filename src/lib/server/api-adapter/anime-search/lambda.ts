@@ -91,13 +91,15 @@ export class LambdaApi implements AnimeSearch {
     async vectorSearch(
         rating: Rating | undefined,
         item_type: ItemType,
-        vector_field: VectorField
+        vector_field: VectorField,
+        id: string
     ): Promise<SearchResult> {
         const q: SearchQuery = {
             function_id: FunctionId.VectorSearchBuffer,
             rating,
             item_type,
-            vector_field
+            vector_field,
+            id
         };
         const payload = Buffer.from(JSON.stringify(q));
         const input: InvokeCommandInput = {

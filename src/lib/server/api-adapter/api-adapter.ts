@@ -14,6 +14,7 @@ export interface AnimeSearch {
         rating: Rating | undefined,
         item_type: ItemType,
         vector_field: VectorField,
+        id: string
     ): Promise<SearchResult>;
     document(id: string): Promise<SearchResult>;
 }

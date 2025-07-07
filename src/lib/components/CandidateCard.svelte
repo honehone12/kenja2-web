@@ -1,24 +1,32 @@
 <script lang="ts">
     'use strict';
     
-    import type { Candidate } from "$lib/documents/documents";
-
+    import type { Parent } from "$lib/documents/anime-search/documents";
+    
     interface Props {
-        candidate: Candidate;
+        parent: Parent | undefined;
+        id: string;
+        name: string;
+        name_japanese: string | undefined;
     }
 
-    let {candidate}: Props = $props();
+    let {
+        parent,
+        id,
+        name,
+        name_japanese
+    }: Props = $props();
 </script>
 
 <div class="card w-90 bg-base-200">
     <div class="card-body">
-        {#if candidate.parent}
+        {#if parent}
             <div class="badge badge-dash badge-info mb-5">
                 <p>Character キャラクター</p>
             </div>
-            <a href="/document/{candidate.parent.id}">
+            <a href="/document/{parent.id}">
                 <h3 class="link link-primary">
-                    {candidate.parent.name} / {candidate.parent.name_japanese ?? ''}
+                    {parent.name} / {parent.name_japanese ?? ''}
                 </h3>    
             </a>
         {:else}
@@ -26,12 +34,12 @@
                 <p>Anime アニメ</p>
             </div>
         {/if}
-        {#if candidate.name_japanese}
-            <h2 class="text-xl">{candidate.name_japanese}</h2>
+        {#if name_japanese}
+            <h2 class="text-xl">{name_japanese}</h2>
         {/if}
-        <a href="/document/{candidate.id}">
+        <a href="/document/{id}">
             <h1 class="card-title text-xl link link-accent">
-                {candidate.name}
+                {name}
             </h1>
         </a>
     </div>

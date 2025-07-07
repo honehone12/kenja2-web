@@ -3,7 +3,7 @@
     
     import ErrorMsg from "$lib/components/ErrorMsg.svelte";
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
-    import type { SearchResult } from "$lib/documents/documents";
+    import type { SearchResult } from "$lib/documents/anime-search/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
 
     interface Props {
@@ -18,15 +18,20 @@
         <div class="hero-content">
             <LoadingMsg/>
         </div>
-    {:then {candidates}}
-        {#if candidates}
+    {:then {documents}}
+        {#if documents}
             <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-                {#each candidates as candidate}
-                    <CandidateCard {candidate} />
+                {#each documents as docs}
+                    <CandidateCard 
+                        id={docs.id}
+                        parent={docs.parent}
+                        name={docs.name}
+                        name_japanese={docs.name_japanese}
+                    />
                 {/each}
             </div>
         {:else}
-            <h2 class="hero-content text-xl">No Results</h2>
+            <h2 class="hero-content text-xl">No results</h2>
         {/if}
     {:catch}
         <div class="hero-content">

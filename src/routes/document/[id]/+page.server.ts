@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import { OID_LEN } from '$lib';
 import { badRequest, internalError } from '$lib/server/errors.js';

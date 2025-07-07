@@ -6,18 +6,33 @@
     import LoadingMsg from '$lib/components/LoadingMsg.svelte';
 
     let {data} = $props();
+
+    async function resolveOne() {
+        const {documents} = await data.documentStream;
+        return documents ? documents[0] : undefined;
+    }
 </script>
 
-{#await data.documentStream}
+{#await resolveOne()}
     <div class="min-h-screen w-full hero">
         <div class="hero-content">
             <LoadingMsg/>
         </div>
     </div>
-{:then document}
-    <div class="min-h-screen w-full">
-        <MainDocument {document}/>
-    </div>
+{:then doc}
+    {#if doc}
+        <div class="min-h-screen w-full">
+            <MainDocument 
+                {doc}
+            />
+        </div>
+    {:else}
+        <div class="min-h-screen w-full hero">
+            <div class="hero-content">
+                <h2 class="text-xl">No infomations</h2>
+            </div>
+        </div>
+    {/if}
 {:catch}
     <div class="min-h-screen w-full hero">
         <div class="hero-content">

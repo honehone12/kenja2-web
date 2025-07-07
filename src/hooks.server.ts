@@ -1,4 +1,4 @@
-'use-strict'
+'use-strict';
 
 import type { Handle } from "@sveltejs/kit";
 

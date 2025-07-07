@@ -1,10 +1,10 @@
 <script lang="ts">
     'use strict';
     
-    import type { Parent } from "$lib/documents/documents";
+    import type { Parent } from "$lib/documents/anime-search/documents";
 
     interface Props {
-        url: string;
+        url: string | undefined;
         name: string;
         name_japanese: string | undefined;
         name_english: string | undefined;
@@ -78,11 +78,13 @@
         </a>
     </div>            
 {/if}
-<div class="mx-10 mt-10 ">
-    <div class="badge badge-info mb-5">
-        More infomation
-    </div>
-    <a href="{url}">
-        <h1 class="text-xl link link-primary">Check this item at MyAnimeList</h1>
-    </a>
-</div>
+{#if url}
+    <div class="mx-10 mt-10 ">
+        <div class="badge badge-info mb-5">
+            More infomation
+        </div>
+        <a href="{url}">
+            <h1 class="text-xl link link-primary">Check this item at MyAnimeList</h1>
+        </a>
+    </div>    
+{/if}
