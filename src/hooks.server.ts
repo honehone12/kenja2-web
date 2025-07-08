@@ -16,7 +16,7 @@ const SECURITY_HEADERS = new Map([
 
 export const handle: Handle = async ({ event, resolve }) => {
     const ip = event.getClientAddress();
-    logs.info(ip, 'client address');
+    logs.info({ip}, 'client address');
 
     const response = await resolve(event);
     SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
