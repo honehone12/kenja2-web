@@ -1,11 +1,19 @@
 'use strict';
 
 import { 
-    InvokeCommand, LambdaClient, 
-    type InvokeCommandInput, type LambdaClientConfig 
+    InvokeCommand, 
+    LambdaClient, 
+    type InvokeCommandInput, 
+    type LambdaClientConfig 
 } from "@aws-sdk/client-lambda";
 import type { AnimeSearch } from "$lib/server/api-adapter/api-adapter";
-import {type ItemType, type Rating, type VectorField, FunctionId, type SearchQuery} from "$lib/documents/anime-search/queries";
+import {
+    ItemType, 
+    Rating, 
+    VectorField, 
+    FunctionId, 
+    type SearchQuery
+} from "$lib/documents/anime-search/queries";
 import type {SearchResult} from "$lib/documents/anime-search/documents";
 
 export class LambdaApi implements AnimeSearch {

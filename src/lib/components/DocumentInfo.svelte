@@ -20,12 +20,12 @@
     {/if}
 </div>
 {#if doc.name_english}
-        <div class="mx-10 mt-10">
-            <div class="badge badge-info mb-5">
-                Name in English
-            </div>
-            <h2 class="text-2xl mb-3">{doc.name_english}</h2>
+    <div class="mx-10 mt-10">
+        <div class="badge badge-info mb-5">
+            Name in English
         </div>
+        <h2 class="text-2xl mb-3">{doc.name_english}</h2>
+    </div>
 {/if}
 {#if doc.studios}
     <div class="mx-10 mt-10">
