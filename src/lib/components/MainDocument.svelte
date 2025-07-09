@@ -22,7 +22,7 @@
         <div class="mx-15">
             <VectorSearchForm 
                 id={doc.id}
-                item_type={doc.parent ? "character" : "anime"}
+                itemType={doc.parent ? "character" : "anime"}
             />
         </div>
     </div>

@@ -31,7 +31,7 @@
             />
             <label for="{name}-image" class="text-lg">Image</label>
         </div>
-        <div class="mb-2">
+        <div>
             <input 
                 type="radio"
                 {name}

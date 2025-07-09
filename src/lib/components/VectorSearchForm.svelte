@@ -4,23 +4,23 @@
     import VectorFieldRadio from "$lib/components/VectorFieldRadio.svelte";
 
     interface Props {
-        id: string;
-        item_type: string;
+        id: string | null;
+        itemType: string | null;
     }
 
-    let {id, item_type}: Props = $props();
+    let {id, itemType}: Props = $props();
 </script>
 
 <form method="get" action="/search/buffer/vector">
-    <input type="hidden" id="id" name="id" value="{id}">
-    <input type="hidden" id="item-type" name="item-type" value="{item_type}"/>
+    <input type="hidden" id="id" name="id" value="{id ?? ''}">
+    <input type="hidden" id="item-type" name="item-type" value="{itemType ?? ''}"/>
     <div class="mb-10">
-        <h2 class="text-2xl mb-3">Select source</h2>
+        <h2 class="text-2xl mb-5">Select source</h2>
         <VectorFieldRadio name="vector"/>
     </div>
     <button 
         type="submit"
-        class="btn btn-xl btn-accent"
+        class="btn btn-accent w-80"
     >
         Search
     </button>

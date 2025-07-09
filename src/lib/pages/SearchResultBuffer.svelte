@@ -5,12 +5,38 @@
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import type { SearchResult } from "$lib/documents/anime-search/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
+    import DocumentModal from "$lib/components/DocumentModal.svelte";
+    import { DOCUMENT_MODAL_ID } from "$lib";
 
     interface Props {
         buffer: Promise<SearchResult>;
     }
 
+    let selectedId: string | null = $state(null);
+    let selectedItemType: string | null = $state(null);
     let {buffer}: Props = $props();
+
+    function modal() {
+        const elem = document.getElementById(DOCUMENT_MODAL_ID);
+        if (elem instanceof HTMLDialogElement) {
+            return elem;
+        } else {
+            console.error('modal not found');
+            return null;
+        }
+    }
+
+    function openModal(id: string, itemType: string) {
+        selectedId = id;
+        selectedItemType = itemType;
+        modal()?.showModal();
+    }
+
+    function closeModal() {
+        selectedId = null;
+        selectedItemType = null;
+        modal()?.close();
+    }
 </script>
 
 <div class="hero min-h-screen w-full">
@@ -27,11 +53,17 @@
                             id: doc.id,
                             parent: doc.parent,
                             name: doc.name,
-                            name_japanese: doc.name_japanese
+                            nameJapanese: doc.name_japanese
                         }}
+                        onclickItem={openModal}
                     />
                 {/each}
             </div>
+            <DocumentModal
+                id={selectedId} 
+                itemType={selectedItemType}
+                onclickClose={closeModal}
+            />
         {:else}
             <h2 class="hero-content text-xl">No results</h2>
         {/if}
