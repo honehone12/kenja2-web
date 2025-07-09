@@ -19,7 +19,10 @@ export const handle: Handle = async ({ event, resolve }) => {
     if (ipHeader) {
         const ip = ipHeader.split(',').at(0)?.trim();
         if (ip) {
-            logs.info({ip}, 'ip address [0]');
+            const url = event.request.url;
+            const referer = event.request.referrer;
+
+            logs.info({url, referer, ip}, 'request header values');
         } else {
             throw new Error('invalid ip header');
         }
