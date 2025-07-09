@@ -9,6 +9,7 @@ import logs from "$lib/server/logs";
 import type { LambdaClientConfig } from "@aws-sdk/client-lambda";
 
 class Kenja {
+    private _isLocal = false;
     private _api: AnimeSearch | null = null;
 
     useHttpBuffer() {
@@ -22,6 +23,10 @@ class Kenja {
         }
 
         this._api = new HttpBufferApi(baseUrl);
+    
+        if (env.USING_LOCAL) {
+            this._isLocal = true;
+        }
     }
 
     useLambda() {
@@ -51,6 +56,10 @@ class Kenja {
         }
         return this._api;
     }
+
+    isLocal() {
+        return this._isLocal;
+    }
 }
 
 const kenja = new Kenja();
@@ -59,7 +68,9 @@ if (!building) {
     try {
         if (env.HTTP_API_BASE_URL) {
             logs.info('http env is found, initializing http api')
-            kenja.useHttpBuffer();  
+            kenja.useHttpBuffer();
+            
+            
         } else {
             logs.info('initializing lambda api')
             kenja.useLambda();
