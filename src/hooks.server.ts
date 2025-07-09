@@ -15,8 +15,17 @@ const SECURITY_HEADERS = new Map([
 ]);
 
 export const handle: Handle = async ({ event, resolve }) => {
-    const ip = event.getClientAddress();
-    logs.info({ip}, 'client address');
+    const ipHeader = event.request.headers.get('X-Forwarded-For');
+    if (ipHeader) {
+        const ip = ipHeader.split(',').at(0)?.trim();
+        if (ip) {
+            logs.info({ip}, 'ip address [0]');
+        } else {
+            throw new Error('invalid ip header');
+        }
+    } else {
+        throw new Error('could not find ip header');
+    }
 
     const response = await resolve(event);
     SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
