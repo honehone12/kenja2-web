@@ -16,21 +16,20 @@ const SECURITY_HEADERS = new Map([
 ]);
 
 export const handle: Handle = async ({ event, resolve }) => {
-    if (kenja.isLocal()) {
-        const url = event.request.url;
-        const referer = event.request.referrer;
-        const ip = event.getClientAddress();
+    const h = event.request.headers;
+    const url = event.request.url;
+    const referer = h.get('Referer');
+    const userAgent = h.get('User-Agent');
 
-        logs.info({url, referer, ip}, 'local request header values');
+    if (kenja.isLocal()) {
+        const ip = event.getClientAddress();
+        logs.info({url, referer, userAgent, ip}, 'local request header values');
     } else {
-        const ipHeader = event.request.headers.get('X-Forwarded-For');
+        const ipHeader = h.get('X-Forwarded-For');
         if (ipHeader) {
             const ip = ipHeader.split(',').at(0)?.trim();
             if (ip) {
-                const url = event.request.url;
-                const referer = event.request.referrer;
-
-                logs.info({url, referer, ip}, 'request header values');
+                logs.info({url, referer, userAgent, ip}, 'request header values');
             } else {
                 throw new Error('invalid ip header');
             }
