@@ -14,6 +14,10 @@
     function openModal() {
         getModal(SEARCH_MODAL_ID)?.showModal();
     }
+
+    function closeModal() {
+        getModal(SEARCH_MODAL_ID)?.close();
+    }
 </script>
 
 <div class="dock">
@@ -30,6 +34,7 @@
                 class="size-10 drop-shadow-sm" 
             />
         </button>
+        <SearchModal onclickClose={closeModal}/>
     </div>
     <div>
         <button aria-label="top" onclick={gotoTop}>
@@ -37,4 +42,3 @@
         </button>
     </div>
 </div>
-<SearchModal/>

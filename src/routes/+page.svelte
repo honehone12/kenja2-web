@@ -19,6 +19,6 @@
             <p class="text-lg mb-2">This is a web site just for searching anime.</p>
             <a href="/about"><p class="text-lg link link-primary">More infomation</p></a>
         </div>
-        <TextSearchForm/>
+        <TextSearchForm isLandingPage={true}/>
     </div>
 </div>

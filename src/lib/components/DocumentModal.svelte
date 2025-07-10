@@ -1,7 +1,6 @@
 <script lang="ts">
     'use strict';
     
-    import {fade} from "svelte/transition";
     import { DOCUMENT_MODAL_ID } from "$lib";
     import VectorSearchForm from "$lib/components/VectorSearchForm.svelte";
 
@@ -20,8 +19,7 @@
     }: Props = $props(); 
 </script>
 
-<!-- is tansition working ?? -->
-<dialog id="{DOCUMENT_MODAL_ID}" class="modal" transition:fade>
+<dialog id="{DOCUMENT_MODAL_ID}" class="modal">
     <div class="modal-box flex flex-col place-items-center">
         <form method="dialog">
             <button 
@@ -38,7 +36,7 @@
         </div>
         {#if url}
             <div class="mt-8 mb-5">
-                <a href="{url}">
+                <a href="{url}" target="_blank">
                     <h2 class="text-xl link link-primary">More infomations at MyAnimeList</h2>
                 </a>
             </div>    
