@@ -1,9 +1,10 @@
 <script lang="ts">
 	'use strict';
     
-	import Footer from "$lib/layouts/Footer.svelte";
-    import Navbar from "$lib/layouts/Navbar.svelte";
     import '../app.css';
+    import Navbar from "$lib/layouts/Navbar.svelte";
+    import Dock from "$lib/layouts/Dock.svelte";
+	import Footer from "$lib/layouts/Footer.svelte";
 
 	let { children } = $props();
 </script>
@@ -17,4 +18,5 @@
 </svelte:head>
 <Navbar/>
 {@render children()}
+<Dock/>
 <Footer/>

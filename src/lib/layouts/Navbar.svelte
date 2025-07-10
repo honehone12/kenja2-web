@@ -17,12 +17,6 @@
 		</ul>
 	</div>
 	<div class="navbar-end">
-		<a href="/">
-			<img
-				src="/Kenja2LogoSmall.png"
-				alt="Kenja logo with illustration of wise man"
-				class="max-w-10 mr-5 drop-shadow-sm" 
-			/>
-		</a>
+		<!-- just for layout for now -->
 	</div>
 </div>
