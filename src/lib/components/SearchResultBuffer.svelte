@@ -6,7 +6,7 @@
     import type { SearchResult } from "$lib/documents/anime-search/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import DocumentModal from "$lib/components/DocumentModal.svelte";
-    import { DOCUMENT_MODAL_ID } from "$lib";
+    import { DOCUMENT_MODAL_ID, getModal } from "$lib";
 
     interface Props {
         buffer: Promise<SearchResult>;
@@ -17,16 +17,6 @@
     let selectedItemType: string | null = $state(null);
     let {buffer}: Props = $props();
 
-    function modal() {
-        const elem = document.getElementById(DOCUMENT_MODAL_ID);
-        if (elem instanceof HTMLDialogElement) {
-            return elem;
-        } else {
-            console.error('modal not found');
-            return null;
-        }
-    }
-
     function openModal(
         id: string, 
         url: string, 
@@ -35,14 +25,14 @@
         selectedId = id;
         selectedUrl = url;
         selectedItemType = itemType;
-        modal()?.showModal();
+        getModal(DOCUMENT_MODAL_ID)?.showModal();
     }
 
     function closeModal() {
         selectedId = null;
         selectedUrl = null;
         selectedItemType = null;
-        modal()?.close();
+        getModal(DOCUMENT_MODAL_ID)?.close();
     }
 </script>
 

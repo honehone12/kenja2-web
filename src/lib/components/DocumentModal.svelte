@@ -20,6 +20,7 @@
     }: Props = $props(); 
 </script>
 
+<!-- is tansition working ?? -->
 <dialog id="{DOCUMENT_MODAL_ID}" class="modal" transition:fade>
     <div class="modal-box flex flex-col place-items-center">
         <form method="dialog">
