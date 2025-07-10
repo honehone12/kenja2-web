@@ -6,12 +6,14 @@
 
     interface Props {
         id: string | null;
+        url: string | null;
         itemType: string | null; 
         onclickClose: () => void;
     }
 
     let {
         id,
+        url,
         itemType,
         onclickClose
     }: Props = $props(); 
@@ -28,8 +30,15 @@
                 {itemType}
             />
         </div>
+        {#if url}
+            <div class="mt-8">
+                <a href="{url}">
+                    <h2 class="text-xl link link-primary">More infomations at MyAnimeList</h2>
+                </a>
+            </div>    
+        {/if}
         <div>
-            <form class="modal-backdrop mt-10" method="dialog">
+            <form class="modal-backdrop mt-8" method="dialog">
                 <button
                     class="btn btn-outline btn-info w-80"
                     onclick={onclickClose}

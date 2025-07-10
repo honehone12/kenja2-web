@@ -14,7 +14,7 @@
 <form method="get" action="/search/buffer/vector">
     <input type="hidden" id="id" name="id" value="{id ?? ''}">
     <input type="hidden" id="item-type" name="item-type" value="{itemType ?? ''}"/>
-    <div class="mb-10">
+    <div class="mb-5">
         <h2 class="text-2xl mb-5">Select source</h2>
         <VectorFieldRadio name="vector"/>
     </div>

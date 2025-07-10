@@ -8,13 +8,11 @@ export interface Parent {
 
 export interface FlatDocument {
     id: string;
+    url: string;
     parent: Parent | undefined;
     name: string;
     name_english: string | undefined;
     name_japanese: string | undefined;
-    url: string | undefined;
-    studios: string[] | undefined;
-    aliases: string[] | undefined;
 }
 
 export interface SearchResult {

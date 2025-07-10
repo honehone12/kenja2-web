@@ -13,6 +13,7 @@
     }
 
     let selectedId: string | null = $state(null);
+    let selectedUrl: string | null = $state(null);
     let selectedItemType: string | null = $state(null);
     let {buffer}: Props = $props();
 
@@ -26,14 +27,20 @@
         }
     }
 
-    function openModal(id: string, itemType: string) {
+    function openModal(
+        id: string, 
+        url: string, 
+        itemType: string
+    ) {
         selectedId = id;
+        selectedUrl = url;
         selectedItemType = itemType;
         modal()?.showModal();
     }
 
     function closeModal() {
         selectedId = null;
+        selectedUrl = null;
         selectedItemType = null;
         modal()?.close();
     }
@@ -48,19 +55,22 @@
         {#if documents}
             <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
                 {#each documents as doc}
-                    <CandidateCard
+                    <CandidateCard      
                         doc={{
+                            url: doc.url,
                             id: doc.id,
                             parent: doc.parent,
                             name: doc.name,
-                            nameJapanese: doc.name_japanese
+                            nameJapanese: doc.name_japanese,
+                            nameEnglish: doc.name_english
                         }}
                         onclickItem={openModal}
                     />
                 {/each}
             </div>
             <DocumentModal
-                id={selectedId} 
+                id={selectedId}
+                url={selectedUrl} 
                 itemType={selectedItemType}
                 onclickClose={closeModal}
             />
