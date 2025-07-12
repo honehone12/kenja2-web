@@ -22,6 +22,12 @@ https://opensource.org/licenses/MIT
 - magic-string
   著作権者: Rich Harris
   ホームページ: https://github.com/Rich-Harris/magic-string
+- nanoid
+  著作権者: Ai Zongbin
+  ホームページ: https://github.com/ai/nanoid
+- uuid
+  著作権者: Robert Kieffer 他
+  ホームページ: https://github.com/uuidjs/uuid
 
 【MIT License 原文】
 -------------------
