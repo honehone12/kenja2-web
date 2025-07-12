@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-    
     import DocumentInfo from "$lib/components/DocumentInfo.svelte";
     import VectorSearchForm from "$lib/components/VectorSearchForm.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";

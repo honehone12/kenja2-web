@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-    
     import MainDocument from '$lib/components/MainDocument.svelte';
     import ErrorMsg from '$lib/components/ErrorMsg.svelte';
     import LoadingMsg from '$lib/components/LoadingMsg.svelte';

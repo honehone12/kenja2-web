@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-
     interface Props {
         name: string;
     }

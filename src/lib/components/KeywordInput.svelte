@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-
     import {MAX_KW_LEN} from "$lib";
 
     interface Props {

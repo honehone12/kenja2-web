@@ -1,5 +1,3 @@
-'use-strict';
-
 import kenja from "$lib/server/kenja";
 import logs from "$lib/server/logs";
 import type { Handle } from "@sveltejs/kit";

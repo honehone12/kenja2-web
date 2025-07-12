@@ -1,5 +1,3 @@
-'use strict';
-
 import type {Rating, ItemType, VectorField} from "$lib/documents/anime-search/queries";
 import type { SearchResult } from "$lib/documents/anime-search/documents";
 

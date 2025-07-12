@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-    
     import ErrorMsg from "$lib/components/ErrorMsg.svelte";
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import type { SearchResult } from "$lib/documents/anime-search/documents";

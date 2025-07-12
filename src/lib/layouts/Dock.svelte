@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-
     import {SEARCH_MODAL_ID, getModal} from "$lib";
     import SearchModal from "$lib/components/SearchModal.svelte";
 

@@ -1,5 +1,3 @@
-'use strict';
-
 import {building} from "$app/environment";
 import {env} from "$env/dynamic/private";
 import type { AnimeSearch } from "$lib/server/api-adapter/api-adapter";

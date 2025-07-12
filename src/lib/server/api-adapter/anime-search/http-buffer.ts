@@ -1,5 +1,3 @@
-'use strict';
-
 import {Buffer} from "node:buffer";
 import type { AnimeSearch } from "$lib/server/api-adapter/api-adapter";
 import { 

@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
 </script>
 

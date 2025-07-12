@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-    
     import KeywordInput from "$lib/components/KeywordInput.svelte";
     import ItemTypeRadio from "$lib/components/ItemTypeRadio.svelte";
 

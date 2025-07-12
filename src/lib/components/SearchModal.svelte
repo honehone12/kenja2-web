@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-
     import {SEARCH_MODAL_ID} from "$lib";
     import TextSearchForm from "./TextSearchForm.svelte";
 

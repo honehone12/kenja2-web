@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-
     import VectorFieldRadio from "$lib/components/VectorFieldRadio.svelte";
 
     interface Props {

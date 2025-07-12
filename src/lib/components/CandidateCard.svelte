@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-    
     import type {Parent} from "$lib/documents/anime-search/documents";
     
     interface Candidate {

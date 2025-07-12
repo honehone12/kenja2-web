@@ -1,5 +1,3 @@
-'use strict';
-
 import {ITypeConv, RatingConv} from "$lib/documents/anime-search/queries.js";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";

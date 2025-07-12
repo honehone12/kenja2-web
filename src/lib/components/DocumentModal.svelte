@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-    
     import { DOCUMENT_MODAL_ID } from "$lib";
     import VectorSearchForm from "$lib/components/VectorSearchForm.svelte";
 

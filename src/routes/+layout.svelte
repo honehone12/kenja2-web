@@ -1,6 +1,4 @@
 <script lang="ts">
-	'use strict';
-    
     import '../app.css';
     import Navbar from "$lib/layouts/Navbar.svelte";
     import Dock from "$lib/layouts/Dock.svelte";

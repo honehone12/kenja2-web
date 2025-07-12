@@ -1,5 +1,3 @@
-'use strict';
-
 export interface Parent {
     id: string;
     name: string;

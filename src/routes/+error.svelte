@@ -1,6 +1,4 @@
 <script lang="ts">
-    'use strict';
-
     import ErrorMsg from "$lib/components/ErrorMsg.svelte";
 </script>
 

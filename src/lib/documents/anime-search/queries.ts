@@ -1,5 +1,3 @@
-'use strict';
-
 export const enum Rating {
     AllAges = 1,
     Hentai = 2
