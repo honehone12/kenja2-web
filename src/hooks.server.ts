@@ -1,6 +1,7 @@
+import {building} from "$app/environment";
+import type { Handle } from "@sveltejs/kit";
 import kenja from "$lib/server/kenja";
 import logs from "$lib/server/logs";
-import type { Handle } from "@sveltejs/kit";
 
 const SECURITY_HEADERS = new Map([
     ['X-XSS-Protection', '0'],
@@ -14,25 +15,27 @@ const SECURITY_HEADERS = new Map([
 ]);
 
 export const handle: Handle = async ({ event, resolve }) => {
-    const h = event.request.headers;
-    const url = event.request.url;
-    const referer = h.get('Referer');
-    const userAgent = h.get('User-Agent');
+    if (!building) {
+        const h = event.request.headers;
+        const url = event.request.url;
+        const referer = h.get('Referer');
+        const userAgent = h.get('User-Agent');
 
-    if (kenja.isLocal()) {
-        const ip = event.getClientAddress();
-        logs.info({url, referer, userAgent, ip}, 'local request header values');
-    } else {
-        const ipHeader = h.get('X-Forwarded-For');
-        if (ipHeader) {
-            const ip = ipHeader.split(',').at(0)?.trim();
-            if (ip) {
-                logs.info({url, referer, userAgent, ip}, 'request header values');
-            } else {
-                throw new Error('invalid ip header');
-            }
+        if (kenja.isLocal()) {
+            const ip = event.getClientAddress();
+            logs.info({url, referer, userAgent, ip}, 'local request header values');
         } else {
-            throw new Error('could not find ip header');
+            const ipHeader = h.get('X-Forwarded-For');
+            if (ipHeader) {
+                const ip = ipHeader.split(',').at(0)?.trim();
+                if (ip) {
+                    logs.info({url, referer, userAgent, ip}, 'request header values');
+                } else {
+                    throw new Error('invalid ip header');
+                }
+            } else {
+                throw new Error('could not find ip header');
+            }
         }
     }
 
