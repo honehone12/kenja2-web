@@ -8,10 +8,10 @@ import type { LambdaClientConfig } from "@aws-sdk/client-lambda";
 
 class Kenja {
     private _isLocal = false;
-    private _api: AnimeSearch | null = null;
+    private _animeSearch: AnimeSearch | null = null;
 
     useHttpBuffer() {
-        if (this._api) {
+        if (this._animeSearch) {
             throw new Error('api client is already initialized');
         }
 
@@ -20,7 +20,7 @@ class Kenja {
             throw new Error('env for http api url is not set');
         }
 
-        this._api = new HttpBufferApi(baseUrl);
+        this._animeSearch = new HttpBufferApi(baseUrl);
     
         if (env.USING_LOCAL) {
             this._isLocal = true;
@@ -28,7 +28,7 @@ class Kenja {
     }
 
     useLambda() {
-        if (this._api) {
+        if (this._animeSearch) {
             throw new Error('api client is already initialized');
         }
 
@@ -45,14 +45,14 @@ class Kenja {
             region
         }; 
  
-        this._api = new LambdaApi(functionName, config);
+        this._animeSearch = new LambdaApi(functionName, config);
     }
 
-    api(): AnimeSearch {
-        if (!this._api) {
+    animeSearch(): AnimeSearch {
+        if (!this._animeSearch) {
             throw new Error('api client is not initialized');
         }
-        return this._api;
+        return this._animeSearch;
     }
 
     isLocal() {

@@ -5,7 +5,7 @@ import logs from "$lib/server/logs.js";
 import {OID_LEN} from "$lib/index.js";
 import { VFieldConv } from "$lib/documents/anime-search/queries";
 
-export function load({url, setHeaders}) {
+export function load({url}) {
     const id = url.searchParams.get('id');
     if (!id || id.length !== OID_LEN) {
         logs.warn('invalid oid')
@@ -25,9 +25,9 @@ export function load({url, setHeaders}) {
     }
 
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
-    
+
     try {
-        const bufferedStream = kenja.api().vectorSearch(
+        const bufferedStream = kenja.animeSearch().vectorSearch(
             rating,
             item_type,
             vfield,
