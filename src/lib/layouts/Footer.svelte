@@ -9,5 +9,8 @@
         </a>
         <p>Copyright © {new Date().getFullYear()}</p>
         <p>All right reserved by Kenja Developer</p>
+        <a href="/THIRD-PARTY-LICENSES.md" type="text/markdown; charset=utf-8">
+            <p class="link link-primary">OSS licenses</p>
+        </a>
     </aside>
 </footer>
