@@ -56,10 +56,11 @@ export class ITypeConv {
 }
 
 export const enum FunctionId {
+    Unspecified = 0,
     Ping = 1,
-    Document = 65537,
-    TextSearchBuffer = 131073,
-    VectorSearchBuffer = 131074
+    Document = 2,
+    TextSearchBuffer = 3,
+    VectorSearchBuffer = 4
 }
 
 export interface SearchQuery {

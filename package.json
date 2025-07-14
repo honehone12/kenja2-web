@@ -14,13 +14,13 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"daisyui": "^5.0.46",
-		"@sveltejs/adapter-node": "^5.2.12",
-		"@sveltejs/kit": "^2.22.2",
-		"@sveltejs/vite-plugin-svelte": "^5.1.0",
+		"@sveltejs/adapter-node": "^5.2.13",
+		"@sveltejs/kit": "^2.22.5",
+		"@sveltejs/vite-plugin-svelte": "^5.1.1",
 		"@tailwindcss/vite": "^4.1.11",
-		"@types/node": "^24.0.12",
-		"svelte": "^5.35.4",
+		"@types/node": "^24.0.13",
+		"daisyui": "^5.0.46",
+		"svelte": "^5.35.6",
 		"svelte-check": "^4.2.2",
 		"tailwindcss": "^4.1.11",
 		"typescript": "^5.8.3",
@@ -32,9 +32,9 @@
 			"esbuild"
 		]
 	},
-	"packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
+	"packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad",
 	"dependencies": {
-		"@aws-sdk/client-lambda": "^3.840.0",
+		"@aws-sdk/client-lambda": "^3.844.0",
 		"pino": "^9.7.0"
 	}
 }
