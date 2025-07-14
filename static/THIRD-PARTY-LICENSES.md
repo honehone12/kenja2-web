@@ -3,29 +3,32 @@ Copyright (c) [Each Copyright Holders]
 https://opensource.org/licenses/MIT
 
 - svelte
-  Copyright Holders: Rich Harris and contributers
-  Homepage: https://svelte.dev
+  - Copyright Holders: Rich Harris and contributers
+  - Homepage: https://svelte.dev
 - @sveltejs/kit
-  Copyright Holders: Svelte Contributers Team
-  Homepage: https://kit.svelte.dev
+  - Copyright Holders: Svelte Contributers Team
+  - Homepage: https://kit.svelte.dev
 - tailwindcss
-  Copyright Holder: Tailwind Labs
-  Homepage: https://tailwindcss.com
+  - Copyright Holder: Tailwind Labs
+  - Homepage: https://tailwindcss.com
 - daisyui
-  Copyright Holder: Pouya Saadeghi
-  Homepage: https://daisyui.com
+  - Copyright Holder: Pouya Saadeghi
+  - Homepage: https://daisyui.com
 - clsx
-  Copyright Holders: Luke Edwards
-  Homepage: https://github.com/lukeed/clsx
+  - Copyright Holders: Luke Edwards
+  - Homepage: https://github.com/lukeed/clsx
 - magic-string
-  Copyright Holder: Rich Harris
-  Homepage: https://github.com/Rich-Harris/magic-string
+  - Copyright Holder: Rich Harris
+  - Homepage: https://github.com/Rich-Harris/magic-string
 - nanoid
-  Copyright Holder: Ai Zongbin
-  Homepage: https://github.com/ai/nanoid
+  - Copyright Holder: Ai Zongbin
+  - Homepage: https://github.com/ai/nanoid
 - uuid
-  Copyright Holders: Robert Kieffer and others
-  Homepage: https://github.com/uuidjs/uuid
+  - Copyright Holders: Robert Kieffer and others
+  - Homepage: https://github.com/uuidjs/uuid
+- Jikan Api
+  - Copyright Holder: Jikan Api
+  - Homepage: https://jikan.moe
 
 ## MIT License
 ------
@@ -51,6 +54,13 @@ https://opensource.org/licenses/MIT
 # Apache License Version 2.0
 Copyright (c) [Each Copyright Holders]
 https://opensource.org/license/apache-2-0
+
+- siglip2-base-patch16-512
+  - Copyright Holder: google
+  - Homepage: https://huggingface.co/google/siglip2-base-patch16-512
+- nomic-embed-text-v2-moe
+  - Copyright Holder: Nomic Ai
+  - Homepage: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe
 
 ## Apache License 2.0
 ------
@@ -228,7 +238,7 @@ https://opensource.org/license/apache-2-0
     You accept and agree to be bound by the terms of this License by copying,
     modifying, or distributing the Work (or works based on the Work).
 
-    Copyright [2025 or each instructions] [Each Copyright Holders]
+    Copyright [Each Instructions or 2025] [Each Copyright Holders]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

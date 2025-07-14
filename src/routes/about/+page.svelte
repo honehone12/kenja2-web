@@ -74,7 +74,11 @@
             </span>
             <span class="text-center text-info text-xl">
                 <h3 class="mt-30">Again, please don't expect so much.</h3>
-                <h2 class="mt-5">Thank you for your understanding.</h2>
+                <h2 class="mt-5 mb-30">Thank you for your understanding.</h2>
+            </span>
+            <span class="text-center">
+                <p><a href="https://myanimelist.net/" class="link link-primary">MyAnimeList</a>
+                or MyAnimeList.net is a property of MyAnimeList Co., Ltd. © {new Date().getFullYear()} All Rights Reserved.</p>
             </span>
         </div>
     </div>
