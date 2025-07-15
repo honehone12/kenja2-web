@@ -14,14 +14,20 @@ const SECURITY_HEADERS = new Map([
     ['Permissions-Policy', 'geolocation=(), camera=(), microphone=()']
 ]);
 
+const TRANSPORT_SECURITY_HEADERS = new Map([
+    ['Strict-Transport-Security', 'max-age=86400; includeSubDomains; preload']
+]);
+
 export const handle: Handle = async ({ event, resolve }) => {
+    const isLocal = kenja.isLocal();
+    
     if (!building) {
         const h = event.request.headers;
         const url = event.request.url;
         const referer = h.get('Referer');
         const userAgent = h.get('User-Agent');
 
-        if (kenja.isLocal()) {
+        if (isLocal) {
             const ip = event.getClientAddress();
             logs.info({url, referer, userAgent, ip}, 'local request header values');
         } else {
@@ -41,5 +47,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     const response = await resolve(event);
     SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
+    if (!isLocal) {
+        TRANSPORT_SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
+    }
     return response;
 };
