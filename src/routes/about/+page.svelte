@@ -13,7 +13,6 @@
                 <br>
                 <p>
                     You can search anime or character with some keywords by full text search engine.
-                    It's kind of reverse lookup index of anime.<br>
                     You can choose keywords for example "high school" or "light music club" or something like that.
                     Of course you can search with "k on" as name or "kyoto animation" as studio. 
                     Also staffs and seiyu san (声優さん voice actors) are indexed.<br>
@@ -23,27 +22,28 @@
                 <br>
                 <p>
                     Also, Kenja contains precomputed vectors of texts, images and staffs.
-                    You can search similar anime or character by vector serach engine. It's kind of grouping file of anime.<br>
+                    You can search similar anime or character by vector serach engine. 
                     Vector search is useful for searching animes with similar "vibes", or searching chracters with similar features.
                     For example, once you found "Rei" with full text search, you can find characters with "blue hair" with image vecotr search.<br>
-                    Kenja indexed staffs as vector too, so you can find animes crated by similar staffs or characters performed by simlar seiyu san.<br>
-                    But again, vectors are "vibes" as a lot of things (interlingual people) are mixed in a vector. 
+                    Kenja indexed staffs as vector too, so you can find animes created by similar staffs or characters performed by simlar seiyu san.<br>
+                    But again, vectors are "vibes" as a lot of things (ex. interlingual seiyu san) are mixed in a vector. 
                     If you have a specific prefered creater or seiyu san, full text search is generally better.   
                 </p>
             </span>
             <h1 class="text-center text-info text-3xl mt-20 mb-20">Why is this exist?</h1>
             <span class="text-lg">
                 <p>
-                    Because I just wanted.<br>
+                    Because I just wanted a easy tool for searching animes.<br>
                     Once you watched a lot of animes on video streaming paltform, their recommendation systems become full of titles that you already watched.
                     It's the nature of recommendation systems.<br>
                     Then, searching anime have to be "brute force". I did, from A to Z. 
-                    It might be fun for the first and last time, but actually you have to do for several times. Because our "mood" varies for weeks. 
+                    It might be fun for the first and last time, but actually you have to do for several times. Because our "mood" varies for weeks.<br>
+
                 </p>
                 <br>
                 <br>
                 <p>
-                    Second reason is that I wanted to create search engine independent from reviews nor recommendation systems.
+                    Second reason is that I wanted to create search engine independent from reviews nor recommendation systems tied with our watching anime history.
                     Reading reviews is fun. But I sometimes don't wanted to read them before watching the title.<br> 
                     I can say same thing to recommendation systems. We tend to watch same new titles when recommendation system is on.
                     It's fun. But I sometimes want to "dig" legacy animes and believe that you too.
@@ -52,24 +52,24 @@
             <h1 class="text-center text-info text-3xl mt-20 mb-20">When should I use this?</h1>
             <span class="text-lg">
                 <p>
-                    First, kenja is NOT good for getting infomations about new animes. Insead, its purpose is to help finding relatively old titles.<br>
-                    Second, kenja is NOT good for catching up current popular animes. It needs some your ideas and hands for searching.<br>
-                    Third, kenja is NOT good for finding animes with surprising story lines. Because its index does not containing spoilers. 
+                    First, kenja is NOT good for getting infomations about new animes. Instead, its purpose is to help finding relatively old titles.<br>
+                    Second, kenja is NOT good for catching up current popular big titles. It needs some your ideas and hands for searching.<br>
+                    Third, kenja is NOT good for finding animes with surprising story lines. Because its index is not enough to contain spoilers.<br>
+                    I generally recommend MyAnimeList for these kind of ordinary needs, because I never meant to replace MyAnimeList. 
+                    Also I recommend to use Kenja with MyAnimeList side by side, because Kenja lacks a lot of things that MyAnimeList provides.
                 </p>
             </span>
             <h1 class="text-center text-info text-3xl mt-20 mb-20">What does kenja mean?</h1>
             <span class="text-lg">
                 <p>
-                    kenja (賢者) means wise person or philosopher.<br> 
-                    99% of actual usage of the word in nowadays is joking "kenja time" (賢者 タイム).
+                    Kenja (賢者) means wise person or philosopher. I took the word from "kenja time" (賢者 タイム).
                 </p>
             </span>
             <h1 class="text-center text-info text-3xl mt-20 mb-20">Why not AI?</h1>
             <span class="text-lg">
                 <p>
                     Kenja is actually using AI. But they all are for precomputing. I'm not touching runtime AI computing incliding LLM because of cost.
-                    But anyway, this kind of search engine can be used for making LLM wiser for animes and I think kenja can be a piece for future AI development cases.<br> 
-                    By the way, I want to create uncyclopedic joke anime LLM as one of the further ideas if it's possible. 
+                    But anyway, this kind of search engine can be used for making LLM wiser and more familiar with animes and I think kenja can be a piece for future AI development cases. 
                 </p> 
             </span>
             <span class="text-center text-info text-xl">
