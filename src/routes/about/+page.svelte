@@ -34,7 +34,7 @@
                     If you have a specific prefered creater or seiyu san, full text search is generally better.   
                 </p>
             </span>
-            <h1 class="text-center text-info text-3xl mt-20 mb-20">Why is this exist?</h1>
+            <h2 class="text-center text-info text-3xl mt-20 mb-20">Why is this exist?</h2>
             <span class="text-lg">
                 <p>
                     Because I just wanted a easy tool for searching animes.<br>
@@ -53,7 +53,7 @@
                     It's fun. But I sometimes want to "dig" legacy animes and believe that you too.
                 </p>
             </span>
-            <h1 class="text-center text-info text-3xl mt-20 mb-20">When should I use this?</h1>
+            <h2 class="text-center text-info text-3xl mt-20 mb-20">When should I use this?</h2>
             <span class="text-lg">
                 <p>
                     First, kenja is NOT good for getting infomations about new animes. Instead, its purpose is to help finding relatively old titles.<br>
@@ -63,20 +63,20 @@
                     Also I recommend to use Kenja with MyAnimeList side by side, because Kenja lacks a lot of things that MyAnimeList provides.
                 </p>
             </span>
-            <h1 class="text-center text-info text-3xl mt-20 mb-20">What does kenja mean?</h1>
+            <h2 class="text-center text-info text-3xl mt-20 mb-20">What does kenja mean?</h2>
             <span class="text-lg">
                 <p>
                     Kenja (賢者) means wise person or philosopher. I took the word from "kenja time" (賢者 タイム).
                 </p>
             </span>
-            <h1 class="text-center text-info text-3xl mt-20 mb-20">Why not AI?</h1>
+            <h2 class="text-center text-info text-3xl mt-20 mb-20">Why not AI?</h2>
             <span class="text-lg">
                 <p>
                     Kenja is actually using AI. But they all are for precomputing. I'm not touching runtime AI computing incliding LLM because of cost.
                     But anyway, this kind of search engine can be used for making LLM wiser and more familiar with animes and I think kenja can be a piece for future AI development cases. 
                 </p> 
             </span>
-            <h1 class="text-center text-info text-3xl mt-20 mb-20">Who are you?</h1>
+            <h2 class="text-center text-info text-3xl mt-20 mb-20">Who are you?</h2>
             <span class="text-lg">
                 <p>I'm a programmer living in a japanese town where is about 30 minutes by train from Akihabara station.</p>
                 <a href="https://myanimelist.net/anime/22189/Futsuu_no_Joshikousei_ga_Locodol_Yattemita" class="link link-primary">
@@ -84,7 +84,7 @@
                 </a>
                 <p>Although it is not popular as "seichi" (聖地 anime's real location).</p>
             </span>
-            <h1 class="text-center text-info text-3xl mt-20 mb-20">Do you have social media?</h1>
+            <h2 class="text-center text-info text-3xl mt-20 mb-20">Do you have social media?</h2>
             <SocialMediaCard/>
             <span class="text-lg mt-5">
                 <p>I might be going to add more.</p>
