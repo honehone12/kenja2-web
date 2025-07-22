@@ -1,3 +1,7 @@
+<script>
+    import SocialMediaCard from "$lib/components/SocialMediaCard.svelte";
+</script>
+
 <div class="w-full min-h-screen py-30 px-10">
     <div class="flex justify-center">
         <div class="max-w-200">
@@ -79,6 +83,11 @@
                     By the way, actually my town have a anime.
                 </a>
                 <p>Although it is not popular as "seichi" (聖地 anime's real location).</p>
+            </span>
+            <h1 class="text-center text-info text-3xl mt-20 mb-20">Do you have social media?</h1>
+            <SocialMediaCard/>
+            <span class="text-lg mt-5">
+                <p>I might be going to add more.</p>
             </span>
             <span class="text-center text-info text-xl">
                 <h3 class="mt-30">Again, please don't expect so much.</h3>
