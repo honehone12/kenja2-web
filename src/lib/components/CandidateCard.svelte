@@ -42,10 +42,10 @@
             <h3>{doc.nameEnglish}</h3>
         {/if}
         {#if doc.nameJapanese}    
-            <h1 class="text-xl">{doc.nameJapanese}</h1>
+            <h2 class="text-xl">{doc.nameJapanese}</h2>
         {/if}
         <a href="/search/buffer/text?keyword={doc.name}&item-type=all">
-            <h1 class="card-title link link-primary text-xl mb-5">{doc.name}</h1>
+            <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
         </a>
         <button 
             class="card-action btn btn-md btn-accent"
