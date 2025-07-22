@@ -10,7 +10,7 @@
 <svelte:head>
 	<title>Kenja anime search</title>
 	<meta
-		name="desctiption"
+		name="description"
 		content="Kenja is a anime search engine being developed by individual. You can search animes with keywords by full text search and also find similar animes by vector search."
 	/>
 </svelte:head>
