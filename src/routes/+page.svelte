@@ -6,7 +6,7 @@
     <div class="hero-content flex flex-col">
         <figure class="mb-10">
             <img
-                src="/Kenja2Logo.png"
+                src="/kenja2_logo.png"
                 alt="Kenja logo with illustration of wise man"
                 class="max-w-40" 
             />

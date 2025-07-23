@@ -27,7 +27,7 @@
     <div>
         <button onclick={openModal}>
             <img
-                src="/Kenja2LogoSmall.png"
+                src="/favicon.png"
                 alt="Kenja logo with illustration of wise man"
                 class="size-10 drop-shadow-sm" 
             />
