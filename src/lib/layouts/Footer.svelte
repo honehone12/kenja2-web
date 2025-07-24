@@ -2,9 +2,9 @@
     <aside>
         <a href="/">
             <img
-                src="/favicon.png"
+                src="/kenja2_logo.png"
                 alt="Kenja logo with illustration of wise man"
-                class="drop-shadow-sm"
+                class="drop-shadow-sm max-w-20"
             />
         </a>
         <p>Copyright © {new Date().getFullYear()}</p>
