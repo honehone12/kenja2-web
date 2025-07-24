@@ -3,20 +3,22 @@ import type { Handle } from "@sveltejs/kit";
 import kenja from "$lib/server/kenja";
 import logs from "$lib/server/logs";
 
-const SECURITY_HEADERS = new Map([
-    ['X-XSS-Protection', '0'],
-    ['X-Frame-Options', 'DENY'],
-    ['X-Content-Type-Options', 'nosniff'],
-    ['Referrer-Policy', 'strict-origin-when-cross-origin'],
-    ['Cross-Origin-Opener-Policy', 'same-origin'],
-    ['Cross-Origin-Embedder-Policy', 'require-corp'],
-    ['Cross-Origin-Resource-Policy', 'same-site'],
-    ['Permissions-Policy', 'geolocation=(), camera=(), microphone=()']
-]);
+// headers are done on cdn
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// const SECURITY_HEADERS = new Map([
+//     ['X-XSS-Protection', '0'],
+//     ['X-Frame-Options', 'DENY'],
+//     ['X-Content-Type-Options', 'nosniff'],
+//     ['Referrer-Policy', 'strict-origin-when-cross-origin'],
+//     ['Cross-Origin-Opener-Policy', 'same-origin'],
+//     ['Cross-Origin-Embedder-Policy', 'require-corp'],
+//     ['Cross-Origin-Resource-Policy', 'same-site'],
+//     ['Permissions-Policy', 'geolocation=(), camera=(), microphone=()']
+// ]);
 
-const TRANSPORT_SECURITY_HEADERS = new Map([
-    ['Strict-Transport-Security', 'max-age=86400; includeSubDomains; preload']
-]);
+// const TRANSPORT_SECURITY_HEADERS = new Map([
+//     ['Strict-Transport-Security', 'max-age=86400; includeSubDomains; preload']
+// ]);
 
 export const handle: Handle = async ({ event, resolve }) => {
     const isLocal = kenja.isLocal();
@@ -46,9 +48,11 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
 
     const response = await resolve(event);
-    SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
-    if (!isLocal) {
-        TRANSPORT_SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
-    }
+    // headers are done on cdn
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
+    // if (!isLocal) {
+    //     TRANSPORT_SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
+    // }
     return response;
 };
