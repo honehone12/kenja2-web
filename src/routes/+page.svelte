@@ -16,24 +16,15 @@
             <a href="/about"><p class="text-lg link link-primary">More infomation</p></a>
         </div>
         <TextSearchForm isLandingPage={true}/>
-        <div class="text-center mt-40">
-            <h1 class="text-2xl mb-10">Features</h1>
-            <h2 class="text-2xl mb-5">Keywords and similality Anime Search engine.</h2>
-            <p class="text-lg mb-10">
-                This is a web site just for searching animes,<br> 
-                including full text search and vector search.
-            </p>
-            <h2 class="text-2xl mb-5">No anonymous reviews.</h2>
-            <p class="text-lg mb-10">
-                You will never see reviews that is just saying<br>
-                "Hype!! ⭐10" nor<br>
-                "I don't understand ⭐1".
-            </p>
-            <h2 class="text-2xl mb-5">Without personalization.</h2>
-            <p class="text-lg mb-10">
-                You might want to watch "Kirara" anime today<br>
-                even though you watched "Jump" anime yesterday. 
-            </p>
+        <div class="mt-40">
+            <h1 class="text-center text-2xl mb-10">How to use❓</h1>
+            <p class="text-lg mb-10">1. Find your favorite anime or character with full text search</p>
+            <p class="text-lg mb-10">2. Find anime or character related to your favorite item</p>
+            <p class="text-lg mb-10">3. Find similar anime or character with text vector search</p>
+            <p class="text-lg mb-10">4. Try image vector search</p>
+            <p class="text-lg mb-10">5. Try staff vector search</p>
+            <p class="text-lg mb-10">6. Back to MAL 😝</p>
+            <p class="text-lg mb-10">7. Ask to reddit 🤪</p>
         </div>
     </div>
 </div>

@@ -13,34 +13,34 @@
                 <input 
                     type="radio" 
                     name="item-type" 
-                    id="all" 
+                    id="item-type-all" 
                     value="all" 
                     checked={useUnspecified} 
                     class="radio radio-lg radio-accent" 
                 />
-                <label for="all" class="text-lg">All</label>
+                <label for="item-type-all" class="text-lg">All</label>
             </div>    
         {/if}
         <div class="mb-2">
             <input 
                 type="radio" 
                 name="item-type" 
-                id="anime" 
+                id="item-type-anime" 
                 value="anime" 
                 checked={!useUnspecified}
                 class="radio radio-lg radio-accent" 
             />
-            <label for="anime" class="text-lg">Anime</label>
+            <label for="item-type-anime" class="text-lg">Anime</label>
         </div>
         <div>
             <input 
                 type="radio" 
                 name="item-type" 
-                id="character" 
+                id="item-type-character" 
                 value="character" 
                 class="radio radio-lg radio-accent" 
             />
-            <label for="character" class="text-lg">Character</label>
+            <label for="item-type-character" class="text-lg">Character</label>
         </div>
     </fieldset>
 </div>

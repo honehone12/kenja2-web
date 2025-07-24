@@ -21,15 +21,13 @@ import logs from "$lib/server/logs";
 // ]);
 
 export const handle: Handle = async ({ event, resolve }) => {
-    const isLocal = kenja.isLocal();
-    
     if (!building) {
         const h = event.request.headers;
         const url = event.request.url;
         const referer = h.get('Referer');
         const userAgent = h.get('User-Agent');
 
-        if (isLocal) {
+        if (kenja.isLocal()) {
             const ip = event.getClientAddress();
             logs.info({url, referer, userAgent, ip}, 'local request header values');
         } else {
@@ -51,7 +49,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     // headers are done on cdn
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
-    // if (!isLocal) {
+    // if (!kenja.isLocal()) {
     //     TRANSPORT_SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
     // }
     return response;

@@ -17,7 +17,6 @@
                 <br>
                 <br>
                 <p>
-                    
                     Again, this is being developed by individual. So, please don't expect so much. This is not Google, Bing nor Yahoo.
                     This is just a kind of personal web site.<br>   
                     Anyway and by the way, index is English only. Other languages can't be used as keywords.   
@@ -61,6 +60,16 @@
                     Third, Anime Kenja is NOT good for finding animes with surprising story lines. Because its index is not enough to contain spoilers.<br>
                     I generally recommend MyAnimeList for these kind of ordinary needs, because I never meant to replace MyAnimeList. 
                     Also I recommend to use Anime Kenja with MyAnimeList side by side, because Anime Kenja lacks a lot of things that MyAnimeList provides.
+                </p>
+            </span>
+            <h2 class="text-center text-info text-3xl mt-20 mb-20">
+                Can I find a anime that is dark fantasy but not tensei (転生 reincarnation) with white hair ikemen (イケメン handsome) hero who is ... etc ...  
+                and red hair heroine who is ... etc ... and they fall in love and ... etc ... finaly they ... and their child is ... etc ...?
+            </h2>
+            <span class="text-lg">
+                <p>
+                    Honestly, no by single full text search.
+                    It might be going to be possible once LLM is connected to anime specific search index with unlimited access, but I recommend ask to people on reddit.                 
                 </p>
             </span>
             <h2 class="text-center text-info text-3xl mt-20 mb-20">What does kenja mean?</h2>
