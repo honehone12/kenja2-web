@@ -9,7 +9,7 @@ const config = {
 		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 		// csp: {
 		// 	directives: {
-		// 		'script-src': ['self'],
+		// 		'script-src': ['self', 'unsafe-inline'],
 		// 		'font-src': ['self'],
 		// 		'img-src': ['self', 'data:'],
 		// 		'worker-src': ['self'],
