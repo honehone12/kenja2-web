@@ -1,21 +1,21 @@
 <script lang="ts">
     interface Props {
-        useUnspecified: boolean;
+        includeAll: boolean;
     }
 
-    let {useUnspecified}: Props = $props();
+    let {includeAll}: Props = $props();
 </script>
 
 <div class="flex flex-col">
     <fieldset>
-        {#if useUnspecified}
+        {#if includeAll}
             <div class="mb-2">
                 <input 
                     type="radio" 
                     name="item-type" 
                     id="item-type-all" 
-                    value="all" 
-                    checked={useUnspecified} 
+                    value="" 
+                    checked={includeAll} 
                     class="radio radio-lg radio-accent" 
                 />
                 <label for="item-type-all" class="text-lg">All</label>
@@ -27,7 +27,7 @@
                 name="item-type" 
                 id="item-type-anime" 
                 value="anime" 
-                checked={!useUnspecified}
+                checked={!includeAll}
                 class="radio radio-lg radio-accent" 
             />
             <label for="item-type-anime" class="text-lg">Anime</label>

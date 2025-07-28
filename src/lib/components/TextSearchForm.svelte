@@ -3,16 +3,16 @@
     import ItemTypeRadio from "$lib/components/ItemTypeRadio.svelte";
 
     interface Props {
-        isLandingPage: boolean;
+        useFlexible: boolean;
     }
 
-    let {isLandingPage}: Props = $props();
+    let {useFlexible}: Props = $props();
 </script>
 
-<form method="get" action="/search/buffer/text">
-    <KeywordInput {isLandingPage}/>
+<form method="get" action="/textsearch/buffer">
+    <KeywordInput {useFlexible}/>
     <div class="mt-5 ml-5">
         <h2 class="text-2xl mb-3">Item type</h2>
-        <ItemTypeRadio useUnspecified={true}/>
+        <ItemTypeRadio includeAll={true}/>
     </div>
 </form>

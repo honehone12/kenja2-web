@@ -5,9 +5,9 @@ import logs from "$lib/server/logs.js";
 import {OID_LEN} from "$lib/index.js";
 import { VFieldConv } from "$lib/documents/anime-search/queries";
 
-export function load({url}) {
-    const id = url.searchParams.get('id');
-    if (!id || id.length !== OID_LEN) {
+export function load({url, params}) {
+    const id = params.id;
+    if (id.length !== OID_LEN) {
         logs.warn('invalid oid')
         return badRequest();
     }

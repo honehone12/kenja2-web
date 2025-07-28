@@ -28,7 +28,7 @@
             <div class="badge badge-dash badge-info mb-5">
                 <p>Character キャラクター</p>
             </div>
-            <a href="/search/buffer/text?keyword={doc.parent.name}&item-type=all">
+            <a href="/textsearch/buffer?keyword={doc.parent.name}&item-type=all">
                 <h3 class="link link-primary">
                     {doc.parent.name} / {doc.parent.name_japanese ?? ''}
                 </h3>    
@@ -44,7 +44,7 @@
         {#if doc.nameJapanese}    
             <h2 class="text-xl">{doc.nameJapanese}</h2>
         {/if}
-        <a href="/search/buffer/text?keyword={doc.name}&item-type=all">
+        <a href="/textsearch/buffer?keyword={doc.name}&item-type=all">
             <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
         </a>
         <button 
