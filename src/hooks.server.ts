@@ -15,7 +15,6 @@ import logs from "$lib/server/logs";
 //     ['Cross-Origin-Resource-Policy', 'same-site'],
 //     ['Permissions-Policy', 'geolocation=(), camera=(), microphone=()']
 // ]);
-
 // const TRANSPORT_SECURITY_HEADERS = new Map([
 //     ['Strict-Transport-Security', 'max-age=86400; includeSubDomains; preload']
 // ]);
@@ -33,6 +32,13 @@ export const handle: Handle = async ({ event, resolve }) => {
         } else {
             const ipHeader = h.get('X-Forwarded-For');
             if (ipHeader) {
+                // Some guides will tell you to read the left-most address,
+                // but this leaves you vulnerable to spoofing.
+                // <spoofed address>, <client address>, <proxy 1 address>, <proxy 2 address>
+                // We instead read from the right, accounting for the number of trusted proxies. 
+                // https://svelte.dev/docs/kit/adapter-node
+                //
+                // don't trust this ip address
                 const ip = ipHeader.split(',').at(0)?.trim();
                 if (ip) {
                     logs.info({url, referer, userAgent, ip}, 'request header values');
@@ -46,11 +52,6 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
 
     const response = await resolve(event);
-    // headers are done on cdn
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
-    // if (!kenja.isLocal()) {
-    //     TRANSPORT_SECURITY_HEADERS.forEach((value, key) => response.headers.set(key, value));
-    // }
+
     return response;
 };
