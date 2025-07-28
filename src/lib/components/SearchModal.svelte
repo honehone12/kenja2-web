@@ -18,7 +18,7 @@
             >X</button>
         </form>
         <div class="modal-action mt-20 mb-10">
-            <TextSearchForm isLandingPage={false}/>
+            <TextSearchForm useFlexible={false}/>
         </div>
     </div>
 </dialog>
