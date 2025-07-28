@@ -49,10 +49,10 @@
         </a>
         <div class="card-action text-center">
             <h2 class="text-xl mb-5">Find similar items</h2>
-            <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&name={doc.name}&vector=text">
+            <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&vector=text">
                 <button class="btn btn-accent w-30 mr-2">Text</button>
             </a>
-            <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&name={doc.name}&vector=image">
+            <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&vector=image">
                 <button class="btn btn-accent w-30 ml-2">Image</button>
             </a>
         </div>
