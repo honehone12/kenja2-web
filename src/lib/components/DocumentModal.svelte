@@ -25,19 +25,19 @@
                 onclick={onclickClose}
             >X</button>
         </form>
-        <h1 class="text-3xl mt-5">Find similar items</h1>
-        <div class="modal-action">    
-            <VectorSearchForm
-                {id}
-                {itemType}
-            />
-        </div>
         {#if url}
-            <div class="mt-8 mb-5">
+            <div class="text-center my-8">
+                <h2 class="text-xl mb-5">
+                    For more infomations
+                </h2>
                 <a href="{url}" target="_blank">
-                    <h2 class="text-xl link link-primary">More infomations at MyAnimeList</h2>
+                    <p class="text-xl link link-primary">Open MyAnimeList page</p>
                 </a>
-            </div>    
+            </div>
+        {:else}
+            <div class="text-center my-8">
+                <h2 class="text-xl">No infomations</h2>
+            </div>
         {/if}
     </div>
 </dialog>
