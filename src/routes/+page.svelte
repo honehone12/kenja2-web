@@ -16,7 +16,7 @@
                 </a>
             </div>
             <div class="mb-10">
-                <a href="/search">
+                <a href="/textsearch">
                     <p class="text-lg link link-primary">Search</p>
                 </a>
             </div>

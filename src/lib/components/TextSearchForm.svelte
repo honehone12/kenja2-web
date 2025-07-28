@@ -9,7 +9,7 @@
     let {useFlexible}: Props = $props();
 </script>
 
-<form method="get" action="/search/buffer/text">
+<form method="get" action="/textsearch/buffer">
     <KeywordInput {useFlexible}/>
     <div class="mt-5 ml-5">
         <h2 class="text-2xl mb-3">Item type</h2>

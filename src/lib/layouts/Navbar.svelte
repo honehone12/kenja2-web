@@ -11,7 +11,7 @@
 					</a>
 				</li>
 				<li class="my-2">
-					<a tabindex="0" href="/search">
+					<a tabindex="0" href="/textsearch">
 						<span class="link">Search</span>
 					</a>
 				</li>
@@ -29,7 +29,7 @@
 				<a tabindex="0" href="/">Home</a>
 			</li>
 			<li>
-				<a tabindex="0" href="/search">Search</a>
+				<a tabindex="0" href="/textsearch">Search</a>
 			</li>
 			<li>
 				<a tabindex="0" href="/about">About</a>

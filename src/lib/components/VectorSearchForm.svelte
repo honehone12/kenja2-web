@@ -9,8 +9,7 @@
     let {id, itemType}: Props = $props();
 </script>
 
-<form method="get" action="/search/buffer/vector">
-    <input type="hidden" id="id" name="id" value="{id ?? ''}">
+<form method="get" action="/vectorsearch/buffer/{id ?? ''}">
     <input type="hidden" id="item-type" name="item-type" value="{itemType ?? ''}"/>
     <div class="mb-5">
         <h2 class="text-2xl mb-5">Select source</h2>

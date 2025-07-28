@@ -14,7 +14,7 @@
                     type="radio" 
                     name="item-type" 
                     id="item-type-all" 
-                    value="all" 
+                    value="" 
                     checked={includeAll} 
                     class="radio radio-lg radio-accent" 
                 />
