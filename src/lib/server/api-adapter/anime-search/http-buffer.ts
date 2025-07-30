@@ -10,10 +10,12 @@ import {
 import type {SearchResult} from "$lib/documents/anime-search/documents";
 
 export class HttpBufferApi implements AnimeSearch {
-    private _url: URL;
+    private _apiUrl: URL;
+    private _imgRootUrl: URL;
 
     constructor(baseUrl: string) {
-        this._url = new URL('/anime-search', baseUrl);
+        this._apiUrl = new URL('/anime-search', baseUrl);
+        this._imgRootUrl = new URL('/preview', baseUrl);
     }
 
     private async httpQuery(url: URL, body: Buffer): Promise<SearchResult> {
@@ -24,13 +26,22 @@ export class HttpBufferApi implements AnimeSearch {
             },
             body 
         });
-
         if (!res.ok) {
             throw new Error(`HTTP fail: ${res.status} ${res.statusText}`);
         }
         
-        const result: SearchResult = await res.json(); 
+        const result: SearchResult = await res.json();
+        if (result.documents) {
+            for (const doc of result.documents) {
+                doc.img = this.imgPath(doc.img);
+            }
+        }
+        
         return result;
+    }
+
+    private imgPath(fileName: string) {
+        return `${this._imgRootUrl}/${fileName}`;
     }
 
     async ping(): Promise<SearchResult> {
@@ -39,7 +50,7 @@ export class HttpBufferApi implements AnimeSearch {
         };
         const body = Buffer.from(JSON.stringify(q));
 
-        return this.httpQuery(this._url, body);
+        return this.httpQuery(this._apiUrl, body);
     }
 
     async document(id: string): Promise<SearchResult> {
@@ -49,7 +60,7 @@ export class HttpBufferApi implements AnimeSearch {
         };
         const body = Buffer.from(JSON.stringify(q));
 
-        return this.httpQuery(this._url, body);
+        return this.httpQuery(this._apiUrl, body);
     }
 
     async textSearch(
@@ -65,7 +76,7 @@ export class HttpBufferApi implements AnimeSearch {
         };
         const body = Buffer.from(JSON.stringify(q));
     
-        return this.httpQuery(this._url, body);
+        return this.httpQuery(this._apiUrl, body);
     }
 
     async vectorSearch(
@@ -83,6 +94,6 @@ export class HttpBufferApi implements AnimeSearch {
         };
         const body = Buffer.from(JSON.stringify(q));
 
-        return this.httpQuery(this._url, body);
+        return this.httpQuery(this._apiUrl, body);
     }
 }

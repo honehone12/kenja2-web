@@ -1,17 +1,8 @@
 <script lang="ts">
-    import type {Parent} from "$lib/documents/anime-search/documents";
-    
-    interface Candidate {
-        id: string;
-        url: string;
-        parent: Parent | undefined;
-        name: string;
-        nameJapanese: string | undefined;
-        nameEnglish: string | undefined;
-    }
+    import type {FlatDocument} from "$lib/documents/anime-search/documents";
 
     interface Props {
-        doc: Candidate;
+        doc: FlatDocument;
         onclickItem: (
             id: string, 
             url: string, 
@@ -38,15 +29,20 @@
                 <p>Anime アニメ</p>
             </div>
         {/if}
-        {#if doc.nameEnglish}
-            <h3>{doc.nameEnglish}</h3>
+        {#if doc.name_english}
+            <h3>{doc.name_english}</h3>
         {/if}
-        {#if doc.nameJapanese}    
-            <h2 class="text-xl">{doc.nameJapanese}</h2>
+        {#if doc.name_japanese}    
+            <h2 class="text-xl">{doc.name_japanese}</h2>
         {/if}
         <a href="/textsearch/buffer?keyword={doc.name}&item-type=">
             <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
         </a>
+        <img 
+            src="{doc.img}" 
+            alt="an anime image of {doc.name}"
+            loading="lazy"
+        >
         <div class="card-action text-center">
             <h2 class="text-xl mb-5">Find similar items</h2>
             <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&vector=text">

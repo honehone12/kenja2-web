@@ -1,11 +1,14 @@
 <script>
-    import Logo from "$lib/components/Logo.svelte";
     import MaintenanceWarn from "$lib/components/MaintenanceWarn.svelte";
 </script>
 
 <div class="hero w-full min-h-screen py-20">
     <div class="hero-content flex flex-col">
-        <Logo/>
+        <img
+            src="/kenja2_logo.png"
+            alt="Kenja logo with illustration of wise man"
+            class="size-40 my-10" 
+        />
         <div class="text-center">
             <h1 class="text-5xl">Anime Kenja</h1>
         </div>

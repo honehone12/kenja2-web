@@ -64,14 +64,7 @@
                 </div>
                 {#each documents as doc}
                     <CandidateCard      
-                        doc={{
-                            url: doc.url,
-                            id: doc.id,
-                            parent: doc.parent,
-                            name: doc.name,
-                            nameJapanese: doc.name_japanese,
-                            nameEnglish: doc.name_english
-                        }}
+                        {doc}
                         onclickItem={openModal}
                     />
                 {/each}
