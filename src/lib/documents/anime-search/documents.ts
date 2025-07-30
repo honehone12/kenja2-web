@@ -1,3 +1,5 @@
+import type { ItemType } from "$lib/documents/anime-search/queries";
+
 export interface Parent {
     id: string;
     name: string;
@@ -6,7 +8,9 @@ export interface Parent {
 
 export interface FlatDocument {
     id: string;
+    item_type: ItemType
     url: string;
+    img: string;
     parent: Parent | undefined;
     name: string;
     name_english: string | undefined;
