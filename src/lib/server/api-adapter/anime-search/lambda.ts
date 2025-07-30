@@ -17,10 +17,12 @@ import type {SearchResult} from "$lib/documents/anime-search/documents";
 export class LambdaApi implements AnimeSearch {
     private _lambda: LambdaClient;
     private _functionName: string;
+    private _imgRoot: string;
 
     constructor(functionName: string, config: LambdaClientConfig) {
         this._functionName = functionName;
         this._lambda = new LambdaClient(config);
+        this._imgRoot = '/preview'
     }
     
     private ok(code: number | undefined): boolean {
@@ -43,8 +45,18 @@ export class LambdaApi implements AnimeSearch {
         }
 
         const b = Buffer.from(res.Payload);
-        const result: SearchResult = JSON.parse(b.toString()); 
+        const result: SearchResult = JSON.parse(b.toString());
+        if (result.documents) {
+            for (const doc of result.documents) {
+                doc.img = this.imgPath(doc.img);
+            }
+        }
+        
         return result;
+    }
+
+    private imgPath(fileName: string) {
+        return `${this._imgRoot}/${fileName}`;
     }
 
     async ping(): Promise<SearchResult> {
