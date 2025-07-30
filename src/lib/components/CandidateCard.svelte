@@ -3,11 +3,7 @@
 
     interface Props {
         doc: FlatDocument;
-        onclickItem: (
-            id: string, 
-            url: string, 
-            itemType: string
-        ) => void
+        onclickItem: (url: string) => void
     }
 
     let {doc, onclickItem}: Props = $props();
@@ -38,13 +34,16 @@
         <a href="/textsearch/buffer?keyword={doc.name}&item-type=">
             <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
         </a>
-        <img 
-            src="{doc.img}" 
-            alt="an anime image of {doc.name}"
-            loading="lazy"
-        >
         <div class="card-action text-center">
-            <h2 class="text-xl mb-5">Find similar items</h2>
+            <button onclick={() => onclickItem(doc.url)}>
+                <img 
+                    src="{doc.img}" 
+                    alt="an anime image of {doc.name}"
+                    class="max-w-75"
+                    loading="lazy"
+                >
+            </button>
+            <h2 class="text-xl my-5">Find similar items</h2>
             <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&vector=text">
                 <button class="btn btn-accent w-30 mr-2">Text</button>
             </a>
@@ -52,16 +51,5 @@
                 <button class="btn btn-accent w-30 ml-2">Image</button>
             </a>
         </div>
-        
-
-
-        <button 
-            class="card-action btn btn-sm btn-accent"
-            onclick={() => onclickItem(
-                doc.id,
-                doc.url, 
-                doc.parent ? 'character' : 'anime'
-            )}
-        >More infomations</button>
     </div>
 </div>

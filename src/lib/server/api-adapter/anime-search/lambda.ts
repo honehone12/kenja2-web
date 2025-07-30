@@ -22,7 +22,7 @@ export class LambdaApi implements AnimeSearch {
     constructor(functionName: string, config: LambdaClientConfig) {
         this._functionName = functionName;
         this._lambda = new LambdaClient(config);
-        this._imgRoot = "/preview"
+        this._imgRoot = '/preview'
     }
     
     private ok(code: number | undefined): boolean {

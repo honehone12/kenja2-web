@@ -1,20 +1,12 @@
 <script lang="ts">
     import { DOCUMENT_MODAL_ID } from "$lib";
-    import VectorSearchForm from "$lib/components/VectorSearchForm.svelte";
 
     interface Props {
-        id: string | null;
         url: string | null;
-        itemType: string | null; 
         onclickClose: () => void;
     }
 
-    let {
-        id,
-        url,
-        itemType,
-        onclickClose
-    }: Props = $props(); 
+    let {url, onclickClose}: Props = $props(); 
 </script>
 
 <dialog id="{DOCUMENT_MODAL_ID}" class="modal">

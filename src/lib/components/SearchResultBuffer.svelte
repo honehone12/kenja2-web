@@ -12,37 +12,43 @@
         isVector: boolean;
     }
 
-    let selectedId: string | null = $state(null);
     let selectedUrl: string | null = $state(null);
-    let selectedItemType: string | null = $state(null);
     let {buffer, isVector}: Props = $props();
 
-    function openModal(
-        id: string, 
-        url: string, 
-        itemType: string
-    ) {
-        selectedId = id;
+    function openModal(url: string) {
         selectedUrl = url;
-        selectedItemType = itemType;
         getModal(DOCUMENT_MODAL_ID)?.showModal();
     }
 
     function closeModal() {
-        selectedId = null;
         selectedUrl = null;
-        selectedItemType = null;
         getModal(DOCUMENT_MODAL_ID)?.close();
     }
 
     function itemType() {
-        const iType = page.url.searchParams.get('item-type'); 
-        return iType ? iType : 'anime and character';
+        const iType = page.url.searchParams.get('item-type');
+        // don't show unexpected values;
+        switch (iType) {
+        case '':
+            return 'anime and character'; 
+        case 'anime':
+        case 'character':
+            return iType;
+        default:
+            return '';
+        }
     }
 
     function vectorType() {
-        const vType = page.url.searchParams.get('vector'); 
-        return vType ? vType : 'vector';
+        const vField = page.url.searchParams.get('vector');
+        // don't show unexpected values; 
+        switch (vField) {
+            case 'image':
+            case 'text':
+                return vField;
+            default:
+                return '';
+        }
     }
 </script>
 
@@ -70,9 +76,7 @@
                 {/each}
             </div>
             <DocumentModal
-                id={selectedId}
                 url={selectedUrl} 
-                itemType={selectedItemType}
                 onclickClose={closeModal}
             />
         {:else}
