@@ -9,19 +9,25 @@ import type { LambdaClientConfig } from "@aws-sdk/client-lambda";
 class Kenja {
     private _isLocal = false;
     private _animeSearch: AnimeSearch | null = null;
+    private _imgRoot: string | null = null;
 
     useHttpBuffer() {
         if (this._animeSearch) {
             throw new Error('api client is already initialized');
         }
 
+        const imgRoot = env.IMG_ROOT;
+        if (!imgRoot) {
+            throw new Error('env for img root is not set');
+        }
+        this._imgRoot = imgRoot;
+
         const baseUrl = env.HTTP_API_BASE_URL;
         if (!baseUrl) {
             throw new Error('env for http api url is not set');
         }
-
         this._animeSearch = new HttpBufferApi(baseUrl);
-    
+
         if (env.USING_LOCAL) {
             this._isLocal = true;
         }
@@ -31,6 +37,12 @@ class Kenja {
         if (this._animeSearch) {
             throw new Error('api client is already initialized');
         }
+
+        const imgRoot = env.IMG_ROOT;
+        if (!imgRoot) {
+            throw new Error('env for img root is not set');
+        }
+        this._imgRoot = imgRoot;
 
         const functionName = env.LAMBDA_FUNCTION_NAME;
         if (!functionName) {
@@ -44,7 +56,6 @@ class Kenja {
         const config: LambdaClientConfig = {
             region
         }; 
- 
         this._animeSearch = new LambdaApi(functionName, config);
     }
 
@@ -53,6 +64,14 @@ class Kenja {
             throw new Error('api client is not initialized');
         }
         return this._animeSearch;
+    }
+
+    imgPath(fileName: string) {
+        if (!this._imgRoot) {
+            return fileName;
+        }
+
+        return `${this._imgRoot}/${fileName}`;
     }
 
     isLocal() {
@@ -67,8 +86,6 @@ if (!building) {
         if (env.HTTP_API_BASE_URL) {
             logs.info('http env is found, initializing http api')
             kenja.useHttpBuffer();
-            
-            
         } else {
             logs.info('initializing lambda api')
             kenja.useLambda();
