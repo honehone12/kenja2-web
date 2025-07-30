@@ -29,15 +29,5 @@
             />
             <label for="{name}-image" class="text-lg">Image</label>
         </div>
-        <div>
-            <input 
-                type="radio"
-                {name}
-                id="{name}-staff"
-                value="staff"
-                class="radio radio-lg radio-accent"
-            />
-            <label for="{name}-staff" class="text-lg">Staff</label>
-        </div>
     </fieldset>
 </div>
