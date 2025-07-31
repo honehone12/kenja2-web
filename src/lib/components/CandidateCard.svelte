@@ -9,7 +9,7 @@
     let {doc, onclickItem}: Props = $props();
 </script>
 
-<div class="card w-90 outline outline-cyan-500">
+<div class="card w-80 outline outline-cyan-500">
     <div class="card-body">
         {#if doc.parent}
             <div class="badge badge-dash badge-info mb-5">
