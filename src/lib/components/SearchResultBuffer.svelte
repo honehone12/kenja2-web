@@ -12,8 +12,8 @@
         isVector: boolean;
     }
 
-    let selectedUrl: string | null = $state(null);
     let {buffer, isVector}: Props = $props();
+    let selectedUrl: string | null = $state(null);
 
     function openModal(url: string) {
         selectedUrl = url;
@@ -52,39 +52,48 @@
     }
 </script>
 
-
-<div class="hero min-h-screen w-full">
-    {#await buffer}
+{#await buffer}
+    <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <LoadingMsg/>
         </div>
-    {:then {documents}}
-        {#if documents}
-            <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-                <div class="card border border-neutral-500 text-center w-full p-5 my-5">
+    </div>
+{:then {documents}}
+    {#if documents}
+        <div class="py-20">
+            <div class="hero w-full">
+                <div class="hero-content card border border-neutral-500 text-center px-10 py-5 mx-10 mb-10 min-w-80">
                     {#if isVector}
                         <h1 class="text-lg">Similar {itemType()} with "{documents.at(0)?.name ?? ' '}" ({vectorType()})</h1>
                     {:else}
                         <h1 class="text-lg">Search result of {itemType()} with "{page.url.searchParams.get('keyword') ?? ''}"</h1>
                     {/if}
                 </div>
-                {#each documents as doc}
-                    <CandidateCard      
-                        {doc}
-                        onclickItem={openModal}
-                    />
-                {/each}
             </div>
-            <DocumentModal
-                url={selectedUrl} 
-                onclickClose={closeModal}
-            />
-        {:else}
+            <div class="hero w-full">
+                <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
+                    {#each documents as doc}
+                        <CandidateCard      
+                            {doc}
+                            onclickItem={openModal}
+                        />
+                    {/each}
+                </div>
+                <DocumentModal
+                    url={selectedUrl} 
+                    onclickClose={closeModal}
+                />
+            </div>
+        </div>
+    {:else}
+        <div class="hero min-h-screen w-full">
             <h2 class="hero-content text-xl">No results</h2>
-        {/if}
-    {:catch}
+        </div>
+    {/if}
+{:catch}
+    <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <ErrorMsg/>
         </div>
-    {/await}    
-</div>
+    </div>
+{/await}    

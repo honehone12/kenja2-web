@@ -2,7 +2,7 @@
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
 </script>
 
-<div class="hero w-full min-h-screen py-10">
+<div class="hero w-full min-h-screen py-20">
     <div class="hero-content flex flex-col">
         <img
             src="/kenja2_logo.png"

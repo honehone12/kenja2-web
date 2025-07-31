@@ -2,7 +2,7 @@
     import CommunitySNSCard from "$lib/components/CommunitySNSCard.svelte";
 </script>
 
-<div class="w-full min-h-screen py-30 px-10">
+<div class="w-full py-20 px-10">
     <div class="flex justify-center">
         <div class="max-w-200">
             <h1 class="text-center text-info text-3xl mb-20">What is this?</h1>
