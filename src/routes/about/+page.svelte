@@ -64,7 +64,7 @@
             <h2 class="text-center text-info text-3xl mt-20 mb-20">Who are you?</h2>
             <span class="text-lg">
                 <p>I'm a programmer living in a japanese town where is about 30 minutes by train from Akihabara station.</p>
-                <a href="https://myanimelist.net/anime/22189/Futsuu_no_Joshikousei_ga_Locodol_Yattemita" class="link link-primary">
+                <a href="/textsearch/buffer?keyword=Futsuu%20no%20Joshikousei%20ga%20[Locodol]%20Yattemita.&item-type=" class="link link-primary">
                     By the way, actually my town have a anime.
                 </a>
                 <p>Although it is not popular as "seichi" (聖地 anime's real location).</p>
