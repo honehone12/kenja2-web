@@ -3,8 +3,7 @@
     import {getModal, DOCUMENT_MODAL_ID} from "$lib";
     import DocumentModal from "$lib/components/DocumentModal.svelte";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
-
-    const IMG_ROOT = 'http://localhost:8080';
+    import {PUBLIC_LOCAL_IMG_ROOT} from "$env/static/public";
 
     const MY_TOP_5: FlatDocument[] = [
         {
@@ -58,7 +57,10 @@
             name_japanese: '銀河英雄伝説 Die Neue These 邂逅'
         }
     ];
-    MY_TOP_5.forEach((value) => value.img = `${IMG_ROOT}${value.img}`);
+
+    if (PUBLIC_LOCAL_IMG_ROOT) {
+        MY_TOP_5.forEach((value) => value.img = PUBLIC_LOCAL_IMG_ROOT + value.img);
+    }
 
     let selectedUrl: string | null = $state(null);
 
