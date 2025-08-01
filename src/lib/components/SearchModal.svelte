@@ -17,7 +17,12 @@
                 onclick={onclickClose}
             >X</button>
         </form>
-        <div class="modal-action mt-20 mb-10">
+        <span class="mt-20">
+            <h2 class="text-2xl">
+                Anime Kenja Search
+            </h2>
+        </span>
+        <div class="modal-action mt-10 mb-10">
             <TextSearchForm useFlexible={false}/>
         </div>
     </div>
