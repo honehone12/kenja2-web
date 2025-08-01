@@ -11,11 +11,11 @@ import type {SearchResult} from "$lib/documents/anime-search/documents";
 
 export class HttpBufferApi implements AnimeSearch {
     private _apiUrl: URL;
-    private _imgRootUrl: URL;
+    private _imgRootUrl: string;
 
     constructor(baseUrl: string) {
         this._apiUrl = new URL('/anime-search', baseUrl);
-        this._imgRootUrl = new URL('/preview', baseUrl);
+        this._imgRootUrl = '/preview';
     }
 
     private async httpQuery(url: URL, body: string): Promise<SearchResult> {
