@@ -3,7 +3,6 @@
     import {getModal, DOCUMENT_MODAL_ID} from "$lib";
     import DocumentModal from "$lib/components/DocumentModal.svelte";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
-    import {PUBLIC_LOCAL_IMG_ROOT} from "$env/static/public";
 
     const MY_TOP_10_ANI: FlatDocument[] = [
         {
@@ -209,11 +208,6 @@
             name_japanese: '呪術廻戦'
         }
     ];
-
-    if (PUBLIC_LOCAL_IMG_ROOT) {
-        MY_TOP_10_ANI.forEach((value) => value.img = PUBLIC_LOCAL_IMG_ROOT + value.img);
-        MAL_TOP_10_ANI.forEach((value) => value.img = PUBLIC_LOCAL_IMG_ROOT + value.img);
-    }
 
     let selectedUrl: string | null = $state(null);
 
