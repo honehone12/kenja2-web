@@ -18,7 +18,7 @@ export class HttpBufferApi implements AnimeSearch {
         this._imgRootUrl = new URL('/preview', baseUrl);
     }
 
-    private async httpQuery(url: URL, body: Buffer): Promise<SearchResult> {
+    private async httpQuery(url: URL, body: string): Promise<SearchResult> {
         const res = await fetch(url, {
             method: 'POST',
             headers: {
@@ -48,7 +48,7 @@ export class HttpBufferApi implements AnimeSearch {
         const q: SearchQuery = {
             function_id: FunctionId.Ping
         };
-        const body = Buffer.from(JSON.stringify(q));
+        const body = JSON.stringify(q);
 
         return this.httpQuery(this._apiUrl, body);
     }
@@ -58,7 +58,7 @@ export class HttpBufferApi implements AnimeSearch {
             function_id: FunctionId.Document,
             id
         };
-        const body = Buffer.from(JSON.stringify(q));
+        const body = JSON.stringify(q);
 
         return this.httpQuery(this._apiUrl, body);
     }
@@ -74,7 +74,7 @@ export class HttpBufferApi implements AnimeSearch {
             item_type,
             keywords
         };
-        const body = Buffer.from(JSON.stringify(q));
+        const body = JSON.stringify(q);
     
         return this.httpQuery(this._apiUrl, body);
     }
@@ -92,7 +92,7 @@ export class HttpBufferApi implements AnimeSearch {
             vector_field,
             id
         };
-        const body = Buffer.from(JSON.stringify(q));
+        const body = JSON.stringify(q);
 
         return this.httpQuery(this._apiUrl, body);
     }
