@@ -77,7 +77,7 @@ export class LambdaApi implements AnimeSearch {
             function_id: FunctionId.Document,
             id
         };
-        const payload = Buffer.from(JSON.stringify(q));
+        const payload = JSON.stringify(q);
         const input: InvokeCommandInput = {
             FunctionName: this._functionName,
             Payload: payload
@@ -97,7 +97,7 @@ export class LambdaApi implements AnimeSearch {
             item_type,
             keywords
         };
-        const payload = Buffer.from(JSON.stringify(q));
+        const payload = JSON.stringify(q);
         const input: InvokeCommandInput = {
             FunctionName: this._functionName,
             Payload:  payload
@@ -119,7 +119,7 @@ export class LambdaApi implements AnimeSearch {
             vector_field,
             id
         };
-        const payload = Buffer.from(JSON.stringify(q));
+        const payload = JSON.stringify(q);
         const input: InvokeCommandInput = {
             FunctionName: this._functionName,
             Payload: payload
