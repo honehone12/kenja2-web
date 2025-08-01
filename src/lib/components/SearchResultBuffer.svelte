@@ -62,7 +62,7 @@
     {#if documents}
         <div class="py-20">
             <div class="hero w-full">
-                <div class="hero-content card border border-neutral-500 text-center px-10 py-5 mx-10 mb-10 min-w-80">
+                <div class="hero-content card border border-neutral-500 text-center p-5 mx-10 mb-10">
                     {#if isVector}
                         <h1 class="text-lg">Similar {itemType()} with "{documents.at(0)?.name ?? ' '}" ({vectorType()})</h1>
                     {:else}
