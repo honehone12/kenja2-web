@@ -12,8 +12,10 @@
             />
             <div class="text-center">
                 <h1 class="text-5xl mb-10">Anime Kenja</h1>
-                <p class="text-lg">Anime Kenja is a web site for searching animes and characters,</p>
-                <p class="text-lg">featuring full text search and similarity vector search.</p>
+                <p class="text-lg">
+                    Anime Kenja is a web site for searching animes and characters,<br>
+                    featuring full text search and similarity vector search.
+                </p>
                 <a href="/about">
                     <p class="link link-primary text-lg mt-5">For more infomations</p>
                 </a>
