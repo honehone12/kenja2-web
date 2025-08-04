@@ -3,8 +3,9 @@
     import {getModal, DOCUMENT_MODAL_ID} from "$lib";
     import DocumentModal from "$lib/components/DocumentModal.svelte";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
+    import TopDocuments from "./TopDocuments.svelte";
 
-    const MY_TOP_10_ANI: FlatDocument[] = [
+    const MY_TOP_ANI: FlatDocument[] = [
         {
             id: '688a101a9a566ea0f548dca2',
             item_type: 1,
@@ -86,16 +87,6 @@
             name_japanese: '銀河英雄伝説 Die Neue These 邂逅'
         },
         {
-            id: '688a10109a566ea0f548d1ea',
-            item_type: 1,
-            url: 'https://myanimelist.net/anime/28999/Charlotte',
-            img: '/preview/58c52b9a5eecf74df00062e82eb1d50c.jpg',
-            parent: undefined,
-            name: 'Charlotte',
-            name_english: 'Charlotte',
-            name_japanese: 'Charlotte（シャーロット）'
-        },
-        {
             id: '688a0fc39a566ea0f54895ab',
             item_type: 1,
             url: 'https://myanimelist.net/anime/164/Mononoke_Hime',
@@ -106,7 +97,53 @@
             name_japanese: 'もののけ姫'
         }
     ];
-    const MAL_TOP_10_ANI: FlatDocument[] = [
+
+    const MY_TOP_CHARA: FlatDocument[] = [
+        {
+            id: '688a0ff29a566ea0f548b51a',
+            item_type: 2,
+            url: 'https://myanimelist.net/character/24195/Tsukihi_Araragi',
+            img: '/preview/aeef4f1b5ca4ae784063e792936fa9c5.jpg',
+            parent: {
+                id: '688a0ff19a566ea0f548b4e7',
+                name: 'Bakemonogatari',
+                name_japanese: '化物語'
+            },
+            name: 'Tsukihi Araragi',
+            name_english: undefined,
+            name_japanese: '阿良々木 月火'
+        },
+        {
+            id: '688a10109a566ea0f548d231',
+            item_type: 2,
+            url: 'https://myanimelist.net/character/122211/Nao_Tomori',
+            img: '/preview/176a66b2a67ddda023a086beaaab9a44.jpg',
+            parent: {
+                id: '688a10109a566ea0f548d1ea',
+                name: 'Charlotte',
+                name_japanese: 'Charlotte（シャーロット）'
+            },
+            name: 'Nao Tomori',
+            name_english: undefined,
+            name_japanese: '友利 奈緒'
+        },
+        {
+            id: '688a0fc89a566ea0f5489ab0',
+            item_type: 2,
+            url: 'https://myanimelist.net/character/503/Illyasviel_von_Einzbern',
+            img: 'preview/db20cdd24b038820c80702bd93c23081.jpg',
+            parent: {
+                id: '688a0fc89a566ea0f5489a4a',
+                name: 'Fate/stay night',
+                name_japanese: 'Fate/stay night'
+            },
+            name: 'Illyasviel von Einzbern',
+            name_english: undefined,
+            name_japanese: 'イリヤスフィール・フォン・アインツベルン'
+        }
+    ];
+
+    const MAL_TOP_ANI: FlatDocument[] = [
         {
             id: '688a0fbb9a566ea0f5489085',
             item_type: 1,
@@ -222,43 +259,18 @@
     }
 </script>
 
-<div class="hero w-full">
-    <div class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mb-10 mx-10">
-        <h2 class="text-xl">My Top 10 Anime</h2>
-    </div>
-</div>
-<div class="hero w-full">
-    <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-        
-        {#each MY_TOP_10_ANI as doc}
-            <CandidateCard
-                {doc}
-                onclickItem={openModal}
-            />
-        {/each}
-    </div>
-    <DocumentModal
-        url={selectedUrl}
-        onclickClose={closeModal}
-    />
-</div>
-<div class="hero w-full">
-    <div class="hero-content card border border-neutral-500 min-w-80 text-center p-5 my-10">
-        <h2 class="text-xl">My Anime List Top 10 Anime</h2>
-    </div>
-</div>
-<div class="hero w-full">
-    <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-        
-        {#each MAL_TOP_10_ANI as doc}
-            <CandidateCard
-                {doc}
-                onclickItem={openModal}
-            />
-        {/each}
-    </div>
-    <DocumentModal
-        url={selectedUrl}
-        onclickClose={closeModal}
-    />
-</div>
+<TopDocuments
+    name="My Top Anime"
+    list={MY_TOP_ANI}
+    onclickItem={openModal}
+/>
+<TopDocuments
+    name="My Anime List Top Anime"
+    list={MAL_TOP_ANI}
+    onclickItem={openModal}
+/>
+
+<DocumentModal
+    url={selectedUrl}
+    onclickClose={closeModal}
+/>
