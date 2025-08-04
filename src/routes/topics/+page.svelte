@@ -16,6 +16,10 @@
             topics: ['baseball', 'basketball']
         },
         {
+            initial: 'C',
+            topics: ['club']
+        },
+        {
             initial: 'D',
             topics: ['demon', 'detective', 'doctor', 'dwarf']
         },
@@ -25,7 +29,7 @@
         },
         {
             initial: 'F',
-            topics: ['fighter', 'fishing', 'football']
+            topics: ['fishing', 'football']
         },
         {
             initial: 'G',
@@ -45,11 +49,15 @@
         },
         {
             initial: 'M',
-            topics: ['megami']
+            topics: ['maid', 'megami']
         },
         {
             initial: 'N',
             topics: ['ninja', 'nurse']
+        },
+        {
+            initial: 'O',
+            topics: ['oni']
         },
         {
             initial: 'P',
@@ -65,7 +73,7 @@
         },
         {
             initial: 'T',
-            topics: ['Tennis']
+            topics: ['tennis']
         },
         {
             initial: 'V',
