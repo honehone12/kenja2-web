@@ -26,6 +26,14 @@
                     If you have a specific name in your mind, full text search is generally better.   
                 </p>
             </span>
+            <h2 class="text-center text-info text-3xl mt-20 mb-20">Who are you?</h2>
+            <span class="text-lg">
+                <p>I'm a programmer living in a japanese town where is about 45 minutes by train from Akihabara station of Tokyo.</p>
+                <a href="/textsearch/buffer?keyword=Futsuu%20no%20Joshikousei%20ga%20[Locodol]%20Yattemita.&item-type=" class="link link-primary">
+                    By the way, actually my town have a anime.
+                </a>
+                <p>Although it is not popular as "seichi" (聖地 anime's real location).</p>
+            </span>
             <h2 class="text-center text-info text-3xl mt-20 mb-20">Why is this exist?</h2>
             <span class="text-lg">
                 <p>
@@ -60,14 +68,6 @@
                 <p>
                     Kenja (賢者) means wise person or philosopher. I took the word from "kenja time" (賢者 タイム).
                 </p>
-            </span>
-            <h2 class="text-center text-info text-3xl mt-20 mb-20">Who are you?</h2>
-            <span class="text-lg">
-                <p>I'm a programmer living in a japanese town where is about 30 minutes by train from Akihabara station.</p>
-                <a href="/textsearch/buffer?keyword=Futsuu%20no%20Joshikousei%20ga%20[Locodol]%20Yattemita.&item-type=" class="link link-primary">
-                    By the way, actually my town have a anime.
-                </a>
-                <p>Although it is not popular as "seichi" (聖地 anime's real location).</p>
             </span>
             <h2 class="text-center text-info text-3xl mt-20 mb-20">Do you have social media?</h2>
             <CommunitySNSCard/>
