@@ -30,9 +30,9 @@
         // don't show unexpected values;
         switch (iType) {
         case '':
-            return 'anime and character'; 
-        case 'anime':
-        case 'character':
+            return 'animes and characters'; 
+        case 'animes':
+        case 'characters':
             return iType;
         default:
             return '';

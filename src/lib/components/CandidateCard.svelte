@@ -1,5 +1,6 @@
 <script lang="ts">
     import type {FlatDocument} from "$lib/documents/anime-search/documents";
+    import { ItemType } from "$lib/documents/anime-search/queries";
 
     interface Props {
         doc: FlatDocument;
@@ -11,19 +12,21 @@
 
 <div class="card w-80 outline outline-cyan-500">
     <div class="card-body">
-        {#if doc.parent}
+        {#if doc.item_type === ItemType.Anime}
+            <div class="badge badge-outline badge-info mb-5">
+                <p>Anime アニメ</p>
+            </div>    
+        {:else}
             <div class="badge badge-dash badge-info mb-5">
                 <p>Character キャラクター</p>
             </div>
-            <a href="/textsearch/buffer?keyword={doc.parent.name}&item-type=">
-                <h3 class="link link-primary">
-                    {doc.parent.name} / {doc.parent.name_japanese ?? ''}
-                </h3>    
-            </a>
-        {:else}
-            <div class="badge badge-outline badge-info mb-5">
-                <p>Anime アニメ</p>
-            </div>
+            {#if doc.parent}
+                <a href="/textsearch/buffer?keyword={doc.parent.name}&item-type=">
+                    <h3 class="link link-primary">
+                        {doc.parent.name} / {doc.parent.name_japanese ?? ''}
+                    </h3>    
+                </a>    
+            {/if}
         {/if}
         {#if doc.name_english}
             <h3>{doc.name_english}</h3>
