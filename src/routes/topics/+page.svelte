@@ -94,6 +94,14 @@
     ];
 </script>
 
+<svelte:head>
+	<title>Anime Kenja - Anime and Character Topics and Keywords</title>
+	<meta
+		name="description"
+		content="List of keywords for animes and characters. Search your favorites by topics."
+	/>
+</svelte:head>
+
 <div class="w-full min-h-screen">
     <div class="p-20 flex flex-wrap gap-x-10 gap-y-5 justify-center">
         {#each TOPICS as topic}

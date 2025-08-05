@@ -7,13 +7,6 @@
 	let { children } = $props();
 </script>
 
-<svelte:head>
-	<title>Anime Kenja - anime and character search engine</title>
-	<meta
-		name="description"
-		content="Anime Kenja is a anime and character search engine, featuring keywords full text search and similarity vector search."
-	/>
-</svelte:head>
 <Navbar/>
 {@render children()}
 <Dock/>

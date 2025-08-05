@@ -31,8 +31,8 @@
         switch (iType) {
         case '':
             return 'animes and characters'; 
-        case 'animes':
-        case 'characters':
+        case 'anime':
+        case 'character':
             return iType;
         default:
             return '';
