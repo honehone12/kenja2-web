@@ -2,6 +2,14 @@
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
 </script>
 
+<svelte:head>
+	<title>Anime Kenja - Anime and Character Keyword Search</title>
+	<meta
+		name="description"
+		content="Keyword search for animes and characters, featuring full text search."
+	/>
+</svelte:head>
+
 <div class="hero w-full min-h-screen py-20">
     <div class="hero-content flex flex-col">
         <img
