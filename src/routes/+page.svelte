@@ -6,7 +6,7 @@
 	<title>Anime Kenja - Anime and Character Search Engine</title>
 	<meta
 		name="description"
-		content="Anime Kenja is a anime and character search engine, featuring keywords full text search and similarity vector search."
+		content="Anime Kenja is a anime and character search engine, featuring full text keyword search and similarity vector search."
 	/>
 </svelte:head>
 
