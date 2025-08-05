@@ -41,7 +41,7 @@
         },
         {
             initial: 'I',
-            topics: ['idol', 'isekai']
+            topics: ['idol', 'imouto', 'isekai']
         },
         {
             initial: 'K',

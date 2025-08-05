@@ -7,8 +7,8 @@
     let {initial, topics}: Props = $props();
 </script>
 
-<div class="w-60">
-    <h2 class="text-xl">{initial}</h2>
+<div class="w-50">
+    <h2 class="text-2xl">{initial}</h2>
     <ul class="list">
         {#each topics as topic}
             <li class="list-row">
