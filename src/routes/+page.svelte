@@ -2,6 +2,14 @@
     import TopPageFeatures from "$lib/components/TopPageFeatures.svelte";
 </script>
 
+<svelte:head>
+	<title>Anime Kenja - Anime and Character Search Engine</title>
+	<meta
+		name="description"
+		content="Anime Kenja is a anime and character search engine, featuring keywords full text search and similarity vector search."
+	/>
+</svelte:head>
+
 <div class="py-20">
     <div class="hero w-full">
         <div class="hero-content flex flex-col">

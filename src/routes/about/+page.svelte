@@ -2,6 +2,14 @@
     import CommunitySNSCard from "$lib/components/CommunitySNSCard.svelte";
 </script>
 
+<svelte:head>
+	<title>Anime Kenja - about Anime and Character Search Engine</title>
+	<meta
+		name="description"
+		content="You can search animes and characters by keywords, and also similar summary text and images."
+	/>
+</svelte:head>
+
 <div class="w-full py-20 px-10">
     <div class="flex justify-center">
         <div class="max-w-200">
