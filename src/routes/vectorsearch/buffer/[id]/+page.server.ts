@@ -1,11 +1,17 @@
-import {ITypeConv, RatingConv} from "$lib/documents/anime-search/queries.js";
+import {ITypeConv, Rating, RatingConv} from "$lib/documents/anime-search/queries.js";
+import { VFieldConv } from "$lib/documents/anime-search/queries";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
+import {checkAgeCookie} from "$lib/server/cookies.js";
 import {OID_LEN} from "$lib/index.js";
-import { VFieldConv } from "$lib/documents/anime-search/queries";
 
-export function load({url, params}) {
+export function load({cookies, url, params}) {
+    const rating = RatingConv.fromString(url.searchParams.get('rating'));
+    if (rating === Rating.Hentai) {
+        checkAgeCookie(cookies);
+    }
+    
     const id = params.id;
     if (id.length !== OID_LEN) {
         logs.warn('invalid oid')
@@ -23,8 +29,6 @@ export function load({url, params}) {
         logs.warn('invalid vector field');
         return badRequest();
     }
-
-    const rating = RatingConv.fromString(url.searchParams.get('rating'));
 
     try {
         const bufferedStream = kenja.animeSearch().vectorSearch(
