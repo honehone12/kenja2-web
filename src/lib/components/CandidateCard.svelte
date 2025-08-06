@@ -1,6 +1,6 @@
 <script lang="ts">
     import type {FlatDocument} from "$lib/documents/anime-search/documents";
-    import { ItemType } from "$lib/documents/anime-search/queries";
+    import { ItemType, Rating } from "$lib/documents/anime-search/queries";
 
     interface Props {
         doc: FlatDocument;
@@ -8,16 +8,40 @@
     }
 
     let {doc, onclickItem}: Props = $props();
+
+    function lineColor(rating: Rating) {
+        return rating === Rating.Hentai ? 'outline-fuchsia-500' : 'outline-cyan-500';
+    }
+
+    function btnColor(rating: Rating) {
+        return rating === Rating.Hentai ? 'btn-secondary' : 'btn-accent';
+    }
+
+    function badgeColor(rating: Rating) {
+        return rating === Rating.Hentai ? 'badge-secondary' : 'badge-accent';
+    }
+
+    function isAnime(itemType: ItemType) {
+        return itemType === ItemType.Anime || itemType === ItemType.AnimeImgOnly;
+    }
+
+    function isCharacter(itemType: ItemType) {
+        return itemType === ItemType.Character || itemType === ItemType.CharacterImgOnly;
+    }
+
+    function hasTextVec(itemType: ItemType) {
+        return itemType === ItemType.Anime || itemType === ItemType.Character;
+    }
 </script>
 
-<div class="card w-80 outline outline-cyan-500">
+<div class="card w-80 outline {lineColor(doc.rating)}">
     <div class="card-body">
-        {#if doc.item_type === ItemType.Anime}
-            <div class="badge badge-outline badge-info mb-5">
+        {#if isAnime(doc.item_type)}  
+            <div class="badge badge-outline {badgeColor(doc.rating)} mb-5">
                 <p>Anime アニメ</p>
-            </div>    
-        {:else}
-            <div class="badge badge-dash badge-info mb-5">
+            </div>      
+        {:else if isCharacter(doc.item_type)}
+            <div class="badge badge-dash {badgeColor(doc.rating)} mb-5">
                 <p>Character キャラクター</p>
             </div>
             {#if doc.parent}
@@ -47,15 +71,17 @@
                 >
             </button>
             <h2 class="text-xl my-5">Find similar items</h2>
-            <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&vector=text">
-                <button 
-                    class="btn btn-lg btn-accent w-30 mr-2 tooltip" 
-                    data-tip="Search Similar Summary Texts"
-                >Text</button>
-            </a>
+            {#if hasTextVec(doc.item_type)}
+                <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&vector=text">
+                    <button 
+                        class="btn btn-lg {btnColor(doc.rating)} w-30 mr-5 tooltip" 
+                        data-tip="Search Similar Summary Texts"
+                    >Text</button>
+                </a>
+            {/if}
             <a href="/vectorsearch/buffer/{doc.id}?item-type={doc.parent ? 'character' : 'anime'}&vector=image">
                 <button 
-                    class="btn btn-lg btn-accent w-30 ml-2 tooltip"
+                    class="btn btn-lg {btnColor(doc.rating)} w-30 tooltip"
                     data-tip="Search Similar Images"
                 >Image</button>
             </a>
