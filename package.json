@@ -15,13 +15,13 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-node": "^5.2.13",
-		"@sveltejs/kit": "^2.27.0",
+		"@sveltejs/kit": "^2.27.1",
 		"@sveltejs/vite-plugin-svelte": "^5.1.1",
 		"@tailwindcss/vite": "^4.1.11",
-		"@types/node": "^24.1.0",
+		"@types/node": "^24.2.0",
 		"daisyui": "^5.0.50",
-		"svelte": "^5.37.2",
-		"svelte-check": "^4.3.0",
+		"svelte": "^5.37.3",
+		"svelte-check": "^4.3.1",
 		"tailwindcss": "^4.1.11",
 		"typescript": "^5.9.2",
 		"vite": "^6.3.5"
@@ -34,7 +34,7 @@
 	},
 	"packageManager": "pnpm@10.14.0-0+sha512.2cd47a0cbf5f1d1de7693a88307a0ede5be94e0d3b34853d800ee775efbea0650cb562b77605ec80bc8d925f5cd27c4dfe8bb04d3a0b76090784c664450d32d6",
 	"dependencies": {
-		"@aws-sdk/client-lambda": "^3.858.0",
+		"@aws-sdk/client-lambda": "^3.859.0",
 		"pino": "^9.7.0"
 	}
 }

@@ -36,7 +36,9 @@ export class VFieldConv {
 
 export const enum ItemType {
     Anime = 1,
-    Character = 2
+    Character = 2,
+    AnimeImgOnly = 3,
+    CharacterImgOnly = 4
 }
 
 export class ITypeConv {
