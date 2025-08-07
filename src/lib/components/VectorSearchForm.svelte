@@ -13,7 +13,7 @@
     <input type="hidden" id="item-type" name="item-type" value="{itemType ?? ''}"/>
     <div class="mb-5">
         <h2 class="text-2xl mb-5">Select source</h2>
-        <VectorFieldRadio name="vector"/>
+        <VectorFieldRadio/>
     </div>
     <button 
         type="submit"
