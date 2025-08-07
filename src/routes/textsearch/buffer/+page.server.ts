@@ -8,12 +8,16 @@ import {MAX_KW_LEN} from "$lib/index.js";
 export function load({cookies, url}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
     if (rating === Rating.Hentai) {
-        checkAgeCookie(cookies);
+        checkAgeCookie(cookies, url.toString());
     }
     
     const keywords = url.searchParams.get('keyword');
     if (!keywords || keywords.length > MAX_KW_LEN) {
-        logs.warn('keywords length over limit')
+        logs.warn('keywords length 0 or over limit')
+        return badRequest();
+    }
+    if (keywords.trim().length === 0) {
+        logs.warn('keywords only white spaces');
         return badRequest();
     }
 
