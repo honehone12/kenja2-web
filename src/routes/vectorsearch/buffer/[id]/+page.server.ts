@@ -6,7 +6,11 @@ import logs from "$lib/server/logs.js";
 import {checkAgeCookie} from "$lib/server/cookies.js";
 import {OID_LEN} from "$lib/index.js";
 
-export function load({cookies, url, params}) {
+const CACHE_HEADER = {
+    "Cache-Control": "public, max-age=86400"
+};
+
+export function load({cookies, url, params, setHeaders}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
     if (rating === Rating.Hentai) {
         checkAgeCookie(cookies);
@@ -29,6 +33,8 @@ export function load({cookies, url, params}) {
         logs.warn('invalid vector field');
         return badRequest();
     }
+
+    setHeaders(CACHE_HEADER);
 
     try {
         const bufferedStream = kenja.animeSearch().vectorSearch(

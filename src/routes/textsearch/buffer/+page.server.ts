@@ -5,7 +5,11 @@ import logs from "$lib/server/logs.js";
 import {checkAgeCookie} from "$lib/server/cookies.js";
 import {MAX_KW_LEN} from "$lib/index.js";
 
-export function load({cookies, url}) {
+const CACHE_HEADER = {
+    "Cache-Control": "public, max-age=86400"
+};
+
+export function load({cookies, url, setHeaders}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
     if (rating === Rating.Hentai) {
         checkAgeCookie(cookies);
@@ -22,6 +26,8 @@ export function load({cookies, url}) {
     }
 
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
+
+    setHeaders(CACHE_HEADER);
 
     try {
         const bufferedStream = kenja.animeSearch().textSearch(
