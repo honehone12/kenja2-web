@@ -1,1 +1,1 @@
-Are you over 18 years old?
+This is top page for henati.

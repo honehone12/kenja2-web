@@ -9,7 +9,7 @@ import {OID_LEN} from "$lib/index.js";
 export function load({cookies, url, params}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
     if (rating === Rating.Hentai) {
-        checkAgeCookie(cookies, url.toString());
+        checkAgeCookie(cookies);
     }
     
     const id = params.id;

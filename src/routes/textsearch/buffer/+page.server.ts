@@ -8,7 +8,7 @@ import {MAX_KW_LEN} from "$lib/index.js";
 export function load({cookies, url}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
     if (rating === Rating.Hentai) {
-        checkAgeCookie(cookies, url.toString());
+        checkAgeCookie(cookies);
     }
     
     const keywords = url.searchParams.get('keyword');
