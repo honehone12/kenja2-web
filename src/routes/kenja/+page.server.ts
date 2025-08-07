@@ -5,7 +5,7 @@ const CACHE_HEADER = {
 };
 
 export function load({cookies, setHeaders}) {
-    checkAgeCookie(cookies);
+    checkAgeCookie(cookies, 'top');
 
     setHeaders(CACHE_HEADER);
 }

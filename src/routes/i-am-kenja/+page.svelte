@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import AgeVerification from "$lib/components/AgeVerification.svelte";
 </script>
 

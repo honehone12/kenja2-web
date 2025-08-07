@@ -34,9 +34,13 @@ export function setCookie(
 }
 
 export function setAgeCookie(cookies: Cookies) {
-    setCookie(
-        cookies,
-        AGE_COOKIE_KEY, 
-        AGE_COOKIE_VALUE,
-    );
+    if (!hasAgeCookie(cookies)) {
+            setCookie(
+            cookies,
+            AGE_COOKIE_KEY, 
+            AGE_COOKIE_VALUE,
+        );
+    }
+    
+    return redirect(303, '/kenja');
 }

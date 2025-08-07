@@ -1,5 +1,7 @@
 <script lang="ts">
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
+
+    let {data} = $props();
 </script>
 
 <svelte:head>
@@ -22,6 +24,6 @@
         <div class="text-center text-3xl mb-10">
             <h1>Anime Kenja Search</h1>
         </div>
-        <TextSearchForm useFlexible={true}/>
+        <TextSearchForm useFlexible={true} useKenjaToggle={data.hasAgeCookie}/>
     </div>
 </div>
