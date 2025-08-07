@@ -10,11 +10,11 @@
 						<span class="link">Home</span>
 					</a>
 				</li>
-				<li class="my-2">
+				<!-- <li class="my-2">
 					<a tabindex="0" href="/kenja">
 						<span class="link">Kenja</span>
 					</a>
-				</li>
+				</li> -->
 				<li class="my-2">
 					<a tabindex="0" href="/textsearch">
 						<span class="link">Search</span>
@@ -38,9 +38,9 @@
 			<li>
 				<a tabindex="0" href="/">Home</a>
 			</li>
-			<li>
+			<!-- <li>
 				<a tabindex="0" href="/kenja">Kenja</a>
-			</li>
+			</li> -->
 			<li>
 				<a tabindex="0" href="/textsearch">Search</a>
 			</li>
