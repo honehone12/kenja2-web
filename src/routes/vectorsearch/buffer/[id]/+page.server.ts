@@ -7,7 +7,7 @@ import {checkAgeCookie} from "$lib/server/cookies.js";
 import {OID_LEN} from "$lib/index.js";
 
 const CACHE_HEADER = {
-    "Cache-Control": "public, max-age=86400"
+    "Cache-Control": "max-age=86400"
 };
 
 export function load({cookies, url, params, setHeaders}) {

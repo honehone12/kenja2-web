@@ -2,12 +2,6 @@
     import {SEARCH_MODAL_ID, getModal} from "$lib";
     import SearchModal from "$lib/components/SearchModal.svelte";
 
-    interface Props {
-        useKenjaToggle: boolean;
-    }
-
-    let {useKenjaToggle}: Props = $props();
-
     function gotoTop() {
         window.scrollTo({
             top: 0,
@@ -38,7 +32,7 @@
                 class="size-10 drop-shadow-sm" 
             />
         </button>
-        <SearchModal onclickClose={closeModal} {useKenjaToggle}/>
+        <SearchModal onclickClose={closeModal}/>
     </div>
     <div class="tooltip" data-tip="Top of Page">
         <button aria-label="top" onclick={gotoTop}>

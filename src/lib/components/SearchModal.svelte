@@ -3,11 +3,10 @@
     import TextSearchForm from "./TextSearchForm.svelte";
 
     interface Props {
-        useKenjaToggle: boolean;
         onclickClose: () => void;
     }
 
-    let {useKenjaToggle, onclickClose}: Props = $props();
+    let {onclickClose}: Props = $props();
 </script>
 
 <dialog id="{SEARCH_MODAL_ID}" class="modal">
@@ -24,7 +23,7 @@
             </h2>
         </span>
         <div class="modal-action mt-10 mb-10">
-            <TextSearchForm useFlexible={false} {useKenjaToggle}/>
+            <TextSearchForm useFlexible={false}/>
         </div>
     </div>
 </dialog>

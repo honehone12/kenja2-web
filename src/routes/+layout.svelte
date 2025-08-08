@@ -4,10 +4,10 @@
     import Dock from "$lib/layouts/Dock.svelte";
 	import Footer from "$lib/layouts/Footer.svelte";
 
-	let { children, data } = $props();
+	let {children} = $props();
 </script>
 
 <Navbar/>
 {@render children()}
-<Dock useKenjaToggle={data.hasAgeCookie}/>
+<Dock/>
 <Footer/>
