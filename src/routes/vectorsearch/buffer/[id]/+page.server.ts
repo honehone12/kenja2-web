@@ -13,7 +13,7 @@ const CACHE_HEADER = {
 export function load({cookies, url, params, setHeaders}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
     if (rating === Rating.Hentai) {
-        checkAgeCookie(cookies);
+        checkAgeCookie(cookies, url);
     }
     
     const id = params.id;

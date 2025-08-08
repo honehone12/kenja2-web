@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { goto } from "$app/navigation";
+    import {goto} from "$app/navigation";
+    import {page} from "$app/state";
+    import { MAX_REF_LEN } from "$lib";
 
     function onclickNo() {
         goto('/');
@@ -25,6 +27,12 @@
         action="/i-am-kenja" 
         class="card-action mb-15"
     >
+        <input 
+            type="hidden" 
+            id="ref-ref" 
+            name="ref" 
+            value={page.url.searchParams.get('ref') ?? '/kenja'}
+        >
         <button 
             type="button" 
             onclick={onclickNo}

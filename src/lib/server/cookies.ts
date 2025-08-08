@@ -9,9 +9,18 @@ export function hasAgeCookie(cookies: Cookies) {
     return !!ageCookie && ageCookie === AGE_COOKIE_VALUE;
 }
 
-export function checkAgeCookie(cookies: Cookies): void | never {
+export function checkAgeCookie(cookies: Cookies, url: URL): void | never {
     if (!hasAgeCookie(cookies)) {
-        return redirect(303, '/i-am-kenja');
+        let ref = url.pathname;
+        const q = url.search;
+        if (q) {
+            ref += `/${q}`
+        }
+
+        ref = encodeURIComponent(ref);
+        const redirectTo = `/i-am-kenja?ref=${ref}`;
+        
+        return redirect(303, redirectTo);
     }
 }
 
@@ -33,14 +42,14 @@ export function setCookie(
     );
 }
 
-export function setAgeCookie(cookies: Cookies) {
+export function setAgeCookie(cookies: Cookies, url: string | URL) {
     if (!hasAgeCookie(cookies)) {
-            setCookie(
+        setCookie(
             cookies,
             AGE_COOKIE_KEY, 
             AGE_COOKIE_VALUE,
         );
     }
     
-    return redirect(303, '/kenja');
+    return redirect(303, url);
 }

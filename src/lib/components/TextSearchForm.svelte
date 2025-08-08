@@ -14,10 +14,10 @@
 <form method="get" action="/textsearch/buffer">
     <KeywordInput {useFlexible} usePink={kenjaMode}/>
     <div class="mt-5 ml-5">
-        <h2 class="text-2xl mb-3 tooltip" data-tip="Select items to search">Item type</h2>
-        <ItemTypeRadio useAll={true} usePink={kenjaMode}/>
+        <RatingToggle bind:kenjaMode/>
     </div>
     <div class="mt-5 ml-5">
-        <RatingToggle bind:kenjaMode/>
+        <h2 class="text-2xl mb-3 tooltip" data-tip="Select items to search">Item type</h2>
+        <ItemTypeRadio useAll={true} usePink={kenjaMode}/>
     </div>
 </form>
