@@ -11,11 +11,6 @@
 					</a>
 				</li>
 				<li class="my-2">
-					<a tabindex="0" href="/kenja">
-						<span class="link">Kenja</span>
-					</a>
-				</li>
-				<li class="my-2">
 					<a tabindex="0" href="/textsearch">
 						<span class="link">Search</span>
 					</a>
@@ -23,6 +18,11 @@
 				<li class="my-2">
 					<a tabindex="0" href="/topics">
 						<span class="link">Topics</span>
+					</a>
+				</li>
+				<li class="my-2">
+					<a tabindex="0" href="/kenja">
+						<span class="link">Kenja(R+18)</span>
 					</a>
 				</li>
 				<li class="my-2">
@@ -39,13 +39,13 @@
 				<a tabindex="0" href="/">Home</a>
 			</li>
 			<li>
-				<a tabindex="0" href="/kenja">Kenja</a>
-			</li>
-			<li>
 				<a tabindex="0" href="/textsearch">Search</a>
 			</li>
 			<li>
 				<a tabindex="0" href="/topics">Topics</a>
+			</li>
+			<li>
+				<a tabindex="0" href="/kenja">Kenja(R+18)</a>
 			</li>
 			<li>
 				<a tabindex="0" href="/about">About</a>
