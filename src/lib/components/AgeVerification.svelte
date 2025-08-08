@@ -6,6 +6,14 @@
     function onclickNo() {
         goto('/');
     }
+
+    function ref() {
+        let ref = page.url.searchParams.get('ref');
+        if (!ref || ref.length > MAX_REF_LEN) {
+            ref = '/kenja';
+        }
+        return ref;
+    }
 </script>
 
 <div class="card outline outline-fuchsia-500 text-center">
@@ -31,7 +39,7 @@
             type="hidden" 
             id="ref-ref" 
             name="ref" 
-            value={page.url.searchParams.get('ref') ?? '/kenja'}
+            value={ref()}
         >
         <button 
             type="button" 
