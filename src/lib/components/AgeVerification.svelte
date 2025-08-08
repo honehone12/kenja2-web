@@ -10,7 +10,7 @@
     function ref() {
         let ref = page.url.searchParams.get('ref');
         if (!ref || ref.length > MAX_REF_LEN) {
-            ref = '/kenja';
+            ref = '/';
         }
         return ref;
     }
