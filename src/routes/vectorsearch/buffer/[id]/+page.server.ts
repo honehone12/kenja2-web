@@ -1,11 +1,21 @@
-import {ITypeConv, RatingConv} from "$lib/documents/anime-search/queries.js";
+import {ITypeConv, Rating, RatingConv} from "$lib/documents/anime-search/queries.js";
+import { VFieldConv } from "$lib/documents/anime-search/queries";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
+import {checkAgeCookie} from "$lib/server/cookies.js";
 import {OID_LEN} from "$lib/index.js";
-import { VFieldConv } from "$lib/documents/anime-search/queries";
 
-export function load({url, params}) {
+const CACHE_HEADER = {
+    "Cache-Control": "max-age=86400"
+};
+
+export function load({cookies, url, params, setHeaders}) {
+    const rating = RatingConv.fromString(url.searchParams.get('rating'));
+    if (rating === Rating.Hentai) {
+        checkAgeCookie(cookies, url);
+    }
+    
     const id = params.id;
     if (id.length !== OID_LEN) {
         logs.warn('invalid oid')
@@ -24,7 +34,7 @@ export function load({url, params}) {
         return badRequest();
     }
 
-    const rating = RatingConv.fromString(url.searchParams.get('rating'));
+    setHeaders(CACHE_HEADER);
 
     try {
         const bufferedStream = kenja.animeSearch().vectorSearch(

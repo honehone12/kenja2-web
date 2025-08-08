@@ -3,7 +3,7 @@
     import TextSearchForm from "./TextSearchForm.svelte";
 
     interface Props {
-        onclickClose: () => void
+        onclickClose: () => void;
     }
 
     let {onclickClose}: Props = $props();

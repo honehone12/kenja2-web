@@ -1,22 +1,23 @@
 <script lang="ts">
     interface Props {
-        includeAll: boolean;
+        useAll: boolean;
+        usePink: boolean;
     }
 
-    let {includeAll}: Props = $props();
+    let {useAll, usePink}: Props = $props();
 </script>
 
 <div class="flex flex-col">
     <fieldset>
-        {#if includeAll}
+        {#if useAll}
             <div class="mb-2">
                 <input 
                     type="radio" 
                     name="item-type" 
                     id="item-type-all" 
                     value="" 
-                    checked={includeAll} 
-                    class="radio radio-lg radio-accent" 
+                    checked={useAll} 
+                    class="radio radio-lg {usePink ? 'radio-secondary' : 'radio-accent'}" 
                 />
                 <label for="item-type-all" class="text-lg">All</label>
             </div>    
@@ -27,8 +28,8 @@
                 name="item-type" 
                 id="item-type-anime" 
                 value="anime" 
-                checked={!includeAll}
-                class="radio radio-lg radio-accent" 
+                checked={!useAll}
+                class="radio radio-lg {usePink ? 'radio-secondary' : 'radio-accent'}" 
             />
             <label for="item-type-anime" class="text-lg">Anime</label>
         </div>
@@ -38,7 +39,7 @@
                 name="item-type" 
                 id="item-type-character" 
                 value="character" 
-                class="radio radio-lg radio-accent" 
+                class="radio radio-lg {usePink ? 'radio-secondary' : 'radio-accent'}" 
             />
             <label for="item-type-character" class="text-lg">Character</label>
         </div>

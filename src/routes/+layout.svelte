@@ -4,7 +4,7 @@
     import Dock from "$lib/layouts/Dock.svelte";
 	import Footer from "$lib/layouts/Footer.svelte";
 
-	let { children } = $props();
+	let {children} = $props();
 </script>
 
 <Navbar/>

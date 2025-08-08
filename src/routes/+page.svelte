@@ -13,11 +13,13 @@
 <div class="py-20">
     <div class="hero w-full">
         <div class="hero-content flex flex-col">
-            <img
-                src="/kenja2_logo.png"
-                alt="Kenja logo with illustration of wise man"
-                class="size-40 mb-10" 
-            />
+            <figure>
+                <img
+                    src="/kenja2_logo.png"
+                    alt="Kenja logo with illustration of wise man"
+                    class="size-40 mb-10" 
+                />
+            </figure>
             <div class="text-center">
                 <h1 class="text-5xl mb-10">Anime Kenja</h1>
                 <p class="text-lg">

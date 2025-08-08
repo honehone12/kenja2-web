@@ -1,18 +1,33 @@
-import { ITypeConv, RatingConv } from "$lib/documents/anime-search/queries.js";
+import { ITypeConv, Rating, RatingConv } from "$lib/documents/anime-search/queries.js";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
+import {checkAgeCookie} from "$lib/server/cookies.js";
 import {MAX_KW_LEN} from "$lib/index.js";
 
-export function load({url}) {
+const CACHE_HEADER = {
+    "Cache-Control": "max-age=86400"
+};
+
+export function load({cookies, url, setHeaders}) {
+    const rating = RatingConv.fromString(url.searchParams.get('rating'));
+    if (rating === Rating.Hentai) {
+        checkAgeCookie(cookies, url);
+    }
+    
     const keywords = url.searchParams.get('keyword');
     if (!keywords || keywords.length > MAX_KW_LEN) {
-        logs.warn('keywords length over limit')
+        logs.warn('keywords length 0 or over limit')
+        return badRequest();
+    }
+    if (keywords.trim().length === 0) {
+        logs.warn('keywords only white spaces');
         return badRequest();
     }
 
-    const rating = RatingConv.fromString(url.searchParams.get('rating'));
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
+
+    setHeaders(CACHE_HEADER);
 
     try {
         const bufferedStream = kenja.animeSearch().textSearch(
