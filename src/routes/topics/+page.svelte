@@ -13,7 +13,7 @@
         },
         {
             initial: 'B',
-            topics: ['baseball', 'basketball']
+            topics: ['baseball', 'basketball', 'brother']
         },
         {
             initial: 'C',
@@ -21,7 +21,7 @@
         },
         {
             initial: 'D',
-            topics: ['demon', 'detective', 'doctor', 'dwarf']
+            topics: ['demon', 'detective', 'doctor', 'dragon', 'dwarf']
         },
         {
             initial: 'E',
@@ -29,11 +29,11 @@
         },
         {
             initial: 'F',
-            topics: ['fishing', 'football']
+            topics: ['father', 'fishing', 'football']
         },
         {
             initial: 'G',
-            topics: ['game', 'grasses', 'gun']
+            topics: ['game', 'ghost', 'grasses', 'gun']
         },
         {
             initial: 'H',
@@ -49,7 +49,7 @@
         },
         {
             initial: 'M',
-            topics: ['maid', 'megami']
+            topics: ['maid', 'maou', 'mahou', 'megami', 'mermaid', 'mother']
         },
         {
             initial: 'N',
@@ -69,11 +69,11 @@
         },
         {
             initial: 'S',
-            topics: ['samurai', 'soccer', 'sword']
+            topics: ['samurai', 'sister', 'soccer', 'succubus', 'sword']
         },
         {
             initial: 'T',
-            topics: ['tennis']
+            topics: ['teacher', 'tennis', 'twins']
         },
         {
             initial: 'V',
@@ -85,7 +85,7 @@
         },
         {
             initial: 'Y',
-            topics: ['yuki onna']
+            topics: ['yuki onna', 'yuusha']
         },
         {
             initial: 'Z',
