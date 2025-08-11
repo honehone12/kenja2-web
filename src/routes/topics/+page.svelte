@@ -33,7 +33,7 @@
         },
         {
             initial: 'G',
-            topics: ['game', 'ghost', 'grasses', 'gun']
+            topics: ['game', 'ghost', 'golf', 'grasses', 'gun']
         },
         {
             initial: 'H',
@@ -103,13 +103,20 @@
 </svelte:head>
 
 <div class="w-full min-h-screen">
-    <div class="p-20 flex flex-wrap gap-x-10 gap-y-5 justify-center">
-        {#each TOPICS as topic}
-            <Topic 
-                initial={topic.initial} 
-                topics={topic.topics}
-            />
-        {/each}
+    <div class="text-center mt-20">
+        <h1 class="text-3xl text-info">Anime Topics</h1>
+    </div>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="flex flex-wrap justify-center gap-x-10 gap-y-5 my-20 px-20">
+                {#each TOPICS as topic}
+                    <Topic 
+                        initial={topic.initial} 
+                        topics={topic.topics}
+                    />
+                {/each}
+            </div>
+        </div>
     </div>
 </div>
 
