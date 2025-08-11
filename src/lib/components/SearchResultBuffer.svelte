@@ -23,9 +23,11 @@
 
     async function searchResult() {
         const result = await buffer;
-        if (needAgeVerification && result.documents) {
-            for (const doc of result.documents) {
-                doc.img = '/kenja2_logo.png';
+        if (needAgeVerification) {
+            if (result.documents) {
+                for (const doc of result.documents) {
+                    doc.img = '/kenja2_logo.png';
+                }
             }
             openAgeModal();
         }
