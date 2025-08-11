@@ -3,7 +3,7 @@ import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {hasAgeCookie} from "$lib/server/cookies.js";
-import {CACHE_HEADER, NO_CACEH_HEADER} from "$lib/server/headers";
+import {CACHE_HEADER, NO_CACHE_HEADER} from "$lib/server/headers";
 import {MAX_KW_LEN} from "$lib/index.js";
 
 export function load({cookies, url, setHeaders}) {
@@ -25,7 +25,7 @@ export function load({cookies, url, setHeaders}) {
     const needAgeVerification = rating === Rating.Hentai ? !hasAgeCookie(cookies) : false;
     
     if (rating === Rating.Hentai) {
-        setHeaders(NO_CACEH_HEADER);
+        setHeaders(NO_CACHE_HEADER);
     } else {
         setHeaders(CACHE_HEADER)
     }
