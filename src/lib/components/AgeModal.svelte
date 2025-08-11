@@ -3,20 +3,14 @@
     import AgeVerification from "./AgeVerification.svelte";
 
     interface Props {
-        onclickClose: () => void;
+        ref: string;
     }
 
-    let {onclickClose}: Props = $props();
+    let {ref}: Props = $props();
 </script>
 
 <dialog id={AGE_MODAL_ID} class="modal">
-    <div class="modal-box flex flex-col items-center outline outline-cyan-500">
-        <form method="dialog">
-            <button 
-                class="btn btn-sm btn-info btn-outline btn-circle absolute right-2 top-2"
-                onclick={onclickClose}
-            >X</button>
-        </form>
-        <AgeVerification/>
+    <div class="modal-box flex flex-col items-center">
+        <AgeVerification {ref}/>
     </div>
 </dialog>

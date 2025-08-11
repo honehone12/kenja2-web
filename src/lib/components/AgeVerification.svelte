@@ -1,24 +1,21 @@
 <script lang="ts">
     import {goto} from "$app/navigation";
     import {page} from "$app/state";
-    import { MAX_REF_LEN } from "$lib";
+
+    interface Props {
+        ref: string;
+    }
+
+    let {ref}: Props =  $props();
 
     function onclickNo() {
         goto('/');
-    }
-
-    function ref() {
-        let ref = page.url.searchParams.get('ref');
-        if (!ref || ref.length > MAX_REF_LEN) {
-            ref = '/';
-        }
-        return ref;
     }
 </script>
 
 <div class="card outline outline-fuchsia-500 text-center">
     <h1 class="text-3xl mt-10 mb-5">
-        Kenja Verification
+        Age Verification
     </h1>
     <figure>
         <img
@@ -39,7 +36,7 @@
             type="hidden" 
             id="ref-ref" 
             name="ref" 
-            value={ref()}
+            value={ref}
         >
         <button 
             type="button" 

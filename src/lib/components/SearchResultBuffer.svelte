@@ -5,22 +5,42 @@
     import type { SearchResult } from "$lib/documents/anime-search/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import DocumentModal from "$lib/components/DocumentModal.svelte";
-    import { DOCUMENT_MODAL_ID, getModal } from "$lib";
+    import { AGE_MODAL_ID, DOCUMENT_MODAL_ID, getModal } from "$lib";
+    import AgeModal from './AgeModal.svelte';
 
     interface Props {
         buffer: Promise<SearchResult>;
+        needAgeVerification: boolean;
         isVector: boolean;
     }
 
-    let {buffer, isVector}: Props = $props();
+    let {buffer, needAgeVerification, isVector}: Props = $props();
     let selectedUrl: string | null = $state(null);
 
-    function openModal(url: string) {
+    function openAgeModal() {
+        getModal(AGE_MODAL_ID)?.showModal();
+    }
+
+    async function searchResult() {
+        const result = await buffer;
+        if (needAgeVerification) {
+            if (result.documents) {
+                for (const doc of result.documents) {
+                    doc.img = '/kenja2_logo.png';
+                }
+            }
+            openAgeModal();
+        }
+        return result;
+    }
+
+    function openDocumentModal(url: string) {
         selectedUrl = url;
         getModal(DOCUMENT_MODAL_ID)?.showModal();
     }
 
-    function closeModal() {
+    
+    function closeDocumentModal() {
         selectedUrl = null;
         getModal(DOCUMENT_MODAL_ID)?.close();
     }
@@ -43,16 +63,17 @@
         const vField = page.url.searchParams.get('vector');
         // don't show unexpected values; 
         switch (vField) {
-            case 'image':
-            case 'text':
-                return vField;
-            default:
-                return '';
+        case 'image':
+        case 'text':
+            return vField;
+        default:
+            return '';
         }
     }
 </script>
 
-{#await buffer}
+<AgeModal ref={page.url.pathname + page.url.search}/>
+{#await searchResult()}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <LoadingMsg/>
@@ -75,13 +96,13 @@
                     {#each documents as doc}
                         <CandidateCard      
                             {doc}
-                            onclickItem={openModal}
+                            onclickItem={openDocumentModal}
                         />
                     {/each}
                 </div>
                 <DocumentModal
                     url={selectedUrl} 
-                    onclickClose={closeModal}
+                    onclickClose={closeDocumentModal}
                 />
             </div>
         </div>

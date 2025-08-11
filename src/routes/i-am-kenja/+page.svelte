@@ -8,6 +8,6 @@
 
 <div class="hero w-full h-screen">
     <div class="hero-content">
-        <AgeVerification/>
+        <AgeVerification ref="/"/>
     </div>
 </div>
