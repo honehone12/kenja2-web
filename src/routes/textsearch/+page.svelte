@@ -22,6 +22,6 @@
         <div class="text-center text-3xl mb-10">
             <h1>Anime Kenja Search</h1>
         </div>
-        <TextSearchForm useFlexible={true}/>
+        <TextSearchForm useFlexible={true} useKenjaMode={false}/>
     </div>
 </div>
