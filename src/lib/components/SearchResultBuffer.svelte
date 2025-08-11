@@ -70,7 +70,7 @@
     }
 </script>
 
-
+<AgeModal ref={page.url.pathname + page.url.search}/>
 {#await searchResult()}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
@@ -116,4 +116,3 @@
         </div>
     </div>
 {/await}    
-<AgeModal ref={page.url.pathname + page.url.search}/>
