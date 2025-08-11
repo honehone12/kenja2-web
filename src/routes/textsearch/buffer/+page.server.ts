@@ -8,7 +8,6 @@ import {MAX_KW_LEN} from "$lib/index.js";
 
 export function load({cookies, url, setHeaders}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
-    const needAgeVerification = rating === Rating.Hentai ? !hasAgeCookie(cookies) : false;
     
     const keywords = url.searchParams.get('keyword');
     if (!keywords || keywords.length > MAX_KW_LEN) {
@@ -23,6 +22,8 @@ export function load({cookies, url, setHeaders}) {
     const fuzzy_kind = FuzzyConv.fromString(url.searchParams.get('fuzzy'));
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
 
+    const needAgeVerification = rating === Rating.Hentai ? !hasAgeCookie(cookies) : false;
+    
     if (rating === Rating.Hentai) {
         setHeaders(NO_CACEH_HEADER);
     } else {

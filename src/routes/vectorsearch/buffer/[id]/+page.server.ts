@@ -4,12 +4,11 @@ import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {hasAgeCookie} from "$lib/server/cookies.js";
-import { CACHE_HEADER , NO_CACEH_HEADER} from "$lib/server/headers.js";
+import {CACHE_HEADER, NO_CACEH_HEADER} from "$lib/server/headers.js";
 import {OID_LEN} from "$lib/index.js";
 
 export function load({cookies, url, params, setHeaders}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
-    const needAgeVerification = rating === Rating.Hentai ? !hasAgeCookie(cookies) : false;
     
     const id = params.id;
     if (id.length !== OID_LEN) {
@@ -28,6 +27,8 @@ export function load({cookies, url, params, setHeaders}) {
         logs.warn('invalid vector field');
         return badRequest();
     }
+
+    const needAgeVerification = rating === Rating.Hentai ? !hasAgeCookie(cookies) : false;
 
     if (rating === Rating.Hentai) {
         setHeaders(NO_CACEH_HEADER);
