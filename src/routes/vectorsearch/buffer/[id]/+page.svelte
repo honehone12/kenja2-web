@@ -8,4 +8,8 @@
 	<title>Anime Kenja - Vector Search Result</title>
 </svelte:head>
 
-<SearchResultBuffer buffer={data.bufferedStream} isVector={true}/>
+<SearchResultBuffer 
+    buffer={data.bufferedStream} 
+    needAgeVerification={data.needAgeVerification}
+    isVector={true}
+/>

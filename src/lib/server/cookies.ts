@@ -9,21 +9,6 @@ export function hasAgeCookie(cookies: Cookies) {
     return !!ageCookie && ageCookie === AGE_COOKIE_VALUE;
 }
 
-export function checkAgeCookie(cookies: Cookies, url: URL): void | never {
-    if (!hasAgeCookie(cookies)) {
-        let ref = url.pathname;
-        const q = url.search;
-        if (q) {
-            ref += `/${q}`
-        }
-
-        ref = encodeURIComponent(ref);
-        const redirectTo = `/i-am-kenja?ref=${ref}`;
-        
-        return redirect(303, redirectTo);
-    }
-}
-
 export function setCookie(
     cookies: Cookies,
     key: string,

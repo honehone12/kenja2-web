@@ -24,11 +24,7 @@ export const actions: Actions = {
             logs.warn(`ref over limit: ${ref}`);
             return badRequest();
         }
-        if (
-            ref !== '/kenja' &&
-            !ref.startsWith('/textsearch/') &&
-            !ref.startsWith('/vectorsearch/')
-        ) {
+        if (!ref.startsWith('/')) {
             logs.warn(`invalid ref: ${ref}`);
             return badRequest();
         }

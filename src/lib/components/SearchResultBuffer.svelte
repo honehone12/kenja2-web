@@ -9,11 +9,22 @@
 
     interface Props {
         buffer: Promise<SearchResult>;
+        needAgeVerification: boolean;
         isVector: boolean;
     }
 
-    let {buffer, isVector}: Props = $props();
+    let {buffer, needAgeVerification, isVector}: Props = $props();
     let selectedUrl: string | null = $state(null);
+
+    async function searchResult() {
+        const result = await buffer;
+        if (needAgeVerification && result.documents) {
+            for (const doc of result.documents) {
+                doc.img = '/kenja2_logo.png';
+            }
+        }
+        return result;
+    }
 
     function openModal(url: string) {
         selectedUrl = url;
@@ -52,7 +63,7 @@
     }
 </script>
 
-{#await buffer}
+{#await searchResult()}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <LoadingMsg/>

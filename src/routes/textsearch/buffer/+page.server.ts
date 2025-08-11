@@ -2,7 +2,7 @@ import { FuzzyConv, ITypeConv, Rating, RatingConv } from "$lib/documents/anime-s
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
-import {checkAgeCookie} from "$lib/server/cookies.js";
+import {hasAgeCookie} from "$lib/server/cookies.js";
 import {MAX_KW_LEN} from "$lib/index.js";
 
 const CACHE_HEADER = {
@@ -11,9 +11,7 @@ const CACHE_HEADER = {
 
 export function load({cookies, url, setHeaders}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
-    if (rating === Rating.Hentai) {
-        checkAgeCookie(cookies, url);
-    }
+    const needAgeVerification = rating === Rating.Hentai ? !hasAgeCookie(cookies) : false;
     
     const keywords = url.searchParams.get('keyword');
     if (!keywords || keywords.length > MAX_KW_LEN) {
@@ -37,7 +35,7 @@ export function load({cookies, url, setHeaders}) {
             keywords,
             fuzzy_kind
         );
-        return {bufferedStream};
+        return {needAgeVerification, bufferedStream};
     } catch (err) {
         logs.error(err, 'error on text search');
         return internalError();

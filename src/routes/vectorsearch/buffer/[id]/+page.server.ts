@@ -3,7 +3,7 @@ import { VFieldConv } from "$lib/documents/anime-search/queries";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
-import {checkAgeCookie} from "$lib/server/cookies.js";
+import {hasAgeCookie} from "$lib/server/cookies.js";
 import {OID_LEN} from "$lib/index.js";
 
 const CACHE_HEADER = {
@@ -12,9 +12,7 @@ const CACHE_HEADER = {
 
 export function load({cookies, url, params, setHeaders}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
-    if (rating === Rating.Hentai) {
-        checkAgeCookie(cookies, url);
-    }
+    const needAgeVerification = rating === Rating.Hentai ? !hasAgeCookie(cookies) : false;
     
     const id = params.id;
     if (id.length !== OID_LEN) {
@@ -43,7 +41,7 @@ export function load({cookies, url, params, setHeaders}) {
             vfield,
             id            
         );
-        return {bufferedStream};
+        return {needAgeVerification, bufferedStream};
     } catch (err) {
         logs.error(err, 'error on vector search');
         return internalError();
