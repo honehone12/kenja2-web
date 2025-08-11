@@ -1,6 +1,4 @@
-const CACHE_HEADER = {
-    "Cache-Control": "max-age=86400"
-};
+import { CACHE_HEADER } from '$lib/server/headers.js';
 
 export function load({setHeaders}) {
     setHeaders(CACHE_HEADER);

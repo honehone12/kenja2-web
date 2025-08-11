@@ -3,11 +3,8 @@ import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {hasAgeCookie} from "$lib/server/cookies.js";
+import {CACHE_HEADER, NO_CACEH_HEADER} from "$lib/server/headers";
 import {MAX_KW_LEN} from "$lib/index.js";
-
-const CACHE_HEADER = {
-    "Cache-Control": "max-age=86400"
-};
 
 export function load({cookies, url, setHeaders}) {
     const rating = RatingConv.fromString(url.searchParams.get('rating'));
@@ -26,7 +23,11 @@ export function load({cookies, url, setHeaders}) {
     const fuzzy_kind = FuzzyConv.fromString(url.searchParams.get('fuzzy'));
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
 
-    setHeaders(CACHE_HEADER);
+    if (rating === Rating.Hentai) {
+        setHeaders(NO_CACEH_HEADER);
+    } else {
+        setHeaders(CACHE_HEADER)
+    }
 
     try {
         const bufferedStream = kenja.animeSearch().textSearch(
