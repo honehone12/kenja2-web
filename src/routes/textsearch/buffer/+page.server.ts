@@ -1,4 +1,4 @@
-import { ITypeConv, Rating, RatingConv } from "$lib/documents/anime-search/queries.js";
+import { FuzzyConv, ITypeConv, Rating, RatingConv } from "$lib/documents/anime-search/queries.js";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
@@ -25,6 +25,7 @@ export function load({cookies, url, setHeaders}) {
         return badRequest();
     }
 
+    const fuzzy_kind = FuzzyConv.fromString(url.searchParams.get('fuzzy'));
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
 
     setHeaders(CACHE_HEADER);
@@ -33,7 +34,8 @@ export function load({cookies, url, setHeaders}) {
         const bufferedStream = kenja.animeSearch().textSearch(
             rating,
             item_type,
-            keywords
+            keywords,
+            fuzzy_kind
         );
         return {bufferedStream};
     } catch (err) {
