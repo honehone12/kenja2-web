@@ -4,7 +4,8 @@ import {
     FunctionId, 
     Rating, 
     ItemType, 
-    VectorField, 
+    VectorField,
+    FuzzyKind, 
     type SearchQuery 
 } from "$lib/documents/anime-search/queries";
 import type {SearchResult} from "$lib/documents/anime-search/documents";
@@ -66,13 +67,15 @@ export class HttpBufferApi implements AnimeSearch {
     async textSearch(
         rating: Rating | undefined,
         item_type: ItemType | undefined,
-        keywords: string
+        keywords: string,
+        fuzzy_kind: FuzzyKind | undefined
     ): Promise<SearchResult> {
         const q: SearchQuery = {
             function_id: FunctionId.TextSearchBuffer,
             rating,
             item_type,
-            keywords
+            keywords,
+            fuzzy_kind
         };
         const body = JSON.stringify(q);
     

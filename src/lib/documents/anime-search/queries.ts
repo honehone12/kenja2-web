@@ -62,6 +62,17 @@ export const enum FunctionId {
     VectorSearchBuffer = 4
 }
 
+export const enum FuzzyKind {
+    Unspecified = 0,
+    Use = 1
+}
+
+export class FuzzyConv {
+    static fromString(s: string | null) {
+        return s === 'use' ? FuzzyKind.Use : undefined;
+    }
+}
+
 export interface SearchQuery {
     function_id: FunctionId;
     rating?: Rating | undefined;
@@ -69,4 +80,5 @@ export interface SearchQuery {
     vector_field?: VectorField | undefined;
     id?: string | undefined;
     keywords?: string | undefined;
+    fuzzy_kind?: FuzzyKind | undefined; 
 }
