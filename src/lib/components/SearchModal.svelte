@@ -23,7 +23,7 @@
             </h2>
         </span>
         <div class="modal-action mt-10 mb-10">
-            <TextSearchForm useFlexible={false}/>
+            <TextSearchForm useFlexible={false} useKenjaMode={false}/>
         </div>
     </div>
 </dialog>
