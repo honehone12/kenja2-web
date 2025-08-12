@@ -2,7 +2,7 @@
     import {page} from '$app/state';
     import ErrorMsg from "$lib/components/ErrorMsg.svelte";
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
-    import type { SearchResult } from "$lib/documents/anime-search/documents";
+    import type { SearchResult, FlatDocument } from "$lib/documents/anime-search/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import DocumentModal from "$lib/components/DocumentModal.svelte";
     import { AGE_MODAL_ID, DOCUMENT_MODAL_ID, getModal } from "$lib";
@@ -45,6 +45,16 @@
         getModal(DOCUMENT_MODAL_ID)?.close();
     }
 
+    function vectorSource(documents: FlatDocument[]) {
+        return documents.at(0)?.name ?? ' ';
+    }
+    
+    function searchKeywords() {
+        // if this is shown, kws are wihin limit and there are matched results.
+        let kw = page.url.searchParams.get('keyword') ?? '';
+        return kw.replace(/<.*?>/g, '');
+    }
+
     function itemType() {
         const iType = page.url.searchParams.get('item-type');
         // don't show unexpected values;
@@ -73,6 +83,9 @@
 </script>
 
 <AgeModal ref={page.url.pathname + page.url.search}/>
+<div class="mt-20 text-center">
+    <h1 class="text-3xl text-info">Search Results</h1>
+</div>    
 {#await searchResult()}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
@@ -85,9 +98,9 @@
             <div class="hero w-full">
                 <div class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-10 mb-10">
                     {#if isVector}
-                        <h1 class="text-lg">Similar {itemType()} with "{documents.at(0)?.name ?? ' '}" ({vectorType()})</h1>
+                        <h2 class="text-lg">Similar {itemType()} with "{vectorSource(documents)}" ({vectorType()})</h2>
                     {:else}
-                        <h1 class="text-lg">Search result of {itemType()} with "{page.url.searchParams.get('keyword') ?? ''}"</h1>
+                        <h2 class="text-lg">Search result of {itemType()} with "{searchKeywords()}"</h2>
                     {/if}
                 </div>
             </div>
@@ -117,4 +130,16 @@
             <ErrorMsg/>
         </div>
     </div>
-{/await}    
+{/await}
+<div class="mb-20 text-center">
+    <h2 class="text-lg">Tip💡</h2>
+    {#if isVector}
+        <p>
+            Search results will vary depending on whether the vector source is an image or text.
+        </p>
+    {:else}
+        <p>
+            Search results will vary depending on whether fuzzy search is ON or not.
+        </p>
+    {/if}
+</div>
