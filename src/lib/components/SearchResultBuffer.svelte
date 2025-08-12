@@ -6,7 +6,7 @@
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import DocumentModal from "$lib/components/DocumentModal.svelte";
     import {openDocumentModal, closeDocumentModal, openAgeModal} from "$lib/client/modal";
-    import AgeModal from './AgeModal.svelte';
+    import AgeModal from '$lib/components/AgeModal.svelte';
     import { onMount } from 'svelte';
 
     interface Props {

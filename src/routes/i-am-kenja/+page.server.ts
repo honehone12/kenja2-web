@@ -5,7 +5,6 @@ import { CACHE_HEADER } from '$lib/server/headers.js';
 import { MAX_REF_LEN } from "$lib";
 import logs from "$lib/server/logs.js";
 
-
 export function load({setHeaders}) {
     setHeaders(CACHE_HEADER);
 }
