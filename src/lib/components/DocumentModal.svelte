@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { DOCUMENT_MODAL_ID } from "$lib";
+    import { DOCUMENT_MODAL_ID } from "$lib/client/modal";
 
     interface Props {
         url: string | null;

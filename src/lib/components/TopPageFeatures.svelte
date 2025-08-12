@@ -1,8 +1,8 @@
 <script lang="ts">
     import type {FlatDocument} from "$lib/documents/anime-search/documents"
-    import {getModal, DOCUMENT_MODAL_ID} from "$lib";
+    import {closeDocumentModal, openDocumentModal} from "$lib/client/modal";
     import DocumentModal from "$lib/components/DocumentModal.svelte";
-    import TopDocuments from "./TopDocuments.svelte";
+    import TopDocuments from "$lib/components/TopDocuments.svelte";
 
     const MY_TOP_ANI: FlatDocument[] = [
         {
@@ -540,12 +540,12 @@
 
     function openModal(url: string) {
         selectedUrl = url;
-        getModal(DOCUMENT_MODAL_ID)?.showModal();
+        openDocumentModal();
     }
 
     function closeModal() {
         selectedUrl = null;
-        getModal(DOCUMENT_MODAL_ID)?.close();
+        closeDocumentModal();
     }
 </script>
 

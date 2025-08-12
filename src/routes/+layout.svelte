@@ -7,7 +7,7 @@
 	let {children} = $props();
 </script>
 
-<Navbar useKenjaMode={false}/>
+<Navbar useKenjaMode={true}/>
 {@render children()}
-<Dock/>
+<Dock useKenjaMode={true}/>
 <Footer/>

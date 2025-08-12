@@ -1,6 +1,12 @@
 <script lang="ts">
-    import {SEARCH_MODAL_ID, getModal} from "$lib";
+    import {openSearchModal, closeSearchModal} from "$lib/client/modal";
     import SearchModal from "$lib/components/SearchModal.svelte";
+
+    interface Props{
+        useKenjaMode: boolean;
+    }
+
+    let {useKenjaMode}: Props = $props();
 
     function gotoTop() {
         window.scrollTo({
@@ -9,13 +15,7 @@
         });
     }
 
-    function openModal() {
-        getModal(SEARCH_MODAL_ID)?.showModal();
-    }
-
-    function closeModal() {
-        getModal(SEARCH_MODAL_ID)?.close();
-    }
+    
 </script>
 
 <div class="dock">
@@ -25,14 +25,14 @@
         </a>
     </div>
     <div class="tooltip" data-tip="Mini Search Window">
-        <button onclick={openModal}>
+        <button onclick={openSearchModal}>
             <img
                 src="/kenja2_logo.png"
                 alt="Kenja logo with illustration of wise man"
                 class="size-10 drop-shadow-sm" 
             />
         </button>
-        <SearchModal onclickClose={closeModal}/>
+        <SearchModal onclickClose={closeSearchModal} {useKenjaMode}/>
     </div>
     <div class="tooltip" data-tip="Top of Page">
         <button aria-label="top" onclick={gotoTop}>
