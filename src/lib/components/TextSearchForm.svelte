@@ -21,7 +21,7 @@
         </div>
     {/if}
     <div class="mt-5 ml-5">
-        <FuzzyBox/>
+        <FuzzyBox usePink={kenjaMode}/>
     </div>
     <div class="mt-5 ml-5">
         <h2 class="text-2xl mb-3 tooltip" data-tip="Select items to search">Item type</h2>
