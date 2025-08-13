@@ -61,7 +61,7 @@
         },
         {
             initial: 'P',
-            topics: ['pirate', 'police']
+            topics: ['pirate', 'police', 'prince', 'princess']
         },
         {
             initial: 'R',
