@@ -87,10 +87,10 @@
 </script>
 
 <svelte:head>
-	<title>Anime Kenja - Anime and Character Topics and Keywords</title>
+	<title>Anime Kenja - Hentai Anime Topics and Keywords</title>
 	<meta
 		name="description"
-		content="List of keywords for hentai animes and characters. Search your hentai favorites by topics."
+		content="List of keywords for hentai animes. Search your hentai favorites by topics."
 	/>
 </svelte:head>
 

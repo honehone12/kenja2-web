@@ -437,13 +437,16 @@
 	<title>Anime Kenja - Kenja Mode</title>
 	<meta
 		name="description"
-		content="Anime Kenja is a anime and character search engine. Find kenja anime here."
+		content="Anime Kenja is a anime and character search engine. Find hentai anime here."
 	/>
 </svelte:head>
 
 <div class="py-20">
     <div class="hero w-full">
         <div class="hero-content flex flex-col">
+            <div class="text-center">
+                <h1 class="text-3xl text-info">Kenja Mode is On</h1>
+            </div>
             <div class="text-center">
                 <a href="/textsearch?kenja-mode=on">
                     <p class="link link-primary text-lg mt-2">Search with your keywords</p>
