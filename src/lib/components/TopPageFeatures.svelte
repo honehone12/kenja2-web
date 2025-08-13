@@ -552,21 +552,25 @@
 <TopDocuments
     name="My Top Animes"
     list={MY_TOP_ANI}
+    needAgeVerification={false}
     onclickItem={openModal}
 />
 <TopDocuments
     name="My Top Characters"
     list={MY_TOP_CHARA}
+    needAgeVerification={false}
     onclickItem={openModal}
 />
 <TopDocuments
     name="My Anime List Top Animes"
     list={MAL_TOP_ANI}
+    needAgeVerification={false}
     onclickItem={openModal}
 />
 <TopDocuments
     name="My Anime List Top Characters"
     list={MAL_TOP_CHARA}
+    needAgeVerification={false}
     onclickItem={openModal}
 />
 <DocumentModal

@@ -57,6 +57,7 @@
     <TopDocuments
         name="My Anine List Top Animes"
         list={prepareMalTop()}
+        needAgeVerification={data.needAgeVerification}
         onclickItem={openModal}
     />
 </div>

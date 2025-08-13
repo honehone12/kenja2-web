@@ -24,16 +24,6 @@
         }
     });
 
-    async function prepareResult() {
-        const result = await buffer;
-        if (needAgeVerification && result.documents) {
-            for (const doc of result.documents) {
-                doc.img = '/kenja2_logo.png';
-            }
-        }
-        return result;
-    }
-
     function openModal(url: string) {
         selectedUrl = url;
         openDocumentModal();
@@ -85,7 +75,7 @@
 <div class="mt-20 text-center">
     <h1 class="text-3xl text-info">Search Results</h1>
 </div>    
-{#await prepareResult()}
+{#await buffer}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <LoadingMsg/>
@@ -108,6 +98,7 @@
                     {#each documents as doc}
                         <CandidateCard      
                             {doc}
+                            useBlur={needAgeVerification}
                             onclickItem={openModal}
                         />
                     {/each}

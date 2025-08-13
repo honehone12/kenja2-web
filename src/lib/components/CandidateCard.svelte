@@ -4,10 +4,11 @@
 
     interface Props {
         doc: FlatDocument;
+        useBlur: boolean;
         onclickItem: (url: string) => void
     }
 
-    let {doc, onclickItem}: Props = $props();
+    let {doc, useBlur, onclickItem}: Props = $props();
 
     function lineColor(rating: Rating) {
         return rating === Rating.Hentai ? 'outline-fuchsia-500' : 'outline-cyan-500';
@@ -66,7 +67,7 @@
                 <img 
                     src="{doc.img}" 
                     alt="an anime image of {doc.name}"
-                    class="max-w-60"
+                    class="max-w-60 {useBlur ? 'blur-lg' : ''}"
                     loading="lazy"
                 >
             </button>

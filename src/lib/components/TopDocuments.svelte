@@ -5,10 +5,11 @@ import type {FlatDocument} from "$lib/documents/anime-search/documents"
 interface Props {
     name: string;
     list: FlatDocument[];
+    needAgeVerification: boolean;
     onclickItem: (url: string) => void;
 }
 
-let {name, list, onclickItem}: Props = $props();
+let {name, list, needAgeVerification, onclickItem}: Props = $props();
 </script>
 
 <div class="hero w-full">
@@ -21,6 +22,7 @@ let {name, list, onclickItem}: Props = $props();
         {#each list as doc}
             <CandidateCard
                 {doc}
+                useBlur={needAgeVerification}
                 {onclickItem}
             />
         {/each}
