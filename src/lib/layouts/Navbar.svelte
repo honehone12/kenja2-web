@@ -29,7 +29,7 @@
 				{#if useKenjaMode}
 					<li class="my-2">
 						<a tabindex="0" href="/kenja">
-							<span class="link">Kenja (R+18)</span>
+							<span class="link">Kenja (R18+)</span>
 						</a>
 					</li>
 				{/if}
@@ -54,7 +54,7 @@
 			</li>
 			{#if useKenjaMode}
 				<li>
-					<a tabindex="0" href="/kenja">Kenja (R+18)</a>
+					<a tabindex="0" href="/kenja">Kenja (R18+)</a>
 				</li>
 			{/if}
 			<li>
