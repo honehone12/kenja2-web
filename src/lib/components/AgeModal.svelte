@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { AGE_MODAL_ID } from "$lib";
-    import AgeVerification from "./AgeVerification.svelte";
+    import { AGE_MODAL_ID } from "$lib/client/modal";
+    import AgeVerification from "$lib/components/AgeVerification.svelte";
 
     interface Props {
         ref: string;

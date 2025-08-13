@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {SEARCH_MODAL_ID, getModal} from "$lib";
+    import {openSearchModal, closeSearchModal} from "$lib/client/modal";
     import SearchModal from "$lib/components/SearchModal.svelte";
 
     function gotoTop() {
@@ -7,14 +7,6 @@
             top: 0,
             behavior: 'smooth'
         });
-    }
-
-    function openModal() {
-        getModal(SEARCH_MODAL_ID)?.showModal();
-    }
-
-    function closeModal() {
-        getModal(SEARCH_MODAL_ID)?.close();
     }
 </script>
 
@@ -25,14 +17,14 @@
         </a>
     </div>
     <div class="tooltip" data-tip="Mini Search Window">
-        <button onclick={openModal}>
+        <button onclick={openSearchModal}>
             <img
                 src="/kenja2_logo.png"
                 alt="Kenja logo with illustration of wise man"
                 class="size-10 drop-shadow-sm" 
             />
         </button>
-        <SearchModal onclickClose={closeModal}/>
+        <SearchModal onclickClose={closeSearchModal}/>
     </div>
     <div class="tooltip" data-tip="Top of Page">
         <button aria-label="top" onclick={gotoTop}>

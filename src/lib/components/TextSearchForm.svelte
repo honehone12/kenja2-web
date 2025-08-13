@@ -3,17 +3,25 @@
     import ItemTypeRadio from "$lib/components/ItemTypeRadio.svelte";
     import RatingToggle from "$lib/components/RatingToggle.svelte";
     import FuzzyBox from "$lib/components/FuzzyBox.svelte";
+    import { getContext } from "svelte";
 
     interface Props {
         useFlexible: boolean;
-        useKenjaMode: boolean;
+        onsubmit: (() => void) | null;
     }
     
-    let {useFlexible, useKenjaMode}: Props = $props();
+    let {useFlexible, onsubmit}: Props = $props();
+
+    const useKenjaMode: boolean = getContext('useKenjaMode');
+
     let kenjaMode = $state(false);
 </script>
 
-<form method="get" action="/textsearch/buffer">
+<form 
+    method="get" 
+    action="/textsearch/buffer"
+    {onsubmit}
+>
     <KeywordInput {useFlexible} usePink={kenjaMode}/>
     {#if useKenjaMode}
         <div class="mt-5 ml-5">

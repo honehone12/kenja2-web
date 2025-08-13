@@ -1,9 +1,7 @@
 <script lang="ts">
-	interface Props {
-		useKenjaMode: boolean;
-	}
+    import { getContext } from "svelte";
 
-	let {useKenjaMode}: Props = $props();
+	const useKenjaMode: boolean = getContext('useKenjaMode');
 </script>
 
 <div class="navbar bg-base-300">
@@ -31,7 +29,7 @@
 				{#if useKenjaMode}
 					<li class="my-2">
 						<a tabindex="0" href="/kenja">
-							<span class="link">Kenja(R+18)</span>
+							<span class="link">Kenja (R+18)</span>
 						</a>
 					</li>
 				{/if}
@@ -56,7 +54,7 @@
 			</li>
 			{#if useKenjaMode}
 				<li>
-					<a tabindex="0" href="/kenja">Kenja(R+18)</a>
+					<a tabindex="0" href="/kenja">Kenja (R+18)</a>
 				</li>
 			{/if}
 			<li>

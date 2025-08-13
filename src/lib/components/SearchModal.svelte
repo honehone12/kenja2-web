@@ -1,6 +1,6 @@
 <script lang="ts">
-    import {SEARCH_MODAL_ID} from "$lib";
-    import TextSearchForm from "./TextSearchForm.svelte";
+    import {SEARCH_MODAL_ID} from "$lib/client/modal";
+    import TextSearchForm from "$lib/components/TextSearchForm.svelte";
 
     interface Props {
         onclickClose: () => void;
@@ -23,7 +23,7 @@
             </h2>
         </span>
         <div class="modal-action mt-10 mb-10">
-            <TextSearchForm useFlexible={false} useKenjaMode={false}/>
+            <TextSearchForm useFlexible={false} onsubmit={onclickClose}/>
         </div>
     </div>
 </dialog>
