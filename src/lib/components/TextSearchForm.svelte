@@ -7,16 +7,21 @@
 
     interface Props {
         useFlexible: boolean;
+        onsubmit: (() => void) | null;
     }
     
-    let {useFlexible}: Props = $props();
+    let {useFlexible, onsubmit}: Props = $props();
 
     const useKenjaMode: boolean = getContext('useKenjaMode');
 
     let kenjaMode = $state(false);
 </script>
 
-<form method="get" action="/textsearch/buffer">
+<form 
+    method="get" 
+    action="/textsearch/buffer"
+    {onsubmit}
+>
     <KeywordInput {useFlexible} usePink={kenjaMode}/>
     {#if useKenjaMode}
         <div class="mt-5 ml-5">
