@@ -23,7 +23,11 @@
             </h2>
         </span>
         <div class="modal-action mt-10 mb-10">
-            <TextSearchForm useFlexible={false} onsubmit={onclickClose}/>
+            <TextSearchForm 
+                useFlexible={false} 
+                defaultKenjaMode={false}
+                onsubmit={onclickClose}
+            />
         </div>
     </div>
 </dialog>

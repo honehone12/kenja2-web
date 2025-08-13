@@ -1,10 +1,6 @@
 <script lang="ts">
-    import Topic from "$lib/components/Topic.svelte";
-
-    interface Topic {
-        initial: string;
-        topics: string[];
-    }
+    import { type Topic } from "$lib/client/topic";    
+    import TopicList from "$lib/components/TopicList.svelte";
 
     const TOPICS: Topic[] = [
         {
@@ -77,7 +73,7 @@
         },
         {
             initial: 'V',
-            topics: ['vampire']
+            topics: ['volleyball', 'vampire']
         },
         {
             initial: 'W',
@@ -108,15 +104,7 @@
     </div>
     <div class="hero">
         <div class="hero-content">
-            <div class="flex flex-wrap justify-center gap-x-10 gap-y-5 my-20 px-20">
-                {#each TOPICS as topic}
-                    <Topic 
-                        initial={topic.initial} 
-                        topics={topic.topics}
-                    />
-                {/each}
-            </div>
+            <TopicList topics={TOPICS} kenjaMode={false}/>
         </div>
     </div>
 </div>
-

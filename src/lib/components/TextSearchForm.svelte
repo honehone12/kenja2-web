@@ -7,14 +7,15 @@
 
     interface Props {
         useFlexible: boolean;
+        defaultKenjaMode: boolean;
         onsubmit: (() => void) | null;
     }
     
-    let {useFlexible, onsubmit}: Props = $props();
+    let {useFlexible, defaultKenjaMode, onsubmit}: Props = $props();
 
     const useKenjaMode: boolean = getContext('useKenjaMode');
 
-    let kenjaMode = $state(false);
+    let kenjaMode = $state(defaultKenjaMode);
 </script>
 
 <form 
