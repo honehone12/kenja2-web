@@ -445,7 +445,7 @@
     <div class="hero w-full">
         <div class="hero-content flex flex-col">
             <div class="text-center">
-                <h1 class="text-3xl text-info">Kenja Mode is On</h1>
+                <h1 class="text-3xl text-info">Kenja Mode is {data.needAgeVerification ? 'Off' : 'On'}</h1>
             </div>
             <div class="text-center">
                 <a href="/textsearch?kenja-mode=on">
