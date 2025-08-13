@@ -3,13 +3,16 @@
     import ItemTypeRadio from "$lib/components/ItemTypeRadio.svelte";
     import RatingToggle from "$lib/components/RatingToggle.svelte";
     import FuzzyBox from "$lib/components/FuzzyBox.svelte";
+    import { getContext } from "svelte";
 
     interface Props {
         useFlexible: boolean;
-        useKenjaMode: boolean;
     }
     
-    let {useFlexible, useKenjaMode}: Props = $props();
+    let {useFlexible}: Props = $props();
+
+    const useKenjaMode: boolean = getContext('useKenjaMode');
+
     let kenjaMode = $state(false);
 </script>
 

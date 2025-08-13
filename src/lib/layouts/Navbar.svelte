@@ -1,9 +1,7 @@
 <script lang="ts">
-	interface Props {
-		useKenjaMode: boolean;
-	}
+    import { getContext } from "svelte";
 
-	let {useKenjaMode}: Props = $props();
+	const useKenjaMode: boolean = getContext('useKenjaMode');
 </script>
 
 <div class="navbar bg-base-300">
