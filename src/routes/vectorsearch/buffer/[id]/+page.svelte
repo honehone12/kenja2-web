@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { SearchType } from '$lib/client/search-type.js';
     import SearchResultBuffer from '$lib/components/SearchResultBuffer.svelte';
 
     let {data} = $props();
@@ -11,5 +12,5 @@
 <SearchResultBuffer 
     buffer={data.bufferedStream} 
     needAgeVerification={data.needAgeVerification}
-    isVector={true}
+    searchType={SearchType.Vector}
 />
