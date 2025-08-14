@@ -1,6 +1,6 @@
 export const enum Rating {
     AllAges = 1,
-    Hentai = 2
+    Hentai
 }
 
 export class RatingConv {
@@ -18,7 +18,7 @@ export class RatingConv {
 
 export const enum VectorField {
     Txt = 1,
-    Img = 2
+    Img
 }
 
 export class VFieldConv {
@@ -36,9 +36,9 @@ export class VFieldConv {
 
 export const enum ItemType {
     Anime = 1,
-    Character = 2,
-    AnimeImgOnly = 3,
-    CharacterImgOnly = 4
+    Character,
+    AnimeImgOnly,
+    CharacterImgOnly
 }
 
 export class ITypeConv {
@@ -56,15 +56,15 @@ export class ITypeConv {
 
 export const enum FunctionId {
     Unspecified = 0,
-    Ping = 1,
-    Document = 2,
-    TextSearchBuffer = 3,
-    VectorSearchBuffer = 4
+    Ping,
+    Document,
+    TextSearchBuffer,
+    VectorSearchBuffer
 }
 
 export const enum FuzzyKind {
     Unspecified = 0,
-    Use = 1
+    Use
 }
 
 export class FuzzyConv {

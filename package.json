@@ -14,13 +14,13 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-node": "^5.2.13",
-		"@sveltejs/kit": "^2.27.1",
+		"@sveltejs/adapter-node": "^5.2.14",
+		"@sveltejs/kit": "^2.29.1",
 		"@sveltejs/vite-plugin-svelte": "^5.1.1",
 		"@tailwindcss/vite": "^4.1.11",
-		"@types/node": "^24.2.0",
+		"@types/node": "^24.2.1",
 		"daisyui": "^5.0.50",
-		"svelte": "^5.37.3",
+		"svelte": "^5.38.1",
 		"svelte-check": "^4.3.1",
 		"tailwindcss": "^4.1.11",
 		"typescript": "^5.9.2",
@@ -34,7 +34,7 @@
 	},
 	"packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748",
 	"dependencies": {
-		"@aws-sdk/client-lambda": "^3.859.0",
-		"pino": "^9.7.0"
+		"@aws-sdk/client-lambda": "^3.865.0",
+		"pino": "^9.9.0"
 	}
 }

@@ -8,14 +8,15 @@
     import {openDocumentModal, closeDocumentModal, openAgeModal} from "$lib/client/modal";
     import AgeModal from '$lib/components/AgeModal.svelte';
     import { onMount } from 'svelte';
+    import { SearchType } from '$lib/client/search-type';
 
     interface Props {
         buffer: Promise<SearchResult>;
         needAgeVerification: boolean;
-        isVector: boolean;
+        searchType: SearchType;
     }
 
-    let {buffer, needAgeVerification, isVector}: Props = $props();
+    let {buffer, needAgeVerification, searchType}: Props = $props();
     let selectedUrl: string | null = $state(null);
 
     onMount(() => {
@@ -86,9 +87,9 @@
         <div class="py-20">
             <div class="hero w-full">
                 <div class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-10 mb-10">
-                    {#if isVector}
+                    {#if searchType === SearchType.Vector}
                         <h2 class="text-lg">Similar {itemType()} with "{vectorSource(documents)}" ({vectorType()})</h2>
-                    {:else}
+                    {:else if searchType === SearchType.Text}
                         <h2 class="text-lg">Search result of {itemType()} with "{searchKeywords()}"</h2>
                     {/if}
                 </div>
@@ -123,11 +124,11 @@
 {/await}
 <div class="mb-20 text-center">
     <h2 class="text-lg">Tip💡</h2>
-    {#if isVector}
+    {#if searchType === SearchType.Vector}
         <p>
             Search results will vary depending on whether the vector source is an image or text.
         </p>
-    {:else}
+    {:else if searchType === SearchType.Text}
         <p>
             Search results will vary depending on whether fuzzy search is ON or not.
         </p>

@@ -4,10 +4,7 @@
 
     function defaultMode() {
         const mode = page.url.searchParams.get('kenja-mode');
-        if (mode && mode === 'on') {
-            return true;
-        }
-        return false;
+        return mode ? mode === 'on' : false;
     }
 </script>
 

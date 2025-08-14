@@ -287,17 +287,6 @@
             name_japanese: 'この恋に気づいて THE ANIMATION'
         },
         {
-            id: '68941664d978bd4046824a69',
-            item_type: 1,
-            rating: 2,
-            url: 'https://myanimelist.net/anime/29575/Mankitsu_Happening',
-            img: '/preview/383840028a2ebf9e6c61bcf5d6ed2241.jpg',
-            parent: undefined,
-            name: 'Mankitsu Happening',
-            name_english: undefined,
-            name_japanese: '漫喫ハプニング'
-        },
-        {
             id: '68941669d978bd4046824da0',
             item_type: 1,
             rating: 2,
@@ -417,6 +406,17 @@
             name: 'Bubble de House de *** The Animation',
             name_english: undefined,
             name_japanese: 'バブルdeハウスde○○○ THE ANIMATION'
+        },
+        {
+            id: '68941669d978bd4046824d7d',
+            item_type: 1,
+            rating: 2,
+            url: 'https://myanimelist.net/anime/41848/Isekai_Harem_Monogatari',
+            img: '/preview/fc3e2071acee15a8a7570ea701b259d2.jpg',
+            parent: undefined,
+            name: 'Isekai Harem Monogatari',
+            name_english: undefined,
+            name_japanese: '異世界ハーレム物語'
         }
     ];
 

@@ -5,3 +5,8 @@ export const CACHE_HEADER = {
 export const NO_CACHE_HEADER = {
     "Cache-Control": "no-cache"
 };
+
+export const VARY_CACHE_HEADER = {
+    "Cache-Control": "max-age=86400",
+    "Vary": "Cookie"
+}
