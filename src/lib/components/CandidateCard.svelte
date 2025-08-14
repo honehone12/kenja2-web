@@ -46,7 +46,7 @@
                 <p>Character キャラクター</p>
             </div>
             {#if doc.parent}
-                <a href="/textsearch/buffer?keyword={doc.parent.name}{doc.rating === Rating.Hentai ? '&rating=hentai' : ''}&item-type=">
+                <a href="{doc.rating === Rating.Hentai ? '/kenja' : ''}/textsearch/buffer?keyword={doc.parent.name}&item-type=">
                     <h3 class="link link-primary">
                         {doc.parent.name} / {doc.parent.name_japanese ?? ''}
                     </h3>    
@@ -59,7 +59,7 @@
         {#if doc.name_japanese}    
             <h2 class="text-xl">{doc.name_japanese}</h2>
         {/if}
-        <a href="/textsearch/buffer?keyword={doc.name}{doc.rating === Rating.Hentai ? '&rating=hentai' : ''}&item-type=">
+        <a href="{doc.rating === Rating.Hentai ? '/kenja' : ''}/textsearch/buffer?keyword={doc.name}&item-type=">
             <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
         </a>
         <div class="card-action text-center">
@@ -73,14 +73,14 @@
             </button>
             <h2 class="text-xl my-5">Find similar items</h2>
             {#if hasTextVec(doc.item_type)}
-                <a href="/vectorsearch/buffer/{doc.id}?{doc.rating === Rating.Hentai ? 'rating=hentai&' : ''}item-type={isCharacter(doc.item_type) ? 'character' : 'anime'}&vector=text">
+                <a href="{doc.rating === Rating.Hentai ? '/kenja' : ''}/vectorsearch/buffer/{doc.id}?item-type={isCharacter(doc.item_type) ? 'character' : 'anime'}&vector=text">
                     <button 
                         class="btn btn-lg {btnColor(doc.rating)} w-30 mr-5 tooltip" 
                         data-tip="Search Similar Summary Texts"
                     >Text</button>
                 </a>
             {/if}
-            <a href="/vectorsearch/buffer/{doc.id}?{doc.rating === Rating.Hentai ? 'rating=hentai&' : ''}item-type={isCharacter(doc.item_type) ? 'character' : 'anime'}&vector=image">
+            <a href="{doc.rating === Rating.Hentai ? '/kenja' : ''}/vectorsearch/buffer/{doc.id}?item-type={isCharacter(doc.item_type) ? 'character' : 'anime'}&vector=image">
                 <button 
                     class="btn btn-lg {btnColor(doc.rating)} w-30 tooltip"
                     data-tip="Search Similar Images"

@@ -15,7 +15,7 @@
         {#each topic.topics as kw}
             <li class="list-row">
                 {#if kenjaMode}
-                    <a href="/textsearch/buffer?keyword={kw}&rating=hentai&item-type=">
+                    <a href="/kenja/textsearch/buffer?keyword={kw}&item-type=">
                         <p class="link link-secondary text-lg text-end">{kw} (R18+)</p>
                     </a>
                 {:else}
