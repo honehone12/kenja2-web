@@ -4,7 +4,7 @@ import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {hasAgeCookie} from "$lib/server/cookies.js";
-import {NO_CACHE_HEADER} from "$lib/server/headers.js";
+import {VARY_CACHE_HEADER} from "$lib/server/headers.js";
 import { validateItemType, validateOid, validateVectorField } from "$lib/server/validation.js";
 
 export function load({cookies, url, params, setHeaders}) {
@@ -25,7 +25,7 @@ export function load({cookies, url, params, setHeaders}) {
 
     const needAgeVerification = !hasAgeCookie(cookies);
 
-    setHeaders(NO_CACHE_HEADER);
+    setHeaders(VARY_CACHE_HEADER);
     
     try {
         const bufferedStream = kenja.animeSearch().vectorSearch(
