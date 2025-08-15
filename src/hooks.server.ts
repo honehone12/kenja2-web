@@ -29,16 +29,21 @@ export const handle: Handle = async ({ event, resolve }) => {
     const url = event.request.url;
     const referer = h.get('Referer');
     const userAgent = h.get('User-Agent');
+    const host = h.get('Host');
+    const origin = h.get('Origin');
 
     if (kenja.isLocal()) {
         const ip = event.getClientAddress();
         logs.info(
-            {url, referer, userAgent, ip}, 
+            {url, referer, userAgent, ip, host, origin}, 
             'local request header values'
         );
     } else {
-        const ipHeader = h.get('X-Forwarded-For');
-        if (ipHeader) {
+        
+        const xProto = h.get('X-Forwarded-Proto');
+        const xHost = h.get('X-Forwarded-Host')
+        const xIpHeader = h.get('X-Forwarded-For');
+        if (xIpHeader) {
             // Some guides will tell you to read the left-most address,
             // but this leaves you vulnerable to spoofing.
             // <spoofed address>, <client address>, <proxy 1 address>, <proxy 2 address>
@@ -46,10 +51,10 @@ export const handle: Handle = async ({ event, resolve }) => {
             // https://svelte.dev/docs/kit/adapter-node
             //
             // don't trust this ip address
-            const ip = ipHeader.split(',').at(0)?.trim();
+            const ip = xIpHeader.split(',').at(0)?.trim();
             if (ip) {
                 logs.info(
-                    {url, referer, userAgent, ip}, 
+                    {url, referer, userAgent, ip, host, origin, xProto, xHost}, 
                     'request header values'
                 );
             } else {
