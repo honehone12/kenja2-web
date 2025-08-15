@@ -7,7 +7,7 @@
 
 	let {children} = $props();
 
-    setContext('useKenjaMode', false);
+    setContext('useKenjaMode', true);
 </script>
 
 <Navbar/>
