@@ -8,7 +8,7 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"start": "node build",
-		"cloud-build": "npm install && ORIGIN=https://33znziw5ux.ap-northeast-1.awsapprunner.com npm run build",
+		"cloud-build": "npm install && PROTOCOL_HEADER=x-forwarded-proto HOST_HEADER=x-forwarded-host npm run build",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
