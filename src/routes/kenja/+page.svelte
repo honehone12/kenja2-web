@@ -422,6 +422,17 @@
 
     let selectedUrl: string | null = $state(null);
 
+    function prepare() {
+        if (data.needAgeVerification) {
+            for (const doc of MAL_POPULAR) {
+                doc.img = '/kenja2_placeholder.png';
+            }
+            for (const doc of MAL_TOP) {
+                doc.img = '/kenja2_placeholder.png';
+            }
+        }
+    }
+
     function openModal(url: string) {
         selectedUrl = url;
         openDocumentModal();
@@ -431,6 +442,8 @@
         selectedUrl = null;
         closeDocumentModal();
     }
+
+    prepare()
 </script>
 
 <svelte:head>

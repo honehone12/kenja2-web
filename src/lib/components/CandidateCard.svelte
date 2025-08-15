@@ -67,7 +67,7 @@
                 <img 
                     src="{doc.img}" 
                     alt="an anime image of {doc.name}"
-                    class="max-w-60 {useBlur ? 'blur-lg' : ''}"
+                    class="max-w-60 {useBlur ? 'blur-xl' : ''}"
                     loading="lazy"
                 >
             </button>
