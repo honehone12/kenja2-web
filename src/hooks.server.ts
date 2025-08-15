@@ -39,11 +39,8 @@ export const handle: Handle = async ({ event, resolve }) => {
             'local request header values'
         );
     } else {
-        
-        const xProto = h.get('X-Forwarded-Proto');
-        const xHost = h.get('X-Forwarded-Host')
         const xIp = h.get('X-Forwarded-For');
-        if (xProto && xHost && xIp) {
+        if (xIp) {
             // Some guides will tell you to read the left-most address,
             // but this leaves you vulnerable to spoofing.
             // <spoofed address>, <client address>, <proxy 1 address>, <proxy 2 address>
@@ -54,7 +51,7 @@ export const handle: Handle = async ({ event, resolve }) => {
             const ip = xIp.split(',').at(0)?.trim();
             if (ip) {
                 logs.info(
-                    {url, referer, userAgent, ip, host, origin, xProto, xHost}, 
+                    {url, referer, userAgent, ip, host, origin}, 
                     'request header values'
                 );
             } else {
