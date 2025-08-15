@@ -42,8 +42,8 @@ export const handle: Handle = async ({ event, resolve }) => {
         
         const xProto = h.get('X-Forwarded-Proto');
         const xHost = h.get('X-Forwarded-Host')
-        const xIpHeader = h.get('X-Forwarded-For');
-        if (xIpHeader) {
+        const xIp = h.get('X-Forwarded-For');
+        if (xProto && xHost && xIp) {
             // Some guides will tell you to read the left-most address,
             // but this leaves you vulnerable to spoofing.
             // <spoofed address>, <client address>, <proxy 1 address>, <proxy 2 address>
@@ -51,17 +51,17 @@ export const handle: Handle = async ({ event, resolve }) => {
             // https://svelte.dev/docs/kit/adapter-node
             //
             // don't trust this ip address
-            const ip = xIpHeader.split(',').at(0)?.trim();
+            const ip = xIp.split(',').at(0)?.trim();
             if (ip) {
                 logs.info(
                     {url, referer, userAgent, ip, host, origin, xProto, xHost}, 
                     'request header values'
                 );
             } else {
-                throw new Error('invalid ip header');
+                throw new Error('invalid x ip header');
             }
         } else {
-            throw new Error('could not find ip header');
+            throw new Error('could not find x ip host proto header');
         }
 
         const viewerAddress = h.get('CloudFront-Viewer-Address');
