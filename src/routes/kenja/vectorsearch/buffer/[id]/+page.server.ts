@@ -29,7 +29,7 @@ export function load({cookies, url, params, setHeaders}) {
     
     try {
         const bufferedStream = kenja.animeSearch().vectorSearch(
-            Rating.Hentai,
+            Rating.X,
             item_type,
             vfield,
             id            
