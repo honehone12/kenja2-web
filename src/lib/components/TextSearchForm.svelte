@@ -1,41 +1,35 @@
 <script lang="ts">
     import KeywordInput from "$lib/components/KeywordInput.svelte";
     import ItemTypeRadio from "$lib/components/ItemTypeRadio.svelte";
-    import RatingToggle from "$lib/components/RatingToggle.svelte";
+    import SafeSearchToggle from "$lib/components/SafeSearchToggle.svelte";
     import FuzzyBox from "$lib/components/FuzzyBox.svelte";
-    import { getContext } from "svelte";
-
+ 
     interface Props {
         useFlexible: boolean;
-        defaultKenjaMode: boolean;
         onsubmit: (() => void) | null;
     }
     
-    let {useFlexible, defaultKenjaMode, onsubmit}: Props = $props();
+    let {useFlexible, onsubmit}: Props = $props();
 
-    const useKenjaMode: boolean = getContext('useKenjaMode');
-
-    let kenjaMode = $state(defaultKenjaMode);
+    let safeSearch = $state(true);
 </script>
 
 <div>
     <form 
         method="get" 
-        action="{kenjaMode ? '/kenja' : ''}/textsearch/buffer"
+        action="{safeSearch ? '' : '/kenja'}/textsearch/buffer"
         {onsubmit}
     >
-        <KeywordInput {useFlexible} usePink={kenjaMode}/>    
+        <KeywordInput {useFlexible} usePink={!safeSearch}/>    
         <div class="mt-5 ml-5">
-            <FuzzyBox usePink={kenjaMode}/>
+            <FuzzyBox usePink={!safeSearch}/>
         </div>
         <div class="mt-5 ml-5">
-            <h2 class="text-2xl mb-3 tooltip" data-tip="Select items to search">Item type</h2>
-            <ItemTypeRadio useAll={true} usePink={kenjaMode}/>
+            <h2 class="text-2xl mb-3 tooltip" data-tip="Select items to search">Item Type</h2>
+            <ItemTypeRadio useAll={true} usePink={!safeSearch}/>
         </div>
     </form>
-    {#if useKenjaMode}
-        <div class="mt-5 ml-5">
-            <RatingToggle bind:kenjaMode/>
-        </div>
-    {/if}
+    <div class="mt-5 ml-5">
+        <SafeSearchToggle bind:safeSearch/>
+    </div>
 </div>

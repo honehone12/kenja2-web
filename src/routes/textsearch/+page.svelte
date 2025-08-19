@@ -1,11 +1,6 @@
 <script lang="ts">
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
     import { page } from "$app/state";
-
-    function defaultMode() {
-        const mode = page.url.searchParams.get('kenja-mode');
-        return mode ? mode === 'on' : false;
-    }
 </script>
 
 <svelte:head>
@@ -29,8 +24,7 @@
             <h1>Anime and Character Search</h1>
         </div>
         <TextSearchForm 
-            useFlexible={true}
-            defaultKenjaMode={defaultMode()} 
+            useFlexible={true} 
             onsubmit={null}
         />
     </div>

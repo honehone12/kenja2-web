@@ -6,8 +6,6 @@
     import { setContext } from 'svelte';
 
 	let {children} = $props();
-
-    setContext('useKenjaMode', true);
 </script>
 
 <Navbar/>
