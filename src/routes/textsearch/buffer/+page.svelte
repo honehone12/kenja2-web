@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Anime Kenja - Keyword Search Result</title>
+	<title>Anime Kenja - Anime and Character Keyword Search Result</title>
 </svelte:head>
 
 <SearchResultBuffer 

@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Anime Kenja - Age Verification</title>
+	<title>Kenja - Age Verification</title>
 </svelte:head>
 
 <div class="hero w-full h-screen">
