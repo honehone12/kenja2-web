@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>Anime Kenja - Anime and Character Search Engine</title>
+	<title>Kenja - Anime and Character Search Engine</title>
 	<meta
 		name="description"
 		content="Anime Kenja is a anime and character search engine, featuring full text keyword search and similarity vector search."
@@ -21,9 +21,9 @@
                 />
             </figure>
             <div class="text-center">
-                <h1 class="text-5xl mb-10">Anime Kenja</h1>
+                <h1 class="text-5xl text-info mb-10">Kenja</h1>
                 <p class="text-lg">
-                    Anime Kenja is a web site for searching animes and characters,<br>
+                    Kenja is a web site for searching animes and characters,<br>
                     featuring full text search and similarity vector search.
                 </p>
                 <a href="/about">

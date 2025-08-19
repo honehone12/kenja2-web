@@ -25,7 +25,6 @@
         <div class="modal-action mt-10 mb-10">
             <TextSearchForm 
                 useFlexible={false} 
-                defaultKenjaMode={false}
                 onsubmit={onclickClose}
             />
         </div>

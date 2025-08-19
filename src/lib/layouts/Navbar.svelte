@@ -1,9 +1,3 @@
-<script lang="ts">
-    import { getContext } from "svelte";
-
-	const useKenjaMode: boolean = getContext('useKenjaMode');
-</script>
-
 <div class="navbar bg-base-300">
 	<div class="navbar-start">
 		<div class="dropdown md:hidden">
@@ -26,13 +20,6 @@
 						<span class="link">Topics</span>
 					</a>
 				</li>
-				{#if useKenjaMode}
-					<li class="my-2">
-						<a tabindex="0" href="/kenja">
-							<span class="link">Kenja (R18+)</span>
-						</a>
-					</li>
-				{/if}
 				<li class="my-2">
 					<a tabindex="0" href="/about">
 						<span class="link">About</span>
@@ -52,11 +39,6 @@
 			<li>
 				<a tabindex="0" href="/topics">Topics</a>
 			</li>
-			{#if useKenjaMode}
-				<li>
-					<a tabindex="0" href="/kenja">Kenja (R18+)</a>
-				</li>
-			{/if}
 			<li>
 				<a tabindex="0" href="/about">About</a>
 			</li>

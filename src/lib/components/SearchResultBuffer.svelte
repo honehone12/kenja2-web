@@ -133,7 +133,7 @@
         </div>
     </div>
 {/await}
-<div class="mb-20 text-center">
+<div class="mb-20 text-center mx-5">
     <h2 class="text-lg">Tip💡</h2>
     {#if searchType === SearchType.Vector}
         <p>
