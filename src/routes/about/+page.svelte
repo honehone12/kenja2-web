@@ -19,7 +19,8 @@
                     Kenja is a "Anime Search Engine" being developed by individual.<br>
                     You can search anime or character with some keywords by full text search engine.
                     You can choose keywords for example "high school" or "light music club" or something like that.
-                    By the way, index is English only. Other languages can't be used as keywords. 
+                    By the way, index is English only. Other languages can't be used as keywords.
+                    Also, meta infomation for example creators or seasons or categories are not indexed. 
                 </p>
                 <br>
                 <br>
