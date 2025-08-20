@@ -26,7 +26,7 @@
                 <br>
                 <br>
                 <p>
-                    Also, Kenja contains precomputed vectors of texts, images.
+                    Also, Kenja contains precomputed vectors of images.
                     You can search similar anime or character by vector serach engine. 
                     Vector search is useful for searching animes with similar "vibes", or searching chracters with similar features.
                     For example, once you found "Rei" with full text search, you can find characters with "blue hair" with image vecotr search.<br>
@@ -50,7 +50,6 @@
                     It's the nature of recommendation systems.<br>
                     Then, searching anime have to be "brute force". I did, from A to Z. 
                     It might be fun for the first and last time, but actually you have to do for several times. Because our "mood" varies for weeks.<br>
-
                 </p>
                 <br>
                 <br>
