@@ -19,8 +19,6 @@
                     Kenja is a "Anime Search Engine" being developed by individual.<br>
                     You can search anime or character with some keywords by full text search engine.
                     You can choose keywords for example "high school" or "light music club" or something like that.
-                    Of course you can search with "k on" as name or "kyoto animation" as studio. 
-                    Also staffs and seiyu san (声優さん voice actors) are indexed.<br>
                     By the way, index is English only. Other languages can't be used as keywords. 
                 </p>
                 <br>
