@@ -69,18 +69,6 @@
             return '';
         }
     }
-
-    function vectorType() {
-        const vField = page.url.searchParams.get('vector');
-        // don't show unexpected values; 
-        switch (vField) {
-        case 'image':
-        case 'text':
-            return vField;
-        default:
-            return '';
-        }
-    }
 </script>
 
 <AgeModal ref={page.url.pathname + page.url.search}/>
@@ -99,7 +87,7 @@
             <div class="hero w-full">
                 <div class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-10 mb-10">
                     {#if searchType === SearchType.Vector}
-                        <h2 class="text-lg">Similar {itemType()} with "{vectorSource(documents)}" ({vectorType()})</h2>
+                        <h2 class="text-lg">Similar {itemType()} with "{vectorSource(documents)}"</h2>
                     {:else if searchType === SearchType.Text}
                         <h2 class="text-lg">Search result of {itemType()} with "{searchKeywords()}"</h2>
                     {/if}
