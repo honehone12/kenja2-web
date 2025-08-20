@@ -1,11 +1,10 @@
-import {ITypeConv, Rating} from "$lib/documents/anime-search/queries.js";
-import { VFieldConv } from "$lib/documents/anime-search/queries";
+import {ITypeConv, Rating, VectorField} from "$lib/documents/anime-search/queries.js";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {hasAgeCookie} from "$lib/server/cookies.js";
 import {VARY_CACHE_HEADER} from "$lib/server/headers.js";
-import { validateItemType, validateOid, validateVectorField } from "$lib/server/validation.js";
+import { validateItemType, validateOid } from "$lib/server/validation.js";
 
 export function load({cookies, url, params, setHeaders}) {
     const id = params.id;
@@ -18,11 +17,6 @@ export function load({cookies, url, params, setHeaders}) {
         return badRequest();
     }
 
-    const vfield = VFieldConv.fromString(url.searchParams.get('vector'));
-    if (!vfield || !validateVectorField(vfield)) {
-        return badRequest();
-    }
-
     const needAgeVerification = !hasAgeCookie(cookies);
 
     setHeaders(VARY_CACHE_HEADER);
@@ -31,7 +25,7 @@ export function load({cookies, url, params, setHeaders}) {
         const bufferedStream = kenja.animeSearch().vectorSearch(
             Rating.X,
             item_type,
-            vfield,
+            VectorField.Img,
             id            
         );
         return {needAgeVerification, bufferedStream};

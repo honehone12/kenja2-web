@@ -1,10 +1,9 @@
-import {ITypeConv} from "$lib/documents/anime-search/queries.js";
-import { VFieldConv } from "$lib/documents/anime-search/queries";
+import {ITypeConv, VectorField} from "$lib/documents/anime-search/queries.js";
 import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {CACHE_HEADER} from "$lib/server/headers.js";
-import { validateItemType, validateOid, validateVectorField } from "$lib/server/validation.js";
+import { validateItemType, validateOid } from "$lib/server/validation.js";
 
 
 export function load({url, params, setHeaders}) {
@@ -18,18 +17,13 @@ export function load({url, params, setHeaders}) {
         return badRequest();
     }
 
-    const vfield = VFieldConv.fromString(url.searchParams.get('vector'));
-    if (!vfield || !validateVectorField(vfield)) {
-        return badRequest();
-    }
-
     setHeaders(CACHE_HEADER);
     
     try {
         const bufferedStream = kenja.animeSearch().vectorSearch(
             undefined,
             itemType,
-            vfield,
+            VectorField.Img,
             id            
         );
         return {bufferedStream};

@@ -71,20 +71,11 @@
                     loading="lazy"
                 >
             </button>
-            <h2 class="text-xl my-5">Find similar items</h2>
-            {#if hasTextVec(doc.item_type)}
-                <a href="{doc.rating === Rating.X ? '/kenja' : ''}/vectorsearch/buffer/{doc.id}?item-type={isCharacter(doc.item_type) ? 'character' : 'anime'}&vector=text">
-                    <button 
-                        class="btn btn-lg {btnColor(doc.rating)} w-30 mr-5 tooltip" 
-                        data-tip="Search Similar Summary Texts"
-                    >Text</button>
-                </a>
-            {/if}
-            <a href="{doc.rating === Rating.X ? '/kenja' : ''}/vectorsearch/buffer/{doc.id}?item-type={isCharacter(doc.item_type) ? 'character' : 'anime'}&vector=image">
+            <a href="{doc.rating === Rating.X ? '/kenja' : ''}/vectorsearch/buffer/{doc.id}?item-type={isCharacter(doc.item_type) ? 'character' : 'anime'}">
                 <button 
-                    class="btn btn-lg {btnColor(doc.rating)} w-30 tooltip"
+                    class="btn btn-lg {btnColor(doc.rating)} tooltip mt-8"
                     data-tip="Search Similar Images"
-                >Image</button>
+                >Find similar items</button>
             </a>
         </div>
     </div>
