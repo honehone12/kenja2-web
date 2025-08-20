@@ -6,7 +6,7 @@
     let {usePink}: Props = $props();
 </script>
 
-<label for="fuzzy-fuzz">
+<label for="fuzzy-fuzzy">
     <span class="mr-2 tooltip" data-tip="Use fuzzy search">
         <h2 class="text-2xl">Fuzzy Search</h2>
     </span>
