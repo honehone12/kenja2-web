@@ -58,9 +58,6 @@ https://opensource.org/license/apache-2-0
 - siglip2-base-patch16-512
   - Copyright Holder: google
   - Homepage: https://huggingface.co/google/siglip2-base-patch16-512
-- nomic-embed-text-v2-moe
-  - Copyright Holder: Nomic Ai
-  - Homepage: https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe
 
 ## Apache License 2.0
 ------
