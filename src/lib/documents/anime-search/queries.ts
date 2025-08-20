@@ -1,15 +1,15 @@
 export const enum Rating {
-    AllAges = 1,
-    Hentai
+    G = 1,
+    X
 }
 
 export class RatingConv {
     static fromString(s: string | null) {
         switch (s) {
-        case 'all-ages':
-            return Rating.AllAges;
-        case 'hentai':
-            return Rating.Hentai;
+        case 'g':
+            return Rating.G;
+        case 'x':
+            return Rating.X;
         default:
             return undefined;
         }
