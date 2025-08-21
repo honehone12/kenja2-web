@@ -16,11 +16,6 @@
 					</a>
 				</li>
 				<li class="my-2">
-					<a tabindex="0" href="/topics">
-						<span class="link">Topics</span>
-					</a>
-				</li>
-				<li class="my-2">
 					<a tabindex="0" href="/about">
 						<span class="link">About</span>
 					</a>
@@ -35,9 +30,6 @@
 			</li>
 			<li>
 				<a tabindex="0" href="/textsearch">Search</a>
-			</li>
-			<li>
-				<a tabindex="0" href="/topics">Topics</a>
 			</li>
 			<li>
 				<a tabindex="0" href="/about">About</a>

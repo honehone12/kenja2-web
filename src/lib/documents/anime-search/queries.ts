@@ -1,5 +1,6 @@
 export const enum Rating {
-    G = 1,
+    Unspecified = 0,
+    G,
     X
 }
 
@@ -17,17 +18,16 @@ export class RatingConv {
 }
 
 export const enum VectorField {
-    Txt = 1,
+    Unspecified = 0,
     Img
 }
 
 export class VFieldConv {
     static fromString(s: string | null) {
         switch (s) {
-        case 'text':
-            return VectorField.Txt;
         case 'image':
             return VectorField.Img;
+        // add vector name here when use
         default:
             return undefined;
         }
@@ -35,10 +35,9 @@ export class VFieldConv {
 }
 
 export const enum ItemType {
-    Anime = 1,
-    Character,
-    AnimeImgOnly,
-    CharacterImgOnly
+    Unspecified = 0,
+    Anime,
+    Character
 }
 
 export class ITypeConv {

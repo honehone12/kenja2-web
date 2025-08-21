@@ -25,7 +25,7 @@ export function load({cookies, url, params, setHeaders}) {
         const bufferedStream = kenja.animeSearch().vectorSearch(
             Rating.X,
             item_type,
-            VectorField.Img,
+            undefined,
             id            
         );
         return {needAgeVerification, bufferedStream};
