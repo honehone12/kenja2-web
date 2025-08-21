@@ -23,7 +23,7 @@ export function load({url, params, setHeaders}) {
         const bufferedStream = kenja.animeSearch().vectorSearch(
             undefined,
             itemType,
-            VectorField.Img,
+            undefined,
             id            
         );
         return {bufferedStream};
