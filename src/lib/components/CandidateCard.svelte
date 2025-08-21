@@ -21,27 +21,15 @@
     function badgeColor(rating: Rating) {
         return rating === Rating.X ? 'badge-secondary' : 'badge-accent';
     }
-
-    function isAnime(itemType: ItemType) {
-        return itemType === ItemType.Anime || itemType === ItemType.AnimeImgOnly;
-    }
-
-    function isCharacter(itemType: ItemType) {
-        return itemType === ItemType.Character || itemType === ItemType.CharacterImgOnly;
-    }
-
-    function hasTextVec(itemType: ItemType) {
-        return itemType === ItemType.Anime || itemType === ItemType.Character;
-    }
 </script>
 
 <div class="card w-80 outline {lineColor(doc.rating)}">
     <div class="card-body">
-        {#if isAnime(doc.item_type)}  
+        {#if doc.item_type === ItemType.Anime}  
             <div class="badge badge-outline {badgeColor(doc.rating)} mb-5">
                 <p>Anime アニメ</p>
             </div>      
-        {:else if isCharacter(doc.item_type)}
+        {:else if doc.item_type === ItemType.Character}
             <div class="badge badge-dash {badgeColor(doc.rating)} mb-5">
                 <p>Character キャラクター</p>
             </div>
@@ -71,7 +59,7 @@
                     loading="lazy"
                 >
             </button>
-            <a href="{doc.rating === Rating.X ? '/kenja' : ''}/vectorsearch/buffer/{doc.id}?item-type={isCharacter(doc.item_type) ? 'character' : 'anime'}">
+            <a href="{doc.rating === Rating.X ? '/kenja' : ''}/vectorsearch/buffer/{doc.id}?item-type={doc.item_type === ItemType.Anime ? 'anime' : 'character'}">
                 <button 
                     class="btn btn-lg {btnColor(doc.rating)} tooltip mt-8"
                     data-tip="Search Similar Images"
