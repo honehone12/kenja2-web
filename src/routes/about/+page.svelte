@@ -17,16 +17,7 @@
             <span class="text-lg">
                 <p>
                     Kenja is a "Anime Search Engine" being developed by individual.<br>
-                    You can search anime or character with some keywords by full text search engine.
-                    You can choose keywords for example "high school" or "light music club" or something like that.
-                    By the way, index is English only. Other languages can't be used as keywords.
-                    Also, meta infomation for example creators or seasons or categories are not indexed. 
-                </p>
-                <br>
-                <br>
-                <p>
-                    Also, Kenja contains precomputed vectors of images.
-                    You can search similar anime or character by vector serach engine. 
+                    You can search similar anime or character by vector search engine. 
                     Vector search is useful for searching animes with similar "vibes", or searching chracters with similar features.
                     For example, once you found "Rei" with full text search, you can find characters with "blue hair" with image vecotr search.<br>
                     But again, vectors are "vibes" as a lot of things are mixed in a vector. 
@@ -62,10 +53,7 @@
             <h2 class="text-center text-info text-3xl mt-20 mb-20">When should I use this?</h2>
             <span class="text-lg">
                 <p>
-                    First, Kenja is NOT good for getting infomations about new animes. Instead, its purpose is to help finding relatively old titles.<br>
-                    Second, Kenja is NOT good for catching up current popular big titles. It needs some your ideas and hands for searching.<br>
-                    Third, Kenja is NOT good for finding animes with surprising story lines. Because its index is not enough to contain spoilers.<br>
-                    I generally recommend MyAnimeList for these kind of ordinary needs, because I never meant to replace MyAnimeList. 
+                    I generally recommend MyAnimeList for kinds of ordinary needs, because I never meant to replace MyAnimeList. 
                     Also I recommend to use Kenja with MyAnimeList side by side, because Kenja lacks a lot of things that MyAnimeList provides.
                 </p>
             </span>
