@@ -5,17 +5,6 @@ import logs from "$lib/server/logs";
 
 // headers are done on cdn
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const SECURITY_HEADERS = {
-    "X-XSS-Protection": "0",
-    "X-Frame-Options": "DENY",
-    "X-Content-Type-Options": "nosniff",
-    "Referrer-Policy": "strict-origin-when-cross-origin",
-    "Cross-Origin-Opener-Policy": "same-origin",
-    "Cross-Origin-Embedder-Policy": "require-corp",
-    "Cross-Origin-Resource-Policy": "same-site",
-    "Permissions-Policy": "geolocation=(), camera=(), microphone=()",
-    "Content-Security-Policy": "script-src 'self' 'unsafe-inline';  font-src 'self';  img-src 'self' data: ;  worker-src 'self';  connect-src 'self';  base-uri 'self';  form-action 'self';  media-src 'self';  object-src 'self';  manifest-src 'self';  child-src 'none';  frame-src 'none';  frame-ancestors 'none';"
-};
 // const TRANSPORT_SECURITY_HEADERS = new Map([
 //     ['Strict-Transport-Security', 'max-age=86400; includeSubDomains; preload']
 // ]);
@@ -39,6 +28,18 @@ export const handle: Handle = async ({ event, resolve }) => {
             {url, referer, userAgent, ip, host, origin}, 
             'local request header values'
         );
+
+        const SECURITY_HEADERS = {
+            "X-XSS-Protection": "0",
+            "X-Frame-Options": "DENY",
+            "X-Content-Type-Options": "nosniff",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+            "Cross-Origin-Opener-Policy": "same-origin",
+            "Cross-Origin-Embedder-Policy": "require-corp",
+            "Cross-Origin-Resource-Policy": "same-site",
+            "Permissions-Policy": "geolocation=(), camera=(), microphone=()",
+            "Content-Security-Policy": "script-src 'self' 'unsafe-inline';  font-src 'self';  img-src 'self' data: ;  worker-src 'self';  connect-src 'self';  base-uri 'self';  form-action 'self';  media-src 'self';  object-src 'self';  manifest-src 'self';  child-src 'none';  frame-src 'none';  frame-ancestors 'none';"
+        };
 
         event.setHeaders(SECURITY_HEADERS);
     } else {
