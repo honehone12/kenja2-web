@@ -32,9 +32,6 @@
                 <a href="/textsearch">
                     <p class="link link-primary text-lg mt-2">Search with your keywords</p>
                 </a>
-                <a href="/topics">
-                    <p class="link link-primary text-lg mt-2">Find from topics</p>
-                </a>
             </div>
         </div>
     </div>
