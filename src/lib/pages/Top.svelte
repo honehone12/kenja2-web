@@ -54,5 +54,5 @@
             </div>
         </div>
     </div>
-    <TopPageFeatures/>
+    <TopPageFeatures {lang}/>
 </div>

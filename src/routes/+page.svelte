@@ -1,9 +1,7 @@
 <script lang="ts">
-    import type { Lang } from "$lib";
     import Top from "$lib/pages/Top.svelte";
-    import { getContext } from "svelte";
 
-    const lang: Lang = getContext('lang');
+    let {data} = $props();
 </script>
 
 <svelte:head>
@@ -14,4 +12,4 @@
 	/>
 </svelte:head>
 
-<Top {lang}/>
+<Top lang={data.lang}/>

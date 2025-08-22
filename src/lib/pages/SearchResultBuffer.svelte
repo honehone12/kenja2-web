@@ -4,20 +4,25 @@
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import type { SearchResult, FlatDocument } from "$lib/documents/anime-search/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
-    import DocumentModal from "$lib/components/DocumentModal.svelte";
-    import {openDocumentModal, closeDocumentModal, openAgeModal} from "$lib/client/modal";
+    import {openAgeModal} from "$lib/client/modal";
     import AgeModal from '$lib/components/AgeModal.svelte';
     import { onMount } from 'svelte';
-    import { SearchType } from '$lib/client/search-type';
+    import { SearchType } from '$lib/client/search';
+    import type { Lang } from '$lib';
 
     interface Props {
         buffer: Promise<SearchResult>;
         needAgeVerification: boolean;
         searchType: SearchType;
+        lang: Lang;
     }
 
-    let {buffer, needAgeVerification, searchType}: Props = $props();
-    let selectedUrl: string | null = $state(null);
+    let {
+        buffer, 
+        needAgeVerification, 
+        searchType,
+        lang
+    }: Props = $props();
 
     onMount(() => {
         if (needAgeVerification) {
@@ -34,16 +39,6 @@
         }
         
         return result;
-    }
-
-    function openModal(url: string) {
-        selectedUrl = url;
-        openDocumentModal();
-    }
-
-    function closeModal() {
-        selectedUrl = null;
-        closeDocumentModal();
     }
 
     function vectorSource(documents: FlatDocument[]) {
@@ -99,14 +94,10 @@
                         <CandidateCard      
                             {doc}
                             useBlur={needAgeVerification}
-                            onclickItem={openModal}
+                            {lang}
                         />
                     {/each}
                 </div>
-                <DocumentModal
-                    url={selectedUrl} 
-                    onclickClose={closeModal}
-                />
             </div>
         </div>
     {:else}

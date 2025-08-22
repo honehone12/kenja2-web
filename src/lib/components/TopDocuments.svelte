@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { Lang } from "$lib";
 import CandidateCard from "$lib/components/CandidateCard.svelte";
 import type {FlatDocument} from "$lib/documents/anime-search/documents"
 
@@ -6,10 +7,10 @@ interface Props {
     name: string;
     list: FlatDocument[];
     useBlur: boolean;
-    onclickItem: (url: string) => void;
+    lang: Lang
 }
 
-let {name, list, useBlur, onclickItem}: Props = $props();
+let {name, list, useBlur, lang}: Props = $props();
 </script>
 
 <div class="hero w-full">
@@ -23,7 +24,7 @@ let {name, list, useBlur, onclickItem}: Props = $props();
             <CandidateCard
                 {doc}
                 {useBlur}
-                {onclickItem}
+                {lang}
             />
         {/each}
     </div>
