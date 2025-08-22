@@ -15,14 +15,14 @@
                 e.preventDefault();
                 window.location.href = '/about?lang=en';
             }}>
-                <p class="link link-primary text-lg mt-5">Do you prefer English?</p>
+                <p class="link link-primary mt-5">Do you prefer English?</p>
             </a>
         {:else}
             <a href="/about?lang=ja" onclick={(e) => {
                 e.preventDefault();
                 window.location.href = '/about?lang=ja';
             }}>
-                <p class="link link-primary text-lg mt-2">日本語対応しました</p>
+                <p class="link link-primary mt-2">日本語対応しました</p>
             </a>
         {/if}
     </div>
