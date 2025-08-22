@@ -5,7 +5,9 @@
 	import Footer from "$lib/layouts/Footer.svelte";
     import { setContext } from 'svelte';
 
-	let {children} = $props();
+	let {children, data} = $props();
+
+    setContext('lang', data.lang);
 </script>
 
 <Navbar/>

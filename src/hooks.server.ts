@@ -85,6 +85,10 @@ export const handle: Handle = async ({ event, resolve }) => {
         );
     }
 
-    const response = await resolve(event);
+    const lang = h.get('accept-language')?.startsWith('ja') ? 'ja' : 'en';
+    const response = await resolve(
+        event, 
+        {transformPageChunk: ({html}) => html.replace('%kenja.lang%', lang)}
+    );
     return response;
 };
