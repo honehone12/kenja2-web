@@ -15,7 +15,7 @@
                     type="radio" 
                     name="item-type" 
                     id="item-type-all" 
-                    value="" 
+                    value="all" 
                     checked={useAll} 
                     class="radio radio-lg {usePink ? 'radio-secondary' : 'radio-accent'}" 
                 />
