@@ -1,6 +1,8 @@
 <script>
     import About from "$lib/pages/About.svelte";
     import { getContext } from "svelte";
+
+    const lang = getContext('lang'); 
 </script>
 
 <svelte:head>
@@ -11,4 +13,4 @@
 	/>
 </svelte:head>
 
-<About lang={getContext('lang')}/>
+<About {lang}/>

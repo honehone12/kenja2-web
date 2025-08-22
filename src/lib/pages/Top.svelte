@@ -48,7 +48,7 @@
                         e.preventDefault();
                         window.location.href = '/?lang=ja';
                     }}>
-                        <p class="link link-primary text-lg mt-2">日本語対応しました！</p>
+                        <p class="link link-primary text-lg mt-2">日本語対応しました</p>
                     </a>
                 {/if}
             </div>
