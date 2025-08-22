@@ -3,7 +3,6 @@ export const CACHE_HEADER = {
     "Vary": "Accept-Language"
 };
 
-
 export const COOKIE_VARY_CACHE_HEADER = {
     "Cache-Control": "max-age=86400",
     "Vary": "Cookie, Accept-Language"
