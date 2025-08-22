@@ -1,7 +1,7 @@
 import { type Actions } from "@sveltejs/kit";
 import { setAgeCookie } from "$lib/server/cookies";
 import { badRequest } from "$lib/server/errors.js";
-import { CACHE_HEADER, NO_CACHE_HEADER } from '$lib/server/headers.js';
+import { CACHE_HEADER, NO_STORE_HEADER } from '$lib/server/headers.js';
 import { MAX_REF_LEN } from "$lib";
 import logs from "$lib/server/logs.js";
 
@@ -31,7 +31,7 @@ export const actions: Actions = {
             return badRequest();
         }
 
-        setHeaders(NO_CACHE_HEADER);
+        setHeaders(NO_STORE_HEADER);
 
         return setAgeCookie(cookies, ref);
     }
