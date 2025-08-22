@@ -34,7 +34,7 @@
                 <p>Character キャラクター</p>
             </div>
             {#if doc.parent}
-                <a href="{doc.rating === Rating.X ? '/kenja' : ''}/textsearch/buffer?keyword={doc.parent.name}&item-type=">
+                <a href="{doc.rating === Rating.X ? '/kenja' : ''}/textsearch/buffer?keyword={doc.parent.name}&item-type=all">
                     <h3 class="link link-primary">
                         {doc.parent.name} / {doc.parent.name_japanese ?? ''}
                     </h3>    
@@ -47,7 +47,7 @@
         {#if doc.name_japanese}    
             <h2 class="text-xl">{doc.name_japanese}</h2>
         {/if}
-        <a href="{doc.rating === Rating.X ? '/kenja' : ''}/textsearch/buffer?keyword={doc.name}&item-type=">
+        <a href="{doc.rating === Rating.X ? '/kenja' : ''}/textsearch/buffer?keyword={doc.name}&item-type=all">
             <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
         </a>
         <div class="card-action text-center">

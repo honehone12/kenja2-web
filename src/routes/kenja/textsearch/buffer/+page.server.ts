@@ -3,7 +3,7 @@ import { badRequest, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {hasAgeCookie} from "$lib/server/cookies.js";
-import {VARY_CACHE_HEADER} from "$lib/server/headers";
+import {AGE_VERIFICATION_CACHE_HEADER} from "$lib/server/headers";
 import { validateKeyword } from "$lib/server/validation.js";
 
 export function load({cookies, url, setHeaders}) {
@@ -16,7 +16,7 @@ export function load({cookies, url, setHeaders}) {
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
     const needAgeVerification = !hasAgeCookie(cookies);
     
-    setHeaders(VARY_CACHE_HEADER);
+    setHeaders(AGE_VERIFICATION_CACHE_HEADER);
 
     try {
         const bufferedStream = kenja.animeSearch().textSearch(

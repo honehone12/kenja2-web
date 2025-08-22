@@ -19,7 +19,7 @@
         </form>
         <span class="mt-20">
             <h2 class="text-2xl">
-                Anime Kenja Search
+                Anime & Character Search
             </h2>
         </span>
         <div class="modal-action mt-10 mb-10">

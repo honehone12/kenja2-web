@@ -21,7 +21,7 @@
             />
         </figure>
         <div class="text-center text-info text-3xl mb-10">
-            <h1>Keywords Search</h1>
+            <h1>Anime & Character Search</h1>
         </div>
         <TextSearchForm 
             useFlexible={true} 
