@@ -19,9 +19,7 @@
                     Kenja is a "Anime Search Engine" being developed by individual.<br>
                     You can search similar anime or character by vector search engine. 
                     Vector search is useful for searching animes with similar "vibes", or searching chracters with similar features.
-                    For example, once you found "Rei" with full text search, you can find characters with "blue hair" with image vecotr search.<br>
-                    But again, vectors are "vibes" as a lot of things are mixed in a vector. 
-                    If you have a specific name in your mind, full text search is generally better.   
+                    For example, once you found "Rei" with full text search, you can find characters with "blue hair" with image vecotr search.   
                 </p>
             </span>
             <h2 class="text-center text-info text-3xl mt-20 mb-20">Who are you?</h2>
