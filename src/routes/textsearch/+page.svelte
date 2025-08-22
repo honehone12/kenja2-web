@@ -1,6 +1,5 @@
 <script lang="ts">
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
-    import { page } from "$app/state";
 </script>
 
 <svelte:head>
