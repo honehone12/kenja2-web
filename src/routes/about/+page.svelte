@@ -1,5 +1,6 @@
 <script>
-    import CommunitySNSCard from "$lib/components/CommunitySNSCard.svelte";
+    import About from "$lib/pages/About.svelte";
+    import { getContext } from "svelte";
 </script>
 
 <svelte:head>
@@ -10,66 +11,4 @@
 	/>
 </svelte:head>
 
-<div class="w-full py-20 px-10">
-    <div class="flex justify-center">
-        <div class="max-w-200">
-            <h1 class="text-center text-info text-3xl mb-20">What is this?</h1>
-            <span class="text-lg">
-                <p>
-                    Kenja is a "Anime Search Engine" being developed by individual.<br>
-                    You can search similar anime or character by vector search engine. 
-                    Vector search is useful for searching animes with similar "vibes", or searching chracters with similar features.
-                    For example, once you found "Rei" with full text search, you can find characters with "blue hair" with image vecotr search.   
-                </p>
-            </span>
-            <h2 class="text-center text-info text-3xl mt-20 mb-20">Who are you?</h2>
-            <span class="text-lg">
-                <p>I'm a programmer living in a japanese town where is about 45 minutes by train from Akihabara station of Tokyo.</p>
-                <a href="/textsearch/buffer?keyword=Futsuu%20no%20Joshikousei%20ga%20[Locodol]%20Yattemita.&item-type=" class="link link-primary">
-                    By the way, actually my town have a anime.
-                </a>
-                <p>Although it is not popular as "seichi" (聖地 anime's real location).</p>
-            </span>
-            <h2 class="text-center text-info text-3xl mt-20 mb-20">Why is this exist?</h2>
-            <span class="text-lg">
-                <p>
-                    Because I just wanted a easy tool for searching animes.<br>
-                    Once you watched a lot of animes on video streaming paltform, their recommendation systems become full of titles that you already watched.
-                    It's the nature of recommendation systems.<br>
-                    Then, searching anime have to be "brute force". I did, from A to Z. 
-                    It might be fun for the first and last time, but actually you have to do for several times. Because our "mood" varies for weeks.<br>
-                </p>
-                <br>
-                <br>
-                <p>
-                    Second reason is that I wanted to create search engine independent from reviews nor recommendation systems tied with our watching anime history.
-                    Reading reviews is fun. But I sometimes don't wanted to read them before watching the title.<br> 
-                    I can say same thing to recommendation systems. We tend to watch same new titles when recommendation system is on.
-                    It's fun. But I sometimes want to "dig" legacy animes and believe that you too.
-                </p>
-            </span>
-            <h2 class="text-center text-info text-3xl mt-20 mb-20">When should I use this?</h2>
-            <span class="text-lg">
-                <p>
-                    I generally recommend MyAnimeList for kinds of ordinary needs, because I never meant to replace MyAnimeList. 
-                    Also I recommend to use Kenja with MyAnimeList side by side, because Kenja lacks a lot of things that MyAnimeList provides.
-                </p>
-            </span>
-            <h2 class="text-center text-info text-3xl mt-20 mb-20">What does kenja mean?</h2>
-            <span class="text-lg">
-                <p>
-                    Kenja (賢者) means wise person or philosopher. I took the word from "kenja time" (賢者 タイム).
-                </p>
-            </span>
-            <h2 class="text-center text-info text-3xl mt-20 mb-20">Do you have social media?</h2>
-            <CommunitySNSCard/>
-            <span class="text-center text-info text-xl">
-                <h2 class="mt-20 mb-20">Thank you for your understanding.</h2>
-            </span>
-            <span class="text-center">
-                <p><a href="https://myanimelist.net/" class="link link-primary">MyAnimeList</a>
-                or MyAnimeList.net is a property of MyAnimeList Co., Ltd. © {new Date().getFullYear()} All Rights Reserved.</p>
-            </span>
-        </div>
-    </div>
-</div>
+<About lang={getContext('lang')}/>

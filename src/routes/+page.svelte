@@ -2,8 +2,6 @@
     import { Lang } from "$lib";
     import Top from "$lib/pages/Top.svelte";
     import { getContext } from "svelte";
-
-    const lang: Lang = getContext('lang');
 </script>
 
 <svelte:head>
@@ -14,4 +12,4 @@
 	/>
 </svelte:head>
 
-<Top {lang}/>
+<Top lang={getContext('lang')}/>

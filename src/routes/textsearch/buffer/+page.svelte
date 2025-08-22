@@ -1,6 +1,6 @@
 <script lang="ts">
     import { SearchType } from '$lib/client/search-type.js';
-    import SearchResultBuffer from '$lib/components/SearchResultBuffer.svelte';
+    import SearchResultBuffer from '$lib/pages/SearchResultBuffer.svelte';
 
     let {data} = $props();
 </script>
