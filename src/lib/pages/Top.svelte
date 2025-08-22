@@ -27,7 +27,8 @@
             <div class="text-center">
                 {#if lang === Lang.Jp}
                     <p class="text-lg">
-                        ケンジャは画像をポチポチ見ながら好きなアニメやキャラクターを探すウェブサイトです。<br>
+                        ケンジャは画像をポチポチ見ながら<br>
+                        好きなアニメやキャラクターを探すウェブサイトです。
                     </p>
                 {:else}
                     <p class="text-lg">
@@ -35,12 +36,21 @@
                         by clicking through images.
                     </p>
                 {/if}
-                <a href="/about">
-                    <p class="link link-primary text-lg mt-5">For more infomations</p>
-                </a>
-                <a href="/textsearch">
-                    <p class="link link-primary text-lg mt-2">Search with your keywords</p>
-                </a>
+                {#if lang === Lang.Jp}
+                    <a href="/?lang=en" onclick={(e) => {
+                        e.preventDefault();
+                        window.location.href = '/?lang=en';
+                    }}>
+                        <p class="link link-primary text-lg mt-5">Do you prefer English?</p>
+                    </a>
+                {:else}
+                    <a href="/?lang=ja" onclick={(e) => {
+                        e.preventDefault();
+                        window.location.href = '/?lang=ja';
+                    }}>
+                        <p class="link link-primary text-lg mt-2">日本語対応しました！</p>
+                    </a>
+                {/if}
             </div>
         </div>
     </div>
