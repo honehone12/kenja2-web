@@ -55,11 +55,12 @@
         const iType = page.url.searchParams.get('item-type');
         // don't show unexpected values;
         switch (iType) {
-        case '':
-            return 'animes and characters'; 
+        case 'all':
+            return 'Anime and Characters'; 
         case 'anime':
+            return 'Anime'
         case 'character':
-            return iType;
+            return 'Character';
         default:
             return '';
         }
@@ -84,7 +85,7 @@
                     {#if searchType === SearchType.Vector}
                         <h2 class="text-lg">Similar {itemType()} with "{vectorSource(documents)}"</h2>
                     {:else if searchType === SearchType.Text}
-                        <h2 class="text-lg">Search result of {itemType()} with "{searchKeywords()}"</h2>
+                        <h2 class="text-lg">Search results of {itemType()} for "{searchKeywords()}"</h2>
                     {/if}
                 </div>
             </div>
