@@ -1,15 +1,24 @@
 <script lang="ts">
-    import Top from "$lib/pages/Top.svelte";
+    import { Lang } from "$lib";
+	import Top from "$lib/pages/Top.svelte";
 
     let {data} = $props();
 </script>
 
 <svelte:head>
-	<title>Kenja - Anime and Character Search Engine</title>
-	<meta
-		name="description"
-		content="Anime Kenja is a anime and character search engine, featuring full text keyword search and similarity vector search."
-	/>
+{#if data.lang === Lang.Jp}
+		<title>ケンジャ - アニメとキャラクター検索</title>
+		<meta
+			name="description"
+			content="ケンジャは画像をポチポチ見ながら好きなアニメやキャラクターを探すウェブサイトです。"
+		/>
+	{:else}
+		<title>Kenja - Anime and Character Search</title>
+		<meta
+			name="description"
+			content="Kenja is a web site where you can search for your favorite anime and characters by clicking through images."
+		/>
+	{/if}
 </svelte:head>
 
 <Top lang={data.lang}/>

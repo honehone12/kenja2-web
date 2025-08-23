@@ -1,13 +1,24 @@
 <script lang="ts">
+    import { Lang } from "$lib";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
+
+    let {data} = $props();
 </script>
 
 <svelte:head>
-	<title>Kenja - Anime and Character Keyword Search</title>
-	<meta
-		name="description"
-		content="Keyword search for animes and characters, featuring full text search."
-	/>
+    {#if data.lang === Lang.Jp}
+        <title>ケンジャ - キーワード検索</title>
+        <meta
+            name="description"
+            content="アニメとキャラクターのキーワード検索。"
+        />
+    {:else}
+        <title>Kenja - Keyword Search</title>
+        <meta
+            name="description"
+            content="Keyword search for animes and characters."
+        />
+    {/if}
 </svelte:head>
 
 <div class="hero w-full min-h-screen py-20">

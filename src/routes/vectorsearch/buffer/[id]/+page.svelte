@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Lang } from '$lib';
     import { SearchType } from '$lib/client/search.js';
     import SearchResultBuffer from '$lib/pages/SearchResultBuffer.svelte';
 
@@ -6,7 +7,11 @@
 </script>
 
 <svelte:head>
-	<title>Kenja - Similar Anime and Character Search Result</title>
+    {#if data.lang === Lang.Jp}
+        <title>ケンジャ - アニメとキャラクターの類似検索結果</title>
+    {:else}
+	    <title>Kenja - Results of Similar Anime and Character Search</title>
+    {/if}
 </svelte:head>
 
 <SearchResultBuffer 
