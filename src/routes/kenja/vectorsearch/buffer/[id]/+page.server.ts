@@ -1,5 +1,5 @@
-import {ITypeConv, Rating, VectorField} from "$lib/documents/anime-search/queries.js";
-import { badRequest, internalError } from "$lib/server/errors.js";
+import {ITypeConv, Rating} from "$lib/documents/anime-search/queries.js";
+import { emptyPromise, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {hasAgeCookie} from "$lib/server/cookies.js";
@@ -9,12 +9,14 @@ import { validateItemType, validateOid } from "$lib/server/validation.js";
 export function load({cookies, url, params, setHeaders}) {
     const id = params.id;
     if (!validateOid(id)) {
-        return badRequest();
+        // not showing error page
+        return {bufferedStream: emptyPromise()};
     }
 
     const item_type = ITypeConv.fromString(url.searchParams.get('item-type'));
     if (!item_type || !validateItemType(item_type)) {
-        return badRequest();
+        // not showing error page
+        return {bufferedStream: emptyPromise()};
     }
 
     const needAgeVerification = !hasAgeCookie(cookies);

@@ -7,3 +7,7 @@ export function badRequest() {
 export function internalError() {
     return error(500, "Internal server error.");
 }
+
+export async function emptyPromise() {
+    return {};
+}

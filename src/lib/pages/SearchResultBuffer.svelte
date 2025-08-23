@@ -51,7 +51,7 @@
         return kw.replace(/<.*?>/g, '');
     }
 
-    function itemType() {
+    function itemTypeLabel() {
         const iType = page.url.searchParams.get('item-type');
         // don't show unexpected values;
         switch (iType) {
@@ -93,9 +93,9 @@
             <div class="hero w-full">
                 <div class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-10 mb-10">
                     {#if searchType === SearchType.Vector}
-                        <h2 class="text-lg">Similar {itemType()} with "{vectorSource(documents)}"</h2>
+                        <h2 class="text-lg">Similar {itemTypeLabel()} with "{vectorSource(documents)}"</h2>
                     {:else if searchType === SearchType.Text}
-                        <h2 class="text-lg">Search results of {itemType()} for "{searchKeywords()}"</h2>
+                        <h2 class="text-lg">Search results of {itemTypeLabel()} for "{searchKeywords()}"</h2>
                     {/if}
                 </div>
             </div>
@@ -118,9 +118,7 @@
     {/if}
 {:catch}
     <div class="hero min-h-screen w-full">
-        <div class="hero-content">
-            <ErrorMsg/>
-        </div>
+        <h2 class="hero-content text-xl">No results</h2>
     </div>
 {/await}
 {#if searchType === SearchType.Text}
