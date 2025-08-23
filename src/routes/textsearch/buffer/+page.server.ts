@@ -1,5 +1,5 @@
 import { FuzzyConv, ITypeConv } from "$lib/documents/anime-search/queries.js";
-import { emptyPromise, internalError } from "$lib/server/errors.js";
+import { emptySearchResult, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {CACHE_HEADER} from "$lib/server/headers";
@@ -9,7 +9,7 @@ export function load({url, setHeaders}) {
     const keyword = url.searchParams.get('keyword');
     if (!keyword || !validateKeyword(keyword)) {
         // not showing error page
-        return {bufferedStream: emptyPromise()};
+        return {bufferedStream: emptySearchResult()};
     }
 
     const fuzzyKind = FuzzyConv.fromString(url.searchParams.get('fuzzy'));

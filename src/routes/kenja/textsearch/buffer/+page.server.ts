@@ -1,5 +1,5 @@
 import { FuzzyConv, ITypeConv, Rating } from "$lib/documents/anime-search/queries.js";
-import { emptyPromise, internalError } from "$lib/server/errors.js";
+import { emptySearchResult, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {hasAgeCookie} from "$lib/server/cookies.js";
@@ -10,7 +10,10 @@ export function load({cookies, url, setHeaders}) {
     const keyword = url.searchParams.get('keyword');
     if (!keyword || !validateKeyword(keyword)) {
         // not showing error page
-        return {bufferedStream: emptyPromise()};
+        return {
+            needAgeVerification: true,
+            bufferedStream: emptySearchResult()
+        };
     }
 
     const fuzzy_kind = FuzzyConv.fromString(url.searchParams.get('fuzzy'));
