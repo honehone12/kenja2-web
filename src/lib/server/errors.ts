@@ -1,3 +1,4 @@
+import type { SearchResult } from "$lib/documents/anime-search/documents";
 import {error} from "@sveltejs/kit";
 
 export function badRequest() {
@@ -8,6 +9,6 @@ export function internalError() {
     return error(500, "Internal server error.");
 }
 
-export async function emptyPromise() {
-    return {};
+export async function emptySearchResult(): Promise<SearchResult> {
+    return {documents: undefined};
 }
