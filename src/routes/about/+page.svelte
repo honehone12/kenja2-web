@@ -1,15 +1,24 @@
 <script>
+    import { Lang } from "$lib";
     import About from "$lib/pages/About.svelte";
 
     let {data} = $props();
 </script>
 
 <svelte:head>
-	<title>Kenja - About Anime and Character Search Engine</title>
-	<meta
-		name="description"
-		content="You can search animes and characters by keywords, and also similar summary text and images."
-	/>
+	{#if data.lang === Lang.Jp}
+		<title>ケンジャ - アバウト</title>
+		<meta
+			name="description"
+			content="このページではケンジャについて初めての人でもわかりやすく説明しています。"
+		/>
+	{:else}
+		<title>Kenja - About</title>
+		<meta
+			name="description"
+			content="This page explains Kenja in an easy-to-understand manner even for first-time users."
+		/>
+	{/if}
 </svelte:head>
 
 <About lang={data.lang}/>
