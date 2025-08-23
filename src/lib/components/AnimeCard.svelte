@@ -54,22 +54,20 @@
             </a>
         {/if}
         <div class="text-center">
-            <figure>
+            <a 
+                href="{vectorSearchUrl(doc.id, doc.rating)}" 
+                class="tooltip" 
+                data-tip="Search Similar Images"
+            >
                 <img 
                     src="{doc.img}" 
                     alt="an anime image of {doc.name}"
-                    class="max-w-60 {useBlur ? 'blur-xl' : ''}"
+                    class="card-action max-w-60 {useBlur ? 'blur-xl' : ''}"
                     loading="lazy"
                 >
-            </figure>
+            </a>
             <a href="{doc.src}">
                 <p class="link link-primary mt-2">source</p>
-            </a>
-            <a href="{vectorSearchUrl(doc.id, doc.rating)}">
-                <button 
-                    class="card-action btn btn-lg {btnColor} tooltip mt-8"
-                    data-tip="Search Similar Images"
-                >Find similar items</button>
             </a>
         </div>
     </div>
