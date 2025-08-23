@@ -1,4 +1,4 @@
-import { Rating } from "$lib/documents/anime-search/queries";
+import { Rating, ItemType, ITypeConv } from "$lib/documents/anime-search/queries";
 
 export const enum SearchType {
     Text = 1,
@@ -11,8 +11,8 @@ export function textSearchUrl(name: string | undefined, rating: Rating) {
         `/textsearch/buffer?keyword=${name}&item-type=all`;
 }
 
-export function vectorSearchUrl(id: string, rating: Rating) {
+export function vectorSearchUrl(id: string, iType: ItemType, rating: Rating) {
     return rating === Rating.X ? 
-        `/kenja/vectorsearch/buffer/${id}?item-type=anime` :
-        `/vectorsearch/buffer/${id}?item-type=anime`; 
+        `/kenja/vectorsearch/buffer/${id}?item-type=${ITypeConv.toString(iType)}` :
+        `/vectorsearch/buffer/${id}?item-type=${ITypeConv.toString(iType)}`; 
 }

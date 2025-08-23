@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Lang } from "$lib";
     import type { Parent } from "$lib/documents/anime-search/documents";
-    import { Rating } from "$lib/documents/anime-search/queries";
+    import { ItemType, Rating } from "$lib/documents/anime-search/queries";
     import {textSearchUrl, vectorSearchUrl} from "$lib/client/search";
 
     interface Doc {
@@ -18,7 +18,6 @@
     interface Props {
         lineColor: string;
         badgeColor: string;
-        btnColor: string;
         useBlur: boolean;
         lang: Lang;
         doc: Doc;
@@ -27,7 +26,6 @@
     let {
         lineColor,
         badgeColor,
-        btnColor,
         useBlur,
         lang,
         doc
@@ -62,10 +60,9 @@
                 <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
             </a>
         {/if}
-
         <div class="text-center">
             <a 
-                href="{vectorSearchUrl(doc.id, doc.rating)}" 
+                href="{vectorSearchUrl(doc.id, ItemType.Character, doc.rating)}" 
                 class="tooltip" 
                 data-tip="Search Similar Images"
             >

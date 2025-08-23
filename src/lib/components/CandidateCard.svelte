@@ -17,10 +17,6 @@
         return rating === Rating.X ? 'outline-fuchsia-500' : 'outline-cyan-500';
     }
 
-    function btnColor(rating: Rating) {
-        return rating === Rating.X ? 'btn-secondary' : 'btn-accent';
-    }
-
     function badgeColor(rating: Rating) {
         return rating === Rating.X ? 'badge-secondary' : 'badge-accent';
     }
@@ -30,7 +26,6 @@
     <AnimeCard
         lineColor={lineColor(doc.rating)}
         badgeColor={badgeColor(doc.rating)}
-        btnColor={btnColor(doc.rating)}
         {useBlur}
         {lang}
         doc={{
@@ -47,7 +42,6 @@
     <CharacterCard
         lineColor={lineColor(doc.rating)}
         badgeColor={badgeColor(doc.rating)}
-        btnColor={btnColor(doc.rating)}
         {useBlur}
         {lang}
         doc={{
