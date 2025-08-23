@@ -8,7 +8,7 @@
     import AgeModal from '$lib/components/AgeModal.svelte';
     import { onMount } from 'svelte';
     import { SearchType } from '$lib/client/search';
-    import type { Lang } from '$lib';
+    import { Lang } from '$lib';
 
     interface Props {
         buffer: Promise<SearchResult>;
@@ -70,7 +70,17 @@
 <AgeModal ref={page.url.pathname + page.url.search}/>
 <div class="mt-20 text-center">
     <h1 class="text-3xl text-info">Search Results</h1>
-</div>    
+</div>
+{#if searchType === SearchType.Text}
+    <div class="mt-20 text-center">
+        <h2 class="text-lg">Tip💡</h2>
+        {#if lang === Lang.Jp}
+            <p>他のキーワードを試すには下部のサーチアイコンをクリックします。</p>
+        {:else}
+            <p>Click the search icon at the bottom to try other keywords.</p>
+        {/if}
+    </div>
+{/if}    
 {#await searchResult()}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
@@ -113,15 +123,13 @@
         </div>
     </div>
 {/await}
-<div class="mb-20 text-center mx-5">
-    <h2 class="text-lg">Tip💡</h2>
-    {#if searchType === SearchType.Vector}
-        <p>
-            Search results will vary depending on whether the vector source is an image or text.
-        </p>
-    {:else if searchType === SearchType.Text}
-        <p>
-            Search results will vary depending on whether fuzzy search is ON or not.
-        </p>
-    {/if}
-</div>
+{#if searchType === SearchType.Text}
+    <div class="text-center mb-20 mx-5">
+        <h2 class="text-lg">Tip💡</h2>
+        {#if lang === Lang.Jp}
+            <p>ファジー検索をONにするかどうかによって検索結果は変わります。</p>
+        {:else}
+            <p>Search results will vary depending on whether fuzzy search is ON or not.</p>
+        {/if}
+    </div>
+{/if}
