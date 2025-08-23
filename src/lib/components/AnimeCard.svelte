@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import { Rating } from "$lib/documents/anime-search/queries";
+    import { ItemType, Rating } from "$lib/documents/anime-search/queries";
     import {textSearchUrl, vectorSearchUrl} from "$lib/client/search";
 
     interface Doc {
@@ -16,7 +16,6 @@
     interface Props {
         lineColor: string;
         badgeColor: string;
-        btnColor: string;
         useBlur: boolean;
         lang: Lang;
         doc: Doc;
@@ -25,7 +24,6 @@
     let {
         lineColor,
         badgeColor,
-        btnColor,
         useBlur,
         lang,
         doc
@@ -54,22 +52,20 @@
             </a>
         {/if}
         <div class="text-center">
-            <figure>
+            <a 
+                href="{vectorSearchUrl(doc.id, ItemType.Anime, doc.rating)}" 
+                class="tooltip" 
+                data-tip="Search Similar Images"
+            >
                 <img 
                     src="{doc.img}" 
                     alt="an anime image of {doc.name}"
-                    class="max-w-60 {useBlur ? 'blur-xl' : ''}"
+                    class="card-action max-w-60 {useBlur ? 'blur-xl' : ''}"
                     loading="lazy"
                 >
-            </figure>
-            <a href="{doc.src}">
-                <p class="link link-primary mt-2">source</p>
             </a>
-            <a href="{vectorSearchUrl(doc.id, doc.rating)}">
-                <button 
-                    class="card-action btn btn-lg {btnColor} tooltip mt-8"
-                    data-tip="Search Similar Images"
-                >Find similar items</button>
+            <a href="{doc.src}">
+                <p class="link link-primary">source</p>
             </a>
         </div>
     </div>

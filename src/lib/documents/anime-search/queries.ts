@@ -51,6 +51,17 @@ export class ITypeConv {
             return undefined;
         }
     }
+
+    static toString(iType: ItemType){
+        switch (iType) {
+        case ItemType.Anime:
+            return 'anime';
+        case ItemType.Character:
+            return 'character';
+        default:
+            return 'all';
+        }
+    }
 }
 
 export const enum FunctionId {
