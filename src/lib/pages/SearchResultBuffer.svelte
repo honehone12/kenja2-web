@@ -3,7 +3,6 @@
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import type { SearchResult, FlatDocument } from "$lib/documents/anime-search/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
-    import AgeModal from '$lib/components/AgeModal.svelte';
     import { SearchType } from '$lib/client/search';
     import { Lang } from '$lib';
 
@@ -41,7 +40,6 @@
     }
 </script>
 
-<AgeModal ref={page.url.pathname + page.url.search}/>
 <div class="mt-20 text-center">
     <h1 class="text-3xl text-info">Search Results</h1>
 </div>
