@@ -16,7 +16,6 @@
 
 <SearchResultBuffer 
     buffer={data.bufferedStream}
-    needAgeVerification={false} 
     searchType={SearchType.Text}
     lang={data.lang}
 />

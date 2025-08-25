@@ -7,11 +7,10 @@
 
     interface Props {
         doc: FlatDocument;
-        useBlur: boolean;
         lang: Lang
     }
 
-    let {doc, useBlur, lang}: Props = $props();
+    let {doc, lang}: Props = $props();
 </script>
 
 {#if doc.item_type === ItemType.Anime}
