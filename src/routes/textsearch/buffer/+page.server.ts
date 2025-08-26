@@ -19,7 +19,6 @@ export function load({url, setHeaders}) {
     
     try {
         const bufferedStream = kenja.animeSearch().textSearch(
-            undefined,
             itemType,
             keyword,
             fuzzyKind

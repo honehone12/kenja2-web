@@ -1,45 +1,18 @@
 <script lang="ts">
     import {page} from '$app/state';
-    import ErrorMsg from "$lib/components/ErrorMsg.svelte";
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import type { SearchResult, FlatDocument } from "$lib/documents/anime-search/documents";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
-    import {openAgeModal} from "$lib/client/modal";
-    import AgeModal from '$lib/components/AgeModal.svelte';
-    import { onMount } from 'svelte';
     import { SearchType } from '$lib/client/search';
     import { Lang } from '$lib';
 
     interface Props {
         buffer: Promise<SearchResult>;
-        needAgeVerification: boolean;
         searchType: SearchType;
         lang: Lang;
     }
 
-    let {
-        buffer, 
-        needAgeVerification, 
-        searchType,
-        lang
-    }: Props = $props();
-
-    onMount(() => {
-        if (needAgeVerification) {
-            openAgeModal();
-        }
-    });
-
-    async function searchResult() {
-        const result = await buffer;
-        if (result.documents && needAgeVerification) {
-            for (const doc of result.documents) {
-                doc.img = '/kenja2_placeholder.png';
-            }
-        }
-        
-        return result;
-    }
+    let {buffer, searchType, lang}: Props = $props();
 
     function vectorSource(documents: FlatDocument[]) {
         return documents.at(0)?.name ?? ' ';
@@ -67,7 +40,6 @@
     }
 </script>
 
-<AgeModal ref={page.url.pathname + page.url.search}/>
 <div class="mt-20 text-center">
     <h1 class="text-3xl text-info">Search Results</h1>
 </div>
@@ -81,7 +53,7 @@
         {/if}
     </div>
 {/if}    
-{#await searchResult()}
+{#await buffer}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <LoadingMsg/>
@@ -104,7 +76,6 @@
                     {#each documents as doc}
                         <CandidateCard      
                             {doc}
-                            useBlur={needAgeVerification}
                             {lang}
                         />
                     {/each}

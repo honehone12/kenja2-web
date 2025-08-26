@@ -1,10 +1,9 @@
 <script lang="ts">
     interface Props {
         useAll: boolean;
-        usePink: boolean;
     }
 
-    let {useAll, usePink}: Props = $props();
+    let {useAll}: Props = $props();
 </script>
 
 <div class="flex flex-col">
@@ -17,7 +16,7 @@
                     id="item-type-all" 
                     value="all" 
                     checked={useAll} 
-                    class="radio radio-lg {usePink ? 'radio-secondary' : 'radio-accent'}" 
+                    class="radio radio-lg radio-accent" 
                 />
                 <label for="item-type-all" class="text-lg">All</label>
             </div>    
@@ -29,7 +28,7 @@
                 id="item-type-anime" 
                 value="anime" 
                 checked={!useAll}
-                class="radio radio-lg {usePink ? 'radio-secondary' : 'radio-accent'}" 
+                class="radio radio-lg radio-accent" 
             />
             <label for="item-type-anime" class="text-lg">Anime</label>
         </div>
@@ -39,7 +38,7 @@
                 name="item-type" 
                 id="item-type-character" 
                 value="character" 
-                class="radio radio-lg {usePink ? 'radio-secondary' : 'radio-accent'}" 
+                class="radio radio-lg radio-accent" 
             />
             <label for="item-type-character" class="text-lg">Character</label>
         </div>

@@ -1,9 +1,7 @@
 import type { AnimeSearch } from "$lib/server/api-adapter/api-adapter";
 import { 
-    FunctionId, 
-    Rating, 
+    FunctionId,
     ItemType, 
-    VectorField,
     FuzzyKind, 
     type SearchQuery 
 } from "$lib/documents/anime-search/queries";
@@ -11,11 +9,9 @@ import type {SearchResult} from "$lib/documents/anime-search/documents";
 
 export class HttpBufferApi implements AnimeSearch {
     private _apiUrl: URL;
-    private _imgRootUrl: string;
 
     constructor(baseUrl: string) {
         this._apiUrl = new URL('/anime-search', baseUrl);
-        this._imgRootUrl = '/preview';
     }
 
     private async httpQuery(url: URL, body: string): Promise<SearchResult> {
@@ -27,21 +23,11 @@ export class HttpBufferApi implements AnimeSearch {
             body 
         });
         if (!res.ok) {
-            throw new Error(`HTTP fail: ${res.status} ${res.statusText}`);
+            throw new Error(`HTTP FAIL: ${res.status} ${res.statusText}`);
         }
         
         const result: SearchResult = await res.json();
-        if (result.documents) {
-            for (const doc of result.documents) {
-                doc.img = this.imgPath(doc.img);
-            }
-        }
-        
         return result;
-    }
-
-    private imgPath(fileName: string) {
-        return `${this._imgRootUrl}/${fileName}`;
     }
 
     async ping(): Promise<SearchResult> {
@@ -64,14 +50,12 @@ export class HttpBufferApi implements AnimeSearch {
     }
 
     async textSearch(
-        rating: Rating | undefined,
         item_type: ItemType | undefined,
         keywords: string,
         fuzzy_kind: FuzzyKind | undefined
     ): Promise<SearchResult> {
         const q: SearchQuery = {
             function_id: FunctionId.TextSearchBuffer,
-            rating,
             item_type,
             keywords,
             fuzzy_kind
@@ -82,16 +66,12 @@ export class HttpBufferApi implements AnimeSearch {
     }
 
     async vectorSearch(
-        rating: Rating | undefined,
         item_type: ItemType,
-        vector_field: VectorField | undefined,
         id: string
     ): Promise<SearchResult> {
         const q: SearchQuery = {
             function_id: FunctionId.VectorSearchBuffer,
-            rating,
             item_type,
-            vector_field,
             id
         };
         const body = JSON.stringify(q);

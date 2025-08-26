@@ -7,8 +7,6 @@ import {
 import type { AnimeSearch } from "$lib/server/api-adapter/api-adapter";
 import {
     ItemType, 
-    Rating, 
-    VectorField, 
     FunctionId, 
     FuzzyKind,
     type SearchQuery
@@ -18,12 +16,10 @@ import type {SearchResult} from "$lib/documents/anime-search/documents";
 export class LambdaApi implements AnimeSearch {
     private _lambda: LambdaClient;
     private _functionName: string;
-    private _imgRoot: string;
 
     constructor(functionName: string, config: LambdaClientConfig) {
         this._functionName = functionName;
         this._lambda = new LambdaClient(config);
-        this._imgRoot = '/preview'
     }
     
     private ok(code: number | undefined): boolean {
@@ -39,25 +35,14 @@ export class LambdaApi implements AnimeSearch {
         const res = await this._lambda.send(cmd);
         
         if (!this.ok(res.StatusCode) || res.FunctionError) {
-            throw new Error(`LAMBDA fail: ${res.StatusCode ?? '-'} ${res.FunctionError ?? '-'}`);
+            throw new Error(`LAMBDA FAIL: ${res.StatusCode ?? '-'} ${res.FunctionError ?? '-'}`);
         }
         if (!res.Payload) {
             throw new Error('response without payload');
         }
 
-        const b = Buffer.from(res.Payload);
-        const result: SearchResult = JSON.parse(b.toString());
-        if (result.documents) {
-            for (const doc of result.documents) {
-                doc.img = this.imgPath(doc.img);
-            }
-        }
-        
+        const result: SearchResult = JSON.parse(res.Payload.toString());
         return result;
-    }
-
-    private imgPath(fileName: string) {
-        return `${this._imgRoot}/${fileName}`;
     }
 
     async ping(): Promise<SearchResult> {
@@ -88,14 +73,12 @@ export class LambdaApi implements AnimeSearch {
     }
 
     async textSearch(
-        rating: Rating | undefined,
         item_type: ItemType | undefined,
         keywords: string,
         fuzzy_kind: FuzzyKind | undefined
     ): Promise<SearchResult> {
         const q: SearchQuery = {
             function_id: FunctionId.TextSearchBuffer,
-            rating,
             item_type,
             keywords,
             fuzzy_kind
@@ -110,16 +93,12 @@ export class LambdaApi implements AnimeSearch {
     }
 
     async vectorSearch(
-        rating: Rating | undefined,
         item_type: ItemType,
-        vector_field: VectorField | undefined,
         id: string
     ): Promise<SearchResult> {
         const q: SearchQuery = {
             function_id: FunctionId.VectorSearchBuffer,
-            rating,
             item_type,
-            vector_field,
             id
         };
         const payload = JSON.stringify(q);

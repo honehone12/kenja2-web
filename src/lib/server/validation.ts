@@ -1,4 +1,4 @@
-import { ItemType, VectorField } from "$lib/documents/anime-search/queries";
+import { ItemType } from "$lib/documents/anime-search/queries";
 import {MAX_KW_LEN, OID_LEN} from "$lib/index.js";
 import logs from "$lib/server/logs.js";
 
@@ -30,14 +30,5 @@ export function validateItemType(itemType: ItemType | null | undefined) {
         return false;
     }
 
-    return true;
-}
-
-export function validateVectorField(vField: VectorField | null | undefined) {
-    if (!vField || (vField > VectorField.Img)) {
-        logs.warn('invalid vector field');
-        return false;
-    }
-    
     return true;
 }

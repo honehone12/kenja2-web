@@ -3,10 +3,9 @@
 
     interface Props {
         useFlexible: boolean;
-        usePink: boolean;
     }
 
-    let {useFlexible, usePink}: Props = $props(); 
+    let {useFlexible}: Props = $props(); 
 </script>
 
 <div class="join">
@@ -26,6 +25,6 @@
     </label>
     <button
         type="submit" 
-        class="join-item btn {usePink ? 'btn-secondary' : 'btn-accent'} btn-lg"
+        class="join-item btn btn-accent btn-lg"
     >Search</button>
 </div>

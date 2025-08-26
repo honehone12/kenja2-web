@@ -1,39 +1,3 @@
-export const enum Rating {
-    Unspecified = 0,
-    G,
-    X
-}
-
-export class RatingConv {
-    static fromString(s: string | null) {
-        switch (s) {
-        case 'g':
-            return Rating.G;
-        case 'x':
-            return Rating.X;
-        default:
-            return undefined;
-        }
-    }
-}
-
-export const enum VectorField {
-    Unspecified = 0,
-    Img
-}
-
-export class VFieldConv {
-    static fromString(s: string | null) {
-        switch (s) {
-        case 'image':
-            return VectorField.Img;
-        // add vector name here when use
-        default:
-            return undefined;
-        }
-    }
-}
-
 export const enum ItemType {
     Unspecified = 0,
     Anime,
@@ -85,9 +49,7 @@ export class FuzzyConv {
 
 export interface SearchQuery {
     function_id: FunctionId;
-    rating?: Rating | undefined;
     item_type?: ItemType | undefined;
-    vector_field?: VectorField | undefined;
     id?: string | undefined;
     keywords?: string | undefined;
     fuzzy_kind?: FuzzyKind | undefined; 
