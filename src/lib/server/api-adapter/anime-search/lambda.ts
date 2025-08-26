@@ -41,7 +41,8 @@ export class LambdaApi implements AnimeSearch {
             throw new Error('response without payload');
         }
 
-        const result: SearchResult = JSON.parse(res.Payload.toString());
+        const buff = Buffer.from(res.Payload);
+        const result: SearchResult = JSON.parse(buff.toString());
         return result;
     }
 
@@ -49,7 +50,7 @@ export class LambdaApi implements AnimeSearch {
         const q: SearchQuery = {
             function_id: FunctionId.Ping
         };
-        const payload = Buffer.from(JSON.stringify(q));
+        const payload = JSON.stringify(q);
         const input: InvokeCommandInput = {
             FunctionName: this._functionName,
             Payload: payload
