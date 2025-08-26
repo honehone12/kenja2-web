@@ -58,7 +58,7 @@
                     data-tip="Search Similar Images"
                 >
                     <img 
-                        src="{doc.img}" 
+                        src="/{doc.img}" 
                         alt="an anime image of {doc.name}"
                         class="card-action max-w-60"
                         loading="lazy"        
