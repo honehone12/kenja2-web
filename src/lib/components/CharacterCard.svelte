@@ -1,6 +1,10 @@
 <script lang="ts">
     import { Lang } from "$lib";
     import type { Parent } from "$lib/documents/anime-search/documents";
+    import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
+    import { ItemType } from "$lib/documents/anime-search/queries";
+    import ParentLabel from "$lib/components/ParentLabel.svelte";
+    import DocNameLabel from "$lib/components/DocNameLabel.svelte";
 
     interface Doc {
         parent: Parent | undefined;
@@ -21,35 +25,15 @@
 
 <div class="card w-80 outline outline-cyan-500">
     <div class="card-body">
-        <div class="badge badge-dash badge-accent mb-5">
-            <p>Character キャラクター</p>
+        <div class="mb-5">
+            <ItemTypeBadge itemType={ItemType.Character}/>
         </div>
-        {#if doc.parent}
-            <a href="/textsearch/buffer?keyword={lang === Lang.Jp ? doc.parent.name_japanese : doc.parent.name}&item-type=all">
-                <h3 class="link link-primary">
-                    {doc.parent.name}{doc.parent.name_japanese ? `/ ${doc.parent.name_japanese}`: ''}
-                </h3>    
-            </a>    
-        {/if}
-        {#if lang === Lang.Jp}
-            {#if doc.name_japanese}
-                <a href="/textsearch/buffer?keyword={doc.name_japanese}&item-type=all">
-                    <h2 class="card-title link link-primary text-xl">{doc.name_japanese}</h2>
-                </a>
-            {/if}
-            {#if doc.name}
-                <h2 class="text-xl mb-5">{doc.name}</h2>
-            {/if}
-        {:else}
-            {#if doc.name_japanese}    
-                <h2 class="text-xl">{doc.name_japanese}</h2>
-            {/if}
-            {#if doc.name}
-                <a href="/textsearch/buffer?keyword={doc.name}&item-type=all">
-                    <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
-                </a>
-            {/if}
-        {/if}
+        <ParentLabel {lang} parent={doc.parent}/>    
+        <DocNameLabel 
+            {lang} 
+            name={doc.name} 
+            name_japanese={doc.name_japanese}
+        />
         <div class="text-center">
             {#if doc.img}
                 <a 

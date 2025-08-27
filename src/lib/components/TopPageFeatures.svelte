@@ -3,6 +3,7 @@
     import TopDocuments from "$lib/components/TopDocuments.svelte";
     import type { Lang } from "$lib";
     import WarnMsg from "./WarnMsg.svelte";
+    import YVideoCard from "./YVideoCard.svelte";
 
     // const JUMP_ANIMES: FlatDocument[] = [
     //     // https://ja.wikipedia.org/wiki/Category:%E3%82%B8%E3%83%A3%E3%83%B3%E3%83%97_%E3%82%B3%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9%E3%81%AE%E3%82%A2%E3%83%8B%E3%83%A1%E4%BD%9C%E5%93%81
@@ -32,6 +33,8 @@
         <WarnMsg msg="Kenja is under maintenance."/>
     </div>
 </div>
+
+
 
 <!-- <TopDocuments
     name="Jump Animes"

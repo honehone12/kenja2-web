@@ -1,5 +1,8 @@
 <script lang="ts">
     import { Lang } from "$lib";
+    import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
+    import { ItemType } from "$lib/documents/anime-search/queries";
+    import DocNameLabel from "$lib/components/DocNameLabel.svelte";
 
     interface Doc {
         name_english: string | undefined;
@@ -20,31 +23,17 @@
 
 <div class="card w-80 outline outline-cyan-500">
     <div class="card-body">
-        <div class="badge badge-outline badge-accent mb-5">
-            <p>Anime アニメ</p>
+        <div class="mb-5">
+            <ItemTypeBadge itemType={ItemType.Anime}/>
         </div>
         {#if doc.name_english}
             <h3>{doc.name_english}</h3>
         {/if}
-        {#if lang === Lang.Jp}
-            {#if doc.name_japanese}
-                <a href="/textsearch/buffer?keyword={doc.name_japanese}&item-type=all">
-                    <h2 class="card-title link link-primary text-xl">{doc.name_japanese}</h2>
-                </a>
-            {/if}
-            {#if doc.name}
-                <h2 class="text-xl mb-5">{doc.name}</h2>
-            {/if}
-        {:else}
-            {#if doc.name_japanese}    
-                <h2 class="text-xl">{doc.name_japanese}</h2>
-            {/if}
-            {#if doc.name}
-                <a href="/textsearch/buffer?keyword={doc.name}&item-type=all">
-                    <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
-                </a>
-            {/if}
-        {/if}
+        <DocNameLabel
+            {lang}
+            name={doc.name}
+            name_japanese={doc.name_japanese}
+        />
         <div class="text-center">
             {#if doc.img}
                 <a 
