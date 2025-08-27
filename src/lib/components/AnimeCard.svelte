@@ -30,11 +30,13 @@
         {#if doc.nameEnglish}
             <h3>{doc.nameEnglish}</h3>
         {/if}
-        <DocNameLabel
-            {lang}
-            name={doc.name}
-            nameJapanese={doc.nameJapanese}
-        />
+        <div class="mb-5">
+            <DocNameLabel
+                {lang}
+                name={doc.name}
+                nameJapanese={doc.nameJapanese}
+            />
+        </div>
         <ImageVectorSearchButton
             id={doc.id}
             itemType={ItemType.Anime}

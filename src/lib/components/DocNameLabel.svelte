@@ -17,7 +17,7 @@
         </a>
     {/if}
     {#if name}
-        <h2 class="text-xl mb-5">{name}</h2>
+        <h2 class="text-xl">{name}</h2>
     {/if}
 {:else}
     {#if nameJapanese}    
@@ -25,7 +25,7 @@
     {/if}
     {#if name}
         <a href="/textsearch/buffer?keyword={name}&item-type=all">
-            <h2 class="card-title link link-primary text-xl mb-5">{name}</h2>
+            <h2 class="card-title link link-primary text-xl">{name}</h2>
         </a>
     {/if}
 {/if}

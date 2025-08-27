@@ -29,12 +29,14 @@
         <div class="mb-5">
             <ItemTypeBadge itemType={ItemType.Character}/>
         </div>
-        <ParentLabel {lang} parent={doc.parent}/>    
-        <DocNameLabel 
-            {lang} 
-            name={doc.name} 
-            nameJapanese={doc.nameJapanese}
-        />
+        <ParentLabel {lang} parent={doc.parent}/>
+        <div class="mb-5">
+            <DocNameLabel 
+                {lang} 
+                name={doc.name} 
+                nameJapanese={doc.nameJapanese}
+            />
+        </div>    
         <ImageVectorSearchButton
             id={doc.id}
             itemType={ItemType.Character}

@@ -35,14 +35,15 @@
 </div>
 <div class="hero w-full my-20">
     <div class="hero-content">
-        <YVideoCard {lang} doc={{
-            parent: {
+        <YVideoCard 
+            {lang} 
+            parent={{
                 name: "name",
                 name_japanese: "名前",
                 url: "some.doc"
-            },
-            unique: "MbLvluRyv2o" 
-        }}/>
+            }}
+            unique="MbLvluRyv2o" 
+        />
     </div>
 </div>
 
