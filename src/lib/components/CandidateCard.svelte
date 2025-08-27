@@ -17,10 +17,10 @@
     <AnimeCard
         {lang}
         doc={{
-            name_english: doc.name_english,
-            name_japanese: doc.name_japanese,
-            name: doc.name,
             id: doc.id,
+            name: doc.name,
+            nameEnglish: doc.name_english,
+            nameJapanese: doc.name_japanese,
             img: doc.img,
             src: doc.src
         }}
@@ -29,10 +29,10 @@
     <CharacterCard
         {lang}
         doc={{
-            parent: doc.parent,
-            name_japanese: doc.name_japanese,
-            name: doc.name,
             id: doc.id,
+            parent: doc.parent,
+            name: doc.name,
+            nameJapanese: doc.name_japanese,
             img: doc.img,
             src: doc.src
         }}

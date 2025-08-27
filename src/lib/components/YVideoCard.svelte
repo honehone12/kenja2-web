@@ -23,6 +23,6 @@
         <div class="mb-5">
             <ItemTypeBadge itemType={ItemType.YVideo}/>
         </div>
-            <ParentLabel {lang} parent={doc.parent}/>    
+        <ParentLabel {lang} parent={doc.parent}/>    
     </div>
 </div>

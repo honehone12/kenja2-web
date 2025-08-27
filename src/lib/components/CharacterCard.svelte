@@ -5,12 +5,13 @@
     import { ItemType } from "$lib/documents/anime-search/queries";
     import ParentLabel from "$lib/components/ParentLabel.svelte";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
+    import ImageVectorSearchButton from "$lib/components/ImageVectorSearchButton.svelte";
 
     interface Doc {
+        id: string;
         parent: Parent | undefined;
-        name_japanese: string | undefined;
         name: string | undefined;
-        id: string | undefined;
+        nameJapanese: string | undefined;
         img: string | undefined;
         src: string | undefined;
     }
@@ -32,28 +33,14 @@
         <DocNameLabel 
             {lang} 
             name={doc.name} 
-            name_japanese={doc.name_japanese}
+            nameJapanese={doc.nameJapanese}
         />
-        <div class="text-center">
-            {#if doc.img}
-                <a 
-                    href="/vectorsearch/buffer/{doc.id}?item-type=character" 
-                    class="tooltip" 
-                    data-tip="Search Similar Images"
-                >
-                    <img 
-                        src="/{doc.img}" 
-                        alt="an anime image of {doc.name}"
-                        class="card-action max-w-60"
-                        loading="lazy"        
-                    >
-                </a>
-            {/if}
-            {#if doc.src}
-                <a href="{doc.src}">
-                    <p class="link link-primary">source</p>
-                </a>
-            {/if}
-        </div>
+        <ImageVectorSearchButton
+            id={doc.id}
+            itemType={ItemType.Character}
+            name={doc.name}
+            img={doc.img}
+            src={doc.src}
+        />
     </div>
 </div>
