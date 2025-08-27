@@ -4,6 +4,7 @@
     import AnimeCard from "$lib/components/AnimeCard.svelte";
     import CharacterCard from "$lib/components/CharacterCard.svelte";
     import type { Lang } from "$lib";
+    import YVideoCard from "$lib/components/YVideoCard.svelte";
 
     interface Props {
         doc: FlatDocument;
@@ -17,11 +18,12 @@
     <AnimeCard
         {lang}
         doc={{
-            name_english: doc.name_english,
-            name_japanese: doc.name_japanese,
-            name: doc.name,
             id: doc.id,
+            name: doc.name,
+            nameEnglish: doc.name_english,
+            nameJapanese: doc.name_japanese,
             img: doc.img,
+            url: doc.url,
             src: doc.src
         }}
     />
@@ -29,12 +31,18 @@
     <CharacterCard
         {lang}
         doc={{
-            parent: doc.parent,
-            name_japanese: doc.name_japanese,
-            name: doc.name,
             id: doc.id,
+            parent: doc.parent,
+            name: doc.name,
+            nameJapanese: doc.name_japanese,
             img: doc.img,
             src: doc.src
         }}
+    />
+{:else if doc.item_type === ItemType.YVideo}
+    <YVideoCard
+        {lang}
+        docParent={doc.parent}
+        unique={doc.unique}
     />
 {/if}

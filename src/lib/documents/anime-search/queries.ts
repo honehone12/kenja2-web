@@ -1,7 +1,8 @@
 export const enum ItemType {
     Unspecified = 0,
     Anime,
-    Character
+    Character,
+    YVideo
 }
 
 export class ITypeConv {

@@ -1,12 +1,17 @@
 <script lang="ts">
     import { Lang } from "$lib";
     import type { Parent } from "$lib/documents/anime-search/documents";
+    import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
+    import { ItemType } from "$lib/documents/anime-search/queries";
+    import ParentLabel from "$lib/components/ParentLabel.svelte";
+    import DocNameLabel from "$lib/components/DocNameLabel.svelte";
+    import ImageVectorSearchButton from "$lib/components/ImageVectorSearchButton.svelte";
 
     interface Doc {
+        id: string;
         parent: Parent | undefined;
-        name_japanese: string | undefined;
         name: string | undefined;
-        id: string | undefined;
+        nameJapanese: string | undefined;
         img: string | undefined;
         src: string | undefined;
     }
@@ -21,55 +26,23 @@
 
 <div class="card w-80 outline outline-cyan-500">
     <div class="card-body">
-        <div class="badge badge-dash badge-accent mb-5">
-            <p>Character キャラクター</p>
+        <div class="mb-5">
+            <ItemTypeBadge itemType={ItemType.Character}/>
         </div>
-        {#if doc.parent}
-            <a href="/textsearch/buffer?keyword={lang === Lang.Jp ? doc.parent.name_japanese : doc.parent.name}&item-type=all">
-                <h3 class="link link-primary">
-                    {doc.parent.name}{doc.parent.name_japanese ? `/ ${doc.parent.name_japanese}`: ''}
-                </h3>    
-            </a>    
-        {/if}
-        {#if lang === Lang.Jp}
-            {#if doc.name_japanese}
-                <a href="/textsearch/buffer?keyword={doc.name_japanese}&item-type=all">
-                    <h2 class="card-title link link-primary text-xl">{doc.name_japanese}</h2>
-                </a>
-            {/if}
-            {#if doc.name}
-                <h2 class="text-xl mb-5">{doc.name}</h2>
-            {/if}
-        {:else}
-            {#if doc.name_japanese}    
-                <h2 class="text-xl">{doc.name_japanese}</h2>
-            {/if}
-            {#if doc.name}
-                <a href="/textsearch/buffer?keyword={doc.name}&item-type=all">
-                    <h2 class="card-title link link-primary text-xl mb-5">{doc.name}</h2>
-                </a>
-            {/if}
-        {/if}
-        <div class="text-center">
-            {#if doc.img}
-                <a 
-                    href="/vectorsearch/buffer/{doc.id}?item-type=character" 
-                    class="tooltip" 
-                    data-tip="Search Similar Images"
-                >
-                    <img 
-                        src="/{doc.img}" 
-                        alt="an anime image of {doc.name}"
-                        class="card-action max-w-60"
-                        loading="lazy"        
-                    >
-                </a>
-            {/if}
-            {#if doc.src}
-                <a href="{doc.src}">
-                    <p class="link link-primary">source</p>
-                </a>
-            {/if}
-        </div>
+        <ParentLabel {lang} docParent={doc.parent}/>
+        <span class="mb-5">
+            <DocNameLabel 
+                {lang} 
+                name={doc.name} 
+                nameJapanese={doc.nameJapanese}
+            />
+        </span>    
+        <ImageVectorSearchButton
+            id={doc.id}
+            itemType={ItemType.Character}
+            name={doc.name}
+            img={doc.img}
+            src={doc.src}
+        />
     </div>
 </div>
