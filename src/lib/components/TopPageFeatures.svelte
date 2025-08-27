@@ -2,7 +2,7 @@
     import type {FlatDocument} from "$lib/documents/anime-search/documents"
     import TopDocuments from "$lib/components/TopDocuments.svelte";
     import type { Lang } from "$lib";
-    import WarnMsg from "./WarnMsg.svelte";
+    import WarnMessage from "./WarnMessage.svelte";
     import YVideoCard from "./YVideoCard.svelte";
 
     // const JUMP_ANIMES: FlatDocument[] = [
@@ -30,23 +30,9 @@
 
 <div class="hero w-full my-20">
     <div class="hero-content">
-        <WarnMsg msg="Kenja is under maintenance."/>
+        <WarnMessage msg="Kenja is under maintenance."/>
     </div>
 </div>
-<div class="hero w-full my-20">
-    <div class="hero-content">
-        <YVideoCard 
-            {lang} 
-            parent={{
-                name: "name",
-                name_japanese: "名前",
-                url: "some.doc"
-            }}
-            unique="MbLvluRyv2o" 
-        />
-    </div>
-</div>
-
 
 <!-- <TopDocuments
     name="Jump Animes"

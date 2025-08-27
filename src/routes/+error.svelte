@@ -1,9 +1,9 @@
 <script lang="ts">
-    import ErrorMsg from "$lib/components/ErrorMsg.svelte";
+    import ErrorMessage from "$lib/components/ErrorMessage.svelte";
 </script>
 
 <div class="hero w-full h-screen">
     <div class="hero-content">
-        <ErrorMsg />
+        <ErrorMessage />
     </div>
 </div>

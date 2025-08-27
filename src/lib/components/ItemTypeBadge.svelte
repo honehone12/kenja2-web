@@ -14,7 +14,7 @@
             case ItemType.Character:
                 return 'Character キャラクター';
             case ItemType.YVideo:
-                return 'Video ビデオ'
+                return 'Trailer トレーラー'
             default:
                 return '';
         }

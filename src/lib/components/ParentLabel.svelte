@@ -4,16 +4,16 @@
 
     interface Props {
         lang: Lang;
-        parent: Parent | undefined;
+        docParent: Parent | undefined;
     }
 
-    let {lang, parent}: Props = $props();
+    let {lang, docParent}: Props = $props();
 </script>
 
-{#if parent}
-    <a href="/textsearch/buffer?keyword={lang === Lang.Jp && parent.name_japanese ? parent.name_japanese : parent.name}&item-type=all">
+{#if docParent}
+    <a href="/textsearch/buffer?keyword={lang === Lang.Jp && docParent.name_japanese ? docParent.name_japanese : docParent.name}&item-type=all">
         <h3 class="link link-primary">
-            {parent.name}{parent.name_japanese ? `/ ${parent.name_japanese}`: ''}
+            {docParent.name}{docParent.name_japanese ? ` / ${docParent.name_japanese}`: ''}
         </h3>    
     </a>
 {/if}

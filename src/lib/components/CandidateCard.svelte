@@ -22,6 +22,7 @@
             nameEnglish: doc.name_english,
             nameJapanese: doc.name_japanese,
             img: doc.img,
+            url: doc.url,
             src: doc.src
         }}
     />

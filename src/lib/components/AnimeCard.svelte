@@ -4,12 +4,13 @@
     import { ItemType } from "$lib/documents/anime-search/queries";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
     import ImageVectorSearchButton from "$lib/components/ImageVectorSearchButton.svelte";
-
+    
     interface Doc {
         id: string;
         name: string | undefined;
         nameEnglish: string | undefined;
         nameJapanese: string | undefined;
+        url: string | undefined;
         img: string | undefined;
         src: string | undefined;
     }
@@ -30,13 +31,13 @@
         {#if doc.nameEnglish}
             <h3>{doc.nameEnglish}</h3>
         {/if}
-        <div class="mb-5">
+        <span class="mb-5">
             <DocNameLabel
                 {lang}
                 name={doc.name}
                 nameJapanese={doc.nameJapanese}
             />
-        </div>
+        </span>
         <ImageVectorSearchButton
             id={doc.id}
             itemType={ItemType.Anime}
