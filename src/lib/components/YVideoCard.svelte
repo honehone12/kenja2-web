@@ -1,20 +1,20 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import type { Parent } from "$lib/documents/anime-search/documents";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
 
     interface Props {
         lang: Lang;
-        docParent: Parent | undefined;
+        name: string | undefined;
+        nameJapanese: string | undefined;
         unique: string | undefined;
     }
 
-    let {lang, docParent, unique}: Props = $props();
+    let {lang, name, nameJapanese, unique}: Props = $props();
 </script>
 
-{#if unique && docParent}
+{#if unique}
     <div class="card w-80 outline outline-cyan-500">
         <div class="card-body">
             <div class="mb-5">
@@ -23,8 +23,8 @@
             <span class="mb-2">
                 <DocNameLabel 
                     {lang} 
-                    name={docParent.name} 
-                    nameJapanese={docParent.name_japanese}
+                    {name} 
+                    {nameJapanese}
                 />
             </span>
             <iframe  
