@@ -4,6 +4,7 @@
     import AnimeCard from "$lib/components/AnimeCard.svelte";
     import CharacterCard from "$lib/components/CharacterCard.svelte";
     import type { Lang } from "$lib";
+    import YVideoCard from "$lib/components/YVideoCard.svelte";
 
     interface Props {
         doc: FlatDocument;
@@ -37,5 +38,11 @@
             img: doc.img,
             src: doc.src
         }}
+    />
+{:else if doc.item_type === ItemType.YVideo}
+    <YVideoCard
+        {lang}
+        docParent={doc.parent}
+        unique={doc.unique}
     />
 {/if}

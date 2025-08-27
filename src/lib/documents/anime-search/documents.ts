@@ -10,6 +10,7 @@ export interface FlatDocument {
     id: string;
     item_type: ItemType;
     url: string | undefined;
+    unique: string | undefined;
     img: string | undefined;
     src: string | undefined;
     parent: Parent | undefined;
