@@ -3,13 +3,11 @@ import type { ItemType } from "$lib/documents/anime-search/queries";
 export interface Parent {
     name: string;
     name_japanese: string | undefined;
-    url: string | undefined;
 }
 
 export interface FlatDocument {
     id: string;
     item_type: ItemType;
-    url: string | undefined;
     unique: string | undefined;
     img: string | undefined;
     src: string | undefined;

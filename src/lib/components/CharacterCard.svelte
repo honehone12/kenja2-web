@@ -29,7 +29,11 @@
         <div class="mb-5">
             <ItemTypeBadge itemType={ItemType.Character}/>
         </div>
-        <ParentLabel {lang} docParent={doc.parent}/>
+        <ParentLabel 
+            {lang} 
+            name={doc.parent?.name}
+            nameJapanese={doc.parent?.name_japanese}
+        />
         <span class="mb-5">
             <DocNameLabel 
                 {lang} 

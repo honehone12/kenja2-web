@@ -10,7 +10,6 @@
         name: string | undefined;
         nameEnglish: string | undefined;
         nameJapanese: string | undefined;
-        url: string | undefined;
         img: string | undefined;
         src: string | undefined;
     }

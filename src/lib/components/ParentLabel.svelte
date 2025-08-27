@@ -1,19 +1,19 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import type { Parent } from "$lib/documents/anime-search/documents";
 
     interface Props {
         lang: Lang;
-        docParent: Parent | undefined;
+        name: string | undefined;
+        nameJapanese: string | undefined;
     }
 
-    let {lang, docParent}: Props = $props();
+    let {lang, name, nameJapanese}: Props = $props();
 </script>
 
-{#if docParent}
-    <a href="/textsearch/buffer?keyword={lang === Lang.Jp && docParent.name_japanese ? docParent.name_japanese : docParent.name}&item-type=all">
+{#if name}
+    <a href="/textsearch/buffer?keyword={(lang === Lang.Jp && nameJapanese) ? nameJapanese : name}&item-type=all">
         <h3 class="link link-primary">
-            {docParent.name}{docParent.name_japanese ? ` / ${docParent.name_japanese}`: ''}
+            {name}{nameJapanese ? ` / ${nameJapanese}`: ''}
         </h3>    
     </a>
 {/if}

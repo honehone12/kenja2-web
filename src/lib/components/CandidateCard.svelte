@@ -23,7 +23,6 @@
             nameEnglish: doc.name_english,
             nameJapanese: doc.name_japanese,
             img: doc.img,
-            url: doc.url,
             src: doc.src
         }}
     />
@@ -42,7 +41,8 @@
 {:else if doc.item_type === ItemType.YVideo}
     <YVideoCard
         {lang}
-        docParent={doc.parent}
+        name={doc.parent?.name}
+        nameJapanese={doc.parent?.name_japanese}
         unique={doc.unique}
     />
 {/if}
