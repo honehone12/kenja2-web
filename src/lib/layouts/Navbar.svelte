@@ -2,7 +2,7 @@
 	<div class="navbar-start">
 		<div class="dropdown md:hidden">
 			<div tabindex="0" role="button" class="btn btn-ghost">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6 h16 M4 12 h16 m-16 6 h16"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" class="size-9" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6 h16 M4 12 h16 m-16 6 h16"/></svg>
 			</div>
 			<ul class="menu menu-lg dropdown-content bg-base-300 rounded-box z-1 w-52 mt-4 p-3">
 				<li class="my-2">

@@ -12,6 +12,8 @@ export class ITypeConv {
             return ItemType.Anime;
         case 'character':
             return ItemType.Character;
+        case 'trailer':
+            return ItemType.YVideo;
         default:
             return undefined;
         }
@@ -23,6 +25,8 @@ export class ITypeConv {
             return 'anime';
         case ItemType.Character:
             return 'character';
+        case ItemType.YVideo:
+            return 'trailer';
         default:
             return 'all';
         }
