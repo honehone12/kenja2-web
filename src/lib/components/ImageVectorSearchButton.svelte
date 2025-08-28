@@ -29,7 +29,7 @@
     {/if}
     {#if src}
         <a href="{src}">
-            <p class="link link-primary">source</p>
+            <p class="link link-primary">Source</p>
         </a>
     {/if}
 </div>
