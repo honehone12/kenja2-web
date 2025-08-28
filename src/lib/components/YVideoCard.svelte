@@ -22,7 +22,8 @@
             </div>
             <span class="mb-2">
                 <DocNameLabel 
-                    {lang} 
+                    {lang}
+                    useLink={true} 
                     {name} 
                     {nameJapanese}
                 />

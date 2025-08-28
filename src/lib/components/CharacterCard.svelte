@@ -37,6 +37,7 @@
         <span class="mb-5">
             <DocNameLabel 
                 {lang} 
+                useLink={false}
                 name={doc.name} 
                 nameJapanese={doc.nameJapanese}
             />
