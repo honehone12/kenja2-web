@@ -32,7 +32,7 @@
             />
             <label for="item-type-anime" class="text-lg">Anime</label>
         </div>
-        <div>
+        <div class="mb-2">
             <input 
                 type="radio" 
                 name="item-type" 
@@ -41,6 +41,16 @@
                 class="radio radio-lg radio-accent" 
             />
             <label for="item-type-character" class="text-lg">Character</label>
+        </div>
+        <div>
+            <input 
+                type="radio" 
+                name="item-type" 
+                id="item-type-trailer" 
+                value="trailer" 
+                class="radio radio-lg radio-accent" 
+            />
+            <label for="item-type-trailer" class="text-lg">Trailer</label>
         </div>
     </fieldset>
 </div>

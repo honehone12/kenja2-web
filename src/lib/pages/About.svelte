@@ -68,6 +68,14 @@
                     <p>Although it is not popular as "seichi" (聖地 anime's real location).</p>
                 </span>
             {/if}
+            <div class="flex justify-center mt-5">
+                <figure>
+                    <img 
+                        src="/preview/anime/9e1f6c08772d5a7b3d62a083a643f87d.jpg"
+                        alt="anime named Futsuu no Joshikousei ga [Locodol] Yattemita."
+                    />
+                </figure>
+            </div>
             {#if lang === Lang.Jp}
                 <h2 class="text-center text-info text-3xl mt-20 mb-20">なんでこんなものが？</h2>
                 <span class="text-lg">
