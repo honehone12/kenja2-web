@@ -36,6 +36,16 @@
                 allowfullscreen
                 class="outline outline-cyan-500 outline rounded-md my-2"
             ></iframe>
+            <span class="text-center">
+                <a href="https://www.youtube.com/watch?v={unique}">
+                    <button
+                        class="btn btn-xs btn-circle btn-accent w-40"
+                    >
+                        Watch on Youtube
+                    </button>
+                    <!-- <p class="link link-primary">Wath on Youtube</p> -->
+                </a>
+            </span>
         </div>
     </div>    
 {/if}
