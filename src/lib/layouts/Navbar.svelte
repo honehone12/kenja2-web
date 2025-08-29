@@ -11,11 +11,6 @@
 					</a>
 				</li>
 				<li class="my-2">
-					<a tabindex="0" href="/textsearch">
-						<span class="link">Search</span>
-					</a>
-				</li>
-				<li class="my-2">
 					<a tabindex="0" href="/about">
 						<span class="link">About</span>
 					</a>
@@ -27,9 +22,6 @@
 		<ul class="menu menu-lg menu-horizontal px-1">
 			<li>
 				<a tabindex="0" href="/">Home</a>
-			</li>
-			<li>
-				<a tabindex="0" href="/textsearch">Search</a>
 			</li>
 			<li>
 				<a tabindex="0" href="/about">About</a>
