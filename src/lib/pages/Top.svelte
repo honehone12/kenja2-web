@@ -20,9 +20,9 @@
                 />
             </figure>
             {#if lang === Lang.Jp}
-                <h1 class="text-5xl text-info mb-10">ケンジャ</h1>
+                <h1 class="text-5xl text-secondary mb-10">ケンジャ</h1>
             {:else}
-                <h1 class="text-5xl text-info mb-10">Kenja</h1>
+                <h1 class="text-5xl text-secondary mb-10">Kenja</h1>
             {/if}
             <div class="text-center">
                 {#if lang === Lang.Jp}

@@ -1,4 +1,4 @@
-<footer class="footer footer-center bg-base-300 p-10 mb-15">
+<footer class="footer footer-center bg-base-200 p-10 mb-15">
     <aside>
         <a href="/">
             <img

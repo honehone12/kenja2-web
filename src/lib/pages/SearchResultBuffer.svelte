@@ -41,7 +41,7 @@
 </script>
 
 <div class="mt-20 text-center">
-    <h1 class="text-3xl text-info">Search Results</h1>
+    <h1 class="text-3xl text-secondary">Search Results</h1>
 </div>
 {#if searchType === SearchType.Text}
     <div class="mt-20 text-center">
