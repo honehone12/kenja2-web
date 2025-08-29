@@ -1,3 +1,31 @@
+<script lang="ts">
+    import { page } from "$app/state";
+    import { Lang } from "$lib";
+
+
+	interface Props {
+		lang: Lang;
+	}
+
+	let {lang}: Props = $props();
+
+	function otherLang() {
+		return lang === Lang.Jp ? 'EN' : 'JP';
+	}
+
+	function otherLangUrl() {
+		const u = page.url;
+		let q = u.searchParams;
+		let l = lang === Lang.Jp ? 'en' : 'ja';
+		if (q.has('lang')) {
+			q.set('lang', l);
+		} else {
+			q.append('lang', l);
+		}
+		return u.toString();
+	}
+</script>
+
 <div class="navbar bg-base-200">
 	<div class="navbar-start">
 		<div class="dropdown md:hidden">
@@ -7,12 +35,12 @@
 			<ul class="menu menu-lg dropdown-content bg-base-300 rounded-box z-1 w-52 mt-4 p-3">
 				<li class="my-2">
 					<a tabindex="0" href="/">
-						<span class="link">Home</span>
+						<span class="link font-medium">Home</span>
 					</a>
 				</li>
 				<li class="my-2">
 					<a tabindex="0" href="/about">
-						<span class="link">About</span>
+						<span class="link font-medium">About</span>
 					</a>
 				</li>
 			</ul>
@@ -21,14 +49,25 @@
 	<div class="navbar-center hidden md:flex">
 		<ul class="menu menu-lg menu-horizontal px-1">
 			<li>
-				<a tabindex="0" href="/">Home</a>
+				<a tabindex="0" href="/"><span class="font-medium">Home</span></a>
 			</li>
 			<li>
-				<a tabindex="0" href="/about">About</a>
+				<a tabindex="0" href="/about"><span class="font-medium">About</span></a>
 			</li>
 		</ul>
 	</div>
 	<div class="navbar-end">
-		<!-- just for layout for now -->
+		<ul class="menu menu-lg menu-horizontal px-1 mr-4">
+			<li>
+				<a 
+					tabindex="0" 
+					href={otherLangUrl()} 
+					onclick={(e) => {
+                        e.preventDefault();
+                        window.location.href = otherLangUrl();
+                    }}
+				><span class="font-medium">{otherLang()}</span></a>
+			</li>
+		</ul>
 	</div>
 </div>

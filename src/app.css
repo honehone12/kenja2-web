@@ -6,7 +6,7 @@
 @plugin "daisyui/theme" {
     name: "halloween";
     default: true;
-    --color-primary: oklch(71.5% 0.143 215.221);
-    --color-secondary: oklch(76.9% 0.188 70.08);
-    --color-accent: oklch(69.6% 0.17 162.48);
+    --color-primary: oklch(78.9% 0.154 211.53);
+    --color-secondary: oklch(82.8% 0.189 84.429);
+    --color-accent: oklch(76.5% 0.177 163.223);
 }
