@@ -11,7 +11,7 @@
 </script>
 
 {#if name}
-    <a href="/textsearch/buffer?keyword={(lang === Lang.Jp && nameJapanese) ? nameJapanese : name}&item-type=all">
+    <a href="/textsearch/buffer?keyword={(lang === Lang.Jp && nameJapanese) ? nameJapanese : name}&item-type=all{lang === Lang.Jp ? '&lang=ja' : ''}">
         <h3 class="link link-primary">
             {name}{nameJapanese ? ` / ${nameJapanese}`: ''}
         </h3>    

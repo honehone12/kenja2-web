@@ -17,7 +17,7 @@
 <div class="text-center">
     {#if name && img}
         <a 
-            href="/vectorsearch/buffer/{id}?item-type={ITypeConv.toString(itemType)}" 
+            href="/vectorsearch/buffer/{id}?item-type={ITypeConv.toString(itemType)}{lang === Lang.Jp ? '&lang=ja' : ''}" 
             class="tooltip" 
             data-tip={lang === Lang.Jp ? '似ているアイテムを探す' : 'Search Similar Images'}
         >
