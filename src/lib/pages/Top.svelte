@@ -43,6 +43,7 @@
     <div class="hero w-full mt-10">
         <div class="hero-content">
             <TextSearchForm 
+                {lang}
                 useFlexible={true} 
                 onsubmit={null}
             />

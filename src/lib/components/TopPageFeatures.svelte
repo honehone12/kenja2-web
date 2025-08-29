@@ -143,11 +143,13 @@
 
 <TopDocuments
     name="Jump Animes"
+    nameJapanese="ジャンプアニメ"
     list={JUMP_ANIMES}
     {lang}
 />
 <TopDocuments
     name="Kirara Animes"
+    nameJapanese="きららアニメ"
     list={KIRARA_ANIMES}
     {lang}
 />

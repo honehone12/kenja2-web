@@ -9,5 +9,5 @@
 
 <Navbar lang={data.lang}/>
 {@render children()}
-<Dock/>
+<Dock lang={data.lang}/>
 <Footer/>

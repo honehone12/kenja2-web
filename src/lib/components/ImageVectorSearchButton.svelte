@@ -1,7 +1,9 @@
 <script lang="ts">
+    import { Lang } from "$lib";
     import { ITypeConv, type ItemType } from "$lib/documents/anime-search/queries";
 
     interface Props {
+        lang: Lang;
         id: string;
         itemType: ItemType;
         name: string | undefined;
@@ -9,7 +11,7 @@
         src: string | undefined;
     }
 
-    let {id, itemType, name, img, src}: Props = $props();
+    let {lang, id, itemType, name, img, src}: Props = $props();
 </script>
 
 <div class="text-center">
@@ -17,7 +19,7 @@
         <a 
             href="/vectorsearch/buffer/{id}?item-type={ITypeConv.toString(itemType)}" 
             class="tooltip" 
-            data-tip="Search Similar Images"
+            data-tip={lang === Lang.Jp ? '似ているアイテムを探す' : 'Search Similar Images'}
         >
             <img 
                 src="/{img}" 

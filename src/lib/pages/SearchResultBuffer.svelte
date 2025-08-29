@@ -1,6 +1,6 @@
 <script lang="ts">
     import {page} from '$app/state';
-    import type { SearchResult, FlatDocument } from "$lib/documents/anime-search/documents";
+    import type { SearchResult } from "$lib/documents/anime-search/documents";
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import NoResults from '$lib/components/NoResults.svelte';
@@ -38,7 +38,13 @@
 </script>
 
 <div class="mt-20 text-center">
-    <h1 class="text-3xl text-secondary">Search Results</h1>
+    <h1 class="text-3xl text-secondary">
+        {#if lang === Lang.Jp}
+            検索結果
+        {:else}
+            Search Results
+        {/if}
+    </h1>
 </div>
 {#if searchType === SearchType.Text}
     <div class="mt-20 text-center">

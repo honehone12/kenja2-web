@@ -39,6 +39,7 @@
             />
         </span>
         <ImageVectorSearchButton
+            {lang}
             id={doc.id}
             itemType={ItemType.Anime}
             name={doc.name}

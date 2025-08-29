@@ -2,13 +2,15 @@
     import KeywordInput from "$lib/components/KeywordInput.svelte";
     import ItemTypeRadio from "$lib/components/ItemTypeRadio.svelte";
     import FuzzyBox from "$lib/components/FuzzyBox.svelte";
+    import type { Lang } from "$lib";
  
     interface Props {
+        lang: Lang;
         useFlexible: boolean;
         onsubmit: (() => void) | null;
     }
     
-    let {useFlexible, onsubmit}: Props = $props();
+    let {lang, useFlexible, onsubmit}: Props = $props();
 </script>
 
 <form 
@@ -16,12 +18,11 @@
     action="/textsearch/buffer"
     {onsubmit}
 >
-    <KeywordInput {useFlexible}/>    
+    <KeywordInput {lang} {useFlexible}/>    
     <div class="mt-5 ml-5">
-        <FuzzyBox/>
+        <FuzzyBox {lang}/>
     </div>
     <div class="mt-5 ml-5">
-        <h2 class="text-2xl mb-3 tooltip" data-tip="Select items to search">Item Type</h2>
-        <ItemTypeRadio useAll={true}/>
+        <ItemTypeRadio {lang}/>
     </div>
 </form>

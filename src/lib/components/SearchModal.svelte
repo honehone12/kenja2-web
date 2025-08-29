@@ -1,12 +1,14 @@
 <script lang="ts">
+    import { Lang } from "$lib";
     import {SEARCH_MODAL_ID} from "$lib/client/modal";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
 
     interface Props {
+        lang: Lang;
         onclickClose: () => void;
     }
 
-    let {onclickClose}: Props = $props();
+    let {lang, onclickClose}: Props = $props();
 </script>
 
 <dialog id="{SEARCH_MODAL_ID}" class="modal">
@@ -19,11 +21,16 @@
         </form>
         <span class="mt-20">
             <h2 class="text-2xl text-secondary">
-                Anime & Character Search
+                {#if lang === Lang.Jp}
+                    キーワード検索
+                {:else}
+                    Keywords Search
+                {/if}
             </h2>
         </span>
         <div class="modal-action mt-10 mb-10">
             <TextSearchForm 
+                {lang}
                 useFlexible={false} 
                 onsubmit={onclickClose}
             />
