@@ -24,7 +24,7 @@
     let {lang, doc}: Props = $props();
 </script>
 
-<div class="card w-80 outline outline-cyan-500">
+<div class="card w-80 outline outline-secondary">
     <div class="card-body">
         <div class="mb-5">
             <ItemTypeBadge itemType={ItemType.Character}/>

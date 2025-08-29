@@ -1,5 +1,12 @@
-@import 'tailwindcss';
-@plugin 'daisyui' {
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: halloween --default;
     logs: false;
-    themes: light --default, dark --prefersdark;
+}
+@plugin "daisyui/theme" {
+    name: "halloween";
+    default: true;
+    --color-primary: oklch(71.5% 0.143 215.221);
+    --color-secondary: oklch(76.9% 0.188 70.08);
+    --color-accent: oklch(69.6% 0.17 162.48);
 }

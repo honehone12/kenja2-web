@@ -10,15 +10,15 @@
 </script>
 
 <dialog id="{SEARCH_MODAL_ID}" class="modal">
-    <div class="modal-box flex flex-col items-center outline outline-cyan-500">
+    <div class="modal-box flex flex-col items-center outline outline-secondary">
         <form method="dialog">
             <button 
-                class="btn btn-sm btn-info btn-outline btn-circle absolute right-2 top-2"
+                class="btn btn-sm btn-secondary btn-outline btn-circle absolute right-2 top-2"
                 onclick={onclickClose}
             >X</button>
         </form>
         <span class="mt-20">
-            <h2 class="text-2xl">
+            <h2 class="text-2xl text-secondary">
                 Anime & Character Search
             </h2>
         </span>

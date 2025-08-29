@@ -29,7 +29,7 @@
     <div class="flex justify-center">
         <div class="max-w-200">
             {#if lang === Lang.Jp}
-                <h1 class="text-center text-info text-3xl mb-20">何ですか、これは？</h1>
+                <h1 class="text-center text-secondary text-3xl mb-20">何ですか、これは？</h1>
                 <span class="text-lg">
                     <p>
                         ケンジャは個人で制作しているアニメのファンサイトです。<br>
@@ -39,7 +39,7 @@
                     </p>
                 </span>
             {:else}
-                <h1 class="text-center text-info text-3xl mb-20">What is this?</h1>
+                <h1 class="text-center text-secondary text-3xl mb-20">What is this?</h1>
                 <span class="text-lg">
                     <p>
                         Kenja is a fan site for anime being developed by individual.<br>
@@ -50,7 +50,7 @@
                 </span>
             {/if}
             {#if lang === Lang.Jp} 
-                <h2 class="text-center text-info text-3xl mt-20 mb-20">あなたは誰?</h2>
+                <h2 class="text-center text-secondary text-3xl mt-20 mb-20">あなたは誰?</h2>
                 <span class="text-lg">
                     <p>東京の秋葉原から電車で４５分ほどの街に住んでるプログラマーです。</p>
                     <a href="/textsearch/buffer?keyword=普通の女子校生が【ろこどる】やってみた。&item-type=all" class="link link-primary">
@@ -59,7 +59,7 @@
                     <p>別に聖地としてポピュラーではありませんが。</p>
                 </span>
             {:else}
-                <h2 class="text-center text-info text-3xl mt-20 mb-20">Who are you?</h2>
+                <h2 class="text-center text-secondary text-3xl mt-20 mb-20">Who are you?</h2>
                 <span class="text-lg">
                     <p>I'm a programmer living in a japanese town where is about 45 minutes by train from Akihabara station of Tokyo.</p>
                     <a href="/textsearch/buffer?keyword=Futsuu%20no%20Joshikousei%20ga%20[Locodol]%20Yattemita.&item-type=all" class="link link-primary">
@@ -77,7 +77,7 @@
                 </figure>
             </div>
             {#if lang === Lang.Jp}
-                <h2 class="text-center text-info text-3xl mt-20 mb-20">なんでこんなものが？</h2>
+                <h2 class="text-center text-secondary text-3xl mt-20 mb-20">なんでこんなものが？</h2>
                 <span class="text-lg">
                     <p>
                         アニメを探す簡単なツールが欲しかったからです。<br>
@@ -96,7 +96,7 @@
                     </p>
                 </span>
             {:else}
-                <h2 class="text-center text-info text-3xl mt-20 mb-20">Why is this exist?</h2>
+                <h2 class="text-center text-secondary text-3xl mt-20 mb-20">Why is this exist?</h2>
                 <span class="text-lg">
                     <p>
                         Because I just wanted a easy tool for searching animes.<br>
@@ -116,14 +116,14 @@
                 </span>
             {/if}
             {#if lang === Lang.Jp}
-                <h2 class="text-center text-info text-3xl mt-20 mb-20">ケンジャの由来は何ですか？</h2>
+                <h2 class="text-center text-secondary text-3xl mt-20 mb-20">ケンジャの由来は何ですか？</h2>
                 <span class="text-lg">
                     <p>
                         「賢者タイム」からとりました。
                     </p>
                 </span>
             {:else}
-                <h2 class="text-center text-info text-3xl mt-20 mb-20">What does kenja mean?</h2>
+                <h2 class="text-center text-secondary text-3xl mt-20 mb-20">What does kenja mean?</h2>
                 <span class="text-lg">
                     <p>
                         Kenja (賢者) means wise person or philosopher. I took the word from "kenja time" (賢者 タイム).
@@ -131,14 +131,14 @@
                 </span>
             {/if}
             {#if lang === Lang.Jp}
-                <h2 class="text-center text-info text-3xl mt-20 mb-20">ソーシャルメディアはありますか？</h2>
+                <h2 class="text-center text-secondary text-3xl mt-20 mb-20">ソーシャルメディアはありますか？</h2>
                 <span class="text-lg">
                     <p>
                         準備中です。
                     </p>
                 </span>
             {:else}
-                <h2 class="text-center text-info text-3xl mt-20 mb-20">Do you have social media?</h2>
+                <h2 class="text-center text-secondary text-3xl mt-20 mb-20">Do you have social media?</h2>
                 <span class="text-lg">
                     <p>
                         I'm preparing it.
@@ -146,11 +146,11 @@
                 </span>
             {/if}
             {#if lang === Lang.Jp}
-                <span class="text-center text-info text-xl">
+                <span class="text-center text-secondary text-xl">
                     <h2 class="mt-30">どうぞよろしくお願いします。</h2>
                 </span>
             {:else}
-                <span class="text-center text-info text-xl">
+                <span class="text-center text-secondary text-xl">
                     <h2 class="mt-30">Thank you for your understanding.</h2>
                 </span>
             {/if} 

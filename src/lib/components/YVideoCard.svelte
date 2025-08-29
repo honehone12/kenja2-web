@@ -15,7 +15,7 @@
 </script>
 
 {#if unique}
-    <div class="card w-80 outline outline-cyan-500">
+    <div class="card w-80 outline outline-secondary">
         <div class="card-body">
             <div class="mb-5">
                 <ItemTypeBadge itemType={ItemType.YVideo}/>
@@ -34,12 +34,13 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerpolicy="strict-origin-when-cross-origin" 
                 allowfullscreen
-                class="outline outline-cyan-500 outline rounded-md my-2"
+                class="rounded-md my-2"
             ></iframe>
             <span class="text-center">
                 <a href="https://www.youtube.com/watch?v={unique}">
                     <button
-                        class="btn btn-xs btn-circle btn-accent w-40"
+                        class="btn btn-xs btn-circle btn-accent tooltip w-40"
+                        data-tip="Go to Youtube"
                     >
                         Watch on Youtube
                     </button>
