@@ -21,6 +21,6 @@
     }
 </script>
 
-<div class="badge badge-outline badge-accent">
+<div class="badge badge-dash badge-accent">
     <p>{label(itemType)}</p>
 </div>

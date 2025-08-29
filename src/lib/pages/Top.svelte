@@ -21,9 +21,9 @@
                 />
             </figure>
             {#if lang === Lang.Jp}
-                <h1 class="text-5xl text-secondary mb-10">ケンジャ</h1>
+                <h1 class="text-5xl text-secondary font-semibold mb-10">ケンジャ</h1>
             {:else}
-                <h1 class="text-5xl text-secondary mb-10">Kenja</h1>
+                <h1 class="text-5xl text-secondary font-semibold mb-10">Kenja</h1>
             {/if}
             <div class="text-center">
                 {#if lang === Lang.Jp}
@@ -36,21 +36,6 @@
                         Kenja is a web site where you can search for your favorite anime and characters<br> 
                         by clicking through images.
                     </p>
-                {/if}
-                {#if lang === Lang.Jp}
-                    <a href="/?lang=en" onclick={(e) => {
-                        e.preventDefault();
-                        window.location.href = '/?lang=en';
-                    }}>
-                        <p class="link link-primary mt-5">Do you prefer English?</p>
-                    </a>
-                {:else}
-                    <a href="/?lang=ja" onclick={(e) => {
-                        e.preventDefault();
-                        window.location.href = '/?lang=ja';
-                    }}>
-                        <p class="link link-primary mt-2">日本語対応しました</p>
-                    </a>
                 {/if}
             </div>
         </div>

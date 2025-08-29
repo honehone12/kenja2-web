@@ -9,23 +9,6 @@
 </script>
 
 <div class="w-full py-20 px-10">
-    <div class="text-center mb-20">
-        {#if lang === Lang.Jp}
-            <a href="/about?lang=en" onclick={(e) => {
-                e.preventDefault();
-                window.location.href = '/about?lang=en';
-            }}>
-                <p class="link link-primary mt-5">Do you prefer English?</p>
-            </a>
-        {:else}
-            <a href="/about?lang=ja" onclick={(e) => {
-                e.preventDefault();
-                window.location.href = '/about?lang=ja';
-            }}>
-                <p class="link link-primary mt-2">日本語対応しました</p>
-            </a>
-        {/if}
-    </div>
     <div class="flex justify-center">
         <div class="max-w-200">
             {#if lang === Lang.Jp}
