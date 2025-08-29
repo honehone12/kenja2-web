@@ -1,6 +1,7 @@
 <script lang="ts">
     import { Lang } from "$lib";
     import TopPageFeatures from "$lib/components/TopPageFeatures.svelte";
+    import TextSearchForm from "$lib/components/TextSearchForm.svelte";
 
     interface Props {
         lang: Lang
@@ -52,6 +53,14 @@
                     </a>
                 {/if}
             </div>
+        </div>
+    </div>
+    <div class="hero w-full mt-10">
+        <div class="hero-content">
+            <TextSearchForm 
+                useFlexible={true} 
+                onsubmit={null}
+            />
         </div>
     </div>
     <TopPageFeatures {lang}/>
