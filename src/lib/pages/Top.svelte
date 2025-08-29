@@ -20,23 +20,23 @@
                     class="size-40 mb-10" 
                 />
             </figure>
-            {#if lang === Lang.Jp}
-                <h1 class="text-5xl text-secondary font-semibold mb-10">ケンジャ</h1>
-            {:else}
-                <h1 class="text-5xl text-secondary font-semibold mb-10">Kenja</h1>
-            {/if}
-            <div class="text-center">
+            <h1 class="text-5xl text-secondary font-semibold mb-10">
                 {#if lang === Lang.Jp}
-                    <p class="text-lg">
+                    ケンジャ
+                {:else}
+                    Kenja
+                {/if}
+            </h1>
+            <div class="text-center">
+                <p class="text-lg">
+                    {#if lang === Lang.Jp}
                         ケンジャは画像をポチポチ見ながら<br>
                         好きなアニメやキャラクターを探すウェブサイトです。
-                    </p>
-                {:else}
-                    <p class="text-lg">
+                    {:else}        
                         Kenja is a web site where you can search for your favorite anime and characters<br> 
-                        by clicking through images.
-                    </p>
-                {/if}
+                        by clicking through images.    
+                    {/if}
+                </p>
             </div>
         </div>
     </div>
