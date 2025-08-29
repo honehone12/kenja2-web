@@ -1,11 +1,12 @@
 <script lang="ts">
-    import {MAX_KW_LEN} from "$lib";
+    import {Lang, MAX_KW_LEN} from "$lib";
 
     interface Props {
+        lang: Lang;
         useFlexible: boolean;
     }
 
-    let {useFlexible}: Props = $props(); 
+    let {lang, useFlexible}: Props = $props(); 
 </script>
 
 <div class="join">
@@ -19,12 +20,18 @@
             name="keyword" 
             required
             maxlength={MAX_KW_LEN}
-            placeholder="Enter Keywords"
+            placeholder="{lang === Lang.Jp ? 'キーワードを入力' : 'Enter Keywords'}"
             id="keyword-keyword"
         > 
     </label>
     <button
         type="submit" 
-        class="join-item btn btn-accent btn-lg"
-    >Search</button>
+        class="join-item btn btn-accent btn-lg w-20"
+    >
+        {#if lang === Lang.Jp}
+            検索
+        {:else}
+            Search
+        {/if}
+    </button>
 </div>

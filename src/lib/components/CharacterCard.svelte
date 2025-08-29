@@ -43,6 +43,7 @@
             />
         </span>    
         <ImageVectorSearchButton
+            {lang}
             id={doc.id}
             itemType={ItemType.Character}
             name={doc.name}

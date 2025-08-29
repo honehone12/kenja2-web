@@ -40,9 +40,13 @@
                 <a href="https://www.youtube.com/watch?v={unique}">
                     <button
                         class="btn btn-xs btn-circle btn-accent tooltip w-40"
-                        data-tip="Go to Youtube"
+                        data-tip={lang === Lang.Jp ? 'Youtubeへ移動する' : 'Go to Youtube'}
                     >
-                        Watch on Youtube
+                        {#if lang === Lang.Jp}
+                            Youtubeで見る
+                        {:else}
+                            Watch on Youtube
+                        {/if}
                     </button>
                     <!-- <p class="link link-primary">Wath on Youtube</p> -->
                 </a>

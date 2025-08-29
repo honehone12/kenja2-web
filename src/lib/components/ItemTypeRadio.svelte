@@ -1,36 +1,57 @@
 <script lang="ts">
+    import { Lang } from "$lib";
+
     interface Props {
-        useAll: boolean;
+        lang: Lang;
     }
 
-    let {useAll}: Props = $props();
+    let {lang}: Props = $props();
 </script>
 
+<h2 
+    class="text-2xl mb-3 tooltip" 
+    data-tip={lang === Lang.Jp ? '検索するアイテムを選択' : 'Select items to search'}
+>
+    {#if lang === Lang.Jp}
+        アイテムタイプ
+    {:else}
+        Item Type
+    {/if}
+</h2>
 <div class="flex flex-col">
     <fieldset>
-        {#if useAll}
-            <div class="mb-2">
-                <input 
-                    type="radio" 
-                    name="item-type" 
-                    id="item-type-all" 
-                    value="all" 
-                    checked={useAll} 
-                    class="radio radio-lg radio-accent" 
-                />
-                <label for="item-type-all" class="text-lg">All</label>
-            </div>    
-        {/if}
+        <div class="mb-2">
+            <input 
+                type="radio" 
+                name="item-type" 
+                id="item-type-all" 
+                value="all" 
+                checked 
+                class="radio radio-lg radio-accent" 
+            />
+            <label for="item-type-all" class="text-lg">
+                {#if lang === Lang.Jp}
+                    全て
+                {:else}
+                    All
+                {/if}
+            </label>
+        </div>    
         <div class="mb-2">
             <input 
                 type="radio" 
                 name="item-type" 
                 id="item-type-anime" 
                 value="anime" 
-                checked={!useAll}
                 class="radio radio-lg radio-accent" 
             />
-            <label for="item-type-anime" class="text-lg">Anime</label>
+            <label for="item-type-anime" class="text-lg">
+                {#if lang === Lang.Jp}
+                    アニメ
+                {:else}
+                    Anime
+                {/if}
+            </label>
         </div>
         <div class="mb-2">
             <input 
@@ -40,7 +61,13 @@
                 value="character" 
                 class="radio radio-lg radio-accent" 
             />
-            <label for="item-type-character" class="text-lg">Character</label>
+            <label for="item-type-character" class="text-lg">
+                {#if lang === Lang.Jp}
+                    キャラクター
+                {:else}
+                    Character
+                {/if}
+            </label>
         </div>
         <div>
             <input 
@@ -50,7 +77,13 @@
                 value="trailer" 
                 class="radio radio-lg radio-accent" 
             />
-            <label for="item-type-trailer" class="text-lg">Trailer</label>
+            <label for="item-type-trailer" class="text-lg">
+                {#if lang === Lang.Jp}
+                    トレーラー
+                {:else}
+                    Trailer
+                {/if}
+            </label>
         </div>
     </fieldset>
 </div>

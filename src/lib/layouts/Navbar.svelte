@@ -2,7 +2,6 @@
     import { page } from "$app/state";
     import { Lang } from "$lib";
 
-
 	interface Props {
 		lang: Lang;
 	}
