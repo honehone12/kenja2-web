@@ -14,7 +14,7 @@
 {#if lang === Lang.Jp}
     {#if nameJapanese}
         {#if useLink}
-            <a href="/textsearch/buffer?keyword={nameJapanese}&item-type=all">
+            <a href="/textsearch/buffer?keyword={nameJapanese}&item-type=all&lang=ja">
                 <h2 class="card-title link link-primary text-xl">{nameJapanese}</h2>
             </a>
         {:else}
