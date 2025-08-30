@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anime-kenja.com/sitemap.xml
+Sitemap: https://kenja.tokyo/sitemap.xml
