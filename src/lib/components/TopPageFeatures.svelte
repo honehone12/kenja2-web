@@ -74,6 +74,15 @@
             name: "Slam Dunk",
             name_english: "Slam Dunk",
             name_japanese: "スラムダンク"
+        },
+        {
+            id: "68ad631f59f782ec1803bf2e",
+            item_type: 1,
+            img: "preview/anime/b609c982c1e87724fa209b2dc287ad48.jpg",
+            src: "https://myanimelist.net/anime/1535/Death_Note",
+            name: "Death Note",
+            name_english: "Death Note",
+            name_japanese: "デスノート"
         }
     ];
 
@@ -134,6 +143,101 @@
         }
     ];
 
+    const MAGAZINE_ANIMES: FlatDocument[] = [
+        {
+            id: "68ad633259f782ec1803df49",
+            item_type: 1,
+            img: "preview/anime/492d7fba075a40545162286fc69103b4.jpg",
+            src: "https://myanimelist.net/anime/16498/Shingeki_no_Kyojin",
+            name: "Shingeki no Kyojin",
+            name_english: "Attack on Titan",
+            name_japanese: "進撃の巨人"
+        },
+        {
+            id: "68ad632959f782ec1803d09c",
+            item_type: 1,
+            img: "preview/anime/177b48215487b5b6e1d582ca86fcfd66.jpg",
+            src: "https://myanimelist.net/anime/6702/Fairy_Tail",
+            name: "Fairy Tail",
+            name_english: "Fairy Tail",
+            name_japanese: "FAIRY TAIL（フェアリーテイル）"
+        },
+        {
+            id: "68ad634259f782ec1803fdab",
+            item_type: 1,
+            img: "preview/anime/37861a80c93f02860860c46aadf237d9.jpg",
+            src: "https://myanimelist.net/anime/38101/5-toubun_no_Hanayome",
+            name: "5-toubun no Hanayome",
+            name_english: "The Quintessential Quintuplets",
+            name_japanese: "五等分の花嫁"
+        },
+        {
+            id: "68ad633659f782ec1803e6ce",
+            item_type: 1,
+            img: "preview/anime/2b11e1de920384569b4136fb9fa4ea35.jpg",
+            src: "https://myanimelist.net/anime/23755/Nanatsu_no_Taizai",
+            name: "Nanatsu no Taizai",
+            name_english: "The Seven Deadly Sins",
+            name_japanese: "七つの大罪"
+        },
+        {
+            id: "68ad631559f782ec1803adbb",
+            item_type: 1,
+            img: "preview/anime/1b5e3c5424830f5b00029ca9efc9003a.jpg",
+            src: "https://myanimelist.net/anime/157/Mahou_Sensei_Negima",
+            name: "Mahou Sensei Negima!",
+            name_english: "Negima!",
+            name_japanese: "魔法先生 ネギま！"
+        },
+        {
+            id: "68ad633659f782ec1803e62e",    
+            item_type: 1,
+            img: "preview/anime/d787884139d270162c62c9a82e1f6ed7.jpg",
+            src: "https://myanimelist.net/anime/23273/Shigatsu_wa_Kimi_no_Uso",
+            name: "Shigatsu wa Kimi no Uso",
+            name_english: "Your Lie in April",
+            name_japanese: "四月は君の嘘"
+        },
+        {
+            id: "68ad633859f782ec1803ea79",
+            item_type: 1,
+            img: "preview/anime/7abf8d6777d13f610632b8f719839122.jpg",
+            src: "https://myanimelist.net/anime/28851/Koe_no_Katachi",
+            name: "Koe no Katachi",
+            name_english: "A Silent Voice",
+            name_japanese: "聲の形"
+        },
+        {
+            id: "68ad634059f782ec1803fb2d",
+            item_type: 1,
+            img: "preview/anime/2dfbedcd65f8ae572075007f8b658866.jpg",
+            src: "https://myanimelist.net/anime/37403/Ahiru_no_Sora",
+            name: "Ahiru no Sora",
+            name_japanese: "あひるの空"
+        },
+        {
+            id: "68ad631359f782ec1803a991",
+            item_type: 1,
+            img: "preview/anime/4b9922eef574a830dc925f7c572764ec.jpg",
+            src: "https://myanimelist.net/anime/24/School_Rumble",
+            name: "School Rumble",
+            name_english: "School Rumble",
+            name_japanese: "スクールランブル"
+        }
+    ];
+    
+    const OTHER_ANIMES: FlatDocument[] = [
+        {
+            id: "68afc67779d87884b80509b9",
+            item_type: 1,
+            img: "preview/anime/d6155cec276542cac97fb7055af0f872.jpg",
+            src: "https://myanimelist.net/anime/34599/Made_in_Abyss",
+            name: "Made in Abyss",
+            name_english: "Made in Abyss",
+            name_japanese: "メイドインアビス"
+        }
+    ];
+
     interface Props {
         lang: Lang;
     }
@@ -151,5 +255,17 @@
     name="Kirara Animes"
     nameJapanese="きららアニメ"
     list={KIRARA_ANIMES}
+    {lang}
+/>
+<TopDocuments
+    name="Magazine Animes"
+    nameJapanese="マガジンアニメ"
+    list={MAGAZINE_ANIMES}
+    {lang}
+/>
+<TopDocuments
+    name="Other Animes"
+    nameJapanese="その他アニメ"
+    list={OTHER_ANIMES}
     {lang}
 />
