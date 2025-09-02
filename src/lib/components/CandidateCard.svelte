@@ -7,11 +7,13 @@
     import YVideoCard from "$lib/components/YVideoCard.svelte";
 
     interface Props {
-        doc: FlatDocument;
         lang: Lang
+        doc: FlatDocument;
+        isStared: boolean;
+        onStared: (id: string) => Promise<void>;
     }
 
-    let {doc, lang}: Props = $props();
+    let {lang, doc}: Props = $props();
 </script>
 
 {#if doc.item_type === ItemType.Anime}

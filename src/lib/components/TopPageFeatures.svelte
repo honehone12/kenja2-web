@@ -2,6 +2,8 @@
     import type {FlatDocument} from "$lib/documents/anime-search/documents"
     import TopDocuments from "$lib/components/TopDocuments.svelte";
     import type { Lang } from "$lib";
+    import { onMount } from "svelte";
+    import { KenjaIndexDb } from "$lib/client/indexdb";
 
     const JUMP_ANIMES: FlatDocument[] = [
         {
@@ -242,30 +244,62 @@
         lang: Lang;
     }
 
-    let {lang}: Props = $props(); 
+    let {lang}: Props = $props();
+    let indexdb: KenjaIndexDb | null = $state(null);
+	let myList: string[] = $state([]);
+
+    async function onStared(id: string, list: FlatDocument[]) {
+        if (!indexdb) {
+            return;
+        }
+        const doc = list.find((value) => value.id === id);
+        if (!doc) {
+            return;
+        }
+
+        await indexdb.addMyList(doc);
+        myList = await indexdb.getMyListKeys();
+    }
+
+	onMount(async () => {
+        try {
+			indexdb = await KenjaIndexDb.open();
+			myList = await indexdb.getMyListKeys();
+		} catch {
+            console.error('index db error');
+        }
+    });
 </script>
 
 <TopDocuments
+    {lang}
     name="Jump Animes"
     nameJapanese="ジャンプアニメ"
     list={JUMP_ANIMES}
-    {lang}
+    {myList}
+    onStared={(id) => onStared(id, JUMP_ANIMES)}
 />
 <TopDocuments
+    {lang}
     name="Kirara Animes"
     nameJapanese="きららアニメ"
     list={KIRARA_ANIMES}
-    {lang}
+    {myList}
+    onStared={(id) => onStared(id, KIRARA_ANIMES)}
 />
 <TopDocuments
+    {lang}
     name="Magazine Animes"
     nameJapanese="マガジンアニメ"
     list={MAGAZINE_ANIMES}
-    {lang}
+    {myList}
+    onStared={(id) => onStared(id, MAGAZINE_ANIMES)}
 />
 <TopDocuments
+    {lang}
     name="Other Animes"
     nameJapanese="その他アニメ"
     list={OTHER_ANIMES}
-    {lang}
+    {myList}
+    onStared={(id) => onStared(id, OTHER_ANIMES)}
 />

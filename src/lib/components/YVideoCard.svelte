@@ -11,7 +11,12 @@
         unique: string | undefined;
     }
 
-    let {lang, name, nameJapanese, unique}: Props = $props();
+    let {
+        lang, 
+        name, 
+        nameJapanese, 
+        unique
+    }: Props = $props();
 </script>
 
 {#if unique}

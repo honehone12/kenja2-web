@@ -1,11 +1,13 @@
 <script lang="ts">
     import {page} from '$app/state';
-    import type { SearchResult } from "$lib/documents/anime-search/documents";
+    import type { FlatDocument, SearchResult } from "$lib/documents/anime-search/documents";
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import NoResults from '$lib/components/NoResults.svelte';
     import { SearchType } from '$lib/client/search';
     import { Lang } from '$lib';
+    import { onMount } from "svelte";
+    import { KenjaIndexDb } from "$lib/client/indexdb";
 
     interface Props {
         buffer: Promise<SearchResult>;
@@ -14,6 +16,30 @@
     }
 
     let {buffer, searchType, lang}: Props = $props();
+    let list: FlatDocument[] = $state([]);
+    let indexdb: KenjaIndexDb | null = $state(null);
+	let myList: string[] = $state([]);
+
+    async function bufferResult() {
+        const result = await buffer;
+        if (result.documents) {
+            list = result.documents;
+        }
+        return list;
+    }
+
+    async function onStared(id: string) {
+        if (!indexdb) {
+            return;
+        }
+        const doc = list.find((value) => value.id === id);
+        if (!doc) {
+            return;
+        }
+
+        await indexdb.addMyList(doc);
+        myList = await indexdb.getMyListKeys();
+    }
     
     function searchKeywords() {
         // if this is shown, kws are wihin limit and there are matched results.
@@ -35,6 +61,15 @@
             return l === Lang.Jp ? '全' : 'All'; 
         }
     }
+
+    onMount(async () => {
+        try {
+			indexdb = await KenjaIndexDb.open();
+			myList = await indexdb.getMyListKeys();
+		} catch {
+            console.error('index db error');
+        }
+    });
 </script>
 
 <div class="mt-20 text-center">
@@ -58,14 +93,14 @@
         </p>
     </div>
 {/if}    
-{#await buffer}
+{#await bufferResult()}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <LoadingMsg/>
         </div>
     </div>
-{:then {documents}}
-    {#if documents}
+{:then documents}
+    {#if documents.length > 0}
         <div class="py-20">
             <div class="hero w-full">
                 <div class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-5 mb-10">
@@ -94,6 +129,8 @@
                         <CandidateCard      
                             {doc}
                             {lang}
+                            isStared={myList.includes(doc.id)}
+                            {onStared}
                         />
                     {/each}
                 </div>
