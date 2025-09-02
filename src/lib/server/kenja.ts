@@ -10,7 +10,7 @@ class Kenja {
     private _isLocal = false;
     private _animeSearch: AnimeSearch | null = null;
 
-    useHttpBuffer() {
+    public useHttpBuffer() {
         if (this._animeSearch) {
             throw new Error('api client is already initialized');
         }
@@ -26,7 +26,7 @@ class Kenja {
         }
     }
 
-    useLambda() {
+    public useLambda() {
         if (this._animeSearch) {
             throw new Error('api client is already initialized');
         }
@@ -46,14 +46,14 @@ class Kenja {
         this._animeSearch = new LambdaApi(functionName, config);
     }
 
-    animeSearch(): AnimeSearch {
+    public animeSearch(): AnimeSearch {
         if (!this._animeSearch) {
             throw new Error('api client is not initialized');
         }
         return this._animeSearch;
     }
 
-    isLocal() {
+    public isLocal() {
         return this._isLocal;
     }
 }
