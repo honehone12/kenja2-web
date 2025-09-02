@@ -2,12 +2,22 @@
     import { Lang } from "$lib";
     import TopPageFeatures from "$lib/components/TopPageFeatures.svelte";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
+    import { onMount } from "svelte";
+    import { KenjaIndexDb } from "$lib/client/indexdb";
 
     interface Props {
         lang: Lang
     }
 
     let {lang}: Props = $props();
+
+    onMount(async () => {
+        try {
+            const db = await KenjaIndexDb.open();
+        } catch {
+            console.error('index db error');
+        }
+    });
 </script>
 
 <div class="py-20">
