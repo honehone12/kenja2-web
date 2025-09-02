@@ -27,15 +27,11 @@
 {#if unique}
     <div class="card w-80 outline outline-secondary">
         <div class="card-body">
-            <div class="mb-5">
-                <ItemTypeBadge itemType={ItemType.YVideo}/>
-            </div>
-            <div>
-                <Star 
-                    {lang} 
-                    {star} 
-                    {onStar}
-                />
+            <div class="w-68 mb-5">
+                <span>
+                    <ItemTypeBadge itemType={ItemType.YVideo}/>
+                    <Star {lang} {star} {onStar}/>
+                </span>
             </div>
             <span class="mb-2">
                 <DocNameLabel 

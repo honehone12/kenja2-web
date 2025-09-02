@@ -29,15 +29,11 @@
 
 <div class="card w-80 outline outline-secondary">
     <div class="card-body">
-        <div class="mb-5">
-            <ItemTypeBadge itemType={ItemType.Character}/>
-        </div>
-        <div>
-            <Star
-                {lang} 
-                {star} 
-                {onStar}
-            />
+        <div class="w-68 mb-5">
+            <span class="flex justify-between">
+                <ItemTypeBadge itemType={ItemType.Character}/>
+                <Star {lang} {star} {onStar}/>
+            </span>
         </div>
         <ParentLabel 
             {lang} 
