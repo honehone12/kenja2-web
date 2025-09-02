@@ -27,19 +27,6 @@
         }
         return list;
     }
-
-    async function onStared(id: string) {
-        if (!indexdb) {
-            return;
-        }
-        const doc = list.find((value) => value.id === id);
-        if (!doc) {
-            return;
-        }
-
-        await indexdb.addMyList(doc);
-        myList = await indexdb.getMyListKeys();
-    }
     
     function searchKeywords() {
         // if this is shown, kws are wihin limit and there are matched results.
@@ -62,12 +49,39 @@
         }
     }
 
+    async function onStar(id: string, star: boolean) {
+        try {
+            if (!indexdb) {
+                return;
+            }
+
+            if (star) {
+                const doc = list.find((value) => value.id === id);
+                if (!doc) {
+                    return;
+                }
+
+                await indexdb.addMyList(doc);
+            } else {
+                if (!myList.includes(id)) {
+                    return;
+                }
+
+                await indexdb.deleteMyList(id);
+            }
+            
+            myList = await indexdb.getMyListKeys();    
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
     onMount(async () => {
         try {
 			indexdb = await KenjaIndexDb.open();
 			myList = await indexdb.getMyListKeys();
-		} catch {
-            console.error('index db error');
+		} catch (e) {
+            console.error(e);
         }
     });
 </script>
@@ -129,8 +143,8 @@
                         <CandidateCard      
                             {doc}
                             {lang}
-                            isStared={myList.includes(doc.id)}
-                            {onStared}
+                            {myList}
+                            onStar={(id, star) => onStar(id, star)}
                         />
                     {/each}
                 </div>

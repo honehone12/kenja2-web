@@ -15,7 +15,7 @@ export class KenjaIndexDb {
     public static open() {
         return new Promise<KenjaIndexDb>((resolve, reject) => {
             const req = indexedDB.open(KenjaIndexDb.DB_NAME, 100);
-            req.onerror = () => reject(req.error);
+            req.onerror = () => reject('failed to open index db');
             req.onupgradeneeded = (ev) => {
                 let db = (ev.target as IDBOpenDBRequest).result;
                 let storeList = db.objectStoreNames;
@@ -57,7 +57,7 @@ export class KenjaIndexDb {
                 [KenjaIndexDb.My_LIST_STORE, KenjaIndexDb.META_STORE], 
                 'readwrite'
             );
-            tx.onerror = () => reject(tx.error);
+            tx.onerror = () => reject('failed to add to my list');
             tx.oncomplete = () => resolve();
 
             const list = tx.objectStore(KenjaIndexDb.My_LIST_STORE);
@@ -65,7 +65,7 @@ export class KenjaIndexDb {
             add.onsuccess = () => {
                 const keys = list.getAllKeys();
                 keys.onsuccess = () => tx.objectStore(KenjaIndexDb.META_STORE)
-                    .put(keys, KenjaIndexDb.META_MY_LIST_KEYS);
+                    .put(keys.result, KenjaIndexDb.META_MY_LIST_KEYS);
             };
         });
     }
@@ -76,7 +76,7 @@ export class KenjaIndexDb {
                 [KenjaIndexDb.My_LIST_STORE, KenjaIndexDb.META_STORE],
                 'readwrite'
             );
-            tx.onerror = () => reject(tx.error);
+            tx.onerror = () => reject('failed to delete from my list');
             tx.oncomplete = () => resolve();
 
             const list = tx.objectStore(KenjaIndexDb.My_LIST_STORE);
@@ -84,7 +84,7 @@ export class KenjaIndexDb {
             del.onsuccess = () => {
                 const keys = list.getAllKeys();
                 keys.onsuccess = () => tx.objectStore(KenjaIndexDb.META_STORE)
-                    .put(keys, KenjaIndexDb.META_MY_LIST_KEYS);
+                    .put(keys.result, KenjaIndexDb.META_MY_LIST_KEYS);
             }
         });
     }

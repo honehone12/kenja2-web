@@ -248,25 +248,43 @@
     let indexdb: KenjaIndexDb | null = $state(null);
 	let myList: string[] = $state([]);
 
-    async function onStared(id: string, list: FlatDocument[]) {
-        if (!indexdb) {
-            return;
-        }
-        const doc = list.find((value) => value.id === id);
-        if (!doc) {
-            return;
-        }
+    async function onStar(id: string, star: boolean, list: FlatDocument[]) {
+        try {
+            if (!indexdb) {
+                return;
+            }
 
-        await indexdb.addMyList(doc);
-        myList = await indexdb.getMyListKeys();
+            if (star) {
+                const doc = list.find((value) => value.id === id);
+                if (!doc) {
+                    return;
+                }
+
+                await indexdb.addMyList(doc);
+            } else {
+                if (!myList.includes(id)) {
+                    return;
+                }
+
+                await indexdb.deleteMyList(id);
+            }
+            
+            myList = await indexdb.getMyListKeys();    
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    function isStared(id: string) {
+        return myList.includes(id);
     }
 
 	onMount(async () => {
         try {
 			indexdb = await KenjaIndexDb.open();
 			myList = await indexdb.getMyListKeys();
-		} catch {
-            console.error('index db error');
+		} catch (e) {
+            console.error(e);
         }
     });
 </script>
@@ -277,7 +295,7 @@
     nameJapanese="ジャンプアニメ"
     list={JUMP_ANIMES}
     {myList}
-    onStared={(id) => onStared(id, JUMP_ANIMES)}
+    onStar={(id, star) => onStar(id, star, JUMP_ANIMES)}
 />
 <TopDocuments
     {lang}
@@ -285,7 +303,7 @@
     nameJapanese="きららアニメ"
     list={KIRARA_ANIMES}
     {myList}
-    onStared={(id) => onStared(id, KIRARA_ANIMES)}
+    onStar={(id, star) => onStar(id, star, KIRARA_ANIMES)}
 />
 <TopDocuments
     {lang}
@@ -293,7 +311,7 @@
     nameJapanese="マガジンアニメ"
     list={MAGAZINE_ANIMES}
     {myList}
-    onStared={(id) => onStared(id, MAGAZINE_ANIMES)}
+    onStar={(id, star) => onStar(id, star, MAGAZINE_ANIMES)}
 />
 <TopDocuments
     {lang}
@@ -301,5 +319,5 @@
     nameJapanese="その他アニメ"
     list={OTHER_ANIMES}
     {myList}
-    onStared={(id) => onStared(id, OTHER_ANIMES)}
+    onStar={(id, star) => onStar(id, star, OTHER_ANIMES)}
 />

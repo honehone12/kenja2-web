@@ -9,11 +9,16 @@
     interface Props {
         lang: Lang
         doc: FlatDocument;
-        isStared: boolean;
-        onStared: (id: string) => Promise<void>;
+        myList: string[];
+        onStar: (id: string, star: boolean) => Promise<void>;
     }
 
-    let {lang, doc}: Props = $props();
+    let {
+        lang, 
+        doc, 
+        myList, 
+        onStar
+    }: Props = $props();
 </script>
 
 {#if doc.item_type === ItemType.Anime}
@@ -27,6 +32,8 @@
             img: doc.img,
             src: doc.src
         }}
+        star={myList.includes(doc.id)}
+        onStar={(star) => onStar(doc.id, star)}
     />
 {:else if doc.item_type === ItemType.Character}
     <CharacterCard
@@ -39,6 +46,8 @@
             img: doc.img,
             src: doc.src
         }}
+        star={myList.includes(doc.id)}
+        onStar={(star) => onStar(doc.id, star)}
     />
 {:else if doc.item_type === ItemType.YVideo}
     <YVideoCard
@@ -46,5 +55,7 @@
         name={doc.parent?.name}
         nameJapanese={doc.parent?.name_japanese}
         unique={doc.unique}
+        star={myList.includes(doc.id)}
+        onStar={(star) => onStar(doc.id, star)}
     />
 {/if}

@@ -3,19 +3,24 @@
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
+    import Star from "$lib/components/Star.svelte";
 
     interface Props {
         lang: Lang;
         name: string | undefined;
         nameJapanese: string | undefined;
         unique: string | undefined;
+        star: boolean;
+        onStar: (star: boolean) => Promise<void>;
     }
 
     let {
         lang, 
         name, 
         nameJapanese, 
-        unique
+        unique,
+        star,
+        onStar
     }: Props = $props();
 </script>
 
@@ -24,6 +29,13 @@
         <div class="card-body">
             <div class="mb-5">
                 <ItemTypeBadge itemType={ItemType.YVideo}/>
+            </div>
+            <div>
+                <Star 
+                    {lang} 
+                    {star} 
+                    {onStar}
+                />
             </div>
             <span class="mb-2">
                 <DocNameLabel 
