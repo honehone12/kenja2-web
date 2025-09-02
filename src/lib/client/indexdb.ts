@@ -37,7 +37,7 @@ export class KenjaIndexDb {
                 .objectStore(KenjaIndexDb.META_STORE)
                 .get(KenjaIndexDb.META_MY_LIST_KEYS);
             req.onerror = () => resolve([]);
-            req.onsuccess = () => resolve(req.result);
+            req.onsuccess = () => resolve(req.result ?? []);
         });
     }
 
@@ -47,7 +47,7 @@ export class KenjaIndexDb {
                 .objectStore(KenjaIndexDb.My_LIST_STORE)
                 .getAll();
             req.onerror = () => resolve([]);
-            req.onsuccess = () => resolve(req.result);
+            req.onsuccess = () => resolve(req.result ?? []);
         });
     }
 
