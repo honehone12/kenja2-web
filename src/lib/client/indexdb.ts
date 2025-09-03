@@ -1,5 +1,7 @@
 import type { FlatDocument } from "$lib/documents/anime-search/documents";
 
+export const INDEX_DB_MAX = 1000;
+
 export class KenjaIndexDb {
     public static DB_NAME: string = 'kenjaLocalData';
     public static META_STORE: string = 'metaData';

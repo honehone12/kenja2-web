@@ -56,7 +56,7 @@
         {#each myList as doc (doc.id)}
             <span 
                 out:scale={{duration: 200}} 
-                animate:flip={{delay: 50, duration: 150}}
+                animate:flip={{delay: 60, duration: 140}}
             >
                 <CandidateCard
                     {doc}

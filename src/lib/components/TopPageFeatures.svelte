@@ -3,7 +3,7 @@
     import TopDocuments from "$lib/components/TopDocuments.svelte";
     import type { Lang } from "$lib";
     import { onMount } from "svelte";
-    import { KenjaIndexDb } from "$lib/client/indexdb";
+    import { INDEX_DB_MAX, KenjaIndexDb } from "$lib/client/indexdb";
 
     const JUMP_ANIMES: FlatDocument[] = [
         {
@@ -256,9 +256,11 @@
 
         try {
             if (star) {
-                const doc = list.find((value) => value.id === id);
-                if (doc && !myList.includes(id)) {
-                    await indexdb.addMyList(doc);
+                if (myList.length < INDEX_DB_MAX) {
+                    const doc = list.find((value) => value.id === id);
+                    if (doc && !myList.includes(id)) {
+                        await indexdb.addMyList(doc);
+                    }
                 }
             } else {
                 if (myList.includes(id)) {

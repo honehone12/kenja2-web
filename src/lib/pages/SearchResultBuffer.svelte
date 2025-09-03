@@ -7,7 +7,7 @@
     import { SearchType } from '$lib/client/search';
     import { Lang } from '$lib';
     import { onMount } from "svelte";
-    import { KenjaIndexDb } from "$lib/client/indexdb";
+    import { INDEX_DB_MAX, KenjaIndexDb } from "$lib/client/indexdb";
 
     interface Props {
         buffer: Promise<SearchResult>;
@@ -57,9 +57,11 @@
 
         try {
             if (star) {
-                const doc = list.find((value) => value.id === id);
-                if (doc && !myList.includes(id)) {
-                    await indexdb.addMyList(doc);
+                if (myList.length < INDEX_DB_MAX) {
+                    const doc = list.find((value) => value.id === id);
+                    if (doc && !myList.includes(id)) {
+                        await indexdb.addMyList(doc);
+                    }
                 }
             } else {
                 if (myList.includes(id)) {
