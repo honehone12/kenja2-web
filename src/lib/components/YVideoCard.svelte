@@ -28,7 +28,7 @@
     <div class="card w-80 outline outline-secondary">
         <div class="card-body">
             <div class="w-68 mb-5">
-                <span>
+                <span class="flex justify-between">
                     <ItemTypeBadge itemType={ItemType.YVideo}/>
                     <Star {lang} {star} {onStar}/>
                 </span>

@@ -9,14 +9,14 @@
     interface Props {
         lang: Lang
         doc: FlatDocument;
-        myList: string[];
+        star: boolean;
         onStar: (id: string, star: boolean) => Promise<void>;
     }
 
     let {
         lang, 
         doc, 
-        myList, 
+        star, 
         onStar
     }: Props = $props();
 </script>
@@ -32,7 +32,7 @@
             img: doc.img,
             src: doc.src
         }}
-        star={myList.includes(doc.id)}
+        {star}
         onStar={(star) => onStar(doc.id, star)}
     />
 {:else if doc.item_type === ItemType.Character}
@@ -46,7 +46,7 @@
             img: doc.img,
             src: doc.src
         }}
-        star={myList.includes(doc.id)}
+        {star}
         onStar={(star) => onStar(doc.id, star)}
     />
 {:else if doc.item_type === ItemType.YVideo}
@@ -55,7 +55,7 @@
         name={doc.parent?.name}
         nameJapanese={doc.parent?.name_japanese}
         unique={doc.unique}
-        star={myList.includes(doc.id)}
+        {star}
         onStar={(star) => onStar(doc.id, star)}
     />
 {/if}

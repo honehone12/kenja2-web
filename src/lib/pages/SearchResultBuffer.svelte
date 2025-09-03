@@ -16,13 +16,13 @@
     }
 
     let {buffer, searchType, lang}: Props = $props();
-    let list: FlatDocument[] = $state([]);
     let indexdb: KenjaIndexDb | null = $state(null);
 	let myList: string[] = $state([]);
+    let list: FlatDocument[] = [];
 
     async function bufferResult() {
         const result = await buffer;
-        if (result.documents) {
+        if (result.documents) {            
             list = result.documents;
         }
         return list;
@@ -50,24 +50,21 @@
     }
 
     async function onStar(id: string, star: boolean) {
-        try {
-            if (!indexdb) {
-                return;
-            }
+        if (!indexdb) {
+            console.warn('index db is not initialized yet.');
+            return;
+        }
 
+        try {
             if (star) {
                 const doc = list.find((value) => value.id === id);
-                if (!doc) {
-                    return;
+                if (doc && !myList.includes(id)) {
+                    await indexdb.addMyList(doc);
                 }
-
-                await indexdb.addMyList(doc);
             } else {
-                if (!myList.includes(id)) {
-                    return;
+                if (myList.includes(id)) {
+                    await indexdb.deleteMyList(id);
                 }
-
-                await indexdb.deleteMyList(id);
             }
             
             myList = await indexdb.getMyListKeys();    
@@ -139,11 +136,11 @@
             </div>
             <div class="hero w-full">
                 <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-                    {#each documents as doc (doc.id)}
+                    {#each documents as doc, i (i)}
                         <CandidateCard      
-                            {doc}
                             {lang}
-                            {myList}
+                            {doc}
+                            star={myList.includes(doc.id)}
                             onStar={(id, star) => onStar(id, star)}
                         />
                     {/each}

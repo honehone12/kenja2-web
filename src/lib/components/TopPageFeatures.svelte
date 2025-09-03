@@ -249,24 +249,21 @@
 	let myList: string[] = $state([]);
 
     async function onStar(id: string, star: boolean, list: FlatDocument[]) {
-        try {
-            if (!indexdb) {
-                return;
-            }
+        if (!indexdb) {
+            console.warn('index db is not initialized yet.');
+            return;
+        }
 
+        try {
             if (star) {
                 const doc = list.find((value) => value.id === id);
-                if (!doc) {
-                    return;
+                if (doc && !myList.includes(id)) {
+                    await indexdb.addMyList(doc);
                 }
-
-                await indexdb.addMyList(doc);
             } else {
-                if (!myList.includes(id)) {
-                    return;
+                if (myList.includes(id)) {
+                    await indexdb.deleteMyList(id);
                 }
-
-                await indexdb.deleteMyList(id);
             }
             
             myList = await indexdb.getMyListKeys();    
