@@ -16,6 +16,7 @@
         <form method="dialog">
             <button 
                 class="btn btn-sm btn-secondary btn-outline btn-circle absolute right-2 top-2"
+                aria-label="{lang === Lang.Jp ? '閉じる' : 'Close'}"
                 onclick={onclickClose}
             >X</button>
         </form>

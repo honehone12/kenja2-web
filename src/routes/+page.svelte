@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-{#if data.lang === Lang.Jp}
+	{#if data.lang === Lang.Jp}
 		<title>ケンジャ - アニメとキャラクター検索</title>
 		<meta
 			name="description"

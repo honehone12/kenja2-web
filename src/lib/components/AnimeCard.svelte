@@ -46,11 +46,14 @@
         </span>
         <ImageVectorSearchButton
             {lang}
-            id={doc.id}
-            itemType={ItemType.Anime}
-            name={doc.name}
-            img={doc.img}
-            src={doc.src}
+            doc={{
+                id: doc.id,
+                itemType: ItemType.Anime,
+                name: doc.name,
+                nameJapanese: doc.nameJapanese,
+                img: doc.img,
+                src: doc.src,
+            }}
         />
     </div>
 </div>

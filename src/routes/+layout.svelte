@@ -10,4 +10,4 @@
 <Navbar lang={data.lang}/>
 {@render children()}
 <Dock lang={data.lang}/>
-<Footer/>
+<Footer lang={data.lang}/>

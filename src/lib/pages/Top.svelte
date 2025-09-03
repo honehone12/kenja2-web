@@ -16,7 +16,7 @@
             <figure>
                 <img
                     src="/kenja2_logo.png"
-                    alt="Kenja logo with illustration of wise man"
+                    alt="{lang === Lang.Jp ? 'ケンジャのロゴ、賢者のイラスト' : 'Kenja Logo, Illustration of Wise Old Man'}"
                     class="size-40 mb-10" 
                 />
             </figure>

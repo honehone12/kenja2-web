@@ -2,35 +2,40 @@
     import { Lang } from "$lib";
     import { ITypeConv, type ItemType } from "$lib/documents/anime-search/queries";
 
-    interface Props {
-        lang: Lang;
+    interface Doc {
         id: string;
         itemType: ItemType;
         name: string | undefined;
+        nameJapanese: string | undefined;
         img: string | undefined;
         src: string | undefined;
     }
 
-    let {lang, id, itemType, name, img, src}: Props = $props();
+    interface Props {
+        lang: Lang;
+        doc: Doc;
+    }
+
+    let {lang, doc}: Props = $props();
 </script>
 
 <div class="text-center">
-    {#if name && img}
+    {#if doc.name && doc.img}
         <a 
-            href="/vectorsearch/buffer/{id}?item-type={ITypeConv.toString(itemType)}{lang === Lang.Jp ? '&lang=ja' : ''}" 
+            href="/vectorsearch/buffer/{doc.id}?item-type={ITypeConv.toString(doc.itemType)}{lang === Lang.Jp ? '&lang=ja' : ''}" 
             class="tooltip" 
             data-tip={lang === Lang.Jp ? '似ているアイテムを探す' : 'Search Similar Images'}
         >
             <img 
-                src="/{img}" 
-                alt="an anime image of {name}"
+                src="/{doc.img}" 
+                alt="{lang === Lang.Jp && doc.nameJapanese ? `「${doc.nameJapanese}」のキービジュアル` : `The Key Visual of "${doc.name}"`}"
                 class="card-action max-w-60"
                 loading="lazy"        
             >
         </a>
     {/if}
-    {#if src}
-        <a href="{src}">
+    {#if doc.src}
+        <a href="{doc.src}">
             <p class="link link-primary">Source</p>
         </a>
     {/if}
