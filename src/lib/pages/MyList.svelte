@@ -2,6 +2,7 @@
     import { Lang } from "$lib";
     import { KenjaIndexDb } from "$lib/client/indexdb";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
+    import NoResults from "$lib/components/NoResults.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import { onMount } from "svelte";
     import { flip } from "svelte/animate";
@@ -51,20 +52,38 @@
         {/if}
     </h1>
 </div>
-<div class="hero w-full py-20">
-    <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-        {#each myList as doc (doc.id)}
-            <span 
-                out:scale={{duration: 200}} 
-                animate:flip={{delay: 60, duration: 140}}
-            >
-                <CandidateCard
-                    {doc}
-                    {lang}
-                    star
-                    onStar={(id, _) => unstar(id)}  
-                />
-            </span>
-        {/each}
+{#if myList.length > 0}
+    <div class="hero w-full min-h-screen py-20">
+        <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
+            {#each myList as doc (doc.id)}
+                <span 
+                    out:scale={{duration: 140}} 
+                    animate:flip={{delay: 60, duration: 140}}
+                >
+                    <CandidateCard
+                        {doc}
+                        {lang}
+                        star
+                        onStar={(id, _) => unstar(id)}  
+                    />
+                </span>
+            {/each}
+        </div>
     </div>
-</div>
+{:else}
+    <div class="hero w-full py-20">
+        <div class="hero-content text-center">
+            <span>
+                <h2 class="text-lg">Tip💡</h2>
+                <p>
+                    {#if lang === Lang.Jp}
+                        マイリストを開始するにはスター⭐をつけます。
+                    {:else}
+                        Add Star⭐ for Starting My List.
+                    {/if}
+                </p>
+            </span>
+        </div>
+    </div>
+    <NoResults/>
+{/if}
