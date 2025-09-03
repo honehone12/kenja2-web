@@ -260,15 +260,15 @@
                     const doc = list.find((value) => value.id === id);
                     if (doc && !myList.includes(id)) {
                         await indexdb.addMyList(doc);
+                        myList = await indexdb.getMyListKeys();
                     }
                 }
             } else {
                 if (myList.includes(id)) {
                     await indexdb.deleteMyList(id);
+                    myList = await indexdb.getMyListKeys();
                 }
-            }
-            
-            myList = await indexdb.getMyListKeys();    
+            }    
         } catch (e) {
             console.error(e);
         }

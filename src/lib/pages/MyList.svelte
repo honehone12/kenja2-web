@@ -26,8 +26,8 @@
             const doc = myList.find((value) => value.id === id);
             if (doc) {
                 await indexdb.deleteMyList(id);
+                myList = await indexdb.getMyList();
             }
-            myList = await indexdb.getMyList();
         } catch (e) {
             console.error(e);
         }
