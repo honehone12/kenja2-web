@@ -227,6 +227,93 @@
             name_japanese: "スクールランブル"
         }
     ];
+
+    const SUNDAY_ANIMES: FlatDocument[] = [
+        {
+            id: "68ad631759f782ec1803afc0",
+            item_type: 1,
+            img: "preview/anime/3cd659b8a99117daeec64297622751ce.jpg",
+            src: "https://myanimelist.net/anime/235/Meitantei_Conan",
+            name: "Meitantei Conan",
+            name_english: "Case Closed",
+            name_japanese: "名探偵コナン"
+        },
+        {
+            id: "68ad631759f782ec1803b06c",
+            item_type: 1,
+            img: "preview/anime/93408192dd22390ace50a0043750d8f9.jpg",
+            src: "https://myanimelist.net/anime/249/InuYasha",
+            name: "InuYasha",
+            name_english: "InuYasha",
+            name_japanese: "犬夜叉"
+        },
+        {
+            id: "68ad634d59f782ec1804107f",
+            item_type: 1,
+            img: "preview/anime/2580114409334141388b05efc5970ec4.jpg",
+            src: "https://myanimelist.net/anime/52991/Sousou_no_Frieren",
+            name: "Sousou no Frieren",
+            name_english: "Frieren: Beyond Journey's End",
+            name_japanese: "葬送のフリーレン"
+        },
+        {
+            id: "68ad634659f782ec1804050e",
+            item_type: 1,
+            img: "preview/anime/131dd23c65196bdf8707e1b9e07a8ad7.jpg",
+            src: "https://myanimelist.net/anime/41389/Tonikaku_Kawaii",
+            name: "Tonikaku Kawaii",
+            name_english: "Tonikawa: Over The Moon For You",
+            name_japanese: "トニカクカワイイ"
+        },
+        {
+            id: "68ad634a59f782ec18040d0c",
+            item_type: 1,
+            img: "preview/anime/2ed884039b6950f8322d17f73ec7a1ee.jpg",
+            src: "https://myanimelist.net/anime/50346/Yofukashi_no_Uta",
+            name: "Yofukashi no Uta",
+            name_english: "Call of the Night",
+            name_japanese: "よふかしのうた"
+        },
+        {
+            id: "68ad633f59f782ec1803f83b",
+            item_type: 1,
+            img: "preview/anime/33507e53c27142a63139e9e0948eedaa.jpg",
+            src: "https://myanimelist.net/anime/35860/Karakai_Jouzu_no_Takagi-san",
+            name: "Karakai Jouzu no Takagi-san",
+            name_english: "Teasing Master Takagi-san",
+            name_japanese: "からかい上手の高木さん"
+        }
+    ];
+
+    const GANGAN_ANIMES: FlatDocument[] = [
+        {
+            id: "68ad631559f782ec1803ac5c",
+            item_type: 1,
+            img: "preview/anime/2f4e4484fb87034dcc1db71c6bd7e551.jpg",
+            src: "https://myanimelist.net/anime/121/Fullmetal_Alchemist",
+            name: "Fullmetal Alchemist",
+            name_english: "Fullmetal Alchemist",
+            name_japanese: "鋼の錬金術師"
+        },
+        {
+            id: "68ad632659f782ec1803c998",
+            item_type: 1,
+            img: "preview/anime/721f8df1f17c12dd77587dd6cf453099.jpg",
+            src: "https://myanimelist.net/anime/3588/Soul_Eater",
+            name: "Soul Eater",
+            name_english: "Soul Eater",
+            name_japanese: "ソウルイーター"
+        },
+        {
+            id: "68ad634959f782ec18040a9a",
+            item_type: 1,
+            img: "preview/anime/68d36182433cf666c0ffe89b541ce1d0.jpg",
+            src: "https://myanimelist.net/anime/48736/Sono_Bisque_Doll_wa_Koi_wo_Suru",
+            name: "Sono Bisque Doll wa Koi wo Suru",
+            name_english: "My Dress-Up Darling",
+            name_japanese: "その着せ替え人形は恋をする"
+        }
+    ];
     
     const OTHER_ANIMES: FlatDocument[] = [
         {
@@ -237,6 +324,15 @@
             name: "Made in Abyss",
             name_english: "Made in Abyss",
             name_japanese: "メイドインアビス"
+        },
+        {
+            id: "68ad635059f782ec1804153b",
+            item_type: 1,
+            img: "preview/anime/929b755204a27032f7256ce68a960486.jpg",
+            src: "https://myanimelist.net/anime/58725/Ninja_to_Koroshiya_no_Futarigurash…",
+            name: "Ninja to Koroshiya no Futarigurashi",
+            name_english: "A Ninja and an Assassin Under One Roof",
+            name_japanese: "忍者と殺し屋のふたりぐらし"
         }
     ];
 
@@ -307,6 +403,22 @@
     list={MAGAZINE_ANIMES}
     {myList}
     onStar={(id, star) => onStar(id, star, MAGAZINE_ANIMES)}
+/>
+<TopDocuments
+    {lang}
+    name="Sunday Animes"
+    nameJapanese="サンデーアニメ"
+    list={SUNDAY_ANIMES}
+    {myList}
+    onStar={(id, star) => onStar(id, star, SUNDAY_ANIMES)}
+/>
+<TopDocuments
+    {lang}
+    name="GanGan Animes"
+    nameJapanese="ガンガンアニメ"
+    list={GANGAN_ANIMES}
+    {myList}
+    onStar={(id, star) => onStar(id, star, GANGAN_ANIMES)}
 />
 <TopDocuments
     {lang}
