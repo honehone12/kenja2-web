@@ -139,7 +139,7 @@
             </div>
             <div class="hero w-full">
                 <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-                    {#each documents as doc}
+                    {#each documents as doc (doc.id)}
                         <CandidateCard      
                             {doc}
                             {lang}

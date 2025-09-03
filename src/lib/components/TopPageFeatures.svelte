@@ -275,10 +275,6 @@
         }
     }
 
-    function isStared(id: string) {
-        return myList.includes(id);
-    }
-
 	onMount(async () => {
         try {
 			indexdb = await KenjaIndexDb.open();
