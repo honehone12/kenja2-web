@@ -61,7 +61,7 @@
                 <figure>
                     <img 
                         src="/preview/anime/9e1f6c08772d5a7b3d62a083a643f87d.jpg"
-                        alt="anime named Futsuu no Joshikousei ga [Locodol] Yattemita."
+                        alt="{lang === Lang.Jp ? 'アニメ「普通の女子高生が【ろこどる】やってみた。」' : 'Anime Named "Futsuu no Joshikousei ga [Locodol] Yattemita."'}"
                     />
                 </figure>
             </div>

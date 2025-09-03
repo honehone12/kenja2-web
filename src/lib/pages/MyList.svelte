@@ -85,5 +85,5 @@
             </span>
         </div>
     </div>
-    <NoResults/>
+    <NoResults {lang}/>
 {/if}

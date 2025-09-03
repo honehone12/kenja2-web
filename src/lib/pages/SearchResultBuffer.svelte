@@ -150,10 +150,10 @@
             </div>
         </div>
     {:else}
-        <NoResults/>
+        <NoResults {lang}/>
     {/if}
 {:catch}
-    <NoResults/>
+    <NoResults {lang}/>
 {/await}
 {#if searchType === SearchType.Text}
     <div class="text-center mb-20 mx-5">
