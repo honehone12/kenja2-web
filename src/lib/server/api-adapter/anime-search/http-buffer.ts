@@ -30,7 +30,7 @@ export class HttpBufferApi implements AnimeSearch {
         return result;
     }
 
-    async ping(): Promise<SearchResult> {
+    public async ping(): Promise<SearchResult> {
         const q: SearchQuery = {
             function_id: FunctionId.Ping
         };
@@ -39,7 +39,7 @@ export class HttpBufferApi implements AnimeSearch {
         return this.httpQuery(this._apiUrl, body);
     }
 
-    async document(id: string): Promise<SearchResult> {
+    public async document(id: string): Promise<SearchResult> {
         const q: SearchQuery = {
             function_id: FunctionId.Document,
             id
@@ -49,7 +49,7 @@ export class HttpBufferApi implements AnimeSearch {
         return this.httpQuery(this._apiUrl, body);
     }
 
-    async textSearch(
+    public async textSearch(
         item_type: ItemType | undefined,
         keywords: string,
         fuzzy_kind: FuzzyKind | undefined
@@ -65,7 +65,7 @@ export class HttpBufferApi implements AnimeSearch {
         return this.httpQuery(this._apiUrl, body);
     }
 
-    async vectorSearch(
+    public async vectorSearch(
         item_type: ItemType,
         id: string
     ): Promise<SearchResult> {

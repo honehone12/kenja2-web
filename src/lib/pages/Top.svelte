@@ -2,9 +2,9 @@
     import { Lang } from "$lib";
     import TopPageFeatures from "$lib/components/TopPageFeatures.svelte";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
-
+    
     interface Props {
-        lang: Lang
+        lang: Lang;
     }
 
     let {lang}: Props = $props();

@@ -1,11 +1,13 @@
 <script lang="ts">
     import {page} from '$app/state';
-    import type { SearchResult } from "$lib/documents/anime-search/documents";
+    import type { FlatDocument, SearchResult } from "$lib/documents/anime-search/documents";
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import NoResults from '$lib/components/NoResults.svelte';
     import { SearchType } from '$lib/client/search';
     import { Lang } from '$lib';
+    import { onMount } from "svelte";
+    import { INDEX_DB_MAX, KenjaIndexDb } from "$lib/client/indexdb";
 
     interface Props {
         buffer: Promise<SearchResult>;
@@ -14,6 +16,17 @@
     }
 
     let {buffer, searchType, lang}: Props = $props();
+    let indexdb: KenjaIndexDb | null = $state(null);
+	let myList: string[] = $state([]);
+    let list: FlatDocument[] = [];
+
+    async function bufferResult() {
+        const result = await buffer;
+        if (result.documents) {            
+            list = result.documents;
+        }
+        return list;
+    }
     
     function searchKeywords() {
         // if this is shown, kws are wihin limit and there are matched results.
@@ -35,6 +48,41 @@
             return l === Lang.Jp ? '全' : 'All'; 
         }
     }
+
+    async function onStar(id: string, star: boolean) {
+        if (!indexdb) {
+            console.warn('index db is not initialized yet.');
+            return;
+        }
+
+        try {
+            if (star) {
+                if (myList.length < INDEX_DB_MAX) {
+                    const doc = list.find((value) => value.id === id);
+                    if (doc && !myList.includes(id)) {
+                        await indexdb.addMyList(doc);
+                        myList = await indexdb.getMyListKeys();
+                    }
+                }
+            } else {
+                if (myList.includes(id)) {
+                    await indexdb.deleteMyList(id);
+                    myList = await indexdb.getMyListKeys();
+                }
+            }    
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    onMount(async () => {
+        try {
+			indexdb = await KenjaIndexDb.open();
+			myList = await indexdb.getMyListKeys();
+		} catch (e) {
+            console.error(e);
+        }
+    });
 </script>
 
 <div class="mt-20 text-center">
@@ -58,14 +106,14 @@
         </p>
     </div>
 {/if}    
-{#await buffer}
+{#await bufferResult()}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <LoadingMsg/>
         </div>
     </div>
-{:then {documents}}
-    {#if documents}
+{:then documents}
+    {#if documents.length > 0}
         <div class="py-20">
             <div class="hero w-full">
                 <div class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-5 mb-10">
@@ -90,10 +138,12 @@
             </div>
             <div class="hero w-full">
                 <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-                    {#each documents as doc}
+                    {#each documents as doc, i (i)}
                         <CandidateCard      
-                            {doc}
                             {lang}
+                            {doc}
+                            star={myList.includes(doc.id)}
+                            onStar={(id, star) => onStar(id, star)}
                         />
                     {/each}
                 </div>
@@ -109,11 +159,11 @@
     <div class="text-center mb-20 mx-5">
         <h2 class="text-lg">Tip💡</h2>
         <p>
-        {#if lang === Lang.Jp}
-            ファジー検索をONにするかどうかによって検索結果は変わります。
-        {:else}
-            Search results will vary depending on whether fuzzy search is ON or not.
-        {/if}
+            {#if lang === Lang.Jp}
+                ファジー検索をONにするかどうかによって検索結果は変わります。
+            {:else}
+                Search results will vary depending on whether fuzzy search is ON or not.
+            {/if}
         </p>
     </div>
 {/if}

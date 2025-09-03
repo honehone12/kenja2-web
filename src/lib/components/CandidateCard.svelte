@@ -7,11 +7,18 @@
     import YVideoCard from "$lib/components/YVideoCard.svelte";
 
     interface Props {
-        doc: FlatDocument;
         lang: Lang
+        doc: FlatDocument;
+        star: boolean;
+        onStar: (id: string, star: boolean) => Promise<void>;
     }
 
-    let {doc, lang}: Props = $props();
+    let {
+        lang, 
+        doc, 
+        star, 
+        onStar
+    }: Props = $props();
 </script>
 
 {#if doc.item_type === ItemType.Anime}
@@ -25,6 +32,8 @@
             img: doc.img,
             src: doc.src
         }}
+        {star}
+        onStar={(star) => onStar(doc.id, star)}
     />
 {:else if doc.item_type === ItemType.Character}
     <CharacterCard
@@ -37,6 +46,8 @@
             img: doc.img,
             src: doc.src
         }}
+        {star}
+        onStar={(star) => onStar(doc.id, star)}
     />
 {:else if doc.item_type === ItemType.YVideo}
     <YVideoCard
@@ -44,5 +55,7 @@
         name={doc.parent?.name}
         nameJapanese={doc.parent?.name_japanese}
         unique={doc.unique}
+        {star}
+        onStar={(star) => onStar(doc.id, star)}
     />
 {/if}

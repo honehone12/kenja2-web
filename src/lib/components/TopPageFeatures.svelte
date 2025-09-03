@@ -2,6 +2,8 @@
     import type {FlatDocument} from "$lib/documents/anime-search/documents"
     import TopDocuments from "$lib/components/TopDocuments.svelte";
     import type { Lang } from "$lib";
+    import { onMount } from "svelte";
+    import { INDEX_DB_MAX, KenjaIndexDb } from "$lib/client/indexdb";
 
     const JUMP_ANIMES: FlatDocument[] = [
         {
@@ -242,30 +244,75 @@
         lang: Lang;
     }
 
-    let {lang}: Props = $props(); 
+    let {lang}: Props = $props();
+    let indexdb: KenjaIndexDb | null = $state(null);
+	let myList: string[] = $state([]);
+
+    async function onStar(id: string, star: boolean, list: FlatDocument[]) {
+        if (!indexdb) {
+            console.warn('index db is not initialized yet.');
+            return;
+        }
+
+        try {
+            if (star) {
+                if (myList.length < INDEX_DB_MAX) {
+                    const doc = list.find((value) => value.id === id);
+                    if (doc && !myList.includes(id)) {
+                        await indexdb.addMyList(doc);
+                        myList = await indexdb.getMyListKeys();
+                    }
+                }
+            } else {
+                if (myList.includes(id)) {
+                    await indexdb.deleteMyList(id);
+                    myList = await indexdb.getMyListKeys();
+                }
+            }    
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+	onMount(async () => {
+        try {
+			indexdb = await KenjaIndexDb.open();
+			myList = await indexdb.getMyListKeys();
+		} catch (e) {
+            console.error(e);
+        }
+    });
 </script>
 
 <TopDocuments
+    {lang}
     name="Jump Animes"
     nameJapanese="ジャンプアニメ"
     list={JUMP_ANIMES}
-    {lang}
+    {myList}
+    onStar={(id, star) => onStar(id, star, JUMP_ANIMES)}
 />
 <TopDocuments
+    {lang}
     name="Kirara Animes"
     nameJapanese="きららアニメ"
     list={KIRARA_ANIMES}
-    {lang}
+    {myList}
+    onStar={(id, star) => onStar(id, star, KIRARA_ANIMES)}
 />
 <TopDocuments
+    {lang}
     name="Magazine Animes"
     nameJapanese="マガジンアニメ"
     list={MAGAZINE_ANIMES}
-    {lang}
+    {myList}
+    onStar={(id, star) => onStar(id, star, MAGAZINE_ANIMES)}
 />
 <TopDocuments
+    {lang}
     name="Other Animes"
     nameJapanese="その他アニメ"
     list={OTHER_ANIMES}
-    {lang}
+    {myList}
+    onStar={(id, star) => onStar(id, star, OTHER_ANIMES)}
 />

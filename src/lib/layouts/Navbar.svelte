@@ -38,6 +38,11 @@
 					</a>
 				</li>
 				<li class="my-2">
+					<a tabindex="0" href="/mylist">
+						<span class="link font-medium">MyList</span>
+					</a>
+				</li>
+				<li class="my-2">
 					<a tabindex="0" href="/about">
 						<span class="link font-medium">About</span>
 					</a>
@@ -48,10 +53,19 @@
 	<div class="navbar-center hidden md:flex">
 		<ul class="menu menu-lg menu-horizontal px-1">
 			<li>
-				<a tabindex="0" href="/"><span class="font-medium">Home</span></a>
+				<a tabindex="0" href="/">
+					<span class="font-medium">Home</span>
+				</a>
 			</li>
 			<li>
-				<a tabindex="0" href="/about"><span class="font-medium">About</span></a>
+				<a tabindex="0" href="/mylist">
+					<span class="font-medium">MyList</span>
+				</a>
+			</li>
+			<li>
+				<a tabindex="0" href="/about">
+					<span class="font-medium">About</span>
+				</a>
 			</li>
 		</ul>
 	</div>
