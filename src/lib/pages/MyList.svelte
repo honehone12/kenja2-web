@@ -4,6 +4,8 @@
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import { onMount } from "svelte";
+    import { flip } from "svelte/animate";
+    import { scale } from "svelte/transition";
 
     interface Props {
         lang: Lang;
@@ -49,15 +51,20 @@
         {/if}
     </h1>
 </div>
-<div class="hero w-full">
+<div class="hero w-full py-20">
     <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
         {#each myList as doc (doc.id)}
-            <CandidateCard
-                {doc}
-                {lang}
-                star
-                onStar={(id, _) => unstar(id)}  
-            />
+            <span 
+                out:scale={{duration: 200}} 
+                animate:flip={{delay: 50, duration: 150}}
+            >
+                <CandidateCard
+                    {doc}
+                    {lang}
+                    star
+                    onStar={(id, _) => unstar(id)}  
+                />
+            </span>
         {/each}
     </div>
 </div>
