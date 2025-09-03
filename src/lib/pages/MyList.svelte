@@ -87,3 +87,19 @@
     </div>
     <NoResults {lang}/>
 {/if}
+<div class="hero w-full mb-20">
+        <div class="hero-content text-center">
+            <span>
+                <h2 class="text-lg">Info💡</h2>
+                <p>
+                    {#if lang === Lang.Jp}
+                        マイリストはブラウザに保存され、ネットワークで送信されることはありません。<br>
+                        ブラウザーのデータを削除するとリストも削除されます。
+                    {:else}
+                        My List is Saved on Your Browser, And will not be Sent on Networks.<br>
+                        The List will be Deleted When You Delete Browser's Data. 
+                    {/if}
+                </p>
+            </span>
+        </div>
+    </div>
