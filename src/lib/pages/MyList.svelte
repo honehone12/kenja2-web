@@ -71,7 +71,7 @@
         </div>
     </div>
 {:else}
-    <div class="hero w-full py-20">
+    <div class="hero w-full mt-20">
         <div class="hero-content text-center">
             <span>
                 <h2 class="text-lg">Tip💡</h2>
