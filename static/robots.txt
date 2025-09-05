@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kenja.tokyo/sitemap.xml
+Sitemap: https://kenjanime.com/sitemap.xml
