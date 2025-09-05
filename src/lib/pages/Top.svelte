@@ -16,24 +16,24 @@
             <figure>
                 <img
                     src="/kenja2_logo.png"
-                    alt="{lang === Lang.Jp ? 'ケンジャのロゴ、賢者のイラスト' : 'Kenja Logo, Illustration of Wise Old Man'}"
+                    alt="{lang === Lang.Jp ? 'ケンジャニメのロゴ、賢者のイラスト' : 'Kenjanime Logo, Illustration of Wise Old Man'}"
                     class="size-40 mb-10" 
                 />
             </figure>
             <h1 class="text-5xl text-secondary font-semibold mb-10">
                 {#if lang === Lang.Jp}
-                    ケンジャ
+                    ケンジャニメ
                 {:else}
-                    Kenja
+                    Kenjanime
                 {/if}
             </h1>
             <div class="text-center">
                 <p class="text-lg">
                     {#if lang === Lang.Jp}
-                        ケンジャは画像をポチポチ見ながら<br>
+                        ケンジャニメは画像をポチポチ見ながら<br>
                         好きなアニメやキャラクターを探すウェブサイトです。
                     {:else}        
-                        Kenja is a web site where you can search for your favorite anime and characters<br> 
+                        Kenjanime is a web site where you can search for your favorite anime and characters<br> 
                         by clicking through images.    
                     {/if}
                 </p>

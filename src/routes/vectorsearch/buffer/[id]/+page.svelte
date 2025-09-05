@@ -8,16 +8,16 @@
 
 <svelte:head>
     {#if data.lang === Lang.Jp}
-        <title>ケンジャ - アニメとキャラクターの類似検索結果</title>
+        <title>ケンジャニメ - アニメとキャラクターの類似検索結果</title>
         <meta
 			name="description"
-			content="ケンジャはアニメ ＆ キャラクターの検索とベクターサーチによるレコメンデーションシステムです。"
+			content="ケンジャニメはアニメ ＆ キャラクターの検索とベクターサーチによるレコメンデーションシステムです。"
 		/>
     {:else}
-	    <title>Kenja - Results of Similar Anime and Character Search</title>
+	    <title>Kenjanime - Results of Similar Anime and Character Search</title>
         <meta
 			name="description"
-			content="Kenja is a system for anime & character search and recommendation powered by vector search."
+			content="Kenjanime is a system for anime & character search and recommendation powered by vector search."
 		/>
     {/if}
 </svelte:head>

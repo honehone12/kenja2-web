@@ -23,14 +23,14 @@
                 <span class="text-lg">
                     {#if lang === Lang.Jp}
                         <p>    
-                            ケンジャは個人で制作しているアニメのファンサイトです。<br>
+                            ケンジャニメは個人で制作しているアニメのファンサイトです。<br>
                             ベクターサーチエンジンを使って好きなアニメやキャラクターと似たアイテムを探すことができます。
                             ベクターサーチは似たような「感じ」のアニメや、似たような特徴のあるキャラクターを探すのに便利です。
                             例えば、最初にテキストサーチで「綾波 レイ」と検索すれば、次にベクターサーチで青髪のキャラクターを探すことができます。
                         </p>
                     {:else}
                         <p>   
-                            Kenja is a fan site for anime being developed by individual.<br>
+                            Kenjanime is a fan site for anime being developed by individual.<br>
                             You can search similar items with your favorite anime or characters by using vector search engine. 
                             Vector search is useful for searching animes with similar "vibes", or searching chracters with similar features.
                             For example, once you found "Rei Ayanami" with text search, then you can find characters with "blue hair" with vecotr search.   
@@ -117,7 +117,7 @@
             <span>
                 <h2 class="text-center text-secondary text-3xl mt-20 mb-20">
                     {#if lang === Lang.Jp}
-                        ケンジャの由来は何ですか？
+                        ケンジャニメの由来は何ですか？
                     {:else}
                         What does kenja mean?
                     {/if}
