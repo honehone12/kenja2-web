@@ -85,7 +85,7 @@
     });
 </script>
 
-<div class="mt-20 text-center">
+<div class="mt-20 mx-5 text-center">
     <h1 class="text-3xl text-secondary">
         {#if lang === Lang.Jp}
             検索結果
@@ -95,7 +95,7 @@
     </h1>
 </div>
 {#if searchType === SearchType.Text}
-    <div class="mt-20 text-center">
+    <div class="mt-20 mx-5 text-center">
         <h2 class="text-lg">Tip💡</h2>
         <p>
             {#if lang === Lang.Jp}
