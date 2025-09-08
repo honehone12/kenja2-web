@@ -2,7 +2,8 @@ import type {ItemType, FuzzyKind} from "$lib/documents/anime-search/queries";
 import type { SearchResult } from "$lib/documents/anime-search/documents";
 
 export interface AnimeSearch {
-    ping(): Promise<SearchResult>
+    ping(): Promise<SearchResult>;
+    newItems(): Promise<SearchResult>;
     textSearch(
         item_type: ItemType | undefined,
         keywords: string,
@@ -12,5 +13,4 @@ export interface AnimeSearch {
         item_type: ItemType,
         id: string
     ): Promise<SearchResult>;
-    document(id: string): Promise<SearchResult>;
 }

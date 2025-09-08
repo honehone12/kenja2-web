@@ -36,7 +36,7 @@ export class ITypeConv {
 export const enum FunctionId {
     Unspecified = 0,
     Ping,
-    Document,
+    NewItems,
     TextSearchBuffer,
     VectorSearchBuffer
 }
