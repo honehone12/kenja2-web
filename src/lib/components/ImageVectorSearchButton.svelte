@@ -29,7 +29,7 @@
             <img 
                 src="/{doc.img}" 
                 alt="{lang === Lang.Jp && doc.nameJapanese ? `「${doc.nameJapanese}」のキービジュアル` : `The Key Visual of "${doc.name}"`}"
-                class="card-action max-w-60"
+                class="card-action max-w-60 rounded-md "
                 loading="lazy"        
             >
         </a>

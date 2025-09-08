@@ -12,6 +12,9 @@
 </script>
 
 {#if lang === Lang.Jp}
+    {#if name}
+        <h2 class="text-lg">{name}</h2>
+    {/if}
     {#if nameJapanese}
         {#if useLink}
             <a href="/textsearch/buffer?keyword={nameJapanese}&item-type=all&lang=ja">
@@ -21,12 +24,9 @@
             <h2 class="card-title text-xl">{nameJapanese}</h2>
         {/if}
     {/if}
-    {#if name}
-        <h2 class="text-xl">{name}</h2>
-    {/if}
 {:else}
     {#if nameJapanese}    
-        <h2 class="text-xl">{nameJapanese}</h2>
+        <h2 class="text-lg">{nameJapanese}</h2>
     {/if}
     {#if name}
         {#if useLink}
