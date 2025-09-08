@@ -24,7 +24,7 @@
         <a 
             href="/vectorsearch/buffer/{doc.id}?item-type={ITypeConv.toString(doc.itemType)}{lang === Lang.Jp ? '&lang=ja' : ''}" 
             class="tooltip" 
-            data-tip={lang === Lang.Jp ? '似ているアイテムを探す' : 'Search Similar Images'}
+            data-tip={lang === Lang.Jp ? '似ている画像を探す' : 'Search Similar Images'}
         >
             <img 
                 src="/{doc.img}" 
@@ -32,11 +32,18 @@
                 class="card-action max-w-60 rounded-md "
                 loading="lazy"        
             >
+            <p class="link link-primary">
+                {#if lang === Lang.Jp}
+                    クリックして類似検索
+                {:else}
+                    Click to Similarity Search
+                {/if}
+            </p>
         </a>
     {/if}
     {#if doc.src}
         <a href="{doc.src}">
-            <p class="link link-primary">Source</p>
+            <p class="link link-primary mt-2">Source</p>
         </a>
     {/if}
 </div>
