@@ -59,10 +59,9 @@ export class LambdaApi implements AnimeSearch {
         return this.lambdaQuery(input)
     }
 
-    public async document(id: string): Promise<SearchResult> {
+    public async newItems(): Promise<SearchResult> {
         const q: SearchQuery = {
-            function_id: FunctionId.Document,
-            id
+            function_id: FunctionId.NewItems
         };
         const payload = JSON.stringify(q);
         const input: InvokeCommandInput = {
