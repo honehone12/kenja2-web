@@ -314,8 +314,74 @@
             name_japanese: "その着せ替え人形は恋をする"
         }
     ];
+
+    const LA_NOVE_ANIMES: FlatDocument[] = [
+        {
+            id: "68ad634e59f782ec1804123c",
+            item_type: 1,
+            img: "preview/anime/340a827db5b2d99be1a3bf546707aefa.jpg",
+            src: "https://myanimelist.net/anime/54492/Kusuriya_no_Hitorigoto",
+            name: "Kusuriya no Hitorigoto",
+            name_english: "The Apothecary Diaries",
+            name_japanese: "薬屋のひとりごと"
+        },
+        {
+            id: "68ad633a59f782ec1803ed19",
+            item_type: 1,
+            img: "preview/anime/e62936e5c26315cfcf1372dc1a07d367.jpg",
+            src: "https://myanimelist.net/anime/31240/Re_Zero_kara_Hajimeru_Isekai_Seikatsu",
+            name: "Re:Zero kara Hajimeru Isekai Seikatsu",
+            name_english: "Re:ZERO -Starting Life in Another World-",
+            name_japanese: "Re:ゼロから始める異世界生活"
+        },
+        {
+            id: "68ad632759f782ec1803cd07",
+            item_type: 1,
+            img: "preview/anime/4b89445f3d72bb40e9fc1afc3a8b8e9e.jpg",
+            src: "https://myanimelist.net/anime/5081/Bakemonogatari",
+            name: "Bakemonogatari",
+            name_english: "Bakemonogatari",
+            name_japanese: "化物語"
+        },
+        {
+            id: "68ad631c59f782ec1803b943",
+            item_type: 1,
+            img: "preview/anime/1ec73df867e8273320feb7529579adf6.jpg",
+            src: "https://myanimelist.net/anime/849/Suzumiya_Haruhi_no_Yuuutsu",
+            name: "Suzumiya Haruhi no Yuuutsu",
+            name_english: "The Melancholy of Haruhi Suzumiya",
+            name_japanese: "涼宮ハルヒの憂鬱"
+        },
+        {
+            id: "68ad633959f782ec1803ec85",
+            item_type: 1,
+            img: "preview/anime/0f4deaeac32f13707d0368de67ee5616.jpg",
+            src: "https://myanimelist.net/anime/30831/Kono_Subarashii_Sekai_ni_Shukufuku_wo",
+            name: "Kono Subarashii Sekai ni Shukufuku wo!",
+            name_english: "KonoSuba: God's Blessing on This Wonderful World!",
+            name_japanese: "この素晴らしい世界に祝福を！"
+        },
+        {
+            id: "68afc67579d87884b804fd12",
+            item_type: 1,
+            img: "preview/anime/41283a00674fdf11d02734db4facd3b8.jpg",
+            src: "https://myanimelist.net/anime/11757/Sword_Art_Online",
+            name: "Sword Art Online",
+            name_english: "Sword Art Online",
+            name_japanese: "ソードアート・オンライン"
+        }
+    ];
     
     const OTHER_ANIMES: FlatDocument[] = [
+        {
+            id: "68ad631859f782ec1803b2f4",
+            item_type: 1,
+            img: "preview/anime/692cd8e9cfa26e5daea9112406eb1119.jpg",
+            src: "https://myanimelist.net/anime/356/Fate_stay_night",
+            name: "Fate/stay night",
+            name_english: "Fate/stay night",
+            name_japanese: "Fate/stay night"
+        },
         {
             id: "68afc67779d87884b80509b9",
             item_type: 1,
@@ -329,7 +395,7 @@
             id: "68ad635059f782ec1804153b",
             item_type: 1,
             img: "preview/anime/929b755204a27032f7256ce68a960486.jpg",
-            src: "https://myanimelist.net/anime/58725/Ninja_to_Koroshiya_no_Futarigurash…",
+            src: "https://myanimelist.net/anime/58725/Ninja_to_Koroshiya_no_Futarigurashi",
             name: "Ninja to Koroshiya no Futarigurashi",
             name_english: "A Ninja and an Assassin Under One Roof",
             name_japanese: "忍者と殺し屋のふたりぐらし"
@@ -419,6 +485,14 @@
     list={GANGAN_ANIMES}
     {myList}
     onStar={(id, star) => onStar(id, star, GANGAN_ANIMES)}
+/>
+<TopDocuments
+    {lang}
+    name="Light Novel Animes"
+    nameJapanese="ラノベアニメ"
+    list={LA_NOVE_ANIMES}
+    {myList}
+    onStar={(id, star) => onStar(id, star, LA_NOVE_ANIMES)}
 />
 <TopDocuments
     {lang}
