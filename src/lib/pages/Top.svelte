@@ -27,14 +27,18 @@
                     Kenjanime
                 {/if}
             </h1>
-            <div class="text-center">
-                <p class="text-lg">
+            <div class="text-center mx-5">
+                <p>
                     {#if lang === Lang.Jp}
-                        ケンジャニメは画像をポチポチ見ながら<br>
-                        好きなアニメやキャラクターを探すウェブサイトです。
+                        ログイン不要。<br>
+                        細かいクエリは無しの簡単操作。<br>
+                        画像をポチポチ見ながら、好きなアニメやキャラクターを探す。<br>
+                        パーソナライズされないレコメンデーションシステム。
                     {:else}        
-                        Kenjanime is a web site where you can search for your favorite anime and characters<br> 
-                        by clicking through images.    
+                        No login required.<br>
+                        Easy to use without detailed queries.<br>
+                        Find your favorite anime and characters by clicking through images.<br>
+                        Non-personalized recommendation system.  
                     {/if}
                 </p>
             </div>
