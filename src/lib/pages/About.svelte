@@ -79,7 +79,7 @@
                 <span class="text-lg">
                     {#if lang === Lang.Jp} 
                         <p>東京の秋葉原から電車で４５分ほどの街に住んでます。こんにちは。</p>
-                        <a href="/textsearch/buffer?keyword=普通の女子校生が【ろこどる】やってみた。&item-type=all" class="link link-primary">
+                        <a href="/textsearch/buffer?keyword=普通の女子校生が【ろこどる】やってみた。&item-type=all&lang=ja" class="link link-primary">
                             ところで私の地元にもアニメがありますので紹介したい。
                         </a>
                         <p>別に聖地としてポピュラーではありませんし、地元を宣伝するつもりもありませんが、アニメは面白いのでぜひ見てね。</p>
@@ -94,13 +94,22 @@
                         </p>
                     {/if}
                 </span>
-                <div class="flex justify-center mt-5">
-                    <figure>
+                <div class="flex justify-center text-center mt-5">
+                    <a
+                        href="/vectorsearch/buffer/68afc67679d87884b805020f?item-type=anime{lang === Lang.Jp ? '&lang=ja' : ''}"
+                    >
                         <img 
                             src="/preview/anime/9e1f6c08772d5a7b3d62a083a643f87d.jpg"
                             alt="{lang === Lang.Jp ? 'アニメ「普通の女子高生が【ろこどる】やってみた。」' : 'Anime Named "Futsuu no Joshikousei ga [Locodol] Yattemita."'}"
                         />
-                    </figure>
+                        <p class="link link-primary">
+                            {#if lang === Lang.Jp}
+                                クリックして類似検索
+                            {:else}
+                                Click to Similarity Search
+                            {/if}
+                        </p>
+                    </a>
                 </div>
             </span>
             <span>
