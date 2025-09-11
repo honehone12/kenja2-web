@@ -7,10 +7,10 @@
 
 <svelte:head>
 	{#if data.lang === Lang.Jp}
-		<title>ケンジャニメ - アニメ ＆ キャラクターの検索とレコメンデーション</title>
+		<title>ケンジャニメ - アニメ ＆ キャラクターの検索とおすすめ</title>
 		<meta
 			name="description"
-			content="ケンジャニメはアニメ ＆ キャラクターの検索とベクターサーチによるレコメンデーションシステムです。"
+			content="ケンジャニメはアニメ ＆ キャラクターの検索とベクターサーチによるおすすめシステムです。"
 		/>
 	{:else}
 		<title>Kenjanime - Anime & Character Search and Recommendation</title>

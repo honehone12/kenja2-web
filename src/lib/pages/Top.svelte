@@ -20,28 +20,35 @@
                     class="size-40 mb-10" 
                 />
             </figure>
-            <h1 class="text-5xl text-secondary font-semibold mb-10">
-                {#if lang === Lang.Jp}
-                    ケンジャニメ
-                {:else}
-                    Kenjanime
-                {/if}
-            </h1>
-            <div class="text-center mx-5">
+            <span class="text-center">
+                <h1 class="text-5xl text-secondary font-semibold mb-10">
+                    {#if lang === Lang.Jp}
+                        ケンジャニメ
+                    {:else}
+                        Kenjanime
+                    {/if}
+                </h1>
+                <h2 class="text-2xl mb-5">
+                    {#if lang === Lang.Jp}
+                        アニメの検索とおすすめ
+                    {:else}
+                        Anime search and Recommendation
+                    {/if}
+                </h2>
                 <p>
                     {#if lang === Lang.Jp}
-                        ログイン不要。<br>
                         細かいクエリは無しの簡単操作。<br>
-                        画像をポチポチ見ながら、好きなアニメやキャラクターを探す。<br>
-                        パーソナライズされないレコメンデーションシステム。
+                        画像をポチポチ押すだけで色々見つかる。<br>
+                        ログイン不要。パーソナライズ無し。<br>
+                        もちろん無料。
                     {:else}        
-                        No login required.<br>
-                        Easy to use without detailed queries.<br>
-                        Find your favorite anime and characters by clicking through images.<br>
-                        Non-personalized recommendation system.  
+                        Easy to Use without Detailed Queries.<br>
+                        Find Many with Just Clicking through Images.<br>
+                        No Login Required. Non-personalized.<br>
+                        Of Course It's Free. 
                     {/if}
                 </p>
-            </div>
+            </span>
         </div>
     </div>
     <div class="hero w-full mt-10">
