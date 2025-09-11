@@ -392,13 +392,13 @@
             name_japanese: "メイドインアビス"
         },
         {
-            id: "68ad635059f782ec1804153b",
+            id: "68ad634c59f782ec18040f4b",
             item_type: 1,
-            img: "preview/anime/929b755204a27032f7256ce68a960486.jpg",
-            src: "https://myanimelist.net/anime/58725/Ninja_to_Koroshiya_no_Futarigurashi",
-            name: "Ninja to Koroshiya no Futarigurashi",
-            name_english: "A Ninja and an Assassin Under One Roof",
-            name_japanese: "忍者と殺し屋のふたりぐらし"
+            img: "preview/anime/2abf80a1029682f1327199d4927aaae1.jpg",
+            src: "https://myanimelist.net/anime/52034/Oshi_no_Ko",
+            name: "[Oshi no Ko]",
+            name_english: "[Oshi No Ko]",
+            name_japanese: "【推しの子】"
         }
     ];
 
