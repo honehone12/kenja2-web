@@ -54,6 +54,17 @@
         }
     }
 
+    async function refresh() {
+        if (!indexdb) {
+            return;
+        }
+
+        const myList = await indexdb.getMyListKeys();
+        const map = new Map();
+        myList.forEach((value) => map.set(value, true));
+        myMap = map;
+    }
+
     async function onStar(id: string, star: boolean) {
         if (!indexdb) {
             console.warn('index db is not initialized yet.');
@@ -78,19 +89,13 @@
             return;
         }
 
-        const myList = await indexdb.getMyListKeys();
-        const map = new Map();
-        myList.forEach((value) => map.set(value, true));
-        myMap = map;
+        refresh();
     }
 
     onMount(async () => {
         try {
 			indexdb = await IndexDb.open();
-			const myList = await indexdb.getMyListKeys();
-            const map = new Map();
-            myList.forEach((value) => map.set(value, true));
-            myMap = map;
+			refresh();
 		} catch (e) {
             console.error(e);
         }
