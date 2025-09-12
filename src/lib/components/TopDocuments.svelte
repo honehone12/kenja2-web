@@ -8,7 +8,7 @@
         name: string;
         nameJapanese: string;
         list: FlatDocument[];
-        myList: string[];
+        hasStar: (id: string) => boolean,
         onStar: (id: string, star: boolean) => Promise<void>;
     }
 
@@ -17,7 +17,7 @@
         name, 
         nameJapanese, 
         list,
-        myList,
+        hasStar,
         onStar
     }: Props = $props();
 </script>
@@ -35,7 +35,7 @@
             <CandidateCard
                 {lang}
                 {doc}
-                star={myList.includes(doc.id)}
+                star={hasStar(doc.id)}
                 {onStar}
             />
         {/each}

@@ -3,7 +3,7 @@
     import TopDocuments from "$lib/components/TopDocuments.svelte";
     import type { Lang } from "$lib";
     import { onMount } from "svelte";
-    import { INDEX_DB_MAX, KenjaIndexDb } from "$lib/client/indexdb";
+    import { INDEX_DB_MAX, IndexDb } from "$lib/client/indexdb";
 
     const JUMP_ANIMES: FlatDocument[] = [
         {
@@ -407,8 +407,12 @@
     }
 
     let {lang}: Props = $props();
-    let indexdb: KenjaIndexDb | null = $state(null);
-	let myList: string[] = $state([]);
+    let indexdb: IndexDb | null = $state(null);
+    let myMap: Map<string, boolean> = $state(new Map());
+
+    function hasStar(id: string) {
+        return myMap.has(id);
+    }
 
     async function onStar(id: string, star: boolean, list: FlatDocument[]) {
         if (!indexdb) {
@@ -418,28 +422,36 @@
 
         try {
             if (star) {
-                if (myList.length < INDEX_DB_MAX) {
+                if (myMap.size  < INDEX_DB_MAX) {
                     const doc = list.find((value) => value.id === id);
-                    if (doc && !myList.includes(id)) {
+                    if (doc && !myMap.has(id)) {
                         await indexdb.addMyList(doc);
-                        myList = await indexdb.getMyListKeys();
+                        
                     }
                 }
             } else {
-                if (myList.includes(id)) {
+                if (myMap.has(id)) {
                     await indexdb.deleteMyList(id);
-                    myList = await indexdb.getMyListKeys();
                 }
             }    
         } catch (e) {
             console.error(e);
+            return;
         }
+
+        const myList = await indexdb.getMyListKeys();
+        const map = new Map();
+        myList.forEach((value) => map.set(value, true));
+        myMap = map;
     }
 
 	onMount(async () => {
         try {
-			indexdb = await KenjaIndexDb.open();
-			myList = await indexdb.getMyListKeys();
+			indexdb = await IndexDb.open();
+			const myList = await indexdb.getMyListKeys();
+            const map = new Map();
+            myList.forEach((value) => map.set(value, true));
+            myMap = map;
 		} catch (e) {
             console.error(e);
         }
@@ -451,7 +463,7 @@
     name="Jump Animes"
     nameJapanese="ジャンプアニメ"
     list={JUMP_ANIMES}
-    {myList}
+    {hasStar}
     onStar={(id, star) => onStar(id, star, JUMP_ANIMES)}
 />
 <TopDocuments
@@ -459,7 +471,7 @@
     name="Kirara Animes"
     nameJapanese="きららアニメ"
     list={KIRARA_ANIMES}
-    {myList}
+    {hasStar}
     onStar={(id, star) => onStar(id, star, KIRARA_ANIMES)}
 />
 <TopDocuments
@@ -467,7 +479,7 @@
     name="Magazine Animes"
     nameJapanese="マガジンアニメ"
     list={MAGAZINE_ANIMES}
-    {myList}
+    {hasStar}
     onStar={(id, star) => onStar(id, star, MAGAZINE_ANIMES)}
 />
 <TopDocuments
@@ -475,7 +487,7 @@
     name="Sunday Animes"
     nameJapanese="サンデーアニメ"
     list={SUNDAY_ANIMES}
-    {myList}
+    {hasStar}
     onStar={(id, star) => onStar(id, star, SUNDAY_ANIMES)}
 />
 <TopDocuments
@@ -483,7 +495,7 @@
     name="GanGan Animes"
     nameJapanese="ガンガンアニメ"
     list={GANGAN_ANIMES}
-    {myList}
+    {hasStar}
     onStar={(id, star) => onStar(id, star, GANGAN_ANIMES)}
 />
 <TopDocuments
@@ -491,7 +503,7 @@
     name="Light Novel Animes"
     nameJapanese="ラノベアニメ"
     list={LA_NOVE_ANIMES}
-    {myList}
+    {hasStar}
     onStar={(id, star) => onStar(id, star, LA_NOVE_ANIMES)}
 />
 <TopDocuments
@@ -499,6 +511,6 @@
     name="Other Animes"
     nameJapanese="その他アニメ"
     list={OTHER_ANIMES}
-    {myList}
+    {hasStar}
     onStar={(id, star) => onStar(id, star, OTHER_ANIMES)}
 />

@@ -7,7 +7,7 @@
     import { SearchType } from '$lib/client/search';
     import { Lang } from '$lib';
     import { onMount } from "svelte";
-    import { INDEX_DB_MAX, KenjaIndexDb } from "$lib/client/indexdb";
+    import { INDEX_DB_MAX, IndexDb } from "$lib/client/indexdb";
 
     interface Props {
         buffer: Promise<SearchResult>;
@@ -16,8 +16,8 @@
     }
 
     let {buffer, searchType, lang}: Props = $props();
-    let indexdb: KenjaIndexDb | null = $state(null);
-	let myList: string[] = $state([]);
+    let indexdb: IndexDb | null = $state(null);
+	let myMap: Map<string, boolean> = $state(new Map());
     let list: FlatDocument[] = [];
 
     async function bufferResult() {
@@ -57,28 +57,35 @@
 
         try {
             if (star) {
-                if (myList.length < INDEX_DB_MAX) {
+                if (myMap.size < INDEX_DB_MAX) {
                     const doc = list.find((value) => value.id === id);
-                    if (doc && !myList.includes(id)) {
+                    if (doc && !myMap.has(id)) {
                         await indexdb.addMyList(doc);
-                        myList = await indexdb.getMyListKeys();
                     }
                 }
             } else {
-                if (myList.includes(id)) {
+                if (myMap.has(id)) {
                     await indexdb.deleteMyList(id);
-                    myList = await indexdb.getMyListKeys();
                 }
             }    
         } catch (e) {
             console.error(e);
+            return;
         }
+
+        const myList = await indexdb.getMyListKeys();
+        const map = new Map();
+        myList.forEach((value) => map.set(value, true));
+        myMap = map;
     }
 
     onMount(async () => {
         try {
-			indexdb = await KenjaIndexDb.open();
-			myList = await indexdb.getMyListKeys();
+			indexdb = await IndexDb.open();
+			const myList = await indexdb.getMyListKeys();
+            const map = new Map();
+            myList.forEach((value) => map.set(value, true));
+            myMap = map;
 		} catch (e) {
             console.error(e);
         }
@@ -142,7 +149,7 @@
                         <CandidateCard      
                             {lang}
                             {doc}
-                            star={myList.includes(doc.id)}
+                            star={myMap.has(doc.id)}
                             onStar={(id, star) => onStar(id, star)}
                         />
                     {/each}
