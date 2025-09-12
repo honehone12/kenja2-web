@@ -18,14 +18,19 @@
     let {buffer, searchType, lang}: Props = $props();
     let indexdb: IndexDb | null = $state(null);
 	let myMap: Map<string, boolean> = $state(new Map());
-    let list: FlatDocument[] = [];
+    let docMap: Map<string, FlatDocument> = new Map();
 
     async function bufferResult() {
         const result = await buffer;
         if (result.documents) {            
-            list = result.documents;
+            const list = result.documents;
+            const map = new Map();
+            list.forEach((value) => map.set(value.id, value));
+            docMap = map;
+            return list;
+        } else {
+            return [];
         }
-        return list;
     }
     
     function searchKeywords() {
@@ -58,7 +63,7 @@
         try {
             if (star) {
                 if (myMap.size < INDEX_DB_MAX) {
-                    const doc = list.find((value) => value.id === id);
+                    const doc = docMap.get(id);
                     if (doc && !myMap.has(id)) {
                         await indexdb.addMyList(doc);
                     }
