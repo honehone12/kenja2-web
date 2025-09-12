@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import { KenjaIndexDb } from "$lib/client/indexdb";
+    import { IndexDb } from "$lib/client/indexdb";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import NoResults from "$lib/components/NoResults.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
@@ -13,7 +13,7 @@
     }
 
     let {lang}: Props = $props();
-    let indexdb: KenjaIndexDb | null = $state(null);
+    let indexdb: IndexDb | null = $state(null);
     let myList: FlatDocument[] = $state([]);
 
     async function unstar(id: string) {
@@ -35,7 +35,7 @@
 
     onMount(async () => {
         try {
-            indexdb = await KenjaIndexDb.open();
+            indexdb = await IndexDb.open();
             myList = await indexdb.getMyList();
         } catch (e) {
             console.error(e);

@@ -7,7 +7,7 @@
     import { SearchType } from '$lib/client/search';
     import { Lang } from '$lib';
     import { onMount } from "svelte";
-    import { INDEX_DB_MAX, KenjaIndexDb } from "$lib/client/indexdb";
+    import { INDEX_DB_MAX, IndexDb } from "$lib/client/indexdb";
 
     interface Props {
         buffer: Promise<SearchResult>;
@@ -16,16 +16,21 @@
     }
 
     let {buffer, searchType, lang}: Props = $props();
-    let indexdb: KenjaIndexDb | null = $state(null);
-	let myList: string[] = $state([]);
-    let list: FlatDocument[] = [];
+	let myMap: Map<string, boolean> = $state(new Map());
+    let docMap: Map<string, FlatDocument> = new Map();
+    let indexdb: IndexDb | null = null;
 
     async function bufferResult() {
         const result = await buffer;
         if (result.documents) {            
-            list = result.documents;
+            const list = result.documents;
+            const map = new Map();
+            list.forEach((value) => map.set(value.id, value));
+            docMap = map;
+            return list;
+        } else {
+            return [];
         }
-        return list;
     }
     
     function searchKeywords() {
@@ -49,6 +54,17 @@
         }
     }
 
+    async function refresh() {
+        if (!indexdb) {
+            return;
+        }
+
+        const myList = await indexdb.getMyListKeys();
+        const map = new Map();
+        myList.forEach((value) => map.set(value, true));
+        myMap = map;
+    }
+
     async function onStar(id: string, star: boolean) {
         if (!indexdb) {
             console.warn('index db is not initialized yet.');
@@ -57,28 +73,29 @@
 
         try {
             if (star) {
-                if (myList.length < INDEX_DB_MAX) {
-                    const doc = list.find((value) => value.id === id);
-                    if (doc && !myList.includes(id)) {
+                if (myMap.size < INDEX_DB_MAX) {
+                    const doc = docMap.get(id);
+                    if (doc && !myMap.has(id)) {
                         await indexdb.addMyList(doc);
-                        myList = await indexdb.getMyListKeys();
                     }
                 }
             } else {
-                if (myList.includes(id)) {
+                if (myMap.has(id)) {
                     await indexdb.deleteMyList(id);
-                    myList = await indexdb.getMyListKeys();
                 }
             }    
         } catch (e) {
             console.error(e);
+            return;
         }
+
+        refresh();
     }
 
     onMount(async () => {
         try {
-			indexdb = await KenjaIndexDb.open();
-			myList = await indexdb.getMyListKeys();
+			indexdb = await IndexDb.open();
+			refresh();
 		} catch (e) {
             console.error(e);
         }
@@ -142,7 +159,7 @@
                         <CandidateCard      
                             {lang}
                             {doc}
-                            star={myList.includes(doc.id)}
+                            star={myMap.has(doc.id)}
                             onStar={(id, star) => onStar(id, star)}
                         />
                     {/each}
