@@ -16,9 +16,9 @@
     }
 
     let {buffer, searchType, lang}: Props = $props();
-    let indexdb: IndexDb | null = $state(null);
 	let myMap: Map<string, boolean> = $state(new Map());
     let docMap: Map<string, FlatDocument> = new Map();
+    let indexdb: IndexDb | null = null;
 
     async function bufferResult() {
         const result = await buffer;

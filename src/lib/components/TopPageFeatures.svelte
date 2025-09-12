@@ -407,8 +407,8 @@
     }
 
     let {lang}: Props = $props();
-    let indexdb: IndexDb | null = $state(null);
     let myMap: Map<string, boolean> = $state(new Map());
+    let indexdb: IndexDb | null = null;
 
     function hasStar(id: string) {
         return myMap.has(id);
