@@ -2,6 +2,7 @@ import {building} from "$app/environment";
 import type { Handle } from "@sveltejs/kit";
 import kenja from "$lib/server/kenja";
 import logs from "$lib/server/logs";
+import { Lang, language } from "$lib";
 
 // headers are done on cdn
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -84,10 +85,9 @@ export const handle: Handle = async ({ event, resolve }) => {
         );
     }
 
-    const lang = h.get('accept-language')?.startsWith('ja') ? 'ja' : 'en';
-    const response = await resolve(
-        event, 
-        {transformPageChunk: ({html}) => html.replace('%kenja.lang%', lang)}
-    );
+    const lang = language(event.url, h);
+    const response = await resolve(event, {
+        transformPageChunk: ({html}) => html.replace('%kenja.lang%', lang === Lang.Jp ? 'ja' : 'en')
+    });
     return response;
 };
