@@ -1,6 +1,6 @@
-import {language} from "$lib";
+import {selectLang} from "$lib";
 
 export function load({request, url}) {
-    let lang = language(url, request.headers);
+    let lang = selectLang(url, request.headers);
     return {lang};
 }

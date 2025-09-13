@@ -9,7 +9,7 @@ export const enum Lang {
     Jp
 }
 
-export function language(url: URL, headers: Headers) {
+export function selectLang(url: URL, headers: Headers) {
     const qLang = url.searchParams.get('lang');
     if (qLang === 'ja') {
         return Lang.Jp;
