@@ -1,6 +1,6 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import { Lang } from "$lib";
+    import { Lang, langUrl } from "$lib";
 
 	interface Props {
 		lang: Lang;
@@ -33,17 +33,17 @@
 			</div>
 			<ul class="menu menu-lg dropdown-content bg-base-300 rounded-box z-1 w-52 mt-4 p-3">
 				<li class="my-2">
-					<a tabindex="0" href="/">
+					<a tabindex="0" href={langUrl('/', lang)}>
 						<span class="link font-medium">Home</span>
 					</a>
 				</li>
 				<li class="my-2">
-					<a tabindex="0" href="/mylist">
+					<a tabindex="0" href={langUrl('/mylist', lang)}>
 						<span class="link font-medium">MyList</span>
 					</a>
 				</li>
 				<li class="my-2">
-					<a tabindex="0" href="/about">
+					<a tabindex="0" href={langUrl('/about', lang)}>
 						<span class="link font-medium">About</span>
 					</a>
 				</li>
@@ -53,17 +53,17 @@
 	<div class="navbar-center hidden md:flex">
 		<ul class="menu menu-lg menu-horizontal px-1">
 			<li>
-				<a tabindex="0" href="/">
+				<a tabindex="0" href={langUrl('/', lang)}>
 					<span class="font-medium">Home</span>
 				</a>
 			</li>
 			<li>
-				<a tabindex="0" href="/mylist">
+				<a tabindex="0" href={langUrl('/mylist', lang)}>
 					<span class="font-medium">MyList</span>
 				</a>
 			</li>
 			<li>
-				<a tabindex="0" href="/about">
+				<a tabindex="0" href={langUrl('/about', lang)}>
 					<span class="font-medium">About</span>
 				</a>
 			</li>
