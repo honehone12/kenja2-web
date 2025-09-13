@@ -20,7 +20,3 @@ export function selectLang(url: URL, headers: Headers) {
     const accLangs = headers.get('accept-language'); 
     return accLangs?.startsWith('ja') ? Lang.Jp : Lang.En;
 }
-
-export function langUrl(url: string, lang: Lang) {
-    return lang === Lang.Jp ? url + '?lang=ja' : url;
-}
