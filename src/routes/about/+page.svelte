@@ -7,13 +7,13 @@
 
 <svelte:head>
 	{#if data.lang === Lang.Jp}
-		<title>ケンジャニメ - アバウト</title>
+		<title>ケンジャニメ - ケンジャニメについて</title>
 		<meta
 			name="description"
 			content="このページではケンジャニメについて初めての人でもわかりやすく説明しています。"
 		/>
 	{:else}
-		<title>Kenjanime - About</title>
+		<title>Kenjanime - About Kenjanime</title>
 		<meta
 			name="description"
 			content="This page explains Kenjanime in an easy-to-understand manner even for first-time users."
