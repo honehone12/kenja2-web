@@ -1,9 +1,7 @@
 <script lang="ts">
-    import type {FlatDocument} from "$lib/documents/anime-search/documents"
-    import TopDocuments from "$lib/components/TopDocuments.svelte";
+    import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import type { Lang } from "$lib";
-    import { onMount } from "svelte";
-    import { INDEX_DB_MAX, IndexDb } from "$lib/client/indexdb";
+    import ManualDocumentsBundle from "./ManualDocumentsBundle.svelte";
 
     const JUMP_ANIMES: FlatDocument[] = [
         {
@@ -13,7 +11,7 @@
             src: "https://myanimelist.net/anime/223/Dragon_Ball",
             name: "Dragon Ball",
             name_english: "Dragon Ball",
-            name_japanese: "ドラゴンボール"
+            name_japanese: "ドラゴンボール",
         },
         {
             id: "68ad631359f782ec1803a874",
@@ -22,7 +20,7 @@
             src: "https://myanimelist.net/anime/21/One_Piece",
             name: "One Piece",
             name_english: "One Piece",
-            name_japanese: "ONE PIECE"
+            name_japanese: "ONE PIECE",
         },
         {
             id: "68ad631559f782ec1803acf1",
@@ -31,7 +29,7 @@
             src: "https://myanimelist.net/anime/136/Hunter_x_Hunter",
             name: "Hunter x Hunter",
             name_english: "Hunter x Hunter",
-            name_japanese: "HUNTER×HUNTER（ハンター×ハンター）"
+            name_japanese: "HUNTER×HUNTER（ハンター×ハンター）",
         },
         {
             id: "68ad631359f782ec1803a814",
@@ -49,7 +47,7 @@
             src: "https://myanimelist.net/anime/38000/Kimetsu_no_Yaiba",
             name: "Kimetsu no Yaiba",
             name_english: "Demon Slayer: Kimetsu no Yaiba",
-            name_japanese: "鬼滅の刃"
+            name_japanese: "鬼滅の刃",
         },
         {
             id: "68ad634559f782ec18040395",
@@ -58,7 +56,7 @@
             src: "https://myanimelist.net/anime/40748/Jujutsu_Kaisen",
             name: "Jujutsu Kaisen",
             name_english: "Jujutsu Kaisen",
-            name_japanese: "呪術廻戦"
+            name_japanese: "呪術廻戦",
         },
         {
             id: "68ad634a59f782ec18040cce",
@@ -66,7 +64,7 @@
             img: "preview/anime/f41c791d00403ecfc2cfc0dc54304aba.jpg",
             src: "https://myanimelist.net/anime/50265/Spy_x_Family",
             name: "Spy x Family",
-            name_japanese: "SPY×FAMILY"
+            name_japanese: "SPY×FAMILY",
         },
         {
             id: "68ad631659f782ec1803ae37",
@@ -75,7 +73,7 @@
             src: "https://myanimelist.net/anime/170/Slam_Dunk",
             name: "Slam Dunk",
             name_english: "Slam Dunk",
-            name_japanese: "スラムダンク"
+            name_japanese: "スラムダンク",
         },
         {
             id: "68ad631f59f782ec1803bf2e",
@@ -84,19 +82,19 @@
             src: "https://myanimelist.net/anime/1535/Death_Note",
             name: "Death Note",
             name_english: "Death Note",
-            name_japanese: "デスノート"
-        }
+            name_japanese: "デスノート",
+        },
     ];
 
     const KIRARA_ANIMES: FlatDocument[] = [
-        {    
+        {
             id: "68ad632859f782ec1803ce6f",
             item_type: 1,
             img: "preview/anime/1fe7e73377d433243bee0d36c55311a1.jpg",
             src: "https://myanimelist.net/anime/5680/K-On",
             name: "K-On!",
             name_english: "K-ON!",
-            name_japanese: "けいおん!"
+            name_japanese: "けいおん!",
         },
         {
             id: "68ad633459f782ec1803e3d4",
@@ -105,7 +103,7 @@
             src: "https://myanimelist.net/anime/21273/Gochuumon_wa_Usagi_desu_ka",
             name: "Gochuumon wa Usagi desu ka?",
             name_english: "Is the Order a Rabbit?",
-            name_japanese: "ご注文はうさぎですか？"
+            name_japanese: "ご注文はうさぎですか？",
         },
         {
             id: "68ad633759f782ec1803e79d",
@@ -114,7 +112,7 @@
             src: "https://myanimelist.net/anime/24765/Gakkougurashi",
             name: "Gakkougurashi!",
             name_english: "School-Live!",
-            name_japanese: "がっこうぐらし！"
+            name_japanese: "がっこうぐらし！",
         },
         {
             id: "68ad633e59f782ec1803f613",
@@ -123,7 +121,7 @@
             src: "https://myanimelist.net/anime/34798/Yuru_Camp△",
             name: "Yuru Camp△",
             name_english: "Laid-Back Camp",
-            name_japanese:"ゆるキャン△"
+            name_japanese: "ゆるキャン△",
         },
         {
             id: "68ad634359f782ec1803ffe1",
@@ -132,7 +130,7 @@
             src: "https://myanimelist.net/anime/39071/Machikado_Mazoku",
             name: "Machikado Mazoku",
             name_english: "The Demon Girl Next Door",
-            name_japanese: "まちカドまぞく"
+            name_japanese: "まちカドまぞく",
         },
         {
             id: "68ad634959f782ec18040988",
@@ -141,8 +139,8 @@
             src: "https://myanimelist.net/anime/47917/Bocchi_the_Rock",
             name: "Bocchi the Rock!",
             name_english: "Bocchi the Rock!",
-            name_japanese: "ぼっち・ざ・ろっく！"
-        }
+            name_japanese: "ぼっち・ざ・ろっく！",
+        },
     ];
 
     const MAGAZINE_ANIMES: FlatDocument[] = [
@@ -153,7 +151,7 @@
             src: "https://myanimelist.net/anime/16498/Shingeki_no_Kyojin",
             name: "Shingeki no Kyojin",
             name_english: "Attack on Titan",
-            name_japanese: "進撃の巨人"
+            name_japanese: "進撃の巨人",
         },
         {
             id: "68ad632959f782ec1803d09c",
@@ -162,7 +160,7 @@
             src: "https://myanimelist.net/anime/6702/Fairy_Tail",
             name: "Fairy Tail",
             name_english: "Fairy Tail",
-            name_japanese: "FAIRY TAIL（フェアリーテイル）"
+            name_japanese: "FAIRY TAIL（フェアリーテイル）",
         },
         {
             id: "68ad634259f782ec1803fdab",
@@ -171,7 +169,7 @@
             src: "https://myanimelist.net/anime/38101/5-toubun_no_Hanayome",
             name: "5-toubun no Hanayome",
             name_english: "The Quintessential Quintuplets",
-            name_japanese: "五等分の花嫁"
+            name_japanese: "五等分の花嫁",
         },
         {
             id: "68ad633659f782ec1803e6ce",
@@ -180,7 +178,7 @@
             src: "https://myanimelist.net/anime/23755/Nanatsu_no_Taizai",
             name: "Nanatsu no Taizai",
             name_english: "The Seven Deadly Sins",
-            name_japanese: "七つの大罪"
+            name_japanese: "七つの大罪",
         },
         {
             id: "68ad631559f782ec1803adbb",
@@ -189,16 +187,16 @@
             src: "https://myanimelist.net/anime/157/Mahou_Sensei_Negima",
             name: "Mahou Sensei Negima!",
             name_english: "Negima!",
-            name_japanese: "魔法先生 ネギま！"
+            name_japanese: "魔法先生 ネギま！",
         },
         {
-            id: "68ad633659f782ec1803e62e",    
+            id: "68ad633659f782ec1803e62e",
             item_type: 1,
             img: "preview/anime/d787884139d270162c62c9a82e1f6ed7.jpg",
             src: "https://myanimelist.net/anime/23273/Shigatsu_wa_Kimi_no_Uso",
             name: "Shigatsu wa Kimi no Uso",
             name_english: "Your Lie in April",
-            name_japanese: "四月は君の嘘"
+            name_japanese: "四月は君の嘘",
         },
         {
             id: "68ad633859f782ec1803ea79",
@@ -207,7 +205,7 @@
             src: "https://myanimelist.net/anime/28851/Koe_no_Katachi",
             name: "Koe no Katachi",
             name_english: "A Silent Voice",
-            name_japanese: "聲の形"
+            name_japanese: "聲の形",
         },
         {
             id: "68ad634059f782ec1803fb2d",
@@ -215,7 +213,7 @@
             img: "preview/anime/2dfbedcd65f8ae572075007f8b658866.jpg",
             src: "https://myanimelist.net/anime/37403/Ahiru_no_Sora",
             name: "Ahiru no Sora",
-            name_japanese: "あひるの空"
+            name_japanese: "あひるの空",
         },
         {
             id: "68ad631359f782ec1803a991",
@@ -224,8 +222,8 @@
             src: "https://myanimelist.net/anime/24/School_Rumble",
             name: "School Rumble",
             name_english: "School Rumble",
-            name_japanese: "スクールランブル"
-        }
+            name_japanese: "スクールランブル",
+        },
     ];
 
     const SUNDAY_ANIMES: FlatDocument[] = [
@@ -236,7 +234,7 @@
             src: "https://myanimelist.net/anime/235/Meitantei_Conan",
             name: "Meitantei Conan",
             name_english: "Case Closed",
-            name_japanese: "名探偵コナン"
+            name_japanese: "名探偵コナン",
         },
         {
             id: "68ad631759f782ec1803b06c",
@@ -245,7 +243,7 @@
             src: "https://myanimelist.net/anime/249/InuYasha",
             name: "InuYasha",
             name_english: "InuYasha",
-            name_japanese: "犬夜叉"
+            name_japanese: "犬夜叉",
         },
         {
             id: "68ad634d59f782ec1804107f",
@@ -254,7 +252,7 @@
             src: "https://myanimelist.net/anime/52991/Sousou_no_Frieren",
             name: "Sousou no Frieren",
             name_english: "Frieren: Beyond Journey's End",
-            name_japanese: "葬送のフリーレン"
+            name_japanese: "葬送のフリーレン",
         },
         {
             id: "68ad634659f782ec1804050e",
@@ -263,7 +261,7 @@
             src: "https://myanimelist.net/anime/41389/Tonikaku_Kawaii",
             name: "Tonikaku Kawaii",
             name_english: "Tonikawa: Over The Moon For You",
-            name_japanese: "トニカクカワイイ"
+            name_japanese: "トニカクカワイイ",
         },
         {
             id: "68ad634a59f782ec18040d0c",
@@ -272,7 +270,7 @@
             src: "https://myanimelist.net/anime/50346/Yofukashi_no_Uta",
             name: "Yofukashi no Uta",
             name_english: "Call of the Night",
-            name_japanese: "よふかしのうた"
+            name_japanese: "よふかしのうた",
         },
         {
             id: "68ad633f59f782ec1803f83b",
@@ -281,8 +279,8 @@
             src: "https://myanimelist.net/anime/35860/Karakai_Jouzu_no_Takagi-san",
             name: "Karakai Jouzu no Takagi-san",
             name_english: "Teasing Master Takagi-san",
-            name_japanese: "からかい上手の高木さん"
-        }
+            name_japanese: "からかい上手の高木さん",
+        },
     ];
 
     const GANGAN_ANIMES: FlatDocument[] = [
@@ -293,7 +291,7 @@
             src: "https://myanimelist.net/anime/121/Fullmetal_Alchemist",
             name: "Fullmetal Alchemist",
             name_english: "Fullmetal Alchemist",
-            name_japanese: "鋼の錬金術師"
+            name_japanese: "鋼の錬金術師",
         },
         {
             id: "68ad632659f782ec1803c998",
@@ -302,7 +300,7 @@
             src: "https://myanimelist.net/anime/3588/Soul_Eater",
             name: "Soul Eater",
             name_english: "Soul Eater",
-            name_japanese: "ソウルイーター"
+            name_japanese: "ソウルイーター",
         },
         {
             id: "68ad634959f782ec18040a9a",
@@ -311,8 +309,8 @@
             src: "https://myanimelist.net/anime/48736/Sono_Bisque_Doll_wa_Koi_wo_Suru",
             name: "Sono Bisque Doll wa Koi wo Suru",
             name_english: "My Dress-Up Darling",
-            name_japanese: "その着せ替え人形は恋をする"
-        }
+            name_japanese: "その着せ替え人形は恋をする",
+        },
     ];
 
     const LA_NOVE_ANIMES: FlatDocument[] = [
@@ -323,7 +321,7 @@
             src: "https://myanimelist.net/anime/54492/Kusuriya_no_Hitorigoto",
             name: "Kusuriya no Hitorigoto",
             name_english: "The Apothecary Diaries",
-            name_japanese: "薬屋のひとりごと"
+            name_japanese: "薬屋のひとりごと",
         },
         {
             id: "68ad633a59f782ec1803ed19",
@@ -332,7 +330,7 @@
             src: "https://myanimelist.net/anime/31240/Re_Zero_kara_Hajimeru_Isekai_Seikatsu",
             name: "Re:Zero kara Hajimeru Isekai Seikatsu",
             name_english: "Re:ZERO -Starting Life in Another World-",
-            name_japanese: "Re:ゼロから始める異世界生活"
+            name_japanese: "Re:ゼロから始める異世界生活",
         },
         {
             id: "68ad632759f782ec1803cd07",
@@ -341,7 +339,7 @@
             src: "https://myanimelist.net/anime/5081/Bakemonogatari",
             name: "Bakemonogatari",
             name_english: "Bakemonogatari",
-            name_japanese: "化物語"
+            name_japanese: "化物語",
         },
         {
             id: "68ad631c59f782ec1803b943",
@@ -350,7 +348,7 @@
             src: "https://myanimelist.net/anime/849/Suzumiya_Haruhi_no_Yuuutsu",
             name: "Suzumiya Haruhi no Yuuutsu",
             name_english: "The Melancholy of Haruhi Suzumiya",
-            name_japanese: "涼宮ハルヒの憂鬱"
+            name_japanese: "涼宮ハルヒの憂鬱",
         },
         {
             id: "68ad633959f782ec1803ec85",
@@ -359,7 +357,7 @@
             src: "https://myanimelist.net/anime/30831/Kono_Subarashii_Sekai_ni_Shukufuku_wo",
             name: "Kono Subarashii Sekai ni Shukufuku wo!",
             name_english: "KonoSuba: God's Blessing on This Wonderful World!",
-            name_japanese: "この素晴らしい世界に祝福を！"
+            name_japanese: "この素晴らしい世界に祝福を！",
         },
         {
             id: "68afc67579d87884b804fd12",
@@ -368,10 +366,10 @@
             src: "https://myanimelist.net/anime/11757/Sword_Art_Online",
             name: "Sword Art Online",
             name_english: "Sword Art Online",
-            name_japanese: "ソードアート・オンライン"
-        }
+            name_japanese: "ソードアート・オンライン",
+        },
     ];
-    
+
     const OTHER_ANIMES: FlatDocument[] = [
         {
             id: "68ad631859f782ec1803b2f4",
@@ -380,7 +378,7 @@
             src: "https://myanimelist.net/anime/356/Fate_stay_night",
             name: "Fate/stay night",
             name_english: "Fate/stay night",
-            name_japanese: "Fate/stay night"
+            name_japanese: "Fate/stay night",
         },
         {
             id: "68afc67779d87884b80509b9",
@@ -389,7 +387,7 @@
             src: "https://myanimelist.net/anime/34599/Made_in_Abyss",
             name: "Made in Abyss",
             name_english: "Made in Abyss",
-            name_japanese: "メイドインアビス"
+            name_japanese: "メイドインアビス",
         },
         {
             id: "68ad634c59f782ec18040f4b",
@@ -398,123 +396,54 @@
             src: "https://myanimelist.net/anime/52034/Oshi_no_Ko",
             name: "[Oshi no Ko]",
             name_english: "[Oshi No Ko]",
-            name_japanese: "【推しの子】"
-        }
+            name_japanese: "【推しの子】",
+        },
     ];
 
     interface Props {
         lang: Lang;
     }
 
-    let {lang}: Props = $props();
-    let myMap: Map<string, boolean> = $state(new Map());
-    let indexdb: IndexDb | null = null;
-
-    function hasStar(id: string) {
-        return myMap.has(id);
-    }
-
-    async function refresh() {
-        if (!indexdb) {
-            return;
-        }
-
-        const myList = await indexdb.getMyListKeys();
-        const map = new Map();
-        myList.forEach((value) => map.set(value, true));
-        myMap = map;
-    }
-
-    async function onStar(id: string, star: boolean, list: FlatDocument[]) {
-        if (!indexdb) {
-            console.warn('index db is not initialized yet.');
-            return;
-        }
-
-        try {
-            if (star) {
-                if (myMap.size  < INDEX_DB_MAX) {
-                    const doc = list.find((value) => value.id === id);
-                    if (doc && !myMap.has(id)) {
-                        await indexdb.addMyList(doc);
-                    }
-                }
-            } else {
-                if (myMap.has(id)) {
-                    await indexdb.deleteMyList(id);
-                }
-            }    
-        } catch (e) {
-            console.error(e);
-            return;
-        }
-
-        refresh();
-    }
-
-	onMount(async () => {
-        try {
-			indexdb = await IndexDb.open();
-			refresh();
-		} catch (e) {
-            console.error(e);
-        }
-    });
+    let { lang }: Props = $props();
 </script>
 
-<TopDocuments
+<ManualDocumentsBundle
     {lang}
-    name="Jump Animes"
-    nameJapanese="ジャンプアニメ"
-    list={JUMP_ANIMES}
-    {hasStar}
-    onStar={(id, star) => onStar(id, star, JUMP_ANIMES)}
-/>
-<TopDocuments
-    {lang}
-    name="Kirara Animes"
-    nameJapanese="きららアニメ"
-    list={KIRARA_ANIMES}
-    {hasStar}
-    onStar={(id, star) => onStar(id, star, KIRARA_ANIMES)}
-/>
-<TopDocuments
-    {lang}
-    name="Magazine Animes"
-    nameJapanese="マガジンアニメ"
-    list={MAGAZINE_ANIMES}
-    {hasStar}
-    onStar={(id, star) => onStar(id, star, MAGAZINE_ANIMES)}
-/>
-<TopDocuments
-    {lang}
-    name="Sunday Animes"
-    nameJapanese="サンデーアニメ"
-    list={SUNDAY_ANIMES}
-    {hasStar}
-    onStar={(id, star) => onStar(id, star, SUNDAY_ANIMES)}
-/>
-<TopDocuments
-    {lang}
-    name="GanGan Animes"
-    nameJapanese="ガンガンアニメ"
-    list={GANGAN_ANIMES}
-    {hasStar}
-    onStar={(id, star) => onStar(id, star, GANGAN_ANIMES)}
-/>
-<TopDocuments
-    {lang}
-    name="Light Novel Animes"
-    nameJapanese="ラノベアニメ"
-    list={LA_NOVE_ANIMES}
-    {hasStar}
-    onStar={(id, star) => onStar(id, star, LA_NOVE_ANIMES)}
-/>
-<TopDocuments
-    {lang}
-    name="Other Animes"
-    nameJapanese="その他アニメ"
-    list={OTHER_ANIMES}
-    {hasStar}
-    onStar={(id, star) => onStar(id, star, OTHER_ANIMES)}
+    bundle={[
+        {
+            name: "Jump Animes",
+            nameJapanese: "ジャンプアニメ",
+            list: JUMP_ANIMES,
+        },
+        {
+            name: "Kirara Animes",
+            nameJapanese: "きららアニメ",
+            list: KIRARA_ANIMES,
+        },
+        {
+            name: "Magazine Animes",
+            nameJapanese: "マガジンアニメ",
+            list: MAGAZINE_ANIMES,
+        },
+        {
+            name: "Sunday Animes",
+            nameJapanese: "サンデーアニメ",
+            list: SUNDAY_ANIMES,
+        },
+        {
+            name: "GanGan Animes",
+            nameJapanese: "ガンガンアニメ",
+            list: GANGAN_ANIMES,
+        },
+        {
+            name: "Light Novel Animes",
+            nameJapanese: "ラノベアニメ",
+            list: LA_NOVE_ANIMES,
+        },
+        {
+            name: "Other Animes",
+            nameJapanese: "その他アニメ",
+            list: OTHER_ANIMES,
+        },
+    ]}
 />
