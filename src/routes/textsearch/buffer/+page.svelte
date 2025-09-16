@@ -1,28 +1,41 @@
 <script lang="ts">
-    import { Lang } from '$lib';
-    import { SearchType } from '$lib/client/search.js';
-    import SearchResultBuffer from '$lib/pages/SearchResultBuffer.svelte';
+    import { Lang } from "$lib";
+    import { SearchType } from "$lib/client/search.js";
+    import SearchResultBuffer from "$lib/pages/SearchResultBuffer.svelte";
 
-    let {data} = $props();
+    let { data } = $props();
 </script>
 
 <svelte:head>
     {#if data.lang === Lang.Jp}
         <title>ケンジャニメ - アニメとキャラクターのキーワード検索結果</title>
-        <meta
-			name="description"
-			content="ケンジャニメはアニメ ＆ キャラクターの検索とベクターサーチによるレコメンデーションシステムです。"
-		/>
     {:else}
-	    <title>Kenjanime - Results of Anime and Character Keyword Search</title>
+        <title>Kenjanime - Results of Anime and Character Keyword Search</title>
+    {/if}
+    <meta name="application-name" content="Kenjanime" />
+    <meta name="author" content="Twelfthonehone" />
+    {#if data.lang === Lang.Jp}
         <meta
-			name="description"
-			content="Kenjanime is a system for anime & character search and recommendation powered by vector search."
-		/>
+            name="description"
+            content="ケンジャニメはアニメ ＆ キャラクターの検索とベクターサーチによるレコメンデーションシステムです。"
+        />
+        <meta
+            name="keywords"
+            content="アニメ, キャラクター, 検索, おすすめ, 似ている, 画像, ベクターサーチ, 画像検索, 類似検索, 簡単検索"
+        />
+    {:else}
+        <meta
+            name="description"
+            content="Kenjanime is a system for anime & character search and recommendation powered by vector search."
+        />
+        <meta
+            name="keywords"
+            content="anime, character, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
+        />
     {/if}
 </svelte:head>
 
-<SearchResultBuffer 
+<SearchResultBuffer
     buffer={data.bufferedStream}
     searchType={SearchType.Text}
     lang={data.lang}
