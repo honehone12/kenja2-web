@@ -73,12 +73,14 @@
 </script>
 
 {#each bundle as docs, i (i)}
-    <ManualDocuments
-        {lang}
-        name={docs.name}
-        nameJapanese={docs.nameJapanese}
-        list={docs.list}
-        {hasStar}
-        onStar={(id, star) => onStar(id, star, docs.list)}
-    />
+    <div class="pt-10">
+        <ManualDocuments
+            {lang}
+            name={docs.name}
+            nameJapanese={docs.nameJapanese}
+            list={docs.list}
+            {hasStar}
+            onStar={(id, star) => onStar(id, star, docs.list)}
+        />
+    </div>
 {/each}
