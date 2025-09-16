@@ -12,13 +12,13 @@
         lang: Lang;
     }
 
-    let {lang}: Props = $props();
+    let { lang }: Props = $props();
     let indexdb: IndexDb | null = $state(null);
     let myList: FlatDocument[] = $state([]);
 
     async function unstar(id: string) {
         if (!indexdb) {
-            console.warn('index db is not initialized');
+            console.warn("index db is not initialized");
             return;
         }
 
@@ -53,25 +53,39 @@
     </h1>
 </div>
 {#if myList.length > 0}
-    <div class="hero w-full min-h-screen py-20">
+    <div class="hero w-full mt-10">
+        <div class="hero-content text-center">
+            <span>
+                <h2 class="text-lg">Tip💡</h2>
+                <p>
+                    {#if lang === Lang.Jp}
+                        マイリストを削除するにはスター⭐を消します。
+                    {:else}
+                        Remove Star⭐ for Deleting My List.
+                    {/if}
+                </p>
+            </span>
+        </div>
+    </div>
+    <div class="hero w-full min-h-screen py-10">
         <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
             {#each myList as doc (doc.id)}
-                <span 
-                    out:scale={{duration: 140}} 
-                    animate:flip={{delay: 60, duration: 140}}
+                <span
+                    out:scale={{ duration: 140 }}
+                    animate:flip={{ delay: 60, duration: 140 }}
                 >
                     <CandidateCard
                         {doc}
                         {lang}
                         star
-                        onStar={(id, _) => unstar(id)}  
+                        onStar={(id, _) => unstar(id)}
                     />
                 </span>
             {/each}
         </div>
     </div>
 {:else}
-    <div class="hero w-full mt-20">
+    <div class="hero w-full mt-10">
         <div class="hero-content text-center">
             <span>
                 <h2 class="text-lg">Tip💡</h2>
@@ -85,21 +99,23 @@
             </span>
         </div>
     </div>
-    <NoResults {lang}/>
+    <NoResults {lang} />
 {/if}
 <div class="hero w-full mb-20">
-        <div class="hero-content text-center">
-            <span>
-                <h2 class="text-lg">Info💡</h2>
-                <p>
-                    {#if lang === Lang.Jp}
-                        マイリストはブラウザに保存され、ネットワークで送信されることはありません。<br>
-                        ブラウザーのデータを削除するとリストも削除されます。
-                    {:else}
-                        My List is Saved on Your Browser, And will not be Sent on Networks.<br>
-                        The List will be Deleted When You Delete Browser's Data. 
-                    {/if}
-                </p>
-            </span>
-        </div>
+    <div class="hero-content text-center">
+        <span>
+            <h2 class="text-lg">Info💡</h2>
+            <p>
+                {#if lang === Lang.Jp}
+                    マイリストはブラウザに保存され、ネットワークで送信されることはありません。<br
+                    />
+                    ブラウザーのデータを削除するとリストも削除されます。
+                {:else}
+                    My List is Saved on Your Browser, And will not be Sent on
+                    Networks.<br />
+                    The List will be Deleted When You Delete Browser's Data.
+                {/if}
+            </p>
+        </span>
     </div>
+</div>
