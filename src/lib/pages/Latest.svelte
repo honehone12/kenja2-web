@@ -147,6 +147,24 @@
             name_english: "Food for the Soul",
             name_japanese: "日々は過ぎれど飯うまし",
         },
+        {
+            id: "68afc67979d87884b80522c9",
+            item_type: 1,
+            img: "preview/anime/273b1f298bf6a941695896b3fe2b78a5.jpg",
+            src: "https://myanimelist.net/anime/59228/Kuroshitsuji__Midori_no_Majo-hen",
+            name: "Kuroshitsuji: Midori no Majo-hen",
+            name_english: "Black Butler: Emerald Witch Arc",
+            name_japanese: "黒執事 -緑の魔女編-",
+        },
+        {
+            id: "68ad635059f782ec18041615",
+            item_type: 1,
+            img: "preview/anime/42c5d5663d18a1b55968d33593ad9853.jpg",
+            src: "https://myanimelist.net/anime/60593/Vigilante__Boku_no_Hero_Academia_Illegals",
+            name: "Vigilante: Boku no Hero Academia Illegals",
+            name_english: "My Hero Academia: Vigilantes",
+            name_japanese: "ヴィジランテ -僕のヒーローアカデミア ILLEGALS-",
+        },
     ];
 
     interface Props {

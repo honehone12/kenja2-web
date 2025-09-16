@@ -398,6 +398,33 @@
             name_english: "[Oshi No Ko]",
             name_japanese: "【推しの子】",
         },
+        {
+            id: "68ad633a59f782ec1803edd1",
+            item_type: 1,
+            img: "preview/anime/7731e7e8be5e5b8fe4821cfb8b8cb38d.jpg",
+            src: "https://myanimelist.net/anime/31478/Bungou_Stray_Dogs",
+            name: "Bungou Stray Dogs",
+            name_english: "Bungo Stray Dogs",
+            name_japanese: "文豪ストレイドッグス",
+        },
+        {
+            id: "68ad632759f782ec1803cc54",
+            item_type: 1,
+            img: "preview/anime/17a6b5871f6d13a8c29cddc93b258c6d.jpg",
+            src: "https://myanimelist.net/anime/4898/Kuroshitsuji",
+            name: "Kuroshitsuji",
+            name_english: "Black Butler",
+            name_japanese: "黒執事",
+        },
+        {
+            id: "68ad633c59f782ec1803f1e8",
+            item_type: 1,
+            img: "preview/anime/11955b4683665eb2b4535e3415971e23.jpg",
+            src: "https://myanimelist.net/anime/33018/Katsugeki_Touken_Ranbu",
+            name: "Katsugeki/Touken Ranbu",
+            name_english: "Katsugeki Touken Ranbu",
+            name_japanese: "活撃／刀剣乱舞",
+        },
     ];
 
     interface Props {
