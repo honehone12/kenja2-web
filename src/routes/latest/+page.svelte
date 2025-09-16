@@ -20,7 +20,7 @@
         />
         <meta
             name="keywords"
-            content="アニメ, キャラクター, 検索, おすすめ, 似ている, 画像, ベクターサーチ, 画像検索, 類似検索, 簡単検索"
+            content="ケンジャ　アニメ, キャラクター, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
         />
     {:else}
         <meta
@@ -29,7 +29,7 @@
         />
         <meta
             name="keywords"
-            content="anime, character, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
+            content="kenja, anime, character, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
         />
     {/if}
 </svelte:head>
