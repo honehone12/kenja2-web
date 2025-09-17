@@ -53,6 +53,14 @@
     }
 
     function sameLangUrl(url: string, lang: Lang) {
+        if (url.includes("lang=")) {
+            return url;
+        }
+
+        if (url.includes("?")) {
+            return lang === Lang.Jp ? url + "&lang=ja" : url;
+        }
+
         return lang === Lang.Jp ? url + "?lang=ja" : url;
     }
 </script>
