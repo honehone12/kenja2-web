@@ -36,7 +36,7 @@
 </svelte:head>
 
 <SearchResultBuffer
+    lang={data.lang}
     buffer={data.bufferedStream}
     searchType={SearchType.Vector}
-    lang={data.lang}
 />
