@@ -44,18 +44,48 @@
         return kw.replace(/<.*?>/g, "");
     }
 
-    function itemTypeLabel(l: Lang) {
+    function itemTypeLabel() {
         const iType = page.url.searchParams.get("item-type");
         // don't show unexpected values;
         switch (iType) {
             case "anime":
-                return l === Lang.Jp ? "アニメ" : "Anime";
+                return lang === Lang.Jp ? "アニメ" : "Anime";
             case "character":
-                return l === Lang.Jp ? "キャラクター" : "Character";
+                return lang === Lang.Jp ? "キャラクター" : "Character";
             case "trailer":
-                return l === Lang.Jp ? "トレーラー" : "Trailer";
+                return lang === Lang.Jp ? "トレーラー" : "Trailer";
             default:
-                return l === Lang.Jp ? "全" : "All";
+                return lang === Lang.Jp ? "全" : "All";
+        }
+    }
+
+    function searchResultLabel(doc: FlatDocument | undefined) {
+        if (!doc) {
+            return "";
+        }
+
+        switch (searchType) {
+            case SearchType.Vector:
+                if (lang === Lang.Jp) {
+                    const name = doc.name_japanese ?? doc.name;
+                    return `"${name}"と似ている${itemTypeLabel()}`;
+                } else {
+                    return `Similar ${itemTypeLabel()} with "${doc.name}"`;
+                }
+            case SearchType.Text:
+                if (lang === Lang.Jp) {
+                    return `"${searchKeywords()}"の${itemTypeLabel()}検索結果`;
+                } else {
+                    return `Search Results of ${itemTypeLabel()} for "${searchKeywords()}"`;
+                }
+            case SearchType.Random:
+                if (lang === Lang.Jp) {
+                    return "ランダム アニメとキャラクター";
+                } else {
+                    return "Random Anime and Character";
+                }
+            default:
+                return "";
         }
     }
 
@@ -130,38 +160,9 @@
                 <div
                     class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-5 mb-10"
                 >
-                    {#if searchType === SearchType.Vector}
-                        <h2 class="text-lg">
-                            {#if lang === Lang.Jp}
-                                "{documents.at(0)
-                                    ?.name_japanese}"と似ている{itemTypeLabel(
-                                    lang,
-                                )}
-                            {:else}
-                                Similar {itemTypeLabel(lang)} with "{documents.at(
-                                    0,
-                                )?.name}"
-                            {/if}
-                        </h2>
-                    {:else if searchType === SearchType.Text}
-                        <h2 class="text-lg">
-                            {#if lang === Lang.Jp}
-                                "{searchKeywords()}"の{itemTypeLabel(
-                                    lang,
-                                )}検索結果
-                            {:else}
-                                Search results of {itemTypeLabel(lang)} for "{searchKeywords()}"
-                            {/if}
-                        </h2>
-                    {:else if searchType === SearchType.Random}
-                        <h2 class="text-lg">
-                            {#if lang === Lang.Jp}
-                                ランダム
-                            {:else}
-                                Random
-                            {/if}
-                        </h2>
-                    {/if}
+                    <h2 class="text-lg">
+                        {searchResultLabel(documents.at(0))}
+                    </h2>
                 </div>
             </div>
             <div class="hero w-full">
