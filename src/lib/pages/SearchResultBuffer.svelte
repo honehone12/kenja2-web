@@ -11,14 +11,16 @@
     import { Lang } from "$lib";
     import { onMount } from "svelte";
     import { INDEX_DB_MAX, IndexDb } from "$lib/client/indexdb";
+    import SearchTipBottom from "$lib/components/SearchTipBottom.svelte";
+    import SearchTipTop from "$lib/components/SearchTipTop.svelte";
 
     interface Props {
+        lang: Lang;
         buffer: Promise<SearchResult>;
         searchType: SearchType;
-        lang: Lang;
     }
 
-    let { buffer, searchType, lang }: Props = $props();
+    let { lang, buffer, searchType }: Props = $props();
     let myMap: Map<string, boolean> = $state(new Map());
     let docMap: Map<string, FlatDocument> = new Map();
     let indexdb: IndexDb | null = null;
@@ -114,18 +116,7 @@
         {/if}
     </h1>
 </div>
-{#if searchType === SearchType.Text}
-    <div class="mt-10 mx-5 text-center">
-        <h2 class="text-lg">Tip💡</h2>
-        <p>
-            {#if lang === Lang.Jp}
-                他のキーワードを試すには下部のサーチアイコンをクリックします。
-            {:else}
-                Click the search icon at the bottom to try other keywords.
-            {/if}
-        </p>
-    </div>
-{/if}
+<SearchTipTop {lang} {searchType} />
 {#await bufferResult()}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
@@ -162,6 +153,14 @@
                                 Search results of {itemTypeLabel(lang)} for "{searchKeywords()}"
                             {/if}
                         </h2>
+                    {:else if searchType === SearchType.Random}
+                        <h2 class="text-lg">
+                            {#if lang === Lang.Jp}
+                                ランダム
+                            {:else}
+                                Random
+                            {/if}
+                        </h2>
                     {/if}
                 </div>
             </div>
@@ -184,16 +183,4 @@
 {:catch}
     <NoResults {lang} />
 {/await}
-{#if searchType === SearchType.Text}
-    <div class="text-center mb-20 mx-5">
-        <h2 class="text-lg">Tip💡</h2>
-        <p>
-            {#if lang === Lang.Jp}
-                ファジー検索をONにするかどうかによって検索結果は変わります。
-            {:else}
-                Search results will vary depending on whether fuzzy search is ON
-                or not.
-            {/if}
-        </p>
-    </div>
-{/if}
+<SearchTipBottom {lang} {searchType} />

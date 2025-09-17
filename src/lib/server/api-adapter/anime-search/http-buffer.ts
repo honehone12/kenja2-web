@@ -1,80 +1,81 @@
 import type { AnimeSearch } from "$lib/server/api-adapter/api-adapter";
-import { 
-    FunctionId,
-    ItemType, 
-    FuzzyKind, 
-    type SearchQuery 
+import {
+  FunctionId,
+  ItemType,
+  FuzzyKind,
+  type SearchQuery,
 } from "$lib/documents/anime-search/queries";
-import type {SearchResult} from "$lib/documents/anime-search/documents";
+import type { SearchResult } from "$lib/documents/anime-search/documents";
 
 export class HttpBufferApi implements AnimeSearch {
-    private _apiUrl: URL;
+  private _apiUrl: URL;
 
-    constructor(baseUrl: string) {
-        this._apiUrl = new URL('/anime-search', baseUrl);
+  constructor(baseUrl: string) {
+    this._apiUrl = new URL("/anime-search", baseUrl);
+  }
+
+  private async httpQuery(url: URL, body: string): Promise<SearchResult> {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body,
+    });
+    if (!res.ok) {
+      throw new Error(`HTTP FAIL: ${res.status} ${res.statusText}`);
     }
 
-    private async httpQuery(url: URL, body: string): Promise<SearchResult> {
-        const res = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-            body 
-        });
-        if (!res.ok) {
-            throw new Error(`HTTP FAIL: ${res.status} ${res.statusText}`);
-        }
-        
-        const result: SearchResult = await res.json();
-        return result;
-    }
+    const result: SearchResult = await res.json();
+    return result;
+  }
 
-    public async ping(): Promise<SearchResult> {
-        const q: SearchQuery = {
-            function_id: FunctionId.Ping
-        };
-        const body = JSON.stringify(q);
+  public async ping(): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.Ping,
+    };
+    const body = JSON.stringify(q);
 
-        return this.httpQuery(this._apiUrl, body);
-    }
+    return this.httpQuery(this._apiUrl, body);
+  }
 
-    public async newItems(): Promise<SearchResult> {
-        const q: SearchQuery = {
-            function_id: FunctionId.NewItems
-        };
-        const body = JSON.stringify(q);
+  public async random(item_type: ItemType | undefined): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.Random,
+      item_type,
+    };
+    const body = JSON.stringify(q);
 
-        return this.httpQuery(this._apiUrl, body);
-    }
+    return this.httpQuery(this._apiUrl, body);
+  }
 
-    public async textSearch(
-        item_type: ItemType | undefined,
-        keywords: string,
-        fuzzy_kind: FuzzyKind | undefined
-    ): Promise<SearchResult> {
-        const q: SearchQuery = {
-            function_id: FunctionId.TextSearchBuffer,
-            item_type,
-            keywords,
-            fuzzy_kind
-        };
-        const body = JSON.stringify(q);
-    
-        return this.httpQuery(this._apiUrl, body);
-    }
+  public async textSearch(
+    item_type: ItemType | undefined,
+    keywords: string,
+    fuzzy_kind: FuzzyKind | undefined,
+  ): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.TextSearchBuffer,
+      item_type,
+      keywords,
+      fuzzy_kind,
+    };
+    const body = JSON.stringify(q);
 
-    public async vectorSearch(
-        item_type: ItemType,
-        id: string
-    ): Promise<SearchResult> {
-        const q: SearchQuery = {
-            function_id: FunctionId.VectorSearchBuffer,
-            item_type,
-            id
-        };
-        const body = JSON.stringify(q);
+    return this.httpQuery(this._apiUrl, body);
+  }
 
-        return this.httpQuery(this._apiUrl, body);
-    }
+  public async vectorSearch(
+    item_type: ItemType,
+    id: string,
+  ): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.VectorSearchBuffer,
+      item_type,
+      id,
+    };
+    const body = JSON.stringify(q);
+
+    return this.httpQuery(this._apiUrl, body);
+  }
 }
