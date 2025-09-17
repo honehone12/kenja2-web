@@ -3,7 +3,7 @@ import type { SearchResult } from "$lib/documents/anime-search/documents";
 
 export interface AnimeSearch {
   ping(): Promise<SearchResult>;
-  random(item_type: ItemType): Promise<SearchResult>;
+  random(item_type: ItemType | undefined): Promise<SearchResult>;
   textSearch(
     item_type: ItemType | undefined,
     keywords: string,

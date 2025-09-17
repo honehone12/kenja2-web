@@ -61,7 +61,7 @@ export class LambdaApi implements AnimeSearch {
     return this.lambdaQuery(input);
   }
 
-  public async random(item_type: ItemType): Promise<SearchResult> {
+  public async random(item_type: ItemType | undefined): Promise<SearchResult> {
     const q: SearchQuery = {
       function_id: FunctionId.Random,
       item_type,

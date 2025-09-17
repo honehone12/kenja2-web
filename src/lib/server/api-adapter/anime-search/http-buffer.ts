@@ -39,7 +39,7 @@ export class HttpBufferApi implements AnimeSearch {
     return this.httpQuery(this._apiUrl, body);
   }
 
-  public async random(item_type: ItemType): Promise<SearchResult> {
+  public async random(item_type: ItemType | undefined): Promise<SearchResult> {
     const q: SearchQuery = {
       function_id: FunctionId.Random,
       item_type,
