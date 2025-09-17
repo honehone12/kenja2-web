@@ -2,6 +2,34 @@
     import { page } from "$app/state";
     import { Lang } from "$lib";
 
+    interface Route {
+        name: string;
+        path: string;
+    }
+
+    const ROUTES: Route[] = [
+        {
+            name: "Home",
+            path: "/",
+        },
+        {
+            name: "Latest",
+            path: "/latest",
+        },
+        {
+            name: "Random",
+            path: "/random?item-type=all",
+        },
+        {
+            name: "MyList",
+            path: "/mylist",
+        },
+        {
+            name: "About",
+            path: "about",
+        },
+    ];
+
     interface Props {
         lang: Lang;
     }
@@ -56,51 +84,25 @@
             <ul
                 class="menu menu-lg dropdown-content bg-base-300 rounded-box z-1 w-52 mt-4 p-3"
             >
-                <li class="my-2">
-                    <a tabindex="0" href={sameLangUrl("/", lang)}>
-                        <span class="link font-medium">Home</span>
-                    </a>
-                </li>
-                <li class="my-2">
-                    <a tabindex="0" href={sameLangUrl("/latest", lang)}>
-                        <span class="link font-medium">Latest</span>
-                    </a>
-                </li>
-                <li class="my-2">
-                    <a tabindex="0" href={sameLangUrl("/mylist", lang)}>
-                        <span class="link font-medium">MyList</span>
-                    </a>
-                </li>
-                <li class="my-2">
-                    <a tabindex="0" href={sameLangUrl("/about", lang)}>
-                        <span class="link font-medium">About</span>
-                    </a>
-                </li>
+                {#each ROUTES as route, i (i)}
+                    <li class="my-2">
+                        <a tabindex="0" href={sameLangUrl(route.path, lang)}>
+                            <span class="link font-medium">{route.name}</span>
+                        </a>
+                    </li>
+                {/each}
             </ul>
         </div>
     </div>
     <div class="navbar-center hidden md:flex">
         <ul class="menu menu-lg menu-horizontal px-1">
-            <li>
-                <a tabindex="0" href={sameLangUrl("/", lang)}>
-                    <span class="font-medium">Home</span>
-                </a>
-            </li>
-            <li>
-                <a tabindex="0" href={sameLangUrl("/latest", lang)}>
-                    <span class="font-medium">Latest</span>
-                </a>
-            </li>
-            <li>
-                <a tabindex="0" href={sameLangUrl("/mylist", lang)}>
-                    <span class="font-medium">MyList</span>
-                </a>
-            </li>
-            <li>
-                <a tabindex="0" href={sameLangUrl("/about", lang)}>
-                    <span class="font-medium">About</span>
-                </a>
-            </li>
+            {#each ROUTES as route, i (i)}
+                <li>
+                    <a tabindex="0" href={sameLangUrl(route.path, lang)}>
+                        <span class="font-medium">{route.name}</span>
+                    </a>
+                </li>
+            {/each}
         </ul>
     </div>
     <div class="navbar-end">
