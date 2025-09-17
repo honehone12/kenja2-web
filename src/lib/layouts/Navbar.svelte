@@ -5,28 +5,34 @@
     interface Route {
         name: string;
         path: string;
+        jpPath: string;
     }
 
     const ROUTES: Route[] = [
         {
             name: "Home",
             path: "/",
+            jpPath: "/?lang=ja",
         },
         {
             name: "Latest",
             path: "/latest",
+            jpPath: "/latest?lang=ja",
         },
         {
             name: "Random",
             path: "/random?item-type=all",
+            jpPath: "/random?item-type=all&lang=ja",
         },
         {
             name: "MyList",
             path: "/mylist",
+            jpPath: "/mylist?lang=ja",
         },
         {
             name: "About",
-            path: "about",
+            path: "/about",
+            jpPath: "/about?lang=ja",
         },
     ];
 
@@ -50,18 +56,6 @@
             q.append("lang", l);
         }
         return u.toString();
-    }
-
-    function sameLangUrl(url: string, lang: Lang) {
-        if (url.includes("lang=")) {
-            return url;
-        }
-
-        if (url.includes("?")) {
-            return lang === Lang.Jp ? url + "&lang=ja" : url;
-        }
-
-        return lang === Lang.Jp ? url + "?lang=ja" : url;
     }
 </script>
 
@@ -94,7 +88,10 @@
             >
                 {#each ROUTES as route, i (i)}
                     <li class="my-2">
-                        <a tabindex="0" href={sameLangUrl(route.path, lang)}>
+                        <a
+                            tabindex="0"
+                            href={lang === Lang.Jp ? route.jpPath : route.path}
+                        >
                             <span class="link font-medium">{route.name}</span>
                         </a>
                     </li>
@@ -106,7 +103,10 @@
         <ul class="menu menu-lg menu-horizontal px-1">
             {#each ROUTES as route, i (i)}
                 <li>
-                    <a tabindex="0" href={sameLangUrl(route.path, lang)}>
+                    <a
+                        tabindex="0"
+                        href={lang === Lang.Jp ? route.jpPath : route.path}
+                    >
                         <span class="font-medium">{route.name}</span>
                     </a>
                 </li>
