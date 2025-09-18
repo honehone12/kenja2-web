@@ -1,9 +1,11 @@
 <script lang="ts">
+    import { goto } from "$app/navigation";
     import { page } from "$app/state";
     import { Lang } from "$lib";
 
     interface Route {
         name: string;
+        jpName: string;
         path: string;
         jpPath: string;
     }
@@ -11,26 +13,31 @@
     const ROUTES: Route[] = [
         {
             name: "Home",
+            jpName: "ホーム",
             path: "/",
             jpPath: "/?lang=ja",
         },
         {
             name: "Latest",
+            jpName: "最新",
             path: "/latest",
             jpPath: "/latest?lang=ja",
         },
         {
             name: "Random",
+            jpName: "ランダム",
             path: "/random?item-type=all",
             jpPath: "/random?item-type=all&lang=ja",
         },
         {
             name: "MyList",
+            jpName: "マイリスト",
             path: "/mylist",
             jpPath: "/mylist?lang=ja",
         },
         {
             name: "About",
+            jpName: "アバウト",
             path: "/about",
             jpPath: "/about?lang=ja",
         },
@@ -47,13 +54,14 @@
     }
 
     function otherLangUrl() {
-        const u = page.url;
+        const u = new URL(page.url);
+        const t = "lang";
         let q = u.searchParams;
         let l = lang === Lang.Jp ? "en" : "ja";
-        if (q.has("lang")) {
-            q.set("lang", l);
+        if (q.has(t)) {
+            q.set(t, l);
         } else {
-            q.append("lang", l);
+            q.append(t, l);
         }
         return u.toString();
     }
@@ -92,7 +100,9 @@
                             tabindex="0"
                             href={lang === Lang.Jp ? route.jpPath : route.path}
                         >
-                            <span class="link font-medium">{route.name}</span>
+                            <span class="link font-medium">
+                                {lang === Lang.Jp ? route.jpName : route.name}
+                            </span>
                         </a>
                     </li>
                 {/each}
@@ -107,7 +117,9 @@
                         tabindex="0"
                         href={lang === Lang.Jp ? route.jpPath : route.path}
                     >
-                        <span class="font-medium">{route.name}</span>
+                        <span class="font-medium">
+                            {lang === Lang.Jp ? route.jpName : route.name}
+                        </span>
                     </a>
                 </li>
             {/each}
@@ -119,11 +131,11 @@
                 <a
                     tabindex="0"
                     href={otherLangUrl()}
-                    onclick={(e) => {
-                        e.preventDefault();
-                        window.location.href = otherLangUrl();
-                    }}><span class="font-medium">{otherLang()}</span></a
+                    onclick={() =>
+                        goto(otherLangUrl(), { invalidateAll: true })}
                 >
+                    <span class="font-medium">{otherLang()}</span>
+                </a>
             </li>
         </ul>
     </div>

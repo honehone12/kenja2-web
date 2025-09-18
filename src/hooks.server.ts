@@ -2,7 +2,6 @@ import { building } from "$app/environment";
 import type { Handle } from "@sveltejs/kit";
 import kenja from "$lib/server/kenja";
 import logs from "$lib/server/logs";
-import { Lang, selectLang } from "$lib";
 
 // headers are done on cdn
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -16,10 +15,11 @@ export const handle: Handle = async ({ event, resolve }) => {
     return response;
   }
 
-  const headers = event.request.headers;
-  const lang = selectLang(event.url, headers);
+  let lang = event.url.searchParams.get("lang") ?? "en";
+  lang = lang === "ja" ? "ja" : "en";
 
   {
+    const headers = event.request.headers;
     const url = event.request.url;
     const referer = headers.get("Referer");
     const userAgent = headers.get("User-Agent");
@@ -91,8 +91,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   }
 
   const response = await resolve(event, {
-    transformPageChunk: ({ html }) =>
-      html.replace("%kenja.lang%", lang === Lang.Jp ? "ja" : "en"),
+    transformPageChunk: ({ html }) => html.replace("%kenja.lang%", lang),
   });
   return response;
 };
