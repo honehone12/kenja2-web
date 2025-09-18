@@ -24,30 +24,30 @@
         onStar: (star: boolean) => Promise<void>;
     }
 
-    let {lang, doc, star, onStar}: Props = $props();
+    let { lang, doc, star, onStar }: Props = $props();
 </script>
 
 <div class="card w-80 outline outline-secondary">
     <div class="card-body">
         <div class="w-68 mb-5">
             <span class="flex justify-between">
-                <ItemTypeBadge itemType={ItemType.Character}/>
-                <Star {lang} {star} {onStar}/>
+                <ItemTypeBadge itemType={ItemType.Character} />
+                <Star {lang} {star} {onStar} />
             </span>
         </div>
-        <ParentLabel 
-            {lang} 
+        <ParentLabel
+            {lang}
             name={doc.parent?.name}
             nameJapanese={doc.parent?.name_japanese}
         />
         <span class="mb-5">
-            <DocNameLabel 
-                {lang} 
+            <DocNameLabel
+                {lang}
                 useLink={false}
-                name={doc.name} 
+                name={doc.name}
                 nameJapanese={doc.nameJapanese}
             />
-        </span>    
+        </span>
         <ImageVectorSearchButton
             {lang}
             doc={{
@@ -56,7 +56,7 @@
                 name: doc.name,
                 nameJapanese: doc.nameJapanese,
                 img: doc.img,
-                src: doc.src
+                src: doc.src,
             }}
         />
     </div>
