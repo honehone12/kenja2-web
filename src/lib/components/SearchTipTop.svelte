@@ -12,9 +12,14 @@
     let { lang, searchType }: Props = $props();
 
     function refreshUrl() {
-        const t = "refresh";
         const u = new URL(page.url);
         const q = u.searchParams;
+        let t = "lang";
+        if (q.has(t) && q.get(t) !== "ja") {
+            q.delete(t);
+        }
+
+        t = "refresh";
         if (q.has(t)) {
             const raw = q.get(t) ?? "0";
             let refresh = parseInt(raw);
