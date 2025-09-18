@@ -1,34 +1,25 @@
 import { ItemType } from "$lib/documents/anime-search/queries";
-import {MAX_KW_LEN, OID_LEN} from "$lib/index.js";
+import { MAX_KW_LEN, OID_LEN } from "$lib/index.js";
 import logs from "$lib/server/logs.js";
 
 export function validateKeyword(keyword: string | null | undefined) {
-    if (!keyword || keyword.length > MAX_KW_LEN) {
-        logs.warn('keywords length 0 or over limit')
-        return false;
-    }
-    if (keyword.trim().length === 0) {
-        logs.warn('keywords only white spaces');
-        return false;
-    }
+  if (!keyword || keyword.length > MAX_KW_LEN) {
+    logs.warn("keywords length 0 or over limit");
+    return false;
+  }
+  if (keyword.trim().length === 0) {
+    logs.warn("keywords only white spaces");
+    return false;
+  }
 
-    return true;
+  return true;
 }
 
 export function validateOid(oid: string | null | undefined) {
-    if (!oid || oid.length !== OID_LEN) {
-        logs.warn('invalid oid');
-        return false;
-    }
+  if (!oid || oid.length !== OID_LEN) {
+    logs.warn("invalid oid");
+    return false;
+  }
 
-    return true;
-}
-
-export function validateItemType(itemType: ItemType | null | undefined) {
-    if (!itemType || (itemType !== ItemType.Anime && itemType !== ItemType.Character)) {
-        logs.warn('invalid item type');
-        return false;
-    }
-
-    return true;
+  return true;
 }
