@@ -9,4 +9,4 @@ export const enum Lang {
   Jp,
 }
 
-export const PRIOR_STR_REGEX = /^[^\s\p{P}\p{S}]*/u;
+export const SPLITTER = /[\s\p{P}\p{S}]+/u;

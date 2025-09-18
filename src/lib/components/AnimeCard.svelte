@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang, PRIOR_STR_REGEX } from "$lib";
+    import { Lang, SPLITTER } from "$lib";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
@@ -25,14 +25,13 @@
 
     let { lang, doc, star, onStar }: Props = $props();
 
-    function priorTitle(raw: string | undefined) {
+    function extractTitle(raw: string | undefined) {
         if (!raw) {
             return undefined;
         }
 
         const clean = raw
-            .replace("「", "")
-            .replace("」", "")
+            .replace("映画", " ")
             .replace("劇場版", " ")
             .replace("テレビアニメーション", " ")
             .replace("テレビアニメ", " ")
@@ -42,8 +41,8 @@
             .replace("アニメーション", " ")
             .trimStart();
 
-        const matched = clean.match(PRIOR_STR_REGEX);
-        return matched?.at(0) ?? raw;
+        const split = clean.split(SPLITTER).filter((value) => value.length > 1);
+        return split.length > 0 ? split.at(0) : clean;
     }
 </script>
 
@@ -78,7 +77,7 @@
             }}
         />
         <div class="mt-5">
-            <ExternalLinks {lang} title={priorTitle(doc.nameJapanese)} />
+            <ExternalLinks {lang} title={extractTitle(doc.nameJapanese)} />
         </div>
     </div>
 </div>
