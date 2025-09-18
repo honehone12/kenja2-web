@@ -1,10 +1,11 @@
 <script lang="ts">
-    import { Lang } from "$lib";
+    import { Lang, PRIOR_STR_REGEX } from "$lib";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
     import ImageVectorSearchButton from "$lib/components/ImageVectorSearchButton.svelte";
     import Star from "$lib/components/Star.svelte";
+    import ExternalLinks from "./ExternalLinks.svelte";
 
     interface Doc {
         id: string;
@@ -22,15 +23,36 @@
         onStar: (star: boolean) => Promise<void>;
     }
 
-    let {lang, doc, star, onStar}: Props = $props();
+    let { lang, doc, star, onStar }: Props = $props();
+
+    function priorTitle(raw: string | undefined) {
+        if (!raw) {
+            return undefined;
+        }
+
+        const clean = raw
+            .replace("「", "")
+            .replace("」", "")
+            .replace("劇場版", " ")
+            .replace("テレビアニメーション", " ")
+            .replace("テレビアニメ", " ")
+            .replace("TVアニメ", " ")
+            .replace("OVA", " ")
+            .replace("オリジナルビデオアニメーション", " ")
+            .replace("アニメーション", " ")
+            .trimStart();
+
+        const matched = clean.match(PRIOR_STR_REGEX);
+        return matched?.at(0) ?? raw;
+    }
 </script>
 
 <div class="card w-80 outline outline-secondary">
     <div class="card-body">
         <div class="w-68 mb-5">
             <span class="flex justify-between">
-                <ItemTypeBadge itemType={ItemType.Anime}/>
-                <Star {lang} {star} {onStar}/>
+                <ItemTypeBadge itemType={ItemType.Anime} />
+                <Star {lang} {star} {onStar} />
             </span>
         </div>
         {#if doc.nameEnglish}
@@ -55,5 +77,8 @@
                 src: doc.src,
             }}
         />
+        <div class="mt-5">
+            <ExternalLinks {lang} title={priorTitle(doc.nameJapanese)} />
+        </div>
     </div>
 </div>

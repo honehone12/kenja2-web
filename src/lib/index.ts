@@ -9,14 +9,4 @@ export const enum Lang {
   Jp,
 }
 
-export function selectLang(url: URL, headers: Headers) {
-  const qLang = url.searchParams.get("lang");
-  if (qLang === "ja") {
-    return Lang.Jp;
-  } else if (qLang === "en") {
-    return Lang.En;
-  }
-
-  const accLangs = headers.get("accept-language");
-  return accLangs?.startsWith("ja") ? Lang.Jp : Lang.En;
-}
+export const PRIOR_STR_REGEX = /^[^\s\p{P}\p{S}]*/u;
