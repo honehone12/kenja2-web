@@ -2,6 +2,7 @@
     import { goto } from "$app/navigation";
     import { page } from "$app/state";
     import { Lang } from "$lib";
+    import { preventDefault } from "svelte/legacy";
 
     interface Route {
         name: string;
@@ -131,8 +132,10 @@
                 <a
                     tabindex="0"
                     href={otherLangUrl()}
-                    onclick={() =>
-                        goto(otherLangUrl(), { invalidateAll: true })}
+                    onclick={(e) => {
+                        e.preventDefault();
+                        goto(otherLangUrl(), { invalidateAll: true });
+                    }}
                 >
                     <span class="font-medium">{otherLang()}</span>
                 </a>
