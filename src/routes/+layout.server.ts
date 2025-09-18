@@ -1,6 +1,7 @@
-import {selectLang} from "$lib";
+import { Lang } from "$lib";
 
-export function load({request, url}) {
-    let lang = selectLang(url, request.headers);
-    return {lang};
+export function load({ url }) {
+  const qlang = url.searchParams.get("lang") ?? "en";
+  const lang = qlang === "ja" ? Lang.Jp : Lang.En;
+  return { lang };
 }

@@ -133,8 +133,9 @@
                     href={otherLangUrl()}
                     onclick={() =>
                         goto(otherLangUrl(), { invalidateAll: true })}
-                    ><span class="font-medium">{otherLang()}</span></a
                 >
+                    <span class="font-medium">{otherLang()}</span>
+                </a>
             </li>
         </ul>
     </div>
