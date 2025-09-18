@@ -22,9 +22,9 @@
                     : "Go to DMM TV"}
             >
                 {#if lang === Lang.Jp}
-                    DMM TVで探す🔍
+                    DMM TVで探す🔎
                 {:else}
-                    Search on DMM TV 🔍
+                    Search on DMM TV 🔎
                 {/if}
             </button>
         </a>
