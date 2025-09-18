@@ -8,7 +8,11 @@
         nameJapanese: string | undefined;
     }
 
-    let {lang, useLink, name, nameJapanese}: Props = $props();
+    let { lang, useLink, name, nameJapanese }: Props = $props();
+
+    function cleanName(name: string) {
+        return name.replaceAll("&", " ").replaceAll("?", " ");
+    }
 </script>
 
 {#if lang === Lang.Jp}
@@ -17,20 +21,30 @@
     {/if}
     {#if nameJapanese}
         {#if useLink}
-            <a href="/textsearch/buffer?keyword={nameJapanese}&item-type=all&lang=ja">
-                <h2 class="card-title link link-primary text-xl">{nameJapanese}</h2>
+            <a
+                href="/textsearch/buffer?keyword={cleanName(
+                    nameJapanese,
+                )}&item-type=all&lang=ja"
+            >
+                <h2 class="card-title link link-primary text-xl">
+                    {nameJapanese}
+                </h2>
             </a>
         {:else}
             <h2 class="card-title text-xl">{nameJapanese}</h2>
         {/if}
     {/if}
 {:else}
-    {#if nameJapanese}    
+    {#if nameJapanese}
         <h2 class="text-lg">{nameJapanese}</h2>
     {/if}
     {#if name}
         {#if useLink}
-            <a href="/textsearch/buffer?keyword={name}&item-type=all">
+            <a
+                href="/textsearch/buffer?keyword={cleanName(
+                    name,
+                )}&item-type=all"
+            >
                 <h2 class="card-title link link-primary text-xl">{name}</h2>
             </a>
         {:else}

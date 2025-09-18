@@ -39,7 +39,7 @@
             .replace("OVA", " ")
             .replace("オリジナルビデオアニメーション", " ")
             .replace("アニメーション", " ")
-            .trimStart();
+            .trim();
 
         const split = clean.split(SPLITTER).filter((value) => value.length > 1);
         return split.length > 0 ? split.at(0) : clean;
