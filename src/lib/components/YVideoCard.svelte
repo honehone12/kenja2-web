@@ -2,7 +2,7 @@
     import { Lang } from "$lib";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
-    import DocNameLabel from "$lib/components/DocNameLabel.svelte";
+    import TitleLabel from "$lib/components/TitleLabel.svelte";
     import Star from "$lib/components/Star.svelte";
 
     interface Props {
@@ -27,7 +27,7 @@
                 </span>
             </div>
             <span class="mb-2">
-                <DocNameLabel {lang} useLink={true} {name} {nameJapanese} />
+                <TitleLabel {lang} useLink={true} {name} {nameJapanese} />
             </span>
             <iframe
                 src="https://www.youtube-nocookie.com/embed/{unique}"
