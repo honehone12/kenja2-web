@@ -6,6 +6,7 @@ export const enum Lang {
   En,
   Jp,
 }
+
 export const URL_CRLS = /[&#]/g;
 
 /**
@@ -23,6 +24,7 @@ export function extractTitle(raw: string | undefined) {
     return undefined;
   }
 
+  // be careful for ordering
   const clean = raw
     .replace("映画", " ")
     .replace("劇場版", " ")

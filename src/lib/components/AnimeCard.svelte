@@ -2,7 +2,7 @@
     import { Lang, extractTitle } from "$lib";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
-    import DocNameLabel from "$lib/components/DocNameLabel.svelte";
+    import TitleLabel from "$lib/components/TitleLabel.svelte";
     import ImageVectorSearch from "$lib/components/ImageVectorSearch.svelte";
     import Star from "$lib/components/Star.svelte";
     import ExternalAnimeJp from "./ExternalAnimeJp.svelte";
@@ -38,7 +38,7 @@
             <h3>{doc.nameEnglish}</h3>
         {/if}
         <span class="mb-5">
-            <DocNameLabel
+            <TitleLabel
                 {lang}
                 useLink={true}
                 name={doc.name}

@@ -4,7 +4,7 @@
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import ParentLabel from "$lib/components/ParentLabel.svelte";
-    import DocNameLabel from "$lib/components/DocNameLabel.svelte";
+    import TitleLabel from "$lib/components/TitleLabel.svelte";
     import ImageVectorSearch from "$lib/components/ImageVectorSearch.svelte";
     import Star from "$lib/components/Star.svelte";
 
@@ -41,7 +41,7 @@
             nameJapanese={doc.parent?.name_japanese}
         />
         <span class="mb-5">
-            <DocNameLabel
+            <TitleLabel
                 {lang}
                 useLink={false}
                 name={doc.name}
