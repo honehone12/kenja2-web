@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang } from "$lib";
+    import { Lang, removeUrlCtl } from "$lib";
 
     interface Props {
         lang: Lang;
@@ -9,10 +9,6 @@
     }
 
     let { lang, useLink, name, nameJapanese }: Props = $props();
-
-    function cleanName(name: string) {
-        return name.replaceAll("&", " ").replaceAll("?", " ");
-    }
 </script>
 
 {#if lang === Lang.Jp}
@@ -22,7 +18,7 @@
     {#if nameJapanese}
         {#if useLink}
             <a
-                href="/textsearch/buffer?keyword={cleanName(
+                href="/textsearch/buffer?keyword={removeUrlCtl(
                     nameJapanese,
                 )}&item-type=all&lang=ja"
             >
@@ -41,7 +37,7 @@
     {#if name}
         {#if useLink}
             <a
-                href="/textsearch/buffer?keyword={cleanName(
+                href="/textsearch/buffer?keyword={removeUrlCtl(
                     name,
                 )}&item-type=all"
             >
