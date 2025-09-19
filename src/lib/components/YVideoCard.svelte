@@ -46,9 +46,9 @@
                             : "Go to Youtube"}
                     >
                         {#if lang === Lang.Jp}
-                            📺　Youtubeで見る
+                            📺 Youtubeで見る
                         {:else}
-                            📺　Watch on Youtube
+                            📺 Watch on Youtube
                         {/if}
                     </button>
                 </a>
