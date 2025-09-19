@@ -147,11 +147,11 @@
                                 ? "アニメ「普通の女子高生が【ろこどる】やってみた。」"
                                 : 'Anime Named "Futsuu no Joshikousei ga [Locodol] Yattemita."'}
                         />
-                        <p class="link link-primary">
+                        <p class="link-primary">
                             {#if lang === Lang.Jp}
-                                クリックして類似検索
+                                画像をクリックして類似検索
                             {:else}
-                                Click to Similarity Search
+                                Click Image to Similarity Search
                             {/if}
                         </p>
                     </a>
