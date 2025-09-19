@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang, SPLITTER } from "$lib";
+    import { Lang, extractTitle } from "$lib";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
@@ -24,26 +24,6 @@
     }
 
     let { lang, doc, star, onStar }: Props = $props();
-
-    function extractTitle(raw: string | undefined) {
-        if (!raw) {
-            return undefined;
-        }
-
-        const clean = raw
-            .replace("映画", " ")
-            .replace("劇場版", " ")
-            .replace("テレビアニメーション", " ")
-            .replace("テレビアニメ", " ")
-            .replace("TVアニメ", " ")
-            .replace("OVA", " ")
-            .replace("オリジナルビデオアニメーション", " ")
-            .replace("アニメーション", " ")
-            .trim();
-
-        const split = clean.split(SPLITTER).filter((value) => value.length > 1);
-        return split.length > 0 ? split.at(0) : clean;
-    }
 </script>
 
 <div class="card w-80 outline outline-secondary">
