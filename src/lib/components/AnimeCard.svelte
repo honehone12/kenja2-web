@@ -5,7 +5,7 @@
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
     import ImageVectorSearchButton from "$lib/components/ImageVectorSearchButton.svelte";
     import Star from "$lib/components/Star.svelte";
-    import ExternalLinks from "./ExternalLinks.svelte";
+    import ExternalLinksAnime from "./ExternalLinksAnime.svelte";
 
     interface Doc {
         id: string;
@@ -57,7 +57,10 @@
             }}
         />
         <div class="mt-5">
-            <ExternalLinks {lang} title={extractTitle(doc.nameJapanese)} />
+            <ExternalLinksAnime
+                {lang}
+                nameJapnese={extractTitle(doc.nameJapanese)}
+            />
         </div>
     </div>
 </div>
