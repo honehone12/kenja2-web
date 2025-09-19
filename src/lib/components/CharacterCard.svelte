@@ -5,7 +5,7 @@
     import { ItemType } from "$lib/documents/anime-search/queries";
     import ParentLabel from "$lib/components/ParentLabel.svelte";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
-    import ImageVectorSearchButton from "$lib/components/ImageVectorSearchButton.svelte";
+    import ImageVectorSearch from "$lib/components/ImageVectorSearch.svelte";
     import Star from "$lib/components/Star.svelte";
 
     interface Doc {
@@ -48,7 +48,7 @@
                 nameJapanese={doc.nameJapanese}
             />
         </span>
-        <ImageVectorSearchButton
+        <ImageVectorSearch
             {lang}
             doc={{
                 id: doc.id,

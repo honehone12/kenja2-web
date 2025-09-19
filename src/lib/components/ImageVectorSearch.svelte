@@ -20,6 +20,12 @@
     }
 
     let { lang, doc }: Props = $props();
+
+    function linkLabel() {
+        return lang === Lang.Jp
+            ? "似ているアニメ画像を探す"
+            : "Search Similar Anime Images";
+    }
 </script>
 
 <div class="text-center">
@@ -29,16 +35,15 @@
                 doc.itemType,
             )}{lang === Lang.Jp ? '&lang=ja' : ''}"
             class="tooltip"
-            data-tip={lang === Lang.Jp
-                ? "似ている画像を探す"
-                : "Search Similar Images"}
+            aria-label={linkLabel()}
+            data-tip={linkLabel()}
         >
             <img
                 src="/{doc.img}"
                 alt={lang === Lang.Jp && doc.nameJapanese
-                    ? `「${doc.nameJapanese}」のキービジュアル`
-                    : `The Key Visual of "${doc.name}"`}
-                class="card-action w-60 rounded-md"
+                    ? `アニメ「${doc.nameJapanese}」のキービジュアル`
+                    : `The Key Visual of Anime "${doc.name}"`}
+                class="card-actions w-60 rounded-md"
                 loading="lazy"
             />
             <p class=" link-primary">

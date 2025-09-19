@@ -3,9 +3,9 @@
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import DocNameLabel from "$lib/components/DocNameLabel.svelte";
-    import ImageVectorSearchButton from "$lib/components/ImageVectorSearchButton.svelte";
+    import ImageVectorSearch from "$lib/components/ImageVectorSearch.svelte";
     import Star from "$lib/components/Star.svelte";
-    import ExternalLinksAnime from "./ExternalLinksAnime.svelte";
+    import ExternalAnimeJp from "./ExternalAnimeJp.svelte";
 
     interface Doc {
         id: string;
@@ -45,7 +45,7 @@
                 nameJapanese={doc.nameJapanese}
             />
         </span>
-        <ImageVectorSearchButton
+        <ImageVectorSearch
             {lang}
             doc={{
                 id: doc.id,
@@ -57,7 +57,7 @@
             }}
         />
         <div class="mt-5">
-            <ExternalLinksAnime
+            <ExternalAnimeJp
                 {lang}
                 nameJapnese={extractTitle(doc.nameJapanese)}
             />
