@@ -35,7 +35,7 @@
                         Anime search and Recommendation
                     {/if}
                 </h2>
-                <p>
+                <h2>
                     {#if lang === Lang.Jp}
                         細かいクエリは無しの簡単操作。<br>
                         画像をポチポチ押すだけで色々見つかる。<br>
@@ -47,7 +47,7 @@
                         No Login Required. Non-personalized.<br>
                         Of Course It's Free. 
                     {/if}
-                </p>
+                </h2>
             </span>
         </div>
     </div>
