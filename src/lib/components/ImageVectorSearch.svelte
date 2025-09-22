@@ -57,7 +57,9 @@
     {/if}
     {#if doc.src}
         <a href={doc.src}>
-            <p class="link link-primary mt-2">Source</p>
+            <p class="link link-primary mt-2">
+                {lang === Lang.Jp ? "ソース" : "Source"}
+            </p>
         </a>
     {/if}
 </div>
