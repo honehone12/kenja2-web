@@ -2,12 +2,12 @@
     import { Lang } from "$lib";
     import TopPageFeatures from "$lib/components/TopPageFeatures.svelte";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
-    
+
     interface Props {
         lang: Lang;
     }
 
-    let {lang}: Props = $props();
+    let { lang }: Props = $props();
 </script>
 
 <div class="py-20">
@@ -16,8 +16,10 @@
             <figure>
                 <img
                     src="/kenja2_logo.png"
-                    alt="{lang === Lang.Jp ? 'ケンジャニメのロゴ、賢者のイラスト' : 'Kenjanime Logo, Illustration of Wise Old Man'}"
-                    class="size-40 mb-10" 
+                    alt={lang === Lang.Jp
+                        ? "ケンジャニメのロゴ、賢者のイラスト"
+                        : "Kenjanime Logo, Illustration of Wise Old Man"}
+                    class="size-40 mb-10"
                 />
             </figure>
             <span class="text-center">
@@ -37,15 +39,15 @@
                 </h2>
                 <h2>
                     {#if lang === Lang.Jp}
-                        細かいクエリは無しの簡単操作。<br>
-                        画像をポチポチ押すだけで色々見つかる。<br>
-                        ログイン不要。パーソナライズ無し。<br>
+                        細かいクエリは無しの簡単操作。<br />
+                        画像をポチポチ押すだけで色々見つかる。<br />
+                        ログイン不要。パーソナライズ無し。<br />
                         もちろん無料。
-                    {:else}        
-                        Easy to Use without Detailed Queries.<br>
-                        Find Many with Just Clicking through Images.<br>
-                        No Login Required. Non-personalized.<br>
-                        Of Course It's Free. 
+                    {:else}
+                        Easy to Use without Detailed Queries.<br />
+                        Find Many with Just Clicking through Images.<br />
+                        No Login Required. Non-personalized.<br />
+                        Of Course It's Free.
                     {/if}
                 </h2>
             </span>
@@ -53,12 +55,8 @@
     </div>
     <div class="hero w-full mt-10">
         <div class="hero-content">
-            <TextSearchForm 
-                {lang}
-                useFlexible={true} 
-                onsubmit={null}
-            />
+            <TextSearchForm {lang} useFlexible={true} onsubmit={null} />
         </div>
     </div>
-    <TopPageFeatures {lang}/>
+    <TopPageFeatures {lang} />
 </div>

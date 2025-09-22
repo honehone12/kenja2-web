@@ -84,6 +84,33 @@
             name_english: "Death Note",
             name_japanese: "デスノート",
         },
+        {
+            id: "68ad631859f782ec1803b0fe",
+            item_type: 1,
+            img: "preview/anime/2417dff36c4339fb6ec4a574e0c446ba.jpg",
+            src: "https://myanimelist.net/anime/269/Bleach",
+            name: "Bleach",
+            name_english: "Bleach",
+            name_japanese: "BLEACH - ブリーチ -",
+        },
+        {
+            id: "68afc67279d87884b804d180",
+            item_type: 1,
+            img: "preview/anime/aa8b6173d98b71833943772013c53695.jpg",
+            src: "https://myanimelist.net/anime/22/Tennis_no_Oujisama",
+            name: "Tennis no Oujisama",
+            name_english: "The Prince of Tennis",
+            name_japanese: "テニスの王子様",
+        },
+        {
+            id: "68ad631d59f782ec1803ba82",
+            item_type: 1,
+            img: "preview/anime/b36086a41f3cb5be473c44431360d8db.jpg",
+            src: "https://myanimelist.net/anime/918/Gintama",
+            name: "Gintama",
+            name_english: "Gintama",
+            name_japanese: "銀魂",
+        },
     ];
 
     const KIRARA_ANIMES: FlatDocument[] = [
