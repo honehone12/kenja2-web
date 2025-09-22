@@ -40,7 +40,7 @@
         />
         <meta
             name="keywords"
-            content="kenja, anime, character, latest, {year}, {season}, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
+            content="kenja, anime, character, latest, {year}, {season.toLowerCase()}, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
         />
     {/if}
 </svelte:head>
