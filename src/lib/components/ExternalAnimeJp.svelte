@@ -38,7 +38,7 @@
                     aria-label={dmmLabel()}
                     data-tip={dmmLabel()}
                 >
-                    🔎 DMM TV
+                    📺 DMM TV
                 </button>
             </a>
         </div>
@@ -52,9 +52,9 @@
                     data-tip={dAnimeLabel()}
                 >
                     {#if lang === Lang.Jp}
-                        🔎 dアニメ
+                        📺 dアニメ
                     {:else}
-                        🔎 d Anime
+                        📺 d Anime
                     {/if}
                 </button>
             </a>
@@ -69,9 +69,9 @@
                     data-tip={bookOffLabel()}
                 >
                     {#if lang === Lang.Jp}
-                        🔎 ブックオフ
+                        💿 ブックオフ
                     {:else}
-                        🔎 BOOK OFF
+                        💿 BOOK OFF
                     {/if}
                 </button>
             </a>
@@ -86,9 +86,9 @@
                     data-tip={surugaYaLabel()}
                 >
                     {#if lang === Lang.Jp}
-                        🔎 駿河屋
+                        💿 駿河屋
                     {:else}
-                        🔎 SURUGA-YA
+                        💿 SURUGA-YA
                     {/if}
                 </button>
             </a>
