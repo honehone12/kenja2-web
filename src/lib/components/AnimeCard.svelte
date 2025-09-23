@@ -5,7 +5,7 @@
     import TitleLabel from "$lib/components/TitleLabel.svelte";
     import ImageVectorSearch from "$lib/components/ImageVectorSearch.svelte";
     import Star from "$lib/components/Star.svelte";
-    import ExternalAnimeJp from "./ExternalAnimeJp.svelte";
+    import ExternalAnime from "./ExternalAnime.svelte";
 
     interface Doc {
         id: string;
@@ -57,9 +57,9 @@
             }}
         />
         <div class="mt-5">
-            <ExternalAnimeJp
+            <ExternalAnime
                 {lang}
-                nameJapnese={extractTitle(doc.nameJapanese)}
+                nameJapanese={extractTitle(doc.nameJapanese)}
             />
         </div>
     </div>
