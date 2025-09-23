@@ -7,6 +7,7 @@
     import TitleLabel from "$lib/components/TitleLabel.svelte";
     import ImageVectorSearch from "$lib/components/ImageVectorSearch.svelte";
     import Star from "$lib/components/Star.svelte";
+    import ExternalCharacter from "./ExternalCharacter.svelte";
 
     interface Doc {
         id: string;
@@ -59,5 +60,8 @@
                 src: doc.src,
             }}
         />
+        <div class="mt-5">
+            <ExternalCharacter {lang} nameJapanese={doc.nameJapanese} />
+        </div>
     </div>
 </div>

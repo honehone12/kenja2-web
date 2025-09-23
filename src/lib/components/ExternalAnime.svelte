@@ -1,0 +1,38 @@
+<script lang="ts">
+    import { Lang } from "$lib";
+    import ExternalLinkButton from "./ExternalLinkButton.svelte";
+
+    interface Props {
+        lang: Lang;
+        nameJapanese: string | undefined;
+    }
+
+    let { lang, nameJapanese }: Props = $props();
+</script>
+
+{#if nameJapanese}
+    <div
+        class="card-actions flex flex-wrap justify-center gap-x-2 gap-y-4 w-70"
+    >
+        <ExternalLinkButton
+            link="https://tv.dmm.com/vod/list/?categories=15&keyword={nameJapanese}"
+            label={lang === Lang.Jp ? "DMM TVで探す" : "Search on DMM TV"}
+            name="📺 DMM TV"
+        />
+        <ExternalLinkButton
+            link="https://animestore.docomo.ne.jp/animestore/sch?searchKey={nameJapanese}"
+            label={Lang.Jp ? "d Animeで探す" : "Search on d Anime"}
+            name={lang === Lang.Jp ? "📺 dアニメ" : "📺 d Anime"}
+        />
+        <ExternalLinkButton
+            link="https://shopping.bookoff.co.jp/search/genre/7102/keyword/{nameJapanese}"
+            label={Lang.Jp ? "ブックオフで探す" : "Search on BOOK OFF"}
+            name={lang === Lang.Jp ? "💿 ブックオフ" : "💿 BOOK OFF"}
+        />
+        <ExternalLinkButton
+            link="https://www.suruga-ya.jp/search?category=300&search_word={nameJapanese}"
+            label={Lang.Jp ? "駿河屋で探す" : "Search on Suruga Ya"}
+            name={lang === Lang.Jp ? "💿 駿河屋" : "💿 SURUGA-YA"}
+        />
+    </div>
+{/if}

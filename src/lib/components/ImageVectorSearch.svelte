@@ -26,6 +26,10 @@
             ? "似ているアニメ画像を探す"
             : "Search Similar Anime Images";
     }
+
+    function malSourceLabel() {
+        return lang === Lang.Jp ? "MyAnimeList ソース" : "MyAnimeList Source";
+    }
 </script>
 
 <div class="text-center">
@@ -56,7 +60,12 @@
         </a>
     {/if}
     {#if doc.src}
-        <a href={doc.src}>
+        <a
+            href={doc.src}
+            aria-label={malSourceLabel()}
+            class="tooltip"
+            data-tip={malSourceLabel()}
+        >
             <p class="link link-primary mt-2">
                 {lang === Lang.Jp ? "ソース" : "Source"}
             </p>
