@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang, extractTitle } from "$lib";
+    import { Lang } from "$lib";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import TitleLabel from "$lib/components/TitleLabel.svelte";
@@ -57,10 +57,7 @@
             }}
         />
         <div class="mt-5">
-            <ExternalAnime
-                {lang}
-                nameJapanese={extractTitle(doc.nameJapanese)}
-            />
+            <ExternalAnime {lang} nameJapanese={doc.nameJapanese} />
         </div>
     </div>
 </div>

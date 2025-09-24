@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang, removeUrlCtl } from "$lib";
+    import { Lang, removeUrlCtrl } from "$lib";
 
     interface Props {
         lang: Lang;
@@ -13,8 +13,8 @@
 {#if name}
     <a
         href="/textsearch/buffer?keyword={lang === Lang.Jp && nameJapanese
-            ? removeUrlCtl(nameJapanese)
-            : removeUrlCtl(name)}&item-type=all{lang === Lang.Jp
+            ? removeUrlCtrl(nameJapanese)
+            : removeUrlCtrl(name)}&item-type=all{lang === Lang.Jp
             ? '&lang=ja'
             : ''}"
     >

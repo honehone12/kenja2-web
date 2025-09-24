@@ -1,5 +1,7 @@
 <script lang="ts">
     import { page } from "$app/state";
+    import { afterNavigate } from "$app/navigation";
+    import { onMount } from "svelte";
     import type {
         FlatDocument,
         SearchResult,
@@ -9,7 +11,6 @@
     import NoResults from "$lib/components/NoResults.svelte";
     import { SearchType } from "$lib/client/search";
     import { Lang } from "$lib";
-    import { onMount } from "svelte";
     import { INDEX_DB_MAX, IndexDb } from "$lib/client/indexdb";
     import SearchTipBottom from "$lib/components/SearchTipBottom.svelte";
     import SearchTipTop from "$lib/components/SearchTipTop.svelte";
@@ -134,6 +135,13 @@
         } catch (e) {
             console.error(e);
         }
+    });
+
+    afterNavigate(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "instant",
+        });
     });
 </script>
 
