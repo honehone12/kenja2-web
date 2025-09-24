@@ -2,7 +2,6 @@
     import { goto } from "$app/navigation";
     import { page } from "$app/state";
     import { Lang } from "$lib";
-    import { preventDefault } from "svelte/legacy";
 
     interface Route {
         name: string;
