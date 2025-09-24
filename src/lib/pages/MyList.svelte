@@ -75,8 +75,8 @@
                     animate:flip={{ delay: 60, duration: 140 }}
                 >
                     <CandidateCard
-                        {doc}
                         {lang}
+                        {doc}
                         star
                         onStar={(id, _) => unstar(id)}
                     />

@@ -7,14 +7,14 @@ export const enum Lang {
   Jp,
 }
 
-export const URL_CRLS = /[&#]/g;
+export const URL_CTRLS = /[&#]/g;
 
 /**
   this is not fundamental solution.
   encoding should be generally used.
 **/
-export function removeUrlCtl(url: string) {
-  return url.replaceAll(URL_CRLS, " ");
+export function removeUrlCtrl(url: string) {
+  return url.replaceAll(URL_CTRLS, " ");
 }
 
 export const SPLITTER = /[\s\p{P}\p{S}]+/u;

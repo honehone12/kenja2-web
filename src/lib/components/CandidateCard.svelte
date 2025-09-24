@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type {FlatDocument} from "$lib/documents/anime-search/documents";
+    import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import AnimeCard from "$lib/components/AnimeCard.svelte";
     import CharacterCard from "$lib/components/CharacterCard.svelte";
@@ -7,18 +7,13 @@
     import YVideoCard from "$lib/components/YVideoCard.svelte";
 
     interface Props {
-        lang: Lang
+        lang: Lang;
         doc: FlatDocument;
         star: boolean;
         onStar: (id: string, star: boolean) => Promise<void>;
     }
 
-    let {
-        lang, 
-        doc, 
-        star, 
-        onStar
-    }: Props = $props();
+    let { lang, doc, star, onStar }: Props = $props();
 </script>
 
 {#if doc.item_type === ItemType.Anime}
@@ -30,7 +25,7 @@
             nameEnglish: doc.name_english,
             nameJapanese: doc.name_japanese,
             img: doc.img,
-            src: doc.src
+            src: doc.src,
         }}
         {star}
         onStar={(star) => onStar(doc.id, star)}
@@ -44,7 +39,7 @@
             name: doc.name,
             nameJapanese: doc.name_japanese,
             img: doc.img,
-            src: doc.src
+            src: doc.src,
         }}
         {star}
         onStar={(star) => onStar(doc.id, star)}
@@ -52,9 +47,12 @@
 {:else if doc.item_type === ItemType.YVideo}
     <YVideoCard
         {lang}
-        name={doc.parent?.name}
-        nameJapanese={doc.parent?.name_japanese}
-        unique={doc.unique}
+        doc={{
+            id: doc.id,
+            name: doc.parent?.name,
+            nameJapanese: doc.parent?.name_japanese,
+            unique: doc.unique,
+        }}
         {star}
         onStar={(star) => onStar(doc.id, star)}
     />

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import { openSearchModal, closeSearchModal } from "$lib/client/modal";
+    import { getModal, SEARCH_MODAL_ID } from "$lib/client/modal";
     import SearchModal from "$lib/components/SearchModal.svelte";
 
     interface Props {
@@ -8,6 +8,14 @@
     }
 
     let { lang }: Props = $props();
+
+    export function openSearchModal() {
+        getModal(SEARCH_MODAL_ID)?.showModal();
+    }
+
+    export function closeSearchModal() {
+        getModal(SEARCH_MODAL_ID)?.close();
+    }
 
     function gotoTop() {
         window.scrollTo({

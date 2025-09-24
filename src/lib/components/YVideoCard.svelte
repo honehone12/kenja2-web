@@ -5,19 +5,24 @@
     import TitleLabel from "$lib/components/TitleLabel.svelte";
     import Star from "$lib/components/Star.svelte";
 
-    interface Props {
-        lang: Lang;
+    interface Doc {
+        id: string;
         name: string | undefined;
         nameJapanese: string | undefined;
         unique: string | undefined;
+    }
+
+    interface Props {
+        lang: Lang;
+        doc: Doc;
         star: boolean;
         onStar: (star: boolean) => Promise<void>;
     }
 
-    let { lang, name, nameJapanese, unique, star, onStar }: Props = $props();
+    let { lang, doc, star, onStar }: Props = $props();
 </script>
 
-{#if unique}
+{#if doc.unique}
     <div class="card w-80 outline outline-secondary">
         <div class="card-body">
             <div class="w-68 mb-5">
@@ -27,10 +32,16 @@
                 </span>
             </div>
             <span class="mb-2">
-                <TitleLabel {lang} useLink={true} {name} {nameJapanese} />
+                <TitleLabel
+                    {lang}
+                    useLink={true}
+                    name={doc.name}
+                    nameJapanese={doc.nameJapanese}
+                />
             </span>
             <iframe
-                src="https://www.youtube-nocookie.com/embed/{unique}"
+                id={doc.id}
+                src="https://www.youtube-nocookie.com/embed/{doc.unique}"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
@@ -38,7 +49,7 @@
                 class="rounded-md my-2"
             ></iframe>
             <span class="text-center mt-5">
-                <a href="https://www.youtube.com/watch?v={unique}">
+                <a href="https://www.youtube.com/watch?v={doc.unique}">
                     <button
                         class="btn btn-sm btn-circle btn-accent tooltip w-60"
                         data-tip={lang === Lang.Jp

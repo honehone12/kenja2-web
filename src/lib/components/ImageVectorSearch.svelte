@@ -43,6 +43,7 @@
             data-tip={linkLabel()}
         >
             <img
+                id={doc.id}
                 src="/{doc.img}"
                 alt={lang === Lang.Jp && doc.nameJapanese
                     ? `アニメ「${doc.nameJapanese}」のキービジュアル`
