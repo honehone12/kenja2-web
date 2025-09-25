@@ -39,13 +39,7 @@
 </script>
 
 <div class="text-center">
-    <a
-        href={fullLink()}
-        onclick={(e) => {
-            e.preventDefault();
-            window.location.href = useExtraction ? extractedLink() : fullLink();
-        }}
-    >
+    <a href={useExtraction ? extractedLink() : fullLink()}>
         <button
             class="btn btn-circle btn-sm btn-accent tooltip w-34"
             aria-label={label}
