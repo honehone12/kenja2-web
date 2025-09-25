@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang } from "$lib";
+    import { Lang, SPLITTER } from "$lib";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import TitleLabel from "$lib/components/TitleLabel.svelte";
@@ -24,6 +24,23 @@
     }
 
     let { lang, doc, star, onStar }: Props = $props();
+
+    function extractTitle(raw: string) {
+        // be careful for ordering
+        const clean = raw
+            .replace("映画", " ")
+            .replace("劇場版", " ")
+            .replace("テレビアニメーション", " ")
+            .replace("テレビアニメ", " ")
+            .replace("TVアニメ", " ")
+            .replace("OVA", " ")
+            .replace("オリジナルビデオアニメーション", " ")
+            .replace("アニメーション", " ")
+            .trim();
+
+        const split = clean.split(SPLITTER).filter((value) => value.length > 1);
+        return split.at(0) ?? clean;
+    }
 </script>
 
 <div class="card w-80 outline outline-secondary">
@@ -57,7 +74,12 @@
             }}
         />
         <div class="mt-5">
-            <ExternalAnime {lang} nameJapanese={doc.nameJapanese} />
+            {#if doc.nameJapanese}
+                <ExternalAnime
+                    {lang}
+                    nameJapanese={extractTitle(doc.nameJapanese)}
+                />
+            {/if}
         </div>
     </div>
 </div>
