@@ -10,11 +10,11 @@
   </url>
   <url>
     <loc>https://kenjanime.com/latest</loc>
-    <lastmod>2025-09-25</lastmod>
+    <lastmod>2025-09-26</lastmod>
   </url>
   <url>
     <loc>https://kenjanime.com/latest?lang=ja</loc>
-    <lastmod>2025-09-25</lastmod>
+    <lastmod>2025-09-26</lastmod>
   </url>
   <url>
     <loc>https://kenjanime.com/random?item-type=all</loc>
@@ -39,5 +39,13 @@
   <url>
     <loc>https://kenjanime.com/archive/2025/winter?lang=ja</loc>
     <lastmod>2025-09-25</lastmod>
+  </url>
+  <url>
+    <loc>https://kenjanime.com/archive/2025/spring</loc>
+    <lastmod>2025-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://kenjanime.com/archive/2025/spring?lang=ja</loc>
+    <lastmod>2025-09-26</lastmod>
   </url>
 </urlset>
