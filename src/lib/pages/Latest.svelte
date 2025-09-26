@@ -58,11 +58,11 @@
             <p>
                 {#if lang === Lang.Jp}
                     私がイッキ見派のため、１シーズン遅れて追加されます。<br />
-                    ２０２５年夏アニメは近日追加予定です。
+                    ２０２５年秋アニメは冬頃追加予定です。
                 {:else}
                     Since I'm a binge-watcher, the new season will be added one
                     season late. <br />
-                    The summer 2025 anime will be added soon.
+                    The Fall 2025 anime will be added in early winter.
                 {/if}
             </p>
         </span>
@@ -77,6 +77,17 @@
             },
         ]}
     />
+    <div class="text-center mt-10">
+        <a href="/archive/2025/spring{lang === Lang.Jp ? '?lang=ja' : ''}">
+            <h3 class="link link-primary text-xl">
+                {#if lang === Lang.Jp}
+                    ２０２５年春アニメはこちら
+                {:else}
+                    2025 Spring Season Anime
+                {/if}
+            </h3>
+        </a>
+    </div>
     <div class="text-center mt-10">
         <a href="/archive/2025/winter{lang === Lang.Jp ? '?lang=ja' : ''}">
             <h3 class="link link-primary text-xl">
