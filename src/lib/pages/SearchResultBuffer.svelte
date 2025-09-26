@@ -145,10 +145,7 @@
         await nav.complete;
 
         let y = page.state.scrollY;
-        if (!y) {
-            return;
-        }
-        if (y < 0) {
+        if (!y || y < 0) {
             y = 0;
         }
 
