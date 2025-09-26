@@ -1,7 +1,11 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import { afterNavigate } from "$app/navigation";
-    import { onMount } from "svelte";
+    import {
+        afterNavigate,
+        beforeNavigate,
+        replaceState,
+    } from "$app/navigation";
+    import { onMount, tick } from "svelte";
     import type {
         FlatDocument,
         SearchResult,
@@ -137,11 +141,28 @@
         }
     });
 
-    afterNavigate(() => {
+    afterNavigate(async (nav) => {
+        await nav.complete;
+
+        let y = page.state.scrollY;
+        if (!y) {
+            return;
+        }
+        if (y < 0) {
+            y = 0;
+        }
+
+        await tick();
+
         window.scrollTo({
-            top: 0,
+            top: y,
             behavior: "instant",
         });
+    });
+
+    beforeNavigate(() => {
+        const y = window.scrollY;
+        replaceState("", { scrollY: y });
     });
 </script>
 
