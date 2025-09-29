@@ -23,6 +23,15 @@
                 />
             </figure>
             <span class="text-center">
+                <h2 class="text-lg text-secondary mb-2">
+                    {#if lang === Lang.Jp}
+                        アニメとキャラクターの<br />
+                        画像ベクトル検索エンジン
+                    {:else}
+                        Anime and character<br />
+                        image vector search engine
+                    {/if}
+                </h2>
                 <h1 class="text-5xl text-secondary font-semibold mb-10">
                     {#if lang === Lang.Jp}
                         ケンジャニメ
@@ -37,19 +46,31 @@
                         Anime search and Recommendation
                     {/if}
                 </h2>
-                <h2>
+                <span>
                     {#if lang === Lang.Jp}
-                        細かいクエリは無しの簡単操作。<br />
-                        画像をポチポチ押すだけで色々見つかる。<br />
-                        ログイン不要。パーソナライズ無し。<br />
-                        もちろん無料。
+                        <h3 class="mb-2">細かいクエリは無しの簡単操作。</h3>
+                        <h3 class="mb-2">
+                            画像をポチポチ押すだけで<br />
+                            あなた好みのアニメが色々見つかります。
+                        </h3>
+                        <h3>
+                            ランダム生成機能で<br />
+                            魅力的なキャラクターを新発見しよう。
+                        </h3>
                     {:else}
-                        Easy to Use without Detailed Queries.<br />
-                        Find Many with Just Clicking through Images.<br />
-                        No Login Required. Non-personalized.<br />
-                        Of Course It's Free.
+                        <h3 class="mb-2">
+                            Easy to Use without Detailed Queries.
+                        </h3>
+                        <h3 class="mb-2">
+                            Find a Variety of Anime that You'll love, <br />
+                            with Just Clicking through Images.
+                        </h3>
+                        <h3>
+                            Discover New Fascinating Characters, <br />
+                            With the Random Generation Function.
+                        </h3>
                     {/if}
-                </h2>
+                </span>
             </span>
         </div>
     </div>
