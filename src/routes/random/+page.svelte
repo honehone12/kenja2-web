@@ -26,7 +26,7 @@
     {:else}
         <meta
             name="description"
-            content="Randomly selected anime, characters, and trailers.　You might discover new anime you didn't know or new character you like."
+            content="Randomly selected anime, characters, and trailers. You might discover new anime you didn't know or new character you like."
         />
         <meta
             name="keywords"

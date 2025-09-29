@@ -31,7 +31,7 @@
         />
         <meta
             name="keywords"
-            content="ケンジャ　アニメ, キャラクター, 最新, {yearJapanese}, {seasonJapanese}, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
+            content="ケンジャ, アニメ, キャラクター, 最新, {yearJapanese}, {seasonJapanese}, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
         />
     {:else}
         <meta

@@ -5,7 +5,9 @@
 
     interface BackLink {
         link: string;
+        linkJapanese: string;
         name: string;
+        nameJapanese: string;
     }
 
     interface Props {
@@ -44,7 +46,7 @@
         />
         <meta
             name="keywords"
-            content="ケンジャ　アニメ, キャラクター, {yearJapanese}, {seasonJapanese},　検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
+            content="ケンジャ, アニメ, キャラクター, {yearJapanese}, {seasonJapanese}, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
         />
     {:else}
         <meta
@@ -80,8 +82,8 @@
     />
     {#if backLink}
         <div class="text-center mt-10">
-            <a href={backLink.link} class="link link-primary text-xl">
-                {backLink.name}
+            <a href={lang === Lang.Jp ? backLink.linkJapanese : backLink.link} class="link link-primary text-xl">
+                {lang === Lang.Jp ? backLink.nameJapanese : backLink.name}
             </a>
         </div>
     {/if}
