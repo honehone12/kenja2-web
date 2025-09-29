@@ -17,7 +17,7 @@
     {#if data.lang === Lang.Jp}
         <meta
             name="description"
-            content="ランダムにセレクトされたアニメとキャラクター、トレーラーです。"
+            content="ランダムにセレクトされたアニメとキャラクター、トレーラーです。今まで知らなかったアニメや好みのキャラクターが新しく見つかるかも。"
         />
         <meta
             name="keywords"
@@ -26,7 +26,7 @@
     {:else}
         <meta
             name="description"
-            content="Randomly selected anime, characters, and trailers."
+            content="Randomly selected anime, characters, and trailers.　You might discover new anime you didn't know or new character you like."
         />
         <meta
             name="keywords"

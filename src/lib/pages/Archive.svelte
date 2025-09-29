@@ -60,7 +60,7 @@
 
 <div class="py-20">
     <div class="hero w-full">
-        <h1 class="text-secondary text-3xl mb-10">
+        <h1 class="text-secondary font-semibold text-3xl mb-10">
             {#if lang === Lang.Jp}
                 アニメ　過去タイトル
             {:else}

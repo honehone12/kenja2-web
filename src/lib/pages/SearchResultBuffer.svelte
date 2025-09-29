@@ -164,7 +164,7 @@
 </script>
 
 <div class="mt-20 mx-5 text-center">
-    <h1 class="text-3xl text-secondary">
+    <h1 class="text-3xl font-semibold text-secondary">
         {#if lang === Lang.Jp}
             検索結果
         {:else}

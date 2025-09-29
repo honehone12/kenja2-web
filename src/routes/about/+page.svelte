@@ -16,7 +16,7 @@
     {#if data.lang === Lang.Jp}
         <meta
             name="description"
-            content="このページではケンジャニメについて初めての人でもわかりやすく説明しています。"
+            content="このページではケンジャニメのアニメ検索の独自性や作成した理由、鍵となるテクノロジーについて説明しています。"
         />
         <meta
             name="keywords"
@@ -25,7 +25,7 @@
     {:else}
         <meta
             name="description"
-            content="This page explains Kenjanime in an easy-to-understand manner even for first-time users."
+            content="This page explains what makes Kenjanime's anime search unique, why I created it, and the key technologies behind it."
         />
         <meta
             name="keywords"

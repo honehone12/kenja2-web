@@ -48,7 +48,7 @@
 <div class="py-20">
     <div class="hero w-full">
         <span class="text-center">
-            <h1 class="text-secondary text-3xl mb-10">
+            <h1 class="text-secondary font-semibold text-3xl mb-10">
                 {#if lang === Lang.Jp}
                     最新アニメ
                 {:else}

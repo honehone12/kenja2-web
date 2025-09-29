@@ -5,12 +5,14 @@
         lang: Lang;
     }
 
-    let {lang}: Props = $props();
+    let { lang }: Props = $props();
 </script>
 
-<h2 
-    class="text-2xl mb-3 tooltip" 
-    data-tip={lang === Lang.Jp ? '検索するアイテムを選択' : 'Select items to search'}
+<h2
+    class="text-2xl mb-3 tooltip"
+    data-tip={lang === Lang.Jp
+        ? "検索するアイテムを選択"
+        : "Select items to search"}
 >
     {#if lang === Lang.Jp}
         アイテムタイプ
@@ -21,29 +23,29 @@
 <div class="flex flex-col">
     <fieldset>
         <div class="mb-2">
-            <input 
-                type="radio" 
-                name="item-type" 
-                id="item-type-all" 
-                value="all" 
-                checked 
-                class="radio radio-lg radio-accent" 
+            <input
+                type="radio"
+                name="item-type"
+                id="item-type-all"
+                value="all"
+                checked
+                class="radio radio-lg radio-accent"
             />
             <label for="item-type-all" class="text-lg">
                 {#if lang === Lang.Jp}
-                    全て
+                    すべて
                 {:else}
                     All
                 {/if}
             </label>
-        </div>    
+        </div>
         <div class="mb-2">
-            <input 
-                type="radio" 
-                name="item-type" 
-                id="item-type-anime" 
-                value="anime" 
-                class="radio radio-lg radio-accent" 
+            <input
+                type="radio"
+                name="item-type"
+                id="item-type-anime"
+                value="anime"
+                class="radio radio-lg radio-accent"
             />
             <label for="item-type-anime" class="text-lg">
                 {#if lang === Lang.Jp}
@@ -54,12 +56,12 @@
             </label>
         </div>
         <div class="mb-2">
-            <input 
-                type="radio" 
-                name="item-type" 
-                id="item-type-character" 
-                value="character" 
-                class="radio radio-lg radio-accent" 
+            <input
+                type="radio"
+                name="item-type"
+                id="item-type-character"
+                value="character"
+                class="radio radio-lg radio-accent"
             />
             <label for="item-type-character" class="text-lg">
                 {#if lang === Lang.Jp}
@@ -70,12 +72,12 @@
             </label>
         </div>
         <div>
-            <input 
-                type="radio" 
-                name="item-type" 
-                id="item-type-trailer" 
-                value="trailer" 
-                class="radio radio-lg radio-accent" 
+            <input
+                type="radio"
+                name="item-type"
+                id="item-type-trailer"
+                value="trailer"
+                class="radio radio-lg radio-accent"
             />
             <label for="item-type-trailer" class="text-lg">
                 {#if lang === Lang.Jp}
