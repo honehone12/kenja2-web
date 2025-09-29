@@ -206,9 +206,8 @@
     list={SPRING_2025}
     backLink={{
         link: "/archive/2025/winter",
-        name:
-            data.lang === Lang.Jp
-                ? "２０２５年冬アニメはこちら"
-                : "2025 Winter Season Anime",
+        linkJapanese: "/archive/2025/winter?lang=ja",
+        name: "2025 Winter Season Anime",
+        nameJapanese: "２０２５年冬アニメはこちら"
     }}
 />
