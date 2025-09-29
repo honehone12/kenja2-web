@@ -13,7 +13,9 @@
     <div class="flex justify-center">
         <div class="max-w-200">
             <span>
-                <h1 class="text-center text-secondary text-3xl mb-10">
+                <h1
+                    class="text-center font-semibold text-secondary text-3xl mb-10"
+                >
                     {#if lang === Lang.Jp}
                         何ですか、これは？
                     {:else}
@@ -92,7 +94,9 @@
                 </span>
             </span>
             <span>
-                <h2 class="text-center text-secondary text-3xl mt-20 mb-10">
+                <h2
+                    class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
+                >
                     {#if lang === Lang.Jp}
                         ケンジャ二メはAIですか？
                     {:else}
@@ -127,7 +131,9 @@
                 </span>
             </span>
             <span>
-                <h2 class="text-center text-secondary text-3xl mt-20 mb-10">
+                <h2
+                    class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
+                >
                     {#if lang === Lang.Jp}
                         あなたは誰？
                     {:else}
@@ -193,7 +199,9 @@
                 </div>
             </span>
             <span>
-                <h2 class="text-center text-secondary text-3xl mt-20 mb-10">
+                <h2
+                    class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
+                >
                     {#if lang === Lang.Jp}
                         なんでこんなものが？
                     {:else}
@@ -279,7 +287,9 @@
                 </span>
             </span>
             <span>
-                <h2 class="text-center text-secondary text-3xl mt-20 mb-10">
+                <h2
+                    class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
+                >
                     {#if lang === Lang.Jp}
                         なぜそんなにアニメの検索にこだわるのですか？
                     {:else}
@@ -315,7 +325,9 @@
                 </span>
             </span>
             <span>
-                <h2 class="text-center text-secondary text-3xl mt-20 mb-10">
+                <h2
+                    class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
+                >
                     {#if lang === Lang.Jp}
                         ソーシャルメディアはありますか？
                     {:else}

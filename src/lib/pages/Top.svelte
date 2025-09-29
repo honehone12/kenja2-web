@@ -23,7 +23,7 @@
                 />
             </figure>
             <span class="text-center">
-                <h2 class="text-lg text-secondary mb-2">
+                <h2 class="text-lg text-secondary mb-3">
                     {#if lang === Lang.Jp}
                         アニメとキャラクターの<br />
                         画像ベクトル検索エンジン
@@ -32,18 +32,18 @@
                         image vector search engine
                     {/if}
                 </h2>
-                <h1 class="text-5xl text-secondary font-semibold mb-10">
+                <h1 class="text-5xl text-secondary font-bold mb-13">
                     {#if lang === Lang.Jp}
                         ケンジャニメ
                     {:else}
                         Kenjanime
                     {/if}
                 </h1>
-                <h2 class="text-2xl mb-5">
+                <h2 class="text-2xl font-semibold mb-5">
                     {#if lang === Lang.Jp}
                         アニメの検索とおすすめ
                     {:else}
-                        Anime search and Recommendation
+                        Anime Search and Recommendation
                     {/if}
                 </h2>
                 <span>
@@ -53,22 +53,24 @@
                             画像をポチポチ押すだけで<br />
                             あなた好みのアニメが色々見つかります。
                         </h3>
-                        <h3>
+                        <h3 class="mb-2">
                             ランダム生成機能で<br />
                             魅力的なキャラクターを新発見しよう。
                         </h3>
+                        <h3>お気に入りはマイリストに保存できます。</h3>
                     {:else}
                         <h3 class="mb-2">
                             Easy to Use without Detailed Queries.
                         </h3>
                         <h3 class="mb-2">
-                            Find a Variety of Anime that You'll love, <br />
+                            Find a Variety of Anime that You'll Love, <br />
                             with Just Clicking through Images.
                         </h3>
-                        <h3>
+                        <h3 class="mb-2">
                             Discover New Fascinating Characters, <br />
                             With the Random Generation Function.
                         </h3>
+                        <h3>You can Save Your Favorites to "My List".</h3>
                     {/if}
                 </span>
             </span>
