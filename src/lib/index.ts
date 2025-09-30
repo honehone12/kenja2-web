@@ -39,3 +39,21 @@ export function preparedTextSearchQuery(
   
   return q.toString();
 }
+
+export function extractTitle(raw: string) {
+  // be careful for ordering
+  const clean = raw
+    .replace("映画", " ")
+    .replace("劇場版", " ")
+    .replace("テレビアニメーション", " ")
+    .replace("テレビアニメ", " ")
+    .replace("TVアニメ", " ")
+    .replace("OVA", " ")
+    .replace("オリジナルビデオアニメーション", " ")
+    .replace("アニメーション", " ")
+    .trim();
+
+  const split = clean.split(SPLITTER).filter((value) => value.length > 1);
+  const title = split.at(0) ?? clean;
+  return encodeURIComponent(title)
+}

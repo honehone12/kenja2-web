@@ -60,8 +60,10 @@
                 src: doc.src,
             }}
         />
-        <div class="mt-5">
-            <ExternalCharacter {lang} nameJapanese={doc.nameJapanese} />
-        </div>
+        {#if doc.nameJapanese}
+            <div class="mt-5">
+                <ExternalCharacter {lang} nameJapanese={encodeURIComponent(doc.nameJapanese)} />
+            </div>
+        {/if}
     </div>
 </div>
