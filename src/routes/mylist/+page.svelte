@@ -16,7 +16,7 @@
     {#if data.lang === Lang.Jp}
         <meta
             name="description"
-            content="お気に入りのアイテムをリストにして保存します。"
+            content="アニメ ＆ キャラクターの検索と画像ベクターサーチによるおすすめシステム。お気に入りのアイテムをリストにして保存します。"
         />
         <meta
             name="keywords"

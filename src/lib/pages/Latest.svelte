@@ -27,7 +27,7 @@
     {#if lang === Lang.Jp}
         <meta
             name="description"
-            content="最新のアニメ。{yearJapanese}{seasonJapanese}シーズン人気アニメの一覧です。"
+            content="アニメ ＆ キャラクターの検索と画像ベクターサーチによるおすすめシステム最新のアニメ。{yearJapanese}{seasonJapanese}シーズン人気アニメの一覧です。"
         />
         <meta
             name="keywords"
@@ -36,7 +36,7 @@
     {:else}
         <meta
             name="description"
-            content="Latest Anime. A list of popular anime in {year} {season} Season."
+            content="Anime & character search and recommendation powered by image vector search. Latest Anime. A list of popular anime in {year} {season} Season."
         />
         <meta
             name="keywords"

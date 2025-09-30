@@ -17,7 +17,7 @@
     {#if data.lang === Lang.Jp}
         <meta
             name="description"
-            content="ケンジャニメはアニメ ＆ キャラクターの検索とベクターサーチによるレコメンデーションシステムです。"
+            content="アニメ ＆ キャラクターの検索と画像ベクターサーチによるおすすめシステム。アニメ ＆ キャラクターの画像検索の結果を表示しています。"
         />
         <meta
             name="keywords"
@@ -26,7 +26,7 @@
     {:else}
         <meta
             name="description"
-            content="Kenjanime is a system for anime & character search and recommendation powered by vector search."
+            content="Anime & character search and recommendation powered by image vector search. Showing image search results for anime & characters."
         />
         <meta
             name="keywords"
