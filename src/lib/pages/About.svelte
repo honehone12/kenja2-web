@@ -146,7 +146,7 @@
                             東京の秋葉原から電車で４５分ほどの街に住んでます。こんにちは。
                         </p>
                         <a
-                            href="/textsearch/buffer?keyword=普通の女子校生が【ろこどる】やってみた。&item-type=all&lang=ja"
+                            href="/textsearch/buffer?keyword=%E6%99%AE%E9%80%9A%E3%81%AE%E5%A5%B3%E5%AD%90%E6%A0%A1%E7%94%9F%E3%81%8C%E3%80%90%E3%82%8D%E3%81%93%E3%81%A9%E3%82%8B%E3%80%91%E3%82%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E3%80%82&item-type=all&lang=ja"
                             class="link link-primary"
                         >
                             ところで私の地元にもアニメがありますので紹介したい。
