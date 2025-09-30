@@ -20,4 +20,20 @@
         <loc>https://kenjanime.com/textsearch_jp.xml</loc>
         <lastmod>2025-09-30</lastmod>
     </sitemap>
+    <sitemap>
+        <loc>https://kenjanime.com/vectorsearch_2.xml</loc>
+        <lastmod>2025-09-30</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://kenjanime.com/vectorsearch_jp_2.xml</loc>
+        <lastmod>2025-09-30</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://kenjanime.com/textsearch_2.xml</loc>
+        <lastmod>2025-09-30</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://kenjanime.com/textsearch_jp_2.xml</loc>
+        <lastmod>2025-09-30</lastmod>
+    </sitemap>
 </sitemapindex>
