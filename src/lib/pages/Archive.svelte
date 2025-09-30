@@ -42,7 +42,7 @@
     {#if lang === Lang.Jp}
         <meta
             name="description"
-            content="過去のアニメ。{yearJapanese}{seasonJapanese}シーズン人気アニメの一覧です。"
+            content="アニメ ＆ キャラクターの検索と画像ベクターサーチによるおすすめシステム。過去のアニメ。{yearJapanese}{seasonJapanese}シーズン人気アニメの一覧です。"
         />
         <meta
             name="keywords"
@@ -51,7 +51,7 @@
     {:else}
         <meta
             name="description"
-            content="Previous Anime. A list of popular anime in {year} {season} Season."
+            content="Anime & character search and recommendation powered by image vector search. Previous Anime. A list of popular anime in {year} {season} Season."
         />
         <meta
             name="keywords"
