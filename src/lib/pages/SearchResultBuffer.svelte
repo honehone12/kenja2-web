@@ -13,8 +13,7 @@
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import NoResults from "$lib/components/NoResults.svelte";
-    import { SearchType } from "$lib/client/search";
-    import { Lang } from "$lib";
+    import { Lang, SearchType } from "$lib";
     import { INDEX_DB_MAX, IndexDb } from "$lib/client/indexdb";
     import SearchTipBottom from "$lib/components/SearchTipBottom.svelte";
     import SearchTipTop from "$lib/components/SearchTipTop.svelte";
