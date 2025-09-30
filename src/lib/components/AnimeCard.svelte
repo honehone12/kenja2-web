@@ -39,7 +39,8 @@
             .trim();
 
         const split = clean.split(SPLITTER).filter((value) => value.length > 1);
-        return split.at(0) ?? clean;
+        const title = split.at(0) ?? clean;
+        return encodeURIComponent(title)
     }
 </script>
 

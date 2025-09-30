@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang, removeUrlCtrl } from "$lib";
+    import { Lang, preparedTextSearchQuery } from "$lib";
 
     interface Props {
         lang: Lang;
@@ -12,11 +12,7 @@
 
 {#if name}
     <a
-        href="/textsearch/buffer?keyword={lang === Lang.Jp && nameJapanese
-            ? removeUrlCtrl(nameJapanese)
-            : removeUrlCtrl(name)}&item-type=all{lang === Lang.Jp
-            ? '&lang=ja'
-            : ''}"
+        href="/textsearch/buffer?{preparedTextSearchQuery(name, nameJapanese, lang)}"
     >
         <h3 class="link link-primary">
             {name}{nameJapanese ? ` / ${nameJapanese}` : ""}

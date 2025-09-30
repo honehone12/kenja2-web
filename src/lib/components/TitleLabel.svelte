@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang, removeUrlCtrl } from "$lib";
+    import { Lang, preparedTextSearchQuery } from "$lib";
 
     interface Props {
         lang: Lang;
@@ -18,9 +18,7 @@
     {#if nameJapanese}
         {#if useLink}
             <a
-                href="/textsearch/buffer?keyword={removeUrlCtrl(
-                    nameJapanese,
-                )}&item-type=all&lang=ja"
+                href="/textsearch/buffer?{preparedTextSearchQuery(name, nameJapanese, lang)}"
             >
                 <h2 class="card-title link link-primary text-xl">
                     {nameJapanese}
@@ -37,9 +35,7 @@
     {#if name}
         {#if useLink}
             <a
-                href="/textsearch/buffer?keyword={removeUrlCtrl(
-                    name,
-                )}&item-type=all"
+                href="/textsearch/buffer?{preparedTextSearchQuery(name, nameJapanese, lang)}"
             >
                 <h2 class="card-title link link-primary text-xl">{name}</h2>
             </a>

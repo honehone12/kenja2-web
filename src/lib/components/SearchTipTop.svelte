@@ -1,6 +1,5 @@
 <script lang="ts">
-    import { Lang } from "$lib";
-    import { SearchType } from "$lib/client/search";
+    import { Lang, SearchType } from "$lib";
     import { page } from "$app/state";
     import { goto } from "$app/navigation";
 
