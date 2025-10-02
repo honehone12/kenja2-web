@@ -12,7 +12,7 @@
     <aside>
         <figure>
             <img
-                src="/kenja2_logo.png"
+                src="/kenja2-logo.png"
                 alt={lang === Lang.Jp
                     ? "ケンジャニメのロゴ、賢者のイラスト"
                     : "Kenjanime Logo, Illustration of Wise Old Man"}
