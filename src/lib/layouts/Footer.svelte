@@ -19,7 +19,7 @@
                 class="drop-shadow-sm max-w-20 mb-2"
             />
         </figure>
-        <p>© Kenjanime Developer {new Date().getFullYear()}</p>
+        <p>© Kenjanime Twelfthonehone {new Date().getFullYear()}</p>
         <a href="/THIRD-PARTY-LICENSES.md" type="text/markdown; charset=utf-8">
             <p class="link link-primary">OSS licenses</p>
         </a>
