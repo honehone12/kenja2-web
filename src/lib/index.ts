@@ -7,11 +7,20 @@ export const enum SearchType {
   Random = 3,
 }
 
-
 export const enum Lang {
   Unspecified = 0,
   En,
   Jp,
+}
+
+export function canonicalUrl(url: URL, lang: Lang) {
+  if (lang === Lang.Jp) {
+    return url;
+  } else {
+    const u = new URL(url);
+    u.searchParams.delete("lang");
+    return u;
+  }
 }
 
 export const URL_CTRLS = /[&#]/g;
@@ -20,23 +29,24 @@ export const SPLITTER = /[\s\p{P}\p{S}]+/u;
 
 export function preparedTextSearchQuery(
   keyword: string | undefined,
-  keywordJapanese: string | undefined, 
-  lang: Lang
+  keywordJapanese: string | undefined,
+  lang: Lang,
 ) {
   keyword ??= "";
   keywordJapanese ??= keyword;
 
-  const q = lang === Lang.Jp ?
-    new URLSearchParams({
-      keyword: keywordJapanese,
-      "item-type": "all",
-      lang: "ja"
-    }) :
-    new URLSearchParams({
-      keyword,
-      "item-type": "all"
-    });
-  
+  const q =
+    lang === Lang.Jp
+      ? new URLSearchParams({
+          keyword: keywordJapanese,
+          "item-type": "all",
+          lang: "ja",
+        })
+      : new URLSearchParams({
+          keyword,
+          "item-type": "all",
+        });
+
   return q.toString();
 }
 
@@ -55,5 +65,5 @@ export function extractTitle(raw: string) {
 
   const split = clean.split(SPLITTER).filter((value) => value.length > 1);
   const title = split.at(0) ?? clean;
-  return encodeURIComponent(title)
+  return encodeURIComponent(title);
 }
