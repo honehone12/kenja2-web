@@ -42,7 +42,7 @@ export const handle: Handle = async ({ event, resolve }) => {
         "Cross-Origin-Resource-Policy": "same-origin",
         "Permissions-Policy": "geolocation=(), camera=(), microphone=()",
         "Content-Security-Policy":
-          "script-src 'self' 'unsafe-inline';  font-src 'self';  img-src 'self' data: ;  worker-src 'self';  connect-src 'self';  base-uri 'self';  form-action 'self'; media-src 'self';  object-src 'self';  manifest-src 'self';  child-src 'none';  frame-src https://www.youtube-nocookie.com/;  frame-ancestors 'none';",
+          "script-src 'self' 'unsafe-inline';  font-src 'self';  img-src 'self' data: ;  worker-src 'self';  connect-src 'self';  base-uri 'self';  form-action 'self'; media-src 'self';  object-src 'self';  manifest-src 'self';  child-src 'none';  frame-src https://www.youtube.com/;  frame-ancestors 'none';",
       };
 
       event.setHeaders(SECURITY_HEADERS);
