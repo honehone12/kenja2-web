@@ -21,10 +21,7 @@
     <div class="mt-5 ml-5">
         <ItemTypeRadio {lang} />
     </div>
-    <input
-        type="hidden"
-        name="lang"
-        id="lang-lang"
-        value={lang === Lang.Jp ? "ja" : "en"}
-    />
+    {#if lang === Lang.Jp}
+        <input type="hidden" name="lang" id="lang-lang" value="ja" />
+    {/if}
 </form>
