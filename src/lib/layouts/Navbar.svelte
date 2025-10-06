@@ -57,12 +57,14 @@
         const u = new URL(page.url);
         const t = "lang";
         let q = u.searchParams;
-        let l = lang === Lang.Jp ? "en" : "ja";
-        if (q.has(t)) {
-            q.set(t, l);
+
+        if (lang === Lang.Jp) {
+            q.delete("lang");
         } else {
-            q.append(t, l);
+            let l = "ja";
+            q.set(t, l);
         }
+
         return u.toString();
     }
 </script>
