@@ -7,21 +7,27 @@ class MyListControl {
   private _isInitialized: boolean = false;
   private _myMap: Map<string, boolean> = new Map();
 
+  /**
+   * this can throw
+   *
+   * this have to be called from client only hook
+   * server instance panics immediately
+   */
   private async initialize() {
-    const db = await IndexDb.instance();
-
-    if (!this._isInitialized) {
-      const mylist = await db.getMyListKeys();
-      mylist.forEach((value) => this._myMap.set(value, true));
-      this._isInitialized = true;
+    if (this._isInitialized) {
+      return;
     }
 
-    return db;
+    const db = await IndexDb.instance();
+    const mylist = await db.getMyListKeys();
+    mylist.forEach((value) => this._myMap.set(value, true));
+    this._isInitialized = true;
   }
 
   public async getMyList() {
     try {
-      const db = await this.initialize();
+      await this.initialize();
+      const db = await IndexDb.instance();
       return await db.getMyList();
     } catch (e) {
       console.error(e);
@@ -48,11 +54,12 @@ class MyListControl {
     }
 
     try {
-      const db = await this.initialize();
+      await this.initialize();
       if (this._myMap.has(doc.id)) {
         return;
       }
 
+      const db = await IndexDb.instance();
       await db.addMyList(doc);
       this._myMap.set(doc.id, true);
     } catch (e) {
@@ -62,11 +69,12 @@ class MyListControl {
 
   public async unstar(id: string) {
     try {
-      const db = await this.initialize();
+      await this.initialize();
       if (!this._myMap.has(id)) {
         return;
       }
 
+      const db = await IndexDb.instance();
       await db.deleteMyList(id);
       this._myMap.delete(id);
     } catch (e) {
