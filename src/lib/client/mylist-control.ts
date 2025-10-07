@@ -1,26 +1,28 @@
-import { IndexDb, INDEX_DB_MAX } from "$lib/client/indexdb";
+import { IndexDb } from "$lib/client/indexdb";
 import type { FlatDocument } from "$lib/documents/anime-search/documents";
 
 class MyListControl {
-  private _indexDb: IndexDb | null = null;
+  private static readonly MYLIST_MAX = 1000;
+
+  private _isInitialized: boolean = false;
   private _myMap: Map<string, boolean> = new Map();
 
   private async initialize() {
-    if (!this._indexDb) {
-      this._indexDb = await IndexDb.open();
-      const mylist = await this._indexDb.getMyListKeys();
+    const db = await IndexDb.instance();
+
+    if (!this._isInitialized) {
+      const mylist = await db.getMyListKeys();
       mylist.forEach((value) => this._myMap.set(value, true));
+      this._isInitialized = true;
     }
+
+    return db;
   }
 
   public async getMyList() {
     try {
-      await this.initialize();
-      if (!this._indexDb) {
-        return [];
-      }
-
-      return await this._indexDb.getMyList();
+      const db = await this.initialize();
+      return await db.getMyList();
     } catch (e) {
       console.error(e);
       return [];
@@ -41,20 +43,17 @@ class MyListControl {
     if (!doc) {
       return;
     }
-    if (this._myMap.size >= INDEX_DB_MAX) {
+    if (this._myMap.size >= MyListControl.MYLIST_MAX) {
       return;
     }
 
     try {
-      await this.initialize();
-      if (!this._indexDb) {
-        return;
-      }
+      const db = await this.initialize();
       if (this._myMap.has(doc.id)) {
         return;
       }
 
-      await this._indexDb.addMyList(doc);
+      await db.addMyList(doc);
       this._myMap.set(doc.id, true);
     } catch (e) {
       console.error(e);
@@ -63,15 +62,12 @@ class MyListControl {
 
   public async unstar(id: string) {
     try {
-      await this.initialize();
-      if (!this._indexDb) {
-        return;
-      }
+      const db = await this.initialize();
       if (!this._myMap.has(id)) {
         return;
       }
 
-      await this._indexDb.deleteMyList(id);
+      await db.deleteMyList(id);
       this._myMap.delete(id);
     } catch (e) {
       console.error(e);

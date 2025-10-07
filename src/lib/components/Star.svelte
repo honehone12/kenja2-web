@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Lang } from "$lib";
     import type { OnUnstar } from "$lib/client/callback";
-    import mylist from "$lib/client/mylist-control";
+    import mylistCtrl from "$lib/client/mylist-control";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import { onMount } from "svelte";
 
@@ -13,13 +13,18 @@
 
     let { lang, doc, onUnstar }: Props = $props();
     let star: boolean = $state(false);
+    let isInitialized: boolean = false;
 
     async function onclick() {
+        if (!isInitialized) {
+            return;
+        }
+
         if (star) {
-            await mylist.unstar(doc.id);
+            await mylistCtrl.unstar(doc.id);
             onUnstar?.(doc.id);
         } else {
-            await mylist.star(doc);
+            await mylistCtrl.star(doc);
         }
 
         star = !star;
@@ -30,7 +35,8 @@
     }
 
     onMount(async () => {
-        star = await mylist.hasStar(doc.id);
+        star = await mylistCtrl.hasStar(doc.id);
+        isInitialized = true;
     });
 </script>
 
