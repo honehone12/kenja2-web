@@ -8,40 +8,32 @@
     import ExternalAnime from "$lib/components/ExternalAnime.svelte";
     import DocumentCard from "$lib/component-layout/DocumentCard.svelte";
     import CardHead from "$lib/component-layout/CardHead.svelte";
-
-    interface Doc {
-        id: string;
-        name: string | undefined;
-        nameEnglish: string | undefined;
-        nameJapanese: string | undefined;
-        img: string | undefined;
-        src: string | undefined;
-    }
+    import type { FlatDocument } from "$lib/documents/anime-search/documents";
+    import type { OnUnstar } from "$lib/client/callback";
 
     interface Props {
         lang: Lang;
-        doc: Doc;
-        star: boolean;
-        onStar: (star: boolean) => Promise<void>;
+        doc: FlatDocument;
+        onUnstar?: OnUnstar;
     }
 
-    let { lang, doc, star, onStar }: Props = $props();
+    let { lang, doc, onUnstar }: Props = $props();
 </script>
 
 <DocumentCard>
     <CardHead>
         <ItemTypeBadge itemType={ItemType.Anime} />
-        <Star {lang} {star} {onStar} />
+        <Star {lang} {doc} {onUnstar} />
     </CardHead>
-    {#if doc.nameEnglish}
-        <h3>{doc.nameEnglish}</h3>
+    {#if doc.name_english}
+        <h3>{doc.name_english}</h3>
     {/if}
     <span class="mb-5">
         <TitleLabel
             {lang}
             useLink={true}
             name={doc.name}
-            nameJapanese={doc.nameJapanese}
+            nameJapanese={doc.name_japanese}
         />
     </span>
     <ImageVectorSearch
@@ -50,16 +42,16 @@
             id: doc.id,
             itemType: ItemType.Anime,
             name: doc.name,
-            nameJapanese: doc.nameJapanese,
+            nameJapanese: doc.name_japanese,
             img: doc.img,
             src: doc.src,
         }}
     />
-    {#if doc.nameJapanese}
+    {#if doc.name_japanese}
         <div class="mt-5">
             <ExternalAnime
                 {lang}
-                nameJapanese={extractTitle(doc.nameJapanese)}
+                nameJapanese={extractTitle(doc.name_japanese)}
             />
         </div>
     {/if}

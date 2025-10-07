@@ -18,7 +18,11 @@
     {#if nameJapanese}
         {#if useLink}
             <a
-                href="/textsearch/buffer?{preparedTextSearchQuery(name, nameJapanese, lang)}"
+                href="/textsearch/buffer?{preparedTextSearchQuery(
+                    name,
+                    nameJapanese,
+                    lang,
+                )}"
             >
                 <h2 class="card-title link link-primary text-xl">
                     {nameJapanese}
@@ -35,7 +39,11 @@
     {#if name}
         {#if useLink}
             <a
-                href="/textsearch/buffer?{preparedTextSearchQuery(name, nameJapanese, lang)}"
+                href="/textsearch/buffer?{preparedTextSearchQuery(
+                    name,
+                    nameJapanese,
+                    lang,
+                )}"
             >
                 <h2 class="card-title link link-primary text-xl">{name}</h2>
             </a>

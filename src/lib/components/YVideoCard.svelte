@@ -6,35 +6,29 @@
     import Star from "$lib/components/Star.svelte";
     import DocumentCard from "$lib/component-layout/DocumentCard.svelte";
     import CardHead from "$lib/component-layout/CardHead.svelte";
-
-    interface Doc {
-        id: string;
-        name: string | undefined;
-        nameJapanese: string | undefined;
-        unique: string | undefined;
-    }
+    import type { FlatDocument } from "$lib/documents/anime-search/documents";
+    import type { OnUnstar } from "$lib/client/callback";
 
     interface Props {
         lang: Lang;
-        doc: Doc;
-        star: boolean;
-        onStar: (star: boolean) => Promise<void>;
+        doc: FlatDocument;
+        onUnstar?: OnUnstar;
     }
 
-    let { lang, doc, star, onStar }: Props = $props();
+    let { lang, doc, onUnstar }: Props = $props();
 </script>
 
 <DocumentCard>
     <CardHead>
         <ItemTypeBadge itemType={ItemType.YVideo} />
-        <Star {lang} {star} {onStar} />
+        <Star {lang} {doc} {onUnstar} />
     </CardHead>
     <span class="mb-2">
         <TitleLabel
             {lang}
             useLink={true}
             name={doc.name}
-            nameJapanese={doc.nameJapanese}
+            nameJapanese={doc.name_japanese}
         />
     </span>
     {#if doc.unique}

@@ -5,7 +5,7 @@
         beforeNavigate,
         replaceState,
     } from "$app/navigation";
-    import { onMount, tick } from "svelte";
+    import { tick } from "svelte";
     import type {
         FlatDocument,
         SearchResult,
@@ -13,8 +13,7 @@
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import NoResults from "$lib/components/NoResults.svelte";
-    import { Lang, SearchType } from "$lib";
-    import { INDEX_DB_MAX, IndexDb } from "$lib/client/indexdb";
+    import { Lang, SearchType, HTML_TAG } from "$lib";
     import SearchTipBottom from "$lib/components/SearchTipBottom.svelte";
     import SearchTipTop from "$lib/components/SearchTipTop.svelte";
 
@@ -25,27 +24,11 @@
     }
 
     let { lang, buffer, searchType }: Props = $props();
-    let myMap: Map<string, boolean> = $state(new Map());
-    let docMap: Map<string, FlatDocument> = new Map();
-    let indexdb: IndexDb | null = null;
-
-    async function bufferResult() {
-        const result = await buffer;
-        if (result.documents) {
-            const list = result.documents;
-            const map = new Map();
-            list.forEach((value) => map.set(value.id, value));
-            docMap = map;
-            return list;
-        } else {
-            return [];
-        }
-    }
 
     function searchKeywords() {
         // if this is shown, kws are wihin limit and there are matched results.
         let kw = page.url.searchParams.get("keyword") ?? "";
-        return kw.replace(/<.*?>/g, "");
+        return kw.replace(HTML_TAG, "");
     }
 
     function itemTypeLabel() {
@@ -93,53 +76,6 @@
         }
     }
 
-    async function refresh() {
-        if (!indexdb) {
-            return;
-        }
-
-        const myList = await indexdb.getMyListKeys();
-        const map = new Map();
-        myList.forEach((value) => map.set(value, true));
-        myMap = map;
-    }
-
-    async function onStar(id: string, star: boolean) {
-        if (!indexdb) {
-            console.warn("index db is not initialized yet.");
-            return;
-        }
-
-        try {
-            if (star) {
-                if (myMap.size < INDEX_DB_MAX) {
-                    const doc = docMap.get(id);
-                    if (doc && !myMap.has(id)) {
-                        await indexdb.addMyList(doc);
-                    }
-                }
-            } else {
-                if (myMap.has(id)) {
-                    await indexdb.deleteMyList(id);
-                }
-            }
-        } catch (e) {
-            console.error(e);
-            return;
-        }
-
-        refresh();
-    }
-
-    onMount(async () => {
-        try {
-            indexdb = await IndexDb.open();
-            refresh();
-        } catch (e) {
-            console.error(e);
-        }
-    });
-
     afterNavigate(async (nav) => {
         await nav.complete;
 
@@ -172,14 +108,14 @@
     </h1>
 </div>
 <SearchTipTop {lang} {searchType} />
-{#await bufferResult()}
+{#await buffer}
     <div class="hero min-h-screen w-full">
         <div class="hero-content">
             <LoadingMsg />
         </div>
     </div>
-{:then documents}
-    {#if documents.length > 0}
+{:then { documents }}
+    {#if documents && documents.length > 0}
         <div class="py-10">
             <div class="hero w-full">
                 <div
@@ -193,12 +129,7 @@
             <div class="hero w-full">
                 <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
                     {#each documents as doc, i (i)}
-                        <CandidateCard
-                            {lang}
-                            {doc}
-                            star={myMap.has(doc.id)}
-                            onStar={(id, star) => onStar(id, star)}
-                        />
+                        <CandidateCard {lang} {doc} />
                     {/each}
                 </div>
             </div>

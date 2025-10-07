@@ -1,6 +1,9 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import type { Parent } from "$lib/documents/anime-search/documents";
+    import type {
+        FlatDocument,
+        Parent,
+    } from "$lib/documents/anime-search/documents";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import ParentLabel from "$lib/components/ParentLabel.svelte";
@@ -10,30 +13,21 @@
     import ExternalCharacter from "$lib/components/ExternalCharacter.svelte";
     import DocumentCard from "$lib/component-layout/DocumentCard.svelte";
     import CardHead from "$lib/component-layout/CardHead.svelte";
-
-    interface Doc {
-        id: string;
-        parent: Parent | undefined;
-        name: string | undefined;
-        nameJapanese: string | undefined;
-        img: string | undefined;
-        src: string | undefined;
-    }
+    import type { OnUnstar } from "$lib/client/callback";
 
     interface Props {
         lang: Lang;
-        doc: Doc;
-        star: boolean;
-        onStar: (star: boolean) => Promise<void>;
+        doc: FlatDocument;
+        onUnstar?: OnUnstar;
     }
 
-    let { lang, doc, star, onStar }: Props = $props();
+    let { lang, doc, onUnstar }: Props = $props();
 </script>
 
 <DocumentCard>
     <CardHead>
         <ItemTypeBadge itemType={ItemType.Character} />
-        <Star {lang} {star} {onStar} />
+        <Star {lang} {doc} {onUnstar} />
     </CardHead>
     <ParentLabel
         {lang}
@@ -45,7 +39,7 @@
             {lang}
             useLink={false}
             name={doc.name}
-            nameJapanese={doc.nameJapanese}
+            nameJapanese={doc.name_japanese}
         />
     </span>
     <ImageVectorSearch
@@ -54,16 +48,16 @@
             id: doc.id,
             itemType: ItemType.Character,
             name: doc.name,
-            nameJapanese: doc.nameJapanese,
+            nameJapanese: doc.name_japanese,
             img: doc.img,
             src: doc.src,
         }}
     />
-    {#if doc.nameJapanese}
+    {#if doc.name_japanese}
         <div class="mt-5">
             <ExternalCharacter
                 {lang}
-                nameJapanese={encodeURIComponent(doc.nameJapanese)}
+                nameJapanese={encodeURIComponent(doc.name_japanese)}
             />
         </div>
     {/if}

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import { IndexDb } from "$lib/client/indexdb";
+    import mylistCtrl from "$lib/client/mylist-control";
     import CandidateCard from "$lib/components/CandidateCard.svelte";
     import NoResults from "$lib/components/NoResults.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
@@ -13,33 +13,21 @@
     }
 
     let { lang }: Props = $props();
-    let indexdb: IndexDb | null = $state(null);
-    let myList: FlatDocument[] = $state([]);
+    let myList: FlatDocument[] | null = $state(null);
 
-    async function unstar(id: string) {
-        if (!indexdb) {
-            console.warn("index db is not initialized");
+    function onUnstar(id: string) {
+        if (!myList) {
             return;
         }
 
-        try {
-            const doc = myList.find((value) => value.id === id);
-            if (doc) {
-                await indexdb.deleteMyList(id);
-                myList = await indexdb.getMyList();
-            }
-        } catch (e) {
-            console.error(e);
+        const idx = myList.findIndex((value) => value.id === id);
+        if (idx >= 0) {
+            myList.splice(idx, 1);
         }
     }
 
     onMount(async () => {
-        try {
-            indexdb = await IndexDb.open();
-            myList = await indexdb.getMyList();
-        } catch (e) {
-            console.error(e);
-        }
+        myList = await mylistCtrl.getMyList();
     });
 </script>
 
@@ -52,7 +40,7 @@
         {/if}
     </h1>
 </div>
-{#if myList.length > 0}
+{#if myList && myList.length > 0}
     <div class="hero w-full mt-10">
         <div class="hero-content text-center">
             <span>
@@ -74,12 +62,7 @@
                     out:scale={{ duration: 140 }}
                     animate:flip={{ delay: 60, duration: 140 }}
                 >
-                    <CandidateCard
-                        {lang}
-                        {doc}
-                        star
-                        onStar={(id, _) => unstar(id)}
-                    />
+                    <CandidateCard {lang} {doc} {onUnstar} />
                 </span>
             {/each}
         </div>
