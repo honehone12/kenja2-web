@@ -5,7 +5,9 @@
     import TitleLabel from "$lib/components/TitleLabel.svelte";
     import ImageVectorSearch from "$lib/components/ImageVectorSearch.svelte";
     import Star from "$lib/components/Star.svelte";
-    import ExternalAnime from "./ExternalAnime.svelte";
+    import ExternalAnime from "$lib/components/ExternalAnime.svelte";
+    import DocumentCard from "$lib/component-layout/DocumentCard.svelte";
+    import CardHead from "$lib/component-layout/CardHead.svelte";
 
     interface Doc {
         id: string;
@@ -26,43 +28,39 @@
     let { lang, doc, star, onStar }: Props = $props();
 </script>
 
-<div class="card w-80 outline outline-secondary">
-    <div class="card-body">
-        <div class="w-68 mb-5">
-            <span class="flex justify-between">
-                <ItemTypeBadge itemType={ItemType.Anime} />
-                <Star {lang} {star} {onStar} />
-            </span>
-        </div>
-        {#if doc.nameEnglish}
-            <h3>{doc.nameEnglish}</h3>
-        {/if}
-        <span class="mb-5">
-            <TitleLabel
-                {lang}
-                useLink={true}
-                name={doc.name}
-                nameJapanese={doc.nameJapanese}
-            />
-        </span>
-        <ImageVectorSearch
+<DocumentCard>
+    <CardHead>
+        <ItemTypeBadge itemType={ItemType.Anime} />
+        <Star {lang} {star} {onStar} />
+    </CardHead>
+    {#if doc.nameEnglish}
+        <h3>{doc.nameEnglish}</h3>
+    {/if}
+    <span class="mb-5">
+        <TitleLabel
             {lang}
-            doc={{
-                id: doc.id,
-                itemType: ItemType.Anime,
-                name: doc.name,
-                nameJapanese: doc.nameJapanese,
-                img: doc.img,
-                src: doc.src,
-            }}
+            useLink={true}
+            name={doc.name}
+            nameJapanese={doc.nameJapanese}
         />
-        {#if doc.nameJapanese}
-            <div class="mt-5">
-                <ExternalAnime
-                    {lang}
-                    nameJapanese={extractTitle(doc.nameJapanese)}
-                />
-            </div>
-        {/if}
-    </div>
-</div>
+    </span>
+    <ImageVectorSearch
+        {lang}
+        doc={{
+            id: doc.id,
+            itemType: ItemType.Anime,
+            name: doc.name,
+            nameJapanese: doc.nameJapanese,
+            img: doc.img,
+            src: doc.src,
+        }}
+    />
+    {#if doc.nameJapanese}
+        <div class="mt-5">
+            <ExternalAnime
+                {lang}
+                nameJapanese={extractTitle(doc.nameJapanese)}
+            />
+        </div>
+    {/if}
+</DocumentCard>
