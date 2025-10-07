@@ -1,20 +1,28 @@
 import type { FlatDocument } from "$lib/documents/anime-search/documents";
 
-export const INDEX_DB_MAX = 1000;
-
 export class IndexDb {
-  public static DB_NAME: string = "kenjaLocalData";
-  public static META_STORE: string = "metaData";
-  public static My_LIST_STORE: string = "myList";
-  public static META_MY_LIST_KEYS: string = "myListkeys";
+  private static readonly DB_NAME: string = "kenjaLocalData";
+  private static readonly META_STORE: string = "metaData";
+  private static readonly My_LIST_STORE: string = "myList";
+  private static readonly META_MY_LIST_KEYS: string = "myListkeys";
 
   private _db: IDBDatabase;
+
+  private static _instance: IndexDb | null = null;
 
   private constructor(db: IDBDatabase) {
     this._db = db;
   }
 
-  public static open() {
+  public static async instance() {
+    if (!IndexDb._instance) {
+      IndexDb._instance = await IndexDb.open();
+    }
+
+    return IndexDb._instance;
+  }
+
+  private static open() {
     return new Promise<IndexDb>((resolve, reject) => {
       const req = indexedDB.open(IndexDb.DB_NAME, 100);
       req.onerror = () => reject("failed to open index db");
