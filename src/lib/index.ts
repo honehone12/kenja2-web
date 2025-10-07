@@ -27,6 +27,8 @@ export const URL_CTRLS = /[&#]/g;
 
 export const SPLITTER = /[\s\p{P}\p{S}]+/u;
 
+export const HTML_TAG = /<.*?>/g;
+
 export function preparedTextSearchQuery(
   keyword: string | undefined,
   keywordJapanese: string | undefined,

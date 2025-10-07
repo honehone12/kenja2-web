@@ -8,11 +8,9 @@
         name: string;
         nameJapanese: string;
         list: FlatDocument[];
-        hasStar: (id: string) => boolean;
-        onStar: (id: string, star: boolean) => Promise<void>;
     }
 
-    let { lang, name, nameJapanese, list, hasStar, onStar }: Props = $props();
+    let { lang, name, nameJapanese, list }: Props = $props();
 </script>
 
 <div class="hero w-full">
@@ -27,7 +25,7 @@
 <div class="hero w-full">
     <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
         {#each list as doc, i (i)}
-            <CandidateCard {lang} {doc} star={hasStar(doc.id)} {onStar} />
+            <CandidateCard {lang} {doc} />
         {/each}
     </div>
 </div>

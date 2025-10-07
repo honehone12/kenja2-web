@@ -5,55 +5,21 @@
     import CharacterCard from "$lib/components/CharacterCard.svelte";
     import type { Lang } from "$lib";
     import YVideoCard from "$lib/components/YVideoCard.svelte";
+    import type { OnUnstar } from "$lib/client/callback";
 
     interface Props {
         lang: Lang;
         doc: FlatDocument;
-        star: boolean;
-        onStar: (id: string, star: boolean) => Promise<void>;
+        onUnstar?: OnUnstar;
     }
 
-    let { lang, doc, star, onStar }: Props = $props();
+    let { lang, doc, onUnstar }: Props = $props();
 </script>
 
 {#if doc.item_type === ItemType.Anime}
-    <AnimeCard
-        {lang}
-        doc={{
-            id: doc.id,
-            name: doc.name,
-            nameEnglish: doc.name_english,
-            nameJapanese: doc.name_japanese,
-            img: doc.img,
-            src: doc.src,
-        }}
-        {star}
-        onStar={(star) => onStar(doc.id, star)}
-    />
+    <AnimeCard {lang} {doc} {onUnstar} />
 {:else if doc.item_type === ItemType.Character}
-    <CharacterCard
-        {lang}
-        doc={{
-            id: doc.id,
-            parent: doc.parent,
-            name: doc.name,
-            nameJapanese: doc.name_japanese,
-            img: doc.img,
-            src: doc.src,
-        }}
-        {star}
-        onStar={(star) => onStar(doc.id, star)}
-    />
+    <CharacterCard {lang} {doc} {onUnstar} />
 {:else if doc.item_type === ItemType.YVideo}
-    <YVideoCard
-        {lang}
-        doc={{
-            id: doc.id,
-            name: doc.parent?.name,
-            nameJapanese: doc.parent?.name_japanese,
-            unique: doc.unique,
-        }}
-        {star}
-        onStar={(star) => onStar(doc.id, star)}
-    />
+    <YVideoCard {lang} {doc} {onUnstar} />
 {/if}
