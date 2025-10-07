@@ -8,12 +8,17 @@ export class IndexDb {
 
   private _db: IDBDatabase;
 
+  // we can not export default because of SSR
+  // so we use singleton to keep server instance null
   private static _instance: IndexDb | null = null;
 
   private constructor(db: IDBDatabase) {
     this._db = db;
   }
 
+  /**
+   * this can throw
+   */
   public static async instance() {
     if (!IndexDb._instance) {
       IndexDb._instance = await IndexDb.open();
@@ -63,6 +68,9 @@ export class IndexDb {
     });
   }
 
+  /**
+   * this can throw
+   */
   public addMyList(doc: FlatDocument) {
     return new Promise<void>((resolve, reject) => {
       const tx = this._db.transaction(
@@ -84,6 +92,9 @@ export class IndexDb {
     });
   }
 
+  /**
+   * this can throw
+   */
   public deleteMyList(id: string) {
     return new Promise<void>((resolve, reject) => {
       const tx = this._db.transaction(
