@@ -3,34 +3,35 @@
     import SearchResultBuffer from "$lib/pages/SearchResultBuffer.svelte";
 
     let { data } = $props();
+
+    const title = "Kenjanime - Results of Anime and Character Keyword Search";
+    const titleJapanese =
+        "ケンジャニメ - アニメとキャラクターのキーワード検索結果";
+    const description =
+        "Anime & character search and recommendation powered by image vector search. Showing search results for anime & characters.";
+    const descriptionJapanese =
+        "アニメ & キャラクターの検索と画像ベクターサーチによるおすすめシステム。アニメ & キャラクターの検索結果を表示しています。";
 </script>
 
 <svelte:head>
     {#if data.lang === Lang.Jp}
-        <title>ケンジャニメ - アニメとキャラクターのキーワード検索結果</title>
-    {:else}
-        <title>Kenjanime - Results of Anime and Character Keyword Search</title>
-    {/if}
-    <meta name="application-name" content="Kenjanime" />
-    <meta name="author" content="Twelfthonehone" />
-    {#if data.lang === Lang.Jp}
-        <meta
-            name="description"
-            content="アニメ ＆ キャラクターの検索と画像ベクターサーチによるおすすめシステム。アニメ ＆ キャラクターの画像検索の結果を表示しています。"
-        />
+        <title>{titleJapanese}</title>
+        <meta name="description" content={descriptionJapanese} />
         <meta
             name="keywords"
-            content="ケンジャ, アニメ, キャラクター, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
+            content="ケンジャ, アニメ, キャラクター, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索, キーワード検索, テキスト検索, タイトル検索, 名前検索"
         />
+        <meta property="og:title" content={titleJapanese} />
+        <meta property="og:description" content={descriptionJapanese} />
     {:else}
-        <meta
-            name="description"
-            content="Anime & character search and recommendation powered by image vector search. Showing image search results for anime & characters."
-        />
+        <title>{title}</title>
+        <meta name="description" content={description} />
         <meta
             name="keywords"
-            content="kenja, anime, character, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
+            content="kenja, anime, character, search, recommendation, similar, image, vector search, image search, similarity search, easy search, keyword search, text search, title search, name search"
         />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
     {/if}
 </svelte:head>
 

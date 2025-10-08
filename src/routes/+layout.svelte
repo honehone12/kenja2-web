@@ -11,6 +11,14 @@
 
 <svelte:head>
     <link rel="canonical" href={canonicalUrl(page.url, data.lang).toString()} />
+    <meta name="application-name" content="Kenjanime" />
+    <meta name="author" content="Twelfthonehone" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:type" content="website" />
+    <meta
+        property="og:url"
+        content={canonicalUrl(page.url, data.lang).toString()}
+    />
 </svelte:head>
 
 <Navbar lang={data.lang} />

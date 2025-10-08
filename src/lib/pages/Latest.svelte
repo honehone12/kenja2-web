@@ -14,34 +14,38 @@
 
     let { lang, year, yearJapanese, season, seasonJapanese, list }: Props =
         $props();
+
+    const title = "Kenjanime - Latest Anime";
+    const titleJapanese = "ケンジャニメ - 最新のアニメ";
+
+    function descriptionJapanese() {
+        return `アニメ & キャラクターの検索と画像ベクターサーチによるおすすめシステム。最新のアニメ。${yearJapanese}${seasonJapanese}シーズン人気アニメの一覧です。`;
+    }
+
+    function description() {
+        return `Anime & character search and recommendation powered by image vector search. Latest Anime. A list of popular anime in ${year} ${season} Season.`;
+    }
 </script>
 
 <svelte:head>
     {#if lang === Lang.Jp}
-        <title>ケンジャニメ - 最新のアニメ</title>
-    {:else}
-        <title>Kenjanime - Latest Anime</title>
-    {/if}
-    <meta name="application-name" content="Kenjanime" />
-    <meta name="author" content="Twelfthonehone" />
-    {#if lang === Lang.Jp}
-        <meta
-            name="description"
-            content="アニメ ＆ キャラクターの検索と画像ベクターサーチによるおすすめシステム最新のアニメ。{yearJapanese}{seasonJapanese}シーズン人気アニメの一覧です。"
-        />
+        <title>{titleJapanese}</title>
+        <meta name="description" content={descriptionJapanese()} />
         <meta
             name="keywords"
             content="ケンジャ, アニメ, キャラクター, 最新, {yearJapanese}, {seasonJapanese}, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
         />
+        <meta property="og:title" content={titleJapanese} />
+        <meta property="og:description" content={descriptionJapanese()} />
     {:else}
-        <meta
-            name="description"
-            content="Anime & character search and recommendation powered by image vector search. Latest Anime. A list of popular anime in {year} {season} Season."
-        />
+        <title>{title}</title>
+        <meta name="description" content={description()} />
         <meta
             name="keywords"
             content="kenja, anime, character, latest, {year}, {season.toLowerCase()}, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
         />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description()} />
     {/if}
 </svelte:head>
 

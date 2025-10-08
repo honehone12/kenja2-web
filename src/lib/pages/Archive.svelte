@@ -29,34 +29,38 @@
         list,
         backLink,
     }: Props = $props();
+
+    const title = "Kenjanime - Previous Anime";
+    const titleJapanese = "ケンジャニメ - 過去のアニメ";
+
+    function descriptionJapanese() {
+        return `アニメ & キャラクターの検索と画像ベクターサーチによるおすすめシステム。過去のアニメ。${yearJapanese}${seasonJapanese}シーズン人気アニメの一覧です。`;
+    }
+
+    function description() {
+        return `Anime & character search and recommendation powered by image vector search. Previous Anime. A list of popular anime in ${year} ${season} Season.`;
+    }
 </script>
 
 <svelte:head>
     {#if lang === Lang.Jp}
-        <title>ケンジャニメ - 過去のアニメ</title>
-    {:else}
-        <title>Kenjanime - Previous Anime</title>
-    {/if}
-    <meta name="application-name" content="Kenjanime" />
-    <meta name="author" content="Twelfthonehone" />
-    {#if lang === Lang.Jp}
-        <meta
-            name="description"
-            content="アニメ ＆ キャラクターの検索と画像ベクターサーチによるおすすめシステム。過去のアニメ。{yearJapanese}{seasonJapanese}シーズン人気アニメの一覧です。"
-        />
+        <title>{titleJapanese}</title>
+        <meta name="description" content={descriptionJapanese()} />
         <meta
             name="keywords"
             content="ケンジャ, アニメ, キャラクター, {yearJapanese}, {seasonJapanese}, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
         />
+        <meta property="og:title" content={titleJapanese} />
+        <meta property="og:description" content={descriptionJapanese()} />
     {:else}
-        <meta
-            name="description"
-            content="Anime & character search and recommendation powered by image vector search. Previous Anime. A list of popular anime in {year} {season} Season."
-        />
+        <title>{title}</title>
+        <meta name="description" content={description()} />
         <meta
             name="keywords"
             content="kenja, anime, character, {year}, {season.toLowerCase()}, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
         />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description()} />
     {/if}
 </svelte:head>
 
@@ -64,7 +68,7 @@
     <div class="hero w-full">
         <h1 class="text-secondary font-semibold text-3xl mb-10">
             {#if lang === Lang.Jp}
-                アニメ　過去タイトル
+                アニメ 過去タイトル
             {:else}
                 Anime Previous Titles
             {/if}
@@ -82,7 +86,10 @@
     />
     {#if backLink}
         <div class="text-center mt-10">
-            <a href={lang === Lang.Jp ? backLink.linkJapanese : backLink.link} class="link link-primary text-xl">
+            <a
+                href={lang === Lang.Jp ? backLink.linkJapanese : backLink.link}
+                class="link link-primary text-xl"
+            >
                 {lang === Lang.Jp ? backLink.nameJapanese : backLink.name}
             </a>
         </div>
