@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { Lang } from "$lib";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import Archive from "$lib/pages/Archive.svelte";
 
