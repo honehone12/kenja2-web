@@ -27,8 +27,8 @@
         <TitleLabel
             {lang}
             useLink={true}
-            name={doc.name}
-            nameJapanese={doc.name_japanese}
+            name={doc.parent?.name}
+            nameJapanese={doc.parent?.name_japanese}
         />
     </span>
     {#if doc.unique}
