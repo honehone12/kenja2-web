@@ -12,7 +12,11 @@
 
 {#if name}
     <a
-        href="/textsearch/buffer?{preparedTextSearchQuery(name, nameJapanese, lang)}"
+        href="/textsearch/buffer?{preparedTextSearchQuery(
+            name,
+            nameJapanese,
+            lang,
+        )}"
     >
         <h3 class="link link-primary">
             {name}{nameJapanese ? ` / ${nameJapanese}` : ""}
