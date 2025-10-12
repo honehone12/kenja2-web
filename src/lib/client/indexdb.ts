@@ -8,8 +8,9 @@ export class IndexDb {
 
   private _db: IDBDatabase;
 
-  // we can not export default because of SSR
-  // so we use singleton to keep server instance null
+  // We don't export default
+  // as this should be wrapped by specific utility classes
+  // and exporting null instance will increase chances of troubles.
   private static _instance: IndexDb | null = null;
 
   private constructor(db: IDBDatabase) {
