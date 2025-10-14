@@ -25,7 +25,7 @@
     }
 </script>
 
-<div class="dock">
+<nav class="dock" aria-label="dock">
     <div class="tooltip" data-tip={lang === Lang.Jp ? "ホーム" : "Home"}>
         <a
             href={lang === Lang.Jp ? "/?lang=ja" : "/"}
@@ -121,4 +121,4 @@
             >
         </button>
     </div>
-</div>
+</nav>

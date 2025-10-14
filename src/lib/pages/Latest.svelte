@@ -49,7 +49,7 @@
     {/if}
 </svelte:head>
 
-<div class="py-20">
+<main class="py-20">
     <div class="hero w-full">
         <span class="text-center">
             <h1 class="text-secondary font-semibold text-3xl mb-10">
@@ -103,4 +103,4 @@
             </h3>
         </a>
     </div>
-</div>
+</main>

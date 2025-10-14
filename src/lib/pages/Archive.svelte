@@ -64,7 +64,7 @@
     {/if}
 </svelte:head>
 
-<div class="py-20">
+<main class="py-20">
     <div class="hero w-full">
         <h1 class="text-secondary font-semibold text-3xl mb-10">
             {#if lang === Lang.Jp}
@@ -94,4 +94,4 @@
             </a>
         </div>
     {/if}
-</div>
+</main>

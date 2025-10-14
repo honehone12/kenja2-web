@@ -34,31 +34,33 @@
 
 <div class="text-center">
     {#if doc.name && doc.img}
-        <a
-            href="/vectorsearch/buffer/{doc.id}?item-type={ITypeConv.toString(
-                doc.itemType,
-            )}{lang === Lang.Jp ? '&lang=ja' : ''}"
-            class="tooltip"
-            aria-label={linkLabel()}
-            data-tip={linkLabel()}
-        >
-            <img
-                id={doc.id}
-                src="/{doc.img}"
-                alt={lang === Lang.Jp && doc.nameJapanese
-                    ? `アニメ「${doc.nameJapanese}」のキービジュアル`
-                    : `The Key Visual of Anime "${doc.name}"`}
-                class="card-actions w-60 rounded-md"
-                loading="lazy"
-            />
-            <p class=" link-primary">
-                {#if lang === Lang.Jp}
-                    画像をクリックして類似検索
-                {:else}
-                    Click Image to Similarity Search
-                {/if}
-            </p>
-        </a>
+        <figure>
+            <a
+                href="/vectorsearch/buffer/{doc.id}?item-type={ITypeConv.toString(
+                    doc.itemType,
+                )}{lang === Lang.Jp ? '&lang=ja' : ''}"
+                class="tooltip"
+                aria-label={linkLabel()}
+                data-tip={linkLabel()}
+            >
+                <img
+                    id={doc.id}
+                    src="/{doc.img}"
+                    alt={lang === Lang.Jp && doc.nameJapanese
+                        ? `アニメ「${doc.nameJapanese}」のキービジュアル`
+                        : `The Key Visual of Anime "${doc.name}"`}
+                    class="card-actions w-60 rounded-md"
+                    loading="lazy"
+                />
+                <p class=" link-primary">
+                    {#if lang === Lang.Jp}
+                        画像をクリックして類似検索
+                    {:else}
+                        Click Image to Similarity Search
+                    {/if}
+                </p>
+            </a>
+        </figure>
     {/if}
     {#if doc.src}
         <a

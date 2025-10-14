@@ -10,7 +10,7 @@
     let { lang }: Props = $props();
 </script>
 
-<div class="py-20">
+<main class="py-20">
     <div class="hero w-full">
         <div class="hero-content flex flex-col">
             <figure>
@@ -82,4 +82,4 @@
         </div>
     </div>
     <TopPageFeatures {lang} />
-</div>
+</main>

@@ -41,21 +41,23 @@
             allowfullscreen
             class="rounded-md my-2"
         ></iframe>
-        <span class="text-center mt-5">
-            <a href="https://www.youtube.com/watch?v={doc.unique}">
-                <button
-                    class="btn btn-sm btn-circle btn-accent tooltip w-60"
-                    data-tip={lang === Lang.Jp
-                        ? "Youtubeへ移動する"
-                        : "Go to Youtube"}
-                >
-                    {#if lang === Lang.Jp}
-                        📺 Youtubeで見る
-                    {:else}
-                        📺 Watch on Youtube
-                    {/if}
-                </button>
-            </a>
-        </span>
+        <menu class="text-center mt-5">
+            <li>
+                <a href="https://www.youtube.com/watch?v={doc.unique}">
+                    <button
+                        class="btn btn-sm btn-circle btn-accent tooltip w-60"
+                        data-tip={lang === Lang.Jp
+                            ? "Youtubeへ移動する"
+                            : "Go to Youtube"}
+                    >
+                        {#if lang === Lang.Jp}
+                            📺 Youtubeで見る
+                        {:else}
+                            📺 Watch on Youtube
+                        {/if}
+                    </button>
+                </a>
+            </li>
+        </menu>
     {/if}
 </DocumentCard>
