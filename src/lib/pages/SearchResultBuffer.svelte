@@ -98,46 +98,48 @@
     });
 </script>
 
-<div class="mt-20 mx-5 text-center">
-    <h1 class="text-3xl font-semibold text-secondary">
-        {#if lang === Lang.Jp}
-            検索結果
-        {:else}
-            Search Results
-        {/if}
-    </h1>
-</div>
-<SearchTipTop {lang} {searchType} />
-{#await buffer}
-    <div class="hero min-h-screen w-full">
-        <div class="hero-content">
-            <LoadingMsg />
-        </div>
+<main>
+    <div class="mt-20 mx-5 text-center">
+        <h1 class="text-3xl font-semibold text-secondary">
+            {#if lang === Lang.Jp}
+                検索結果
+            {:else}
+                Search Results
+            {/if}
+        </h1>
     </div>
-{:then { documents }}
-    {#if documents && documents.length > 0}
-        <div class="py-10">
-            <div class="hero w-full">
-                <div
-                    class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-5 mb-10"
-                >
-                    <h2 class="text-lg">
-                        {searchResultLabel(documents.at(0))}
-                    </h2>
-                </div>
-            </div>
-            <div class="hero w-full">
-                <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-                    {#each documents as doc, i (i)}
-                        <CandidateCard {lang} {doc} />
-                    {/each}
-                </div>
+    <SearchTipTop {lang} {searchType} />
+    {#await buffer}
+        <div class="hero min-h-screen w-full">
+            <div class="hero-content">
+                <LoadingMsg />
             </div>
         </div>
-    {:else}
+    {:then { documents }}
+        {#if documents && documents.length > 0}
+            <div class="py-10">
+                <div class="hero w-full">
+                    <div
+                        class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mx-5 mb-10"
+                    >
+                        <h2 class="text-lg">
+                            {searchResultLabel(documents.at(0))}
+                        </h2>
+                    </div>
+                </div>
+                <div class="hero w-full">
+                    <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
+                        {#each documents as doc, i (i)}
+                            <CandidateCard {lang} {doc} />
+                        {/each}
+                    </div>
+                </div>
+            </div>
+        {:else}
+            <NoResults {lang} />
+        {/if}
+    {:catch}
         <NoResults {lang} />
-    {/if}
-{:catch}
-    <NoResults {lang} />
-{/await}
-<SearchTipBottom {lang} {searchType} />
+    {/await}
+    <SearchTipBottom {lang} {searchType} />
+</main>

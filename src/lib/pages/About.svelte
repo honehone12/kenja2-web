@@ -9,10 +9,10 @@
     let { lang }: Props = $props();
 </script>
 
-<div class="w-full py-20 px-10">
+<main class="w-full py-20 px-10">
     <div class="flex justify-center">
         <div class="max-w-200">
-            <span>
+            <section>
                 <h1
                     class="text-center font-semibold text-secondary text-3xl mb-10"
                 >
@@ -39,7 +39,7 @@
                         <br />
                         <p>
                             ベクトル検索はAIの進化とともに進化し、とても高精度になっています。
-                            <br/>
+                            <br />
                             しかしベクトルデータの巨大さはなかなか厄介な問題となり得ます。例えば、多くのシステムで利用可能な３２ビット浮動小数点で
                             ベクトルをデータベースに保存した場合、現在一般的な７６８次元で１つあたり３０７２バイトになります。
                             汎用ストレージにとっては大したサイズではありませんが、やはりデータベースに「埋め込み」したいと思うと厄介なサイズなわけです。
@@ -92,8 +92,8 @@
                         </p>
                     {/if}
                 </span>
-            </span>
-            <span>
+            </section>
+            <section>
                 <h2
                     class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
                 >
@@ -129,8 +129,8 @@
                         </p>
                     {/if}
                 </span>
-            </span>
-            <span>
+            </section>
+            <section>
                 <h2
                     class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
                 >
@@ -176,29 +176,31 @@
                     {/if}
                 </span>
                 <div class="flex justify-center text-center mt-5">
-                    <a
-                        href="/vectorsearch/buffer/68afc67679d87884b805020f?item-type=anime{lang ===
-                        Lang.Jp
-                            ? '&lang=ja'
-                            : ''}"
-                    >
-                        <img
-                            src="/preview/anime/9e1f6c08772d5a7b3d62a083a643f87d.jpg"
-                            alt={lang === Lang.Jp
-                                ? "アニメ「普通の女子高生が【ろこどる】やってみた。」"
-                                : 'Anime Named "Futsuu no Joshikousei ga [Locodol] Yattemita."'}
-                        />
-                        <p class="link-primary">
-                            {#if lang === Lang.Jp}
-                                画像をクリックして類似検索
-                            {:else}
-                                Click Image to Similarity Search
-                            {/if}
-                        </p>
-                    </a>
+                    <figure>
+                        <a
+                            href="/vectorsearch/buffer/68afc67679d87884b805020f?item-type=anime{lang ===
+                            Lang.Jp
+                                ? '&lang=ja'
+                                : ''}"
+                        >
+                            <img
+                                src="/preview/anime/9e1f6c08772d5a7b3d62a083a643f87d.jpg"
+                                alt={lang === Lang.Jp
+                                    ? "アニメ「普通の女子高生が【ろこどる】やってみた。」"
+                                    : 'Anime Named "Futsuu no Joshikousei ga [Locodol] Yattemita."'}
+                            />
+                            <p class="link-primary">
+                                {#if lang === Lang.Jp}
+                                    画像をクリックして類似検索
+                                {:else}
+                                    Click Image to Similarity Search
+                                {/if}
+                            </p>
+                        </a>
+                    </figure>
                 </div>
-            </span>
-            <span>
+            </section>
+            <section>
                 <h2
                     class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
                 >
@@ -285,8 +287,8 @@
                         </p>
                     {/if}
                 </span>
-            </span>
-            <span>
+            </section>
+            <section>
                 <h2
                     class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
                 >
@@ -301,7 +303,7 @@
                         <p>
                             昔、某動画投稿サイトに動画を作って投稿していたことがあります。ギャグ系の。自分ではオリジナルだと思っていたギャグでも、
                             先輩諸氏に「これはあのアニメのあのシーンっぽいね」と言われても自分ではなんのことだかさっぱりわからず、「え？あ.....。」みたいな感じになっちゃって残念な思いをしたことがあります。
-                            <br/>
+                            <br />
                             まあどうでもいいんですけど、「そのアニメは知りません。」で終わってしまうと悲しいと思っています。「あー！名前は知ってますがまだ見てません。〇〇っぽいアニメですよね？」
                             くらい言えれば先輩諸氏も喜んでベラベラ説明してくれたことでしょう。まあどうでもいいんですけど。
                         </p>
@@ -323,8 +325,8 @@
                         </p>
                     {/if}
                 </span>
-            </span>
-            <span>
+            </section>
+            <section>
                 <h2
                     class="text-center text-secondary font-semibold text-3xl mt-20 mb-10"
                 >
@@ -335,8 +337,8 @@
                     {/if}
                 </h2>
                 <CommunitySnsCard />
-            </span>
-            <span>
+            </section>
+            <section>
                 <span class="text-center text-secondary text-xl">
                     <h2 class="mt-30">
                         {#if lang === Lang.Jp}
@@ -346,7 +348,7 @@
                         {/if}
                     </h2>
                 </span>
-            </span>
+            </section>
         </div>
     </div>
-</div>
+</main>

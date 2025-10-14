@@ -8,7 +8,7 @@
     let { link, label, display }: Props = $props();
 </script>
 
-<div class="text-center">
+<li class="text-center">
     <a href={link}>
         <button
             class="btn btn-circle btn-sm btn-accent tooltip w-34"
@@ -18,4 +18,4 @@
             {display}
         </button>
     </a>
-</div>
+</li>

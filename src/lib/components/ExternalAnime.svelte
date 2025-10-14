@@ -11,7 +11,7 @@
 </script>
 
 {#if nameJapanese}
-    <div
+    <menu
         class="card-actions flex flex-wrap justify-center gap-x-2 gap-y-4 w-70"
     >
         <ExternalLinkButton
@@ -34,5 +34,5 @@
             label={Lang.Jp ? "駿河屋で探す" : "Search on Suruga Ya"}
             display={lang === Lang.Jp ? "💿 駿河屋" : "💿 SURUGA-YA"}
         />
-    </div>
+    </menu>
 {/if}
