@@ -94,7 +94,7 @@
                         /></svg
                     >
                 </div>
-                <ul
+                <menu
                     class="menu menu-lg dropdown-content bg-base-300 rounded-box z-1 w-52 mt-4 p-3"
                 >
                     {#each ROUTES as route, i (i)}
@@ -113,11 +113,11 @@
                             </a>
                         </li>
                     {/each}
-                </ul>
+                </menu>
             </div>
         </div>
         <div class="navbar-center hidden md:flex">
-            <ul class="menu menu-lg menu-horizontal px-1">
+            <menu class="menu menu-lg menu-horizontal px-1">
                 {#each ROUTES as route, i (i)}
                     <li>
                         <a
@@ -130,10 +130,10 @@
                         </a>
                     </li>
                 {/each}
-            </ul>
+            </menu>
         </div>
         <div class="navbar-end">
-            <ul class="menu menu-lg menu-horizontal px-1 mr-4">
+            <menu class="menu menu-lg menu-horizontal px-1 mr-4">
                 <li>
                     <a
                         tabindex="0"
@@ -146,7 +146,7 @@
                         <span class="font-medium">{otherLang()}</span>
                     </a>
                 </li>
-            </ul>
+            </menu>
         </div>
     </nav>
 </heaer>
