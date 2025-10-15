@@ -9,7 +9,7 @@
     const description =
         "Anime & character search and recommendation powered by image vector search. Showing image search results for anime & characters.";
     const descriptionJapanese =
-        "アニメ ＆ キャラクターの検索と画像ベクターサーチによるおすすめシステム。アニメ ＆ キャラクターの画像検索の結果を表示しています。";
+        "アニメ & キャラクターの検索と画像ベクターサーチによるおすすめシステム。アニメ & キャラクターの画像検索の結果を表示しています。";
 </script>
 
 <svelte:head>
