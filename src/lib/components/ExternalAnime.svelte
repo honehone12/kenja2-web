@@ -21,17 +21,17 @@
         />
         <ExternalLinkButton
             link="https://animestore.docomo.ne.jp/animestore/sch?searchKey={nameJapanese}"
-            label={Lang.Jp ? "d Animeで探す" : "Search on d Anime"}
+            label={lang === Lang.Jp ? "d Animeで探す" : "Search on d Anime"}
             display={lang === Lang.Jp ? "📺 dアニメ" : "📺 d Anime"}
         />
         <ExternalLinkButton
             link="https://shopping.bookoff.co.jp/search/genre/7102/keyword/{nameJapanese}"
-            label={Lang.Jp ? "ブックオフで探す" : "Search on BOOK OFF"}
+            label={lang === Lang.Jp ? "ブックオフで探す" : "Search on BOOK OFF"}
             display={lang === Lang.Jp ? "💿 ブックオフ" : "💿 BOOK OFF"}
         />
         <ExternalLinkButton
             link="https://www.suruga-ya.jp/search?category=300&search_word={nameJapanese}"
-            label={Lang.Jp ? "駿河屋で探す" : "Search on Suruga Ya"}
+            label={lang === Lang.Jp ? "駿河屋で探す" : "Search on Suruga Ya"}
             display={lang === Lang.Jp ? "💿 駿河屋" : "💿 SURUGA-YA"}
         />
     </menu>

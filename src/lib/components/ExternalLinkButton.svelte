@@ -9,11 +9,10 @@
 </script>
 
 <li class="text-center">
-    <a href={link}>
+    <a href={link} class="tooltip" data-tip={label}>
         <button
-            class="btn btn-circle btn-sm btn-accent tooltip w-34"
+            class="btn btn-circle btn-sm btn-accent w-34"
             aria-label={label}
-            data-tip={label}
         >
             {display}
         </button>
