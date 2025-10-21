@@ -81,7 +81,7 @@ export class LambdaApi implements AnimeSearch {
     fuzzy_kind: FuzzyKind | undefined,
   ): Promise<SearchResult> {
     const q: SearchQuery = {
-      function_id: FunctionId.TextSearchBuffer,
+      function_id: FunctionId.TextSearch,
       item_type,
       keywords,
       fuzzy_kind,
@@ -100,7 +100,7 @@ export class LambdaApi implements AnimeSearch {
     id: string,
   ): Promise<SearchResult> {
     const q: SearchQuery = {
-      function_id: FunctionId.VectorSearchBuffer,
+      function_id: FunctionId.VectorSearch,
       item_type,
       id,
     };
