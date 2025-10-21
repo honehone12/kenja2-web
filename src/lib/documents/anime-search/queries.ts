@@ -39,6 +39,8 @@ export const enum FunctionId {
   Random,
   TextSearch,
   VectorSearch,
+  TextSearchStream,
+  VectorSearchStreeam,
 }
 
 export const enum FuzzyKind {
