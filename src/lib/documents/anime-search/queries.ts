@@ -37,8 +37,10 @@ export const enum FunctionId {
   Unspecified = 0,
   Ping,
   Random,
-  TextSearchBuffer,
-  VectorSearchBuffer,
+  TextSearch,
+  VectorSearch,
+  TextSearchStream,
+  VectorSearchStreeam,
 }
 
 export const enum FuzzyKind {
