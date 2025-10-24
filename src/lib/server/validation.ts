@@ -1,4 +1,3 @@
-import { ItemType } from "$lib/documents/anime-search/queries";
 import { MAX_KW_LEN, OID_LEN } from "$lib/index.js";
 import logs from "$lib/server/logs.js";
 

@@ -207,6 +207,6 @@
         link: "/archive/2025/winter",
         linkJapanese: "/archive/2025/winter?lang=ja",
         name: "2025 Winter Season Anime",
-        nameJapanese: "２０２５年冬アニメはこちら"
+        nameJapanese: "２０２５年冬アニメはこちら",
     }}
 />

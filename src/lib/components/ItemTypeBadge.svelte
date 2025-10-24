@@ -2,21 +2,21 @@
     import { ItemType } from "$lib/documents/anime-search/queries";
 
     interface Props {
-        itemType: ItemType
+        itemType: ItemType;
     }
 
-    let {itemType}: Props = $props();
+    let { itemType }: Props = $props();
 
     function label(itemType: ItemType) {
         switch (itemType) {
             case ItemType.Anime:
-                return 'Anime アニメ';
+                return "Anime アニメ";
             case ItemType.Character:
-                return 'Character キャラクター';
+                return "Character キャラクター";
             case ItemType.YVideo:
-                return 'Trailer トレーラー'
+                return "Trailer トレーラー";
             default:
-                return '';
+                return "";
         }
     }
 </script>

@@ -1,4 +1,4 @@
-import {pino} from "pino";
+import { pino } from "pino";
 
 /*
 =========== pino's default level mapping ===========
@@ -8,6 +8,6 @@ Value | 10    | 20    | 30   | 40   | 50    | 60
 */
 
 const logs = pino();
-logs.level = 'info';
+logs.level = "info";
 
 export default logs;
