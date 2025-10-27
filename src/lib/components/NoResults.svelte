@@ -5,7 +5,7 @@
         lang: Lang;
     }
 
-    let {lang}: Props = $props();
+    let { lang }: Props = $props();
 </script>
 
 <div class="hero min-h-screen w-full">

@@ -1,9 +1,6 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import type {
-        FlatDocument,
-        Parent,
-    } from "$lib/documents/anime-search/documents";
+    import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import ItemTypeBadge from "$lib/components/ItemTypeBadge.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import ParentLabel from "$lib/components/ParentLabel.svelte";

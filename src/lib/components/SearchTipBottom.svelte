@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Lang, SearchType } from "$lib";
-    
+
     interface Props {
         lang: Lang;
         searchType: SearchType;
