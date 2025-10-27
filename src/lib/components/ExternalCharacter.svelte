@@ -24,7 +24,7 @@
         <ExternalLinkButton
             link="https://www.dmm.com/mono/-/search/=/searchstr={nameJapanese}"
             label={lang === Lang.Jp ? "DMMで探す" : "Search on DMM"}
-            display={"🔍 DMM"}
+            display="🔍 DMM"
         />
         <ExternalLinkButton
             link="https://slist.amiami.jp/top/search/list?hanbaichu=1&s_st_list_preorder_available=1&s_st_list_newitem_available=1&s_st_condition_flg=1&s_keywords={nameJapanese}&pagemax=60"

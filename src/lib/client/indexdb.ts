@@ -33,8 +33,8 @@ export class IndexDb {
       const req = indexedDB.open(IndexDb.DB_NAME, 100);
       req.onerror = () => reject("failed to open index db");
       req.onupgradeneeded = (ev) => {
-        let db = (ev.target as IDBOpenDBRequest).result;
-        let storeList = db.objectStoreNames;
+        const db = (ev.target as IDBOpenDBRequest).result;
+        const storeList = db.objectStoreNames;
 
         if (!storeList.contains(IndexDb.META_STORE)) {
           db.createObjectStore(IndexDb.META_STORE);
