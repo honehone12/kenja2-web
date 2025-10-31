@@ -42,6 +42,7 @@ export const enum FunctionId {
   DirectVectorSearch,
   TextSearchStream,
   VectorSearchStreeam,
+  DirectVectorSearchStream,
 }
 
 export const enum FuzzyKind {
