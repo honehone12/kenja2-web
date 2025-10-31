@@ -1,0 +1,4 @@
+{
+  "targets": ["　", "＆"],
+  "extensions": ["svelte", "js", "ts"]
+}
