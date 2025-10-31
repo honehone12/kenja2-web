@@ -1,4 +1,4 @@
-export const MAX_KW_LEN = 120;
+export const MAX_KW_LEN = 150;
 export const OID_LEN = 24;
 
 export const enum SearchType {
