@@ -39,6 +39,7 @@ export const enum FunctionId {
   Random,
   TextSearch,
   VectorSearch,
+  DirectVectorSearch,
   TextSearchStream,
   VectorSearchStreeam,
 }
@@ -60,4 +61,5 @@ export interface SearchQuery {
   id?: string | undefined;
   keywords?: string | undefined;
   fuzzy_kind?: FuzzyKind | undefined;
+  vector?: string | undefined;
 }
