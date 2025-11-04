@@ -1,4 +1,4 @@
-export const CACHE_HEADER = {
+export const A_DAY_CACHE_HEADER = {
   "Cache-Control": "max-age=86400",
 };
 

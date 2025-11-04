@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang, MAX_KW_LEN } from "$lib";
+    import { Lang, KEYWORDS_MAX_LEN } from "$lib";
 
     interface Props {
         lang: Lang;
@@ -32,7 +32,7 @@
             type="text"
             name="keyword"
             required
-            maxlength={MAX_KW_LEN}
+            maxlength={KEYWORDS_MAX_LEN}
             placeholder={lang === Lang.Jp
                 ? "キーワードを入力"
                 : "Enter Keywords"}

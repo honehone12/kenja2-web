@@ -2,7 +2,7 @@ import { FuzzyConv, ITypeConv } from "$lib/documents/anime-search/queries.js";
 import { emptySearchResult, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
-import { CACHE_HEADER } from "$lib/server/headers";
+import { A_DAY_CACHE_HEADER } from "$lib/server/headers";
 import { validateKeyword } from "$lib/server/validation.js";
 
 export function load({ url, setHeaders }) {
@@ -15,7 +15,7 @@ export function load({ url, setHeaders }) {
   const fuzzyKind = FuzzyConv.fromString(url.searchParams.get("fuzzy"));
   const itemType = ITypeConv.fromString(url.searchParams.get("item-type"));
 
-  setHeaders(CACHE_HEADER);
+  setHeaders(A_DAY_CACHE_HEADER);
 
   try {
     const bufferedStream = kenja
