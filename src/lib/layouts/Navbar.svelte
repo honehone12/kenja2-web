@@ -18,6 +18,12 @@
             jpPath: "/?lang=ja",
         },
         {
+            name: "AI Search",
+            jpName: "AI検索",
+            path: "/ai",
+            jpPath: "/ai?lang=ja",
+        },
+        {
             name: "Latest",
             jpName: "最新",
             path: "/latest",

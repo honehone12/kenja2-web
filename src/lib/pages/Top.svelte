@@ -39,6 +39,15 @@
                         Kenjanime
                     {/if}
                 </h1>
+                <div class="mb-10">
+                    <a href={lang === Lang.Jp ? "/ai?lang=ja" : "/ai"}>
+                        <button class="btn btn-xl btn-accent">
+                            {lang === Lang.Jp
+                                ? "AI画像検索を試す"
+                                : "Try AI Image Search"}
+                        </button>
+                    </a>
+                </div>
                 <h2 class="text-2xl font-semibold mb-5">
                     {#if lang === Lang.Jp}
                         アニメの検索とおすすめ

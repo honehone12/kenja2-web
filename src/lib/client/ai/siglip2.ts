@@ -17,6 +17,7 @@ export class Siglip2GpuInitializer implements ModelInitializer {
   public model() {
     return SiglipVisionModel.from_pretrained(this.name(), {
       device: "webgpu",
+      dtype: "fp32",
     });
   }
 
@@ -39,7 +40,7 @@ export class Siglip2CpuInitializer implements ModelInitializer {
   }
 
   public model() {
-    return SiglipVisionModel.from_pretrained(this.name());
+    return SiglipVisionModel.from_pretrained(this.name(), { dtype: "fp32" });
   }
 
   public processor() {

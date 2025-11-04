@@ -6,6 +6,10 @@ class Ai {
   private _device: AiDevice | null = null;
 
   public async init(): Promise<void> {
+    if (this.initialized()) {
+      return;
+    }
+
     const adapter = await navigator.gpu?.requestAdapter();
     const device = await adapter?.requestDevice();
 
