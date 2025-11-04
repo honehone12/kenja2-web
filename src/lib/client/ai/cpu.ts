@@ -1,7 +1,11 @@
 import type { AiDevice } from "$lib/client/ai/device";
 import type { ModelInitializer } from "$lib/client/ai/initializer";
 import { Siglip2CpuInitializer } from "$lib/client/ai/siglip2";
-import { WorkerCommand, type WorkerResult } from "$lib/client/ai/message";
+import {
+  WorkerCommand,
+  type WorkerParams,
+  type WorkerResult,
+} from "$lib/client/ai/message";
 
 type ResolveVector = (value: string) => void;
 type Resolve = () => void;
@@ -59,8 +63,8 @@ export class CpuAi implements AiDevice {
           callbacks.onFail("unknown event command");
           break;
       }
-    } catch (e) {
-      console.error(e);
+    } catch {
+      console.error("failed to processing worker message");
     }
   };
 
@@ -80,10 +84,11 @@ export class CpuAi implements AiDevice {
       };
       const id = this.next();
       this._pendingMap.set(id, callbacks);
-      this._worker.postMessage({
+      const params: WorkerParams = {
         id,
         command: WorkerCommand.initialize,
-      });
+      };
+      this._worker.postMessage(params);
     });
   }
   public initialized(): boolean {
@@ -100,17 +105,18 @@ export class CpuAi implements AiDevice {
     }
 
     return new Promise<string>((resolve, reject) => {
-      const callbacks = {
+      const callbacks: Callbacks = {
         onSuccess: resolve,
         onFail: reject,
       };
       const id = this.next();
       this._pendingMap.set(id, callbacks);
-      this._worker.postMessage({
+      const params: WorkerParams = {
         id,
         command: WorkerCommand.generate,
         file,
-      });
+      };
+      this._worker.postMessage(params);
     });
   }
 }

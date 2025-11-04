@@ -112,4 +112,22 @@ export class LambdaApi implements AnimeSearch {
 
     return this.lambdaQuery(input);
   }
+
+  public async directVectorSearch(
+    item_type: ItemType,
+    vector: string,
+  ): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.DirectVectorSearch,
+      item_type,
+      vector,
+    };
+    const payload = JSON.stringify(q);
+    const input: InvokeCommandInput = {
+      FunctionName: this._functionName,
+      Payload: payload,
+    };
+
+    return this.lambdaQuery(input);
+  }
 }

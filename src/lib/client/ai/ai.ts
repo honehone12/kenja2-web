@@ -6,9 +6,7 @@ class Ai {
   private _device: AiDevice | null = null;
 
   public async init(): Promise<void> {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const adapter = await navigator.gpu?.requestAdapter();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const device = await adapter?.requestDevice();
 
     this._device = adapter && device ? new GpuAi() : new CpuAi();

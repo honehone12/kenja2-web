@@ -10,4 +10,8 @@ export interface AnimeSearch {
     fuzzy_kind: FuzzyKind | undefined,
   ): Promise<SearchResult>;
   vectorSearch(item_type: ItemType, id: string): Promise<SearchResult>;
+  directVectorSearch(
+    item_type: ItemType,
+    vector: string,
+  ): Promise<SearchResult>;
 }

@@ -1,5 +1,9 @@
 import { PreTrainedModel, Processor } from "@huggingface/transformers";
-import { WorkerCommand, type WorkerParams } from "$lib/client/ai/message";
+import {
+  WorkerCommand,
+  type WorkerParams,
+  type WorkerResult,
+} from "$lib/client/ai/message";
 import { Siglip2CpuInitializer } from "$lib/client/ai/siglip2";
 import { vectorProcess } from "$lib/client/ai/vector-process";
 
@@ -15,10 +19,11 @@ self.onmessage = async (event: MessageEvent<WorkerParams>) => {
           const initializer = new Siglip2CpuInitializer();
           __model = await initializer.model();
           __processor = await initializer.processor();
-          self.postMessage({
+          const result: WorkerResult = {
             id: msg.id,
             command: msg.command,
-          });
+          };
+          self.postMessage(result);
         }
         break;
       case WorkerCommand.generate:
@@ -37,21 +42,23 @@ self.onmessage = async (event: MessageEvent<WorkerParams>) => {
             false,
           );
 
-          self.postMessage({
+          const result: WorkerResult = {
             id: msg.id,
             command: msg.command,
             vector,
-          });
+          };
+          self.postMessage(result);
         }
         break;
       default:
         throw new Error("unexpected command");
     }
   } catch (e) {
-    console.error(e);
-    self.postMessage({
+    const result: WorkerResult = {
       id: msg.id,
+      command: msg.command,
       error: `${e}`,
-    });
+    };
+    self.postMessage(result);
   }
 };
