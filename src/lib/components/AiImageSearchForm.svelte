@@ -22,7 +22,7 @@
         <LoadingMsg />
     {:else}
         <form
-            onsubmit={(event) => {
+            onsubmit={async (event) => {
                 if (pending) {
                     return;
                 }

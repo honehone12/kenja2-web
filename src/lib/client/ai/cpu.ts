@@ -91,6 +91,7 @@ export class CpuAi implements AiDevice {
       this._worker.postMessage(params);
     });
   }
+
   public initialized(): boolean {
     return this._initializer !== null && this._initialized;
   }

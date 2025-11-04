@@ -3,6 +3,7 @@
     import { Lang } from "$lib";
     import ai from "$lib/client/ai/ai";
     import AiImageSearchForm from "$lib/components/AiImageSearchForm.svelte";
+    import LoadingMsg from "$lib/components/LoadingMsg.svelte";
 
     interface Props {
         lang: Lang;
@@ -12,6 +13,12 @@
 
     async function initialize() {
         await ai.init();
+    }
+
+    async function getDevice(): Promise<string> {
+        const adapter = await navigator.gpu?.requestAdapter();
+        const device = await adapter?.requestDevice();
+        return adapter && device ? "GPU" : "CPU";
     }
 
     async function onsubmit(file: File, itemType: string) {
@@ -31,6 +38,23 @@
             {/if}
         </h1>
     </span>
+    <div class="hero mt-10">
+        <div class="hero-content">
+            <div class="text-center text-secondary text-lg">
+                {#await getDevice()}
+                    <LoadingMsg />
+                {:then device}
+                    <p>
+                        {#if lang === Lang.Jp}
+                            使用する推論デバイス: {device}
+                        {:else}
+                            The inference device to use: {device}
+                        {/if}
+                    </p>
+                {/await}
+            </div>
+        </div>
+    </div>
     <div class="hero">
         <div class="hero-content">
             <AiImageSearchForm {lang} {initialize} {onsubmit} />
