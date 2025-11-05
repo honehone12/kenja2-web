@@ -37,5 +37,5 @@
 <SearchResultBuffer
     lang={data.lang}
     buffer={data.bufferedStream}
-    searchType={SearchType.Vector}
+    searchType={SearchType.DirectVector}
 />

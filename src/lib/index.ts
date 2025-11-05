@@ -4,8 +4,9 @@ export const VECTOR_ENCODED_LEN = 1024;
 
 export const enum SearchType {
   Text = 1,
-  Vector = 2,
-  Random = 3,
+  Vector,
+  Random,
+  DirectVector,
 }
 
 export const enum Lang {

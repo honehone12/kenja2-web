@@ -16,7 +16,7 @@
 
     async function onsubmit(file: File, itemType: string) {
         const vector = await ai.generateVector(file);
-        const path = `/direct-vectorsearch/buffer?item-type=${itemType}&vector=${vector}`;
+        const path = `/direct-vectorsearch/buffer?item-type=${itemType}&vector=${vector}${lang === Lang.Jp ? "&lang=ja" : ""}`;
         goto(path);
     }
 </script>

@@ -1,6 +1,5 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import type { OnUnstar } from "$lib/client/callback";
     import mylistCtrl from "$lib/client/mylist-control";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import { onMount } from "svelte";
@@ -8,7 +7,7 @@
     interface Props {
         lang: Lang;
         doc: FlatDocument;
-        onUnstar?: OnUnstar;
+        onUnstar?: (id: string) => void;
     }
 
     let { lang, doc, onUnstar }: Props = $props();
