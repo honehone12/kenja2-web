@@ -23,12 +23,30 @@ https://opensource.org/licenses/MIT
 - nanoid
   - Copyright Holder: Ai Zongbin
   - Homepage: https://github.com/ai/nanoid
-- uuid
-  - Copyright Holders: Robert Kieffer and others
-  - Homepage: https://github.com/uuidjs/uuid
 - Jikan Api
   - Copyright Holder: Jikan Api
   - Homepage: https://jikan.moe
+- browser-image-compression
+  - Copyright Holder: Donald Chan
+  - Homepage: https://github.com/Donaldcwl/browser-image-compression
+- @huggingface/jinja
+  - Copyright Holder: Hugging Face
+  - Homepage: https://github.com/huggingface/transformers.js
+- onnxruntime-web
+  - Copyright Holder: Microsoft Corporation
+  - Homepage: https://github.com/microsoft/onnxruntime
+- onnxruntime-common
+  - Copyright Holder: Microsoft Corporation
+  - Homepage: https://github.com/microsoft/onnxruntime
+- guid-typescript
+  - Copyright Holder: Evgeny Zatepyakin
+  - Homepage: https://github.com/Zate/guid-typescript
+- platform
+  - Copyright Holder: Benjamin Tan
+  - Homepage: https://github.com/bestiejs/platform.js
+- uzip
+  - Copyright Holder: Photopea
+  - Homepage: https://github.com/photopea/UZIP.js
 
 ## MIT License
 ------
@@ -58,6 +76,15 @@ https://opensource.org/license/apache-2-0
 - siglip2-base-patch16-512
   - Copyright Holder: google
   - Homepage: https://huggingface.co/google/siglip2-base-patch16-512
+- transformers.js
+  - Copyright Holder: huggingface
+  - Homepage: https://github.com/huggingface/transformers.js
+- flatbuffers
+  - Copyright Holder: Google Inc.
+  - Homepage: https://github.com/google/flatbuffers
+- long
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/dcodeIO/long.js
 
 ## Apache License 2.0
 ------
@@ -248,3 +275,57 @@ https://opensource.org/license/apache-2-0
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+
+# BSD 3-Clause "New" or "Revised" License
+Copyright (c) [Each Copyright Holders]
+https://opensource.org/license/bsd-3-clause
+
+- js-base64
+  - Copyright Holder: Dan Kogai
+  - Homepage: https://github.com/dankogai/js-base64
+- protobufjs
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/protobuf.js
+- @protobufjs/aspromise
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/aspromise
+- @protobufjs/base64
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/base64
+- @protobufjs/codegen
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/codegen
+- @protobufjs/eventemitter
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/eventemitter
+- @protobufjs/fetch
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/fetch
+- @protobufjs/float
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/float
+- @protobufjs/inquire
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/inquire
+- @protobufjs/path
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/path
+- @protobufjs/pool
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/pool
+- @protobufjs/utf8
+  - Copyright Holder: Daniel Wirtz
+  - Homepage: https://github.com/protobufjs/utf8
+
+## BSD-3-Clause
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
