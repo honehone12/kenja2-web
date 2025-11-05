@@ -14,11 +14,14 @@ class Ai {
       const gpu = new GpuAi();
       await gpu.init();
       this._device = gpu;
+      return;
     } catch {
-      const cpu = new CpuAi();
-      await cpu.init();
-      this._device = cpu;
+      console.log("fallbacking to cpu");
     }
+
+    const cpu = new CpuAi();
+    await cpu.init();
+    this._device = cpu;
   }
 
   public initialized(): boolean {
