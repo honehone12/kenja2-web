@@ -14,6 +14,9 @@
             ? "画像ファイルを選択してください"
             : "Select a Image File"}
     </h2>
+    <p class="mt-5">
+        {lang === Lang.Jp ? "対応ファイル: jpeg" : "Supported file type: jpeg"}
+    </p>
 </label>
 <input
     required
@@ -21,5 +24,5 @@
     name="file"
     type="file"
     accept="image/jpeg"
-    class="file-input file-input-accent mt-5"
+    class="file-input file-input-accent mt-5 w-80 md:w-120"
 />

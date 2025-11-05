@@ -1,6 +1,5 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import LoadingMsg from "$lib/components/LoadingMsg.svelte";
     import WarnIcon from "$lib/components/WarnIcon.svelte";
 
     interface Props {

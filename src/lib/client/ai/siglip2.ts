@@ -10,10 +10,6 @@ export class Siglip2GpuInitializer implements ModelInitializer {
     return "onnx-community/siglip2-base-patch16-512-ONNX";
   }
 
-  public useCpu(): boolean {
-    return false;
-  }
-
   public model() {
     return SiglipVisionModel.from_pretrained(this.name(), {
       device: "webgpu",
@@ -33,10 +29,6 @@ export class Siglip2CpuInitializer implements ModelInitializer {
 
   public name() {
     return "onnx-community/siglip2-base-patch16-512-ONNX";
-  }
-
-  public useCpu(): boolean {
-    return true;
   }
 
   public model() {

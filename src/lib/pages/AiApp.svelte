@@ -38,7 +38,20 @@
             {/if}
         </h1>
     </span>
-    <div class="hero mt-10">
+    <div class="hero">
+        <div class="hero-content">
+            <figure>
+                <img
+                    src="/kenja2-logo.png"
+                    alt={lang === Lang.Jp
+                        ? "ケンジャニメのロゴ、賢者のイラスト"
+                        : "Kenjanime Logo, Illustration of Wise Old Man"}
+                    class="size-40 mb-10"
+                />
+            </figure>
+        </div>
+    </div>
+    <div class="hero">
         <div class="hero-content">
             <div class="text-center text-secondary text-lg">
                 {#await getDevice()}

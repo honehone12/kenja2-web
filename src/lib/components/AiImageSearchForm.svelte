@@ -51,7 +51,7 @@
                 <button
                     type="submit"
                     disabled={pending}
-                    class="btn btn-accent mt-10"
+                    class="btn btn-accent mt-10 min-w-30"
                 >
                     {lang === Lang.Jp ? "検索" : "Search"}
                 </button>
