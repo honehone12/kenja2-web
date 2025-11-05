@@ -10,11 +10,15 @@ class Ai {
       return;
     }
 
-    const adapter = await navigator.gpu?.requestAdapter();
-    const device = await adapter?.requestDevice();
-
-    this._device = adapter && device ? new GpuAi() : new CpuAi();
-    await this._device.init();
+    try {
+      const gpu = new GpuAi();
+      await gpu.init();
+      this._device = gpu;
+    } catch {
+      const cpu = new CpuAi();
+      await cpu.init();
+      this._device = cpu;
+    }
   }
 
   public initialized(): boolean {
@@ -23,6 +27,10 @@ class Ai {
 
   public display(): string | null {
     return this._device ? this._device.display() : null;
+  }
+
+  public device(): string | null {
+    return this._device ? this._device.device() : null;
   }
 
   public async generateVector(file: File): Promise<string> {

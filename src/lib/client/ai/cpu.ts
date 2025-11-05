@@ -1,11 +1,11 @@
 import type { AiDevice } from "$lib/client/ai/device";
 import type { ModelInitializer } from "$lib/client/ai/initializer";
-import { Siglip2CpuInitializer } from "$lib/client/ai/siglip2";
 import {
   WorkerCommand,
   type WorkerParams,
   type WorkerResult,
 } from "$lib/client/ai/message";
+import { ModelInitializers } from "./initializers";
 
 type ResolveVector = (value: string) => void;
 type Resolve = () => void;
@@ -73,7 +73,7 @@ export class CpuAi implements AiDevice {
       return;
     }
 
-    this._initializer = new Siglip2CpuInitializer();
+    this._initializer = ModelInitializers.cpu();
     return new Promise((resolve, reject) => {
       const callbacks = {
         onSuccess: () => {
@@ -98,6 +98,10 @@ export class CpuAi implements AiDevice {
 
   public display(): string | null {
     return this._initializer ? this._initializer.display() : null;
+  }
+
+  public device(): string | null {
+    return this._initializer ? this._initializer.device() : null;
   }
 
   public async generateVector(file: File): Promise<string> {

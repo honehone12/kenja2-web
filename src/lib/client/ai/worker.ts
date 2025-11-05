@@ -4,8 +4,8 @@ import {
   type WorkerParams,
   type WorkerResult,
 } from "$lib/client/ai/message";
-import { Siglip2CpuInitializer } from "$lib/client/ai/siglip2";
 import { vectorProcess } from "$lib/client/ai/vector-process";
+import { ModelInitializers } from "./initializers";
 
 let __model: PreTrainedModel | null = null;
 let __processor: Processor | null = null;
@@ -16,7 +16,7 @@ self.onmessage = async (event: MessageEvent<WorkerParams>) => {
     switch (msg.command) {
       case WorkerCommand.initialize:
         {
-          const initializer = new Siglip2CpuInitializer();
+          const initializer = ModelInitializers.cpu();
           __model = await initializer.model();
           __processor = await initializer.processor();
           const result: WorkerResult = {

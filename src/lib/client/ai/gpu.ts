@@ -1,8 +1,8 @@
 import { PreTrainedModel, Processor } from "@huggingface/transformers";
 import type { ModelInitializer } from "$lib/client/ai/initializer";
 import type { AiDevice } from "$lib/client/ai/device";
-import { Siglip2GpuInitializer } from "$lib/client/ai/siglip2";
 import { vectorProcess } from "$lib/client/ai/vector-process";
+import { ModelInitializers } from "./initializers";
 
 export class GpuAi implements AiDevice {
   private _initializer: ModelInitializer | null = null;
@@ -14,7 +14,7 @@ export class GpuAi implements AiDevice {
       return;
     }
 
-    this._initializer = new Siglip2GpuInitializer();
+    this._initializer = ModelInitializers.gpu();
     this._model = await this._initializer.model();
     this._processor = await this._initializer.processor();
   }
@@ -25,6 +25,10 @@ export class GpuAi implements AiDevice {
       this._model !== null &&
       this._processor !== null
     );
+  }
+
+  public device(): string | null {
+    return this._initializer ? this._initializer.device() : null;
   }
 
   public display(): string | null {
