@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Lang } from "$lib";
+    import ai from "$lib/client/ai/ai";
     import ErrorMessage from "./ErrorMessage.svelte";
     import FilePicker from "./FilePicker.svelte";
     import ItemTypeRadioVector from "./ItemTypeRadioVector.svelte";
@@ -42,6 +43,15 @@
             }}
         >
             <div class="text-center">
+                <p class="text-lg text-secondary">
+                    {#if lang === Lang.Jp}
+                        推論デバイス: {ai.device()}
+                    {:else}
+                        Inference Device: {ai.device()}
+                    {/if}
+                </p>
+            </div>
+            <div class="text-center mt-10">
                 <FilePicker {lang} />
             </div>
             <div class="mt-10">

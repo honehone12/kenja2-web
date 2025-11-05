@@ -12,9 +12,9 @@
     <h2 class="text-2xl">
         {lang === Lang.Jp
             ? "画像ファイルを選択してください"
-            : "Select a Image File"}
+            : "Please Select a Image File"}
     </h2>
-    <p class="mt-5">
+    <p class="text-lg mt-5">
         {lang === Lang.Jp ? "対応ファイル: jpeg" : "Supported file type: jpeg"}
     </p>
 </label>
