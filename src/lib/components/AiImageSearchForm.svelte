@@ -51,7 +51,7 @@
                     {/if}
                 </p>
             </div>
-            <div class="text-center mt-10">
+            <div class="mt-10">
                 <FilePicker {lang} />
             </div>
             <div class="mt-10">

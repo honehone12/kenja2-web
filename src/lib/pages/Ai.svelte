@@ -30,10 +30,10 @@
     </span>
     <div class="hero mt-10">
         <div class="hero-content">
-            <div class="alert alert-warning text-center max-w-100">
+            <div class="alert alert-warning text-center text-lg max-w-100">
                 <WarnIcon />
                 {#if lang === Lang.Jp}
-                    AndroidとiOSはサポートしていません。期待通りに動作しない可能性があり、著しく非効率で遅いです。
+                    AndroidとiOSはサポートしていません。期待通りに動作しない可能性があり、著しく非効率で低速です。
                     AndroidとiOSで使用する際はWI-FI環境下にいることを確認してください。
                 {:else}
                     Android and iOS are not supported. It may not function as

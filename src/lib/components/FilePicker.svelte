@@ -8,21 +8,25 @@
     let { lang }: Props = $props();
 </script>
 
-<label for="file-file">
+<label
+    for="file-file"
+    class="tooltip"
+    data-tip={lang === Lang.Jp
+        ? "画像ファイルを選択してください"
+        : "Please Select a Image File"}
+>
     <h2 class="text-2xl">
-        {lang === Lang.Jp
-            ? "画像ファイルを選択してください"
-            : "Please Select a Image File"}
+        {lang === Lang.Jp ? "画像ファイル" : "Image File"}
     </h2>
-    <p class="text-lg mt-5">
-        {lang === Lang.Jp ? "対応ファイル: jpeg" : "Supported file type: jpeg"}
-    </p>
+    <input
+        required
+        id="file-file"
+        name="file"
+        type="file"
+        accept="image/jpeg"
+        class="file-input file-input-accent mt-5 w-80 md:w-120"
+    />
 </label>
-<input
-    required
-    id="file-file"
-    name="file"
-    type="file"
-    accept="image/jpeg"
-    class="file-input file-input-accent mt-5 w-80 md:w-120"
-/>
+<p class="text-lg text-center mt-3">
+    {lang === Lang.Jp ? "対応ファイル: jpeg" : "Supported file type: jpeg"}
+</p>
