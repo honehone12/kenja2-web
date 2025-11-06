@@ -43,16 +43,16 @@
                     <a href={lang === Lang.Jp ? "/ai?lang=ja" : "/ai"}>
                         <button class="btn btn-xl btn-accent">
                             {lang === Lang.Jp
-                                ? "AI画像検索を試す"
-                                : "Try AI Image Search"}
+                                ? "ローカルAI画像検索を試す"
+                                : "Try Local AI Image Search"}
                         </button>
                     </a>
                 </div>
                 <h2 class="text-2xl font-semibold mb-5">
                     {#if lang === Lang.Jp}
-                        アニメのAI検索とおすすめ
+                        アニメの検索とおすすめ
                     {:else}
-                        Anime AI Search and Recommendation
+                        Anime Search and Recommendation
                     {/if}
                 </h2>
                 <span>

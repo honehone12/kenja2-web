@@ -4,8 +4,9 @@
 
     let { data } = $props();
 
-    const title = "Kenjanime - Anime & Character AI Image Search";
-    const titleJapanese = "ケンジャニメ - アニメ & キャラクターのAI画像検索";
+    const title = "Kenjanime - Anime & Character Image Search by Local AI";
+    const titleJapanese =
+        "ケンジャニメ - ローカルAIのアニメ & キャラクター画像検索";
     const description =
         "Anime & Character search and recommendation powered by AI Image search. Image search powered by a local AI that performs 100% in the browser.";
     const descriptionJapanese =
