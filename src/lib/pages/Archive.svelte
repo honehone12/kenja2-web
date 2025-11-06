@@ -2,6 +2,7 @@
     import { Lang } from "$lib";
     import ManualDocumentsBundle from "$lib/components/ManualDocumentsBundle.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
+    import Meta from "$lib/meta/Meta.svelte";
 
     interface BackLink {
         link: string;
@@ -34,35 +35,31 @@
     const titleJapanese = "ケンジャニメ - 過去のアニメ";
 
     function descriptionJapanese() {
-        return `アニメ & キャラクターの検索と画像ベクターサーチによるおすすめシステム。過去のアニメ。${yearJapanese}${seasonJapanese}シーズン人気アニメの一覧です。`;
+        return `アニメ & キャラクターの検索とAI画像ベクターサーチによるおすすめシステム。過去のアニメ。${yearJapanese}${seasonJapanese}シーズン人気アニメの一覧です。`;
     }
 
     function description() {
-        return `Anime & character search and recommendation powered by image vector search. Previous Anime. A list of popular anime in ${year} ${season} Season.`;
+        return `Anime & character search and recommendation powered by AI image vector search. Previous Anime. A list of popular anime in ${year} ${season} Season.`;
+    }
+
+    function keywords() {
+        return `kenja, anime, character, ${year}, ${season.toLowerCase()}, ai, search, recommendation, similar, image, ai search, vector search, image search, similarity search, easy search`;
+    }
+
+    function keywordsJapanese() {
+        return `ケンジャ, アニメ, キャラクター, ${yearJapanese}, ${seasonJapanese}, AI, 検索, おすすめ, 似ている, 画像, AI検索, ベクトル検索, 画像検索, 類似検索, 簡単検索`;
     }
 </script>
 
-<svelte:head>
-    {#if lang === Lang.Jp}
-        <title>{titleJapanese}</title>
-        <meta name="description" content={descriptionJapanese()} />
-        <meta
-            name="keywords"
-            content="ケンジャ, アニメ, キャラクター, {yearJapanese}, {seasonJapanese}, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索"
-        />
-        <meta property="og:title" content={titleJapanese} />
-        <meta property="og:description" content={descriptionJapanese()} />
-    {:else}
-        <title>{title}</title>
-        <meta name="description" content={description()} />
-        <meta
-            name="keywords"
-            content="kenja, anime, character, {year}, {season.toLowerCase()}, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
-        />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description()} />
-    {/if}
-</svelte:head>
+<Meta
+    {lang}
+    {title}
+    {titleJapanese}
+    description={description()}
+    descriptionJapanese={descriptionJapanese()}
+    keywords={keywords()}
+    keywordsJapanese={keywordsJapanese()}
+/>
 
 <main class="py-20">
     <div class="hero w-full">

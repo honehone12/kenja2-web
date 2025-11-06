@@ -1,38 +1,32 @@
 <script lang="ts">
-    import { Lang, SearchType } from "$lib";
+    import { SearchType } from "$lib";
+    import Meta from "$lib/meta/Meta.svelte";
     import SearchResultBuffer from "$lib/pages/SearchResultBuffer.svelte";
 
     let { data } = $props();
 
-    const title = "Kenjanime - Results of Similar Anime and Character Search";
-    const titleJapanese = "ケンジャニメ - アニメとキャラクターの類似検索結果";
+    const title = "Kenjanime - Results of Anime and Character AI Image Search";
+    const titleJapanese =
+        "ケンジャニメ - アニメとキャラクターのAI画像検索の結果";
     const description =
-        "Anime & character search and recommendation powered by image vector search. Showing image search results for anime & characters.";
+        "Anime & character search and recommendation powered by AI image vector search. Showing AI image search results for anime & characters.";
     const descriptionJapanese =
-        "アニメ & キャラクターの検索と画像ベクターサーチによるおすすめシステム。アニメ & キャラクターの画像検索の結果を表示しています。";
+        "アニメ & キャラクターの検索とAI画像ベクターサーチによるおすすめ。アニメ & キャラクターのAI画像検索の結果を表示しています。";
+    const keywords =
+        "kenja, anime, character, ai, search, recommendation, similar, image, ai search, vector search, image search, similarity search, easy search, image vector";
+    const keywordsJapanese =
+        "ケンジャ, アニメ, キャラクター, AI, 検索, おすすめ, 似ている, 画像, AI検索, ベクトル検索, 画像検索, 類似検索, 簡単検索, 画像ベクトル";
 </script>
 
-<svelte:head>
-    {#if data.lang === Lang.Jp}
-        <title>{titleJapanese}</title>
-        <meta name="description" content={descriptionJapanese} />
-        <meta
-            name="keywords"
-            content="ケンジャ, アニメ, キャラクター, 検索, おすすめ, 似ている, 画像, ベクトル検索, 画像検索, 類似検索, 簡単検索, 画像ベクトル"
-        />
-        <meta property="og:title" content={titleJapanese} />
-        <meta property="og:description" content={descriptionJapanese} />
-    {:else}
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta
-            name="keywords"
-            content="kenja, anime, character, search, recommendation, similar, image, vector search, image search, similarity search, easy search, image vector"
-        />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-    {/if}
-</svelte:head>
+<Meta
+    lang={data.lang}
+    {title}
+    {titleJapanese}
+    {description}
+    {descriptionJapanese}
+    {keywords}
+    {keywordsJapanese}
+/>
 
 <SearchResultBuffer
     lang={data.lang}

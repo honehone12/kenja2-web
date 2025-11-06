@@ -1,38 +1,30 @@
 <script lang="ts">
-    import { Lang } from "$lib";
+    import Meta from "$lib/meta/Meta.svelte";
     import Top from "$lib/pages/Top.svelte";
 
     let { data } = $props();
 
-    const title = "Kenjanime - Anime & Character Search and Recommendation";
+    const title = "Kenjanime - Anime & Character AI Search and Recommendation";
     const titleJapanese =
-        "ケンジャニメ - アニメ & キャラクターの検索とおすすめ";
+        "ケンジャニメ - アニメ & キャラクターのAI検索とおすすめ";
     const description =
-        "Anime & Character search and recommendation system powered by vector search. Just choose your favorite anime image and you'll find a variety of similar anime.";
+        "Anime & Character search and recommendation powered by AI Image search. Just choose your favorite anime image and you'll find a variety of similar anime.";
     const descriptionJapanese =
-        "アニメ & キャラクターの検索と画像ベクターサーチによるおすすめシステムです。好きなアニメ画像を選ぶだけでいろいろアニメが見つかります。";
+        "アニメ & キャラクターの検索とAI画像検索によるおすすめ。好きなアニメ画像を選ぶだけでいろいろアニメが見つかります。";
+    const keywords =
+        "kenja, anime, character, ai, search, recommendation, similar, image, ai search, vector search, image search, similarity search, easy search";
+    const keywordsJapanese =
+        "ケンジャ, アニメ, キャラクター, AI, 検索, おすすめ, 似ている, 画像, AI検索, ベクターサーチ, 画像検索, 類似検索, 簡単検索";
 </script>
 
-<svelte:head>
-    {#if data.lang === Lang.Jp}
-        <title>{titleJapanese}</title>
-        <meta name="description" content={descriptionJapanese} />
-        <meta
-            name="keywords"
-            content="ケンジャ, アニメ, キャラクター, 検索, おすすめ, 似ている, 画像, ベクターサーチ, 画像検索, 類似検索, 簡単検索"
-        />
-        <meta property="og:title" content={titleJapanese} />
-        <meta property="og:description" content={descriptionJapanese} />
-    {:else}
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta
-            name="keywords"
-            content="kenja, anime, character, search, recommendation, similar, image, vector search, image search, similarity search, easy search"
-        />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-    {/if}
-</svelte:head>
+<Meta
+    lang={data.lang}
+    {title}
+    {titleJapanese}
+    {description}
+    {descriptionJapanese}
+    {keywords}
+    {keywordsJapanese}
+/>
 
 <Top lang={data.lang} />
