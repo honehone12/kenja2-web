@@ -25,9 +25,9 @@
     <span class="text-center">
         <h1 class="text-secondary font-semibold text-3xl mb-10">
             {#if lang === Lang.Jp}
-                AI画像検索
+                ローカルAI画像検索
             {:else}
-                AI Image Search
+                Local AI Image Search
             {/if}
         </h1>
     </span>

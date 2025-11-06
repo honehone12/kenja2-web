@@ -17,10 +17,26 @@
 </script>
 
 {#await initialize()}
-    <LoadingMsg />
+    <div class="text-center">
+        <span class="text-lg">
+            <p>
+                {lang === Lang.Jp
+                    ? "AIモデルの準備中です"
+                    : "Preparing AI Model"}
+            </p>
+        </span>
+        <LoadingMsg />
+    </div>
 {:then}
     {#if pending}
-        <LoadingMsg />
+        <div class="text-center">
+            <span class="text-lg">
+                <p>
+                    {lang === Lang.Jp ? "AIの推論中です" : "AI is inferring"}
+                </p>
+            </span>
+            <LoadingMsg />
+        </div>
     {:else}
         <form
             onsubmit={async (event) => {

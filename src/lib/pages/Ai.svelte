@@ -13,9 +13,9 @@
     <span class="text-center">
         <h1 class="text-secondary font-semibold text-3xl mb-15">
             {#if lang === Lang.Jp}
-                AI画像検索
+                ローカルAI画像検索
             {:else}
-                AI Image Search
+                Local AI Image Search
             {/if}
         </h1>
         <h2 class="text-xl font-semibold">
@@ -51,11 +51,11 @@
     <div class="hero mt-10">
         <div class="hero-content">
             <a href={lang === Lang.Jp ? "/ai/app?lang=ja" : "/ai/app"}>
-                <button class="btn btn-lg btn-accent w-60">
+                <button class="btn btn-lg btn-accent">
                     {#if lang === Lang.Jp}
-                        AI画像検索へ
+                        ローカルAI画像検索へ
                     {:else}
-                        Go to AI Image Search
+                        Go to Local AI Image Search
                     {/if}
                 </button>
             </a>

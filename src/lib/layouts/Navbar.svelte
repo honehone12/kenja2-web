@@ -18,8 +18,8 @@
             pathJapanese: "/?lang=ja",
         },
         {
-            name: "AI Search",
-            nameJapanese: "AI検索",
+            name: "Local AI",
+            nameJapanese: "ローカルAI",
             path: "/ai",
             pathJapanese: "/ai?lang=ja",
         },
