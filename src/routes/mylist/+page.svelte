@@ -1,5 +1,6 @@
 <script>
     import Meta from "$lib/meta/Meta.svelte";
+    import NoIndex from "$lib/meta/NoIndex.svelte";
     import MyList from "$lib/pages/MyList.svelte";
 
     let { data } = $props();
@@ -16,6 +17,7 @@
         "ケンジャ, アニメ, キャラクター, AI, 検索, おすすめ, 似ている, 画像, AI検索, ベクトル検索, 画像検索, 類似検索, お気に入り";
 </script>
 
+<NoIndex />
 <Meta
     lang={data.lang}
     {title}
