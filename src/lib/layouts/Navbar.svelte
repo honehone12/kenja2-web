@@ -32,8 +32,8 @@
         {
             name: "Random",
             nameJapanese: "ランダム",
-            path: "/random?item-type=all",
-            pathJapanese: "/random?item-type=all&lang=ja",
+            path: "/random/buffer?item-type=all",
+            pathJapanese: "/random/buffer?item-type=all&lang=ja",
         },
         {
             name: "MyList",
