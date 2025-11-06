@@ -1,5 +1,5 @@
-import { A_DAY_CACHE_HEADER } from "$lib/server/headers.js";
+import { A_WEEK_CACHE_HEADER } from "$lib/server/headers.js";
 
 export function load({ setHeaders }) {
-  setHeaders(A_DAY_CACHE_HEADER);
+  setHeaders(A_WEEK_CACHE_HEADER);
 }
