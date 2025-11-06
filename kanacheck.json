@@ -1,4 +1,4 @@
 {
-  "targets": ["　", "＆"],
+  "targets": ["　", "＿", "：", "；", "＆"],
   "extensions": ["svelte", "js", "ts"]
 }

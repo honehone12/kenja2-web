@@ -26,10 +26,10 @@
                 <h2 class="text-lg text-secondary mb-3">
                     {#if lang === Lang.Jp}
                         アニメとキャラクターの<br />
-                        画像ベクトル検索エンジン
+                        AI画像ベクトル検索エンジン
                     {:else}
-                        Anime and character<br />
-                        image vector search engine
+                        Anime and Character<br />
+                        AI Image Vector Search Engine
                     {/if}
                 </h2>
                 <h1 class="text-5xl text-secondary font-bold mb-13">
@@ -39,38 +39,56 @@
                         Kenjanime
                     {/if}
                 </h1>
+                <div class="mb-10">
+                    <a href={lang === Lang.Jp ? "/ai?lang=ja" : "/ai"}>
+                        <button class="btn btn-xl btn-accent">
+                            {lang === Lang.Jp
+                                ? "AI画像検索を試す"
+                                : "Try AI Image Search"}
+                        </button>
+                    </a>
+                </div>
                 <h2 class="text-2xl font-semibold mb-5">
                     {#if lang === Lang.Jp}
-                        アニメの検索とおすすめ
+                        アニメのAI検索とおすすめ
                     {:else}
-                        Anime Search and Recommendation
+                        Anime AI Search and Recommendation
                     {/if}
                 </h2>
                 <span>
                     {#if lang === Lang.Jp}
-                        <h3 class="mb-2">細かいクエリは無しの簡単操作。</h3>
-                        <h3 class="mb-2">
+                        <h3 class="mb-3">細かいクエリは無しの簡単操作。</h3>
+                        <h3 class="mb-3">
                             画像をポチポチ押すだけで<br />
                             あなた好みのアニメが色々見つかります。
                         </h3>
-                        <h3 class="mb-2">
+                        <h3 class="mb-3">
                             ランダム生成機能で<br />
                             魅力的なキャラクターを新発見しよう。
                         </h3>
-                        <h3>お気に入りはマイリストに保存できます。</h3>
+                        <h3 class="mb-3">
+                            お気に入りはマイリストに保存できます。
+                        </h3>
+                        <h3>１００％ブラウザで動くAI画像検索。</h3>
                     {:else}
-                        <h3 class="mb-2">
+                        <h3 class="mb-3">
                             Easy to Use without Detailed Queries.
                         </h3>
-                        <h3 class="mb-2">
+                        <h3 class="mb-3">
                             Find a Variety of Anime that You'll Love, <br />
                             with Just Clicking through Images.
                         </h3>
-                        <h3 class="mb-2">
+                        <h3 class="mb-3">
                             Discover New Fascinating Characters, <br />
                             With the Random Generation Function.
                         </h3>
-                        <h3>You can Save Your Favorites to "My List".</h3>
+                        <h3 class="mb-3">
+                            You can Save Your Favorites to "My List".
+                        </h3>
+                        <h3>
+                            Image Search with AI <br />
+                            that runs entirely in the browser.
+                        </h3>
                     {/if}
                 </span>
             </span>

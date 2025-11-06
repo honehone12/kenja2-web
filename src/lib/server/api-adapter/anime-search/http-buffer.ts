@@ -14,8 +14,8 @@ export class HttpBufferApi implements AnimeSearch {
     this._apiUrl = new URL("/anime-search", baseUrl);
   }
 
-  private async httpQuery(url: URL, body: string): Promise<SearchResult> {
-    const res = await fetch(url, {
+  private async httpQuery(body: string): Promise<SearchResult> {
+    const res = await fetch(this._apiUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
@@ -36,7 +36,7 @@ export class HttpBufferApi implements AnimeSearch {
     };
     const body = JSON.stringify(q);
 
-    return this.httpQuery(this._apiUrl, body);
+    return this.httpQuery(body);
   }
 
   public async random(item_type: ItemType | undefined): Promise<SearchResult> {
@@ -46,7 +46,7 @@ export class HttpBufferApi implements AnimeSearch {
     };
     const body = JSON.stringify(q);
 
-    return this.httpQuery(this._apiUrl, body);
+    return this.httpQuery(body);
   }
 
   public async textSearch(
@@ -62,7 +62,7 @@ export class HttpBufferApi implements AnimeSearch {
     };
     const body = JSON.stringify(q);
 
-    return this.httpQuery(this._apiUrl, body);
+    return this.httpQuery(body);
   }
 
   public async vectorSearch(
@@ -76,6 +76,20 @@ export class HttpBufferApi implements AnimeSearch {
     };
     const body = JSON.stringify(q);
 
-    return this.httpQuery(this._apiUrl, body);
+    return this.httpQuery(body);
+  }
+
+  public async directVectorSearch(
+    item_type: ItemType,
+    vector: string,
+  ): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.DirectVectorSearch,
+      item_type,
+      vector,
+    };
+    const body = JSON.stringify(q);
+
+    return this.httpQuery(body);
   }
 }

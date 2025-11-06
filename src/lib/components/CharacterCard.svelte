@@ -10,12 +10,11 @@
     import ExternalCharacter from "$lib/components/ExternalCharacter.svelte";
     import DocumentCard from "$lib/component-layout/DocumentCard.svelte";
     import CardHead from "$lib/component-layout/CardHead.svelte";
-    import type { OnUnstar } from "$lib/client/callback";
 
     interface Props {
         lang: Lang;
         doc: FlatDocument;
-        onUnstar?: OnUnstar;
+        onUnstar?: (id: string) => void;
     }
 
     let { lang, doc, onUnstar }: Props = $props();

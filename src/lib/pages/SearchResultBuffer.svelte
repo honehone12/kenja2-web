@@ -71,6 +71,12 @@
                 } else {
                     return "Random Anime and Character";
                 }
+            case SearchType.DirectVector:
+                if (lang === Lang.Jp) {
+                    return "AI画像ベクトル検索結果";
+                } else {
+                    return "Result of AI Image Vector Search";
+                }
             default:
                 return "";
         }

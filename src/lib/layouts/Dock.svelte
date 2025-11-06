@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Lang } from "$lib";
     import { getModal, SEARCH_MODAL_ID } from "$lib/client/modal";
-    import SearchModal from "$lib/components/SearchModal.svelte";
+    import TextSearchModal from "$lib/components/TextSearchModal.svelte";
 
     interface Props {
         lang: Lang;
@@ -96,7 +96,7 @@
                     ></svg
                 >
             </button>
-            <SearchModal {lang} onclickClose={closeSearchModal} />
+            <TextSearchModal {lang} onclickClose={closeSearchModal} />
         </li>
         <li
             class="tooltip"

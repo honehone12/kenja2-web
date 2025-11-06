@@ -106,25 +106,32 @@
                 <span class="text-lg">
                     {#if lang === Lang.Jp}
                         <p>
-                            半分「はい」でしょうか。
-                            <br />
-                            確かにケンジャニメのベクトルは全てAIで作成されています。ただし、ベクトルはすべて事前に計算されていますので、実行時には決定論的に動作します。
-                            <br />
-                            それにしてもAIはケンジャニメのコアテクノロジーと言って良いでしょう。
+                            はい。AIはケンジャニメのコアテクノロジーと言って良いでしょう。
                             言語に関係なくグローバルに一意となる画像のベクトル検索は、まさにAIの進化によって可能となった素晴らしい技術に違いありません。
+                            またLLMと比べて、凄まじいコンピュートリソースを必要としません。華々しくはありませんが便利さ、実用性という意味では堅実な技術と言えるでしょう。
+                            <br />
+                            <br />
+                            事前計算されたベクトル検索に加えて、お好きな画像で検索できるブラウザAI検索を追加しました。お手元のお気に入りの画像でベクトル検索が可能になります。
+                            謎な画像で検索すると意外な結果が出たりするのでいろいろと試してみてください。
                         </p>
                     {:else}
                         <p>
-                            Yes, half.
+                            Yes. AI can be considered the core technology of
+                            Kenjanime. The ability to perform global, unique
+                            image vector searches regardless of language is
+                            undoubtedly a remarkable technology made possible by
+                            the evolution of AI. Furthermore, it doesn't require
+                            the enormous computing resources that LLMs do. While
+                            not flashy, it's a solid technology in terms of
+                            convenience and practicality.
                             <br />
-                            Certainly all of Kenjanime's vectors are created using
-                            AI. However, because all vectors are pre-computed, they
-                            behave deterministically at runtime.
                             <br />
-                            Even so, it can be said that AI is Kenjanime's core technology.
-                            Vector search for images that is globally unique regardless
-                            of language is undoubtedly an incredible technology made
-                            possible by advances in AI.
+                            In addition to pre-calculated vector search, I have added
+                            a browser-based AI search that allows you to search using
+                            your own images. You can now perform vector searches
+                            with your favorite images. Try searching with various
+                            images. You might get unexpected results with mysterious
+                            images.
                             <br />
                         </p>
                     {/if}

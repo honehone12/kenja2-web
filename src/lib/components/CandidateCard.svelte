@@ -5,12 +5,11 @@
     import CharacterCard from "$lib/components/CharacterCard.svelte";
     import type { Lang } from "$lib";
     import YVideoCard from "$lib/components/YVideoCard.svelte";
-    import type { OnUnstar } from "$lib/client/callback";
 
     interface Props {
         lang: Lang;
         doc: FlatDocument;
-        onUnstar?: OnUnstar;
+        onUnstar?: (id: string) => void;
     }
 
     let { lang, doc, onUnstar }: Props = $props();

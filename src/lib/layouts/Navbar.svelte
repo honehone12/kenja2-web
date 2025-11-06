@@ -5,41 +5,47 @@
 
     interface Route {
         name: string;
-        jpName: string;
+        nameJapanese: string;
         path: string;
-        jpPath: string;
+        pathJapanese: string;
     }
 
     const ROUTES: Route[] = [
         {
             name: "Home",
-            jpName: "ホーム",
+            nameJapanese: "ホーム",
             path: "/",
-            jpPath: "/?lang=ja",
+            pathJapanese: "/?lang=ja",
+        },
+        {
+            name: "AI Search",
+            nameJapanese: "AI検索",
+            path: "/ai",
+            pathJapanese: "/ai?lang=ja",
         },
         {
             name: "Latest",
-            jpName: "最新",
+            nameJapanese: "最新",
             path: "/latest",
-            jpPath: "/latest?lang=ja",
+            pathJapanese: "/latest?lang=ja",
         },
         {
             name: "Random",
-            jpName: "ランダム",
+            nameJapanese: "ランダム",
             path: "/random?item-type=all",
-            jpPath: "/random?item-type=all&lang=ja",
+            pathJapanese: "/random?item-type=all&lang=ja",
         },
         {
             name: "MyList",
-            jpName: "マイリスト",
+            nameJapanese: "マイリスト",
             path: "/mylist",
-            jpPath: "/mylist?lang=ja",
+            pathJapanese: "/mylist?lang=ja",
         },
         {
             name: "About",
-            jpName: "アバウト",
+            nameJapanese: "アバウト",
             path: "/about",
-            jpPath: "/about?lang=ja",
+            pathJapanese: "/about?lang=ja",
         },
     ];
 
@@ -102,12 +108,12 @@
                             <a
                                 tabindex="0"
                                 href={lang === Lang.Jp
-                                    ? route.jpPath
+                                    ? route.pathJapanese
                                     : route.path}
                             >
                                 <span class="link font-medium">
                                     {lang === Lang.Jp
-                                        ? route.jpName
+                                        ? route.nameJapanese
                                         : route.name}
                                 </span>
                             </a>
@@ -122,10 +128,14 @@
                     <li>
                         <a
                             tabindex="0"
-                            href={lang === Lang.Jp ? route.jpPath : route.path}
+                            href={lang === Lang.Jp
+                                ? route.pathJapanese
+                                : route.path}
                         >
                             <span class="font-medium">
-                                {lang === Lang.Jp ? route.jpName : route.name}
+                                {lang === Lang.Jp
+                                    ? route.nameJapanese
+                                    : route.name}
                             </span>
                         </a>
                     </li>
