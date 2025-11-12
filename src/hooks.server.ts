@@ -3,12 +3,6 @@ import type { Handle } from "@sveltejs/kit";
 import kenja from "$lib/server/kenja";
 import logs from "$lib/server/logs";
 
-// headers are done on cdn
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// const TRANSPORT_SECURITY_HEADERS = new Map([
-//     ['Strict-Transport-Security', 'max-age=86400; includeSubDomains; preload']
-// ]);
-
 export const handle: Handle = async ({ event, resolve }) => {
   if (building) {
     const response = await resolve(event);
@@ -32,6 +26,15 @@ export const handle: Handle = async ({ event, resolve }) => {
         { url, referer, userAgent, ip, host, origin },
         "local request header values",
       );
+
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      // headers are done on cdn.
+      // transport headers are not set for local.
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      // const TRANSPORT_SECURITY_HEADERS = new Map([
+      //     ['Strict-Transport-Security', 'max-age=86400; includeSubDomains; preload']
+      // ]);
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       const SECURITY_HEADERS = {
         "X-XSS-Protection": "0",

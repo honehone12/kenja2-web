@@ -33,7 +33,7 @@ export class IndexDb {
 
   private static open() {
     return new Promise<IndexDb>((resolve, reject) => {
-      const req = indexedDB.open(IndexDb.DB_NAME, 100);
+      const req = indexedDB.open(IndexDb.DB_NAME, 101);
       req.onerror = () => reject("failed to open index db");
       req.onupgradeneeded = (ev) => {
         const db = (ev.target as IDBOpenDBRequest).result;
@@ -81,7 +81,7 @@ export class IndexDb {
   private setHistory(key: string, value: string[]): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       const req = this._db
-        .transaction(IndexDb.HISTORY_STORE)
+        .transaction(IndexDb.HISTORY_STORE, "readwrite")
         .objectStore(IndexDb.HISTORY_STORE)
         .put(value, key);
       req.onerror = () => reject("failed to put history");
