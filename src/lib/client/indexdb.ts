@@ -54,64 +54,79 @@ export class IndexDb {
   }
 
   private getHistory(key: string): Promise<string[]> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const req = this._db
         .transaction(IndexDb.HISTORY_STORE)
         .objectStore(IndexDb.HISTORY_STORE)
         .get(key);
-      req.onerror = () => resolve([]);
+      req.onerror = () => reject("failed to get history");
       req.onsuccess = () => resolve(req.result ?? []);
     });
-  }
-
-  public getAnimeHistory(): Promise<string[]> {
-    return this.getHistory(IndexDb.HISTORY_ANIME);
-  }
-
-  public getCharacterHistory(): Promise<string[]> {
-    return this.getHistory(IndexDb.HISTORY_CHARACTER);
   }
 
   /**
    * this can throw
    */
+  public getAnimeHistory(): Promise<string[]> {
+    return this.getHistory(IndexDb.HISTORY_ANIME);
+  }
+
+  /**
+   * this can throw
+   */
+  public getCharacterHistory(): Promise<string[]> {
+    return this.getHistory(IndexDb.HISTORY_CHARACTER);
+  }
+
   private setHistory(key: string, value: string[]): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       const req = this._db
         .transaction(IndexDb.HISTORY_STORE)
         .objectStore(IndexDb.HISTORY_STORE)
         .put(value, key);
-      req.onerror = () => reject("failed to put to history");
+      req.onerror = () => reject("failed to put history");
       req.onsuccess = () => resolve();
     });
   }
 
+  /**
+   * this can throw
+   */
   public setAnimeHistory(value: string[]): Promise<void> {
     return this.setHistory(IndexDb.HISTORY_ANIME, value);
   }
 
-  public setAnimeCharacter(value: string[]): Promise<void> {
+  /**
+   * this can throw
+   */
+  public setCharacterHistory(value: string[]): Promise<void> {
     return this.setHistory(IndexDb.HISTORY_CHARACTER, value);
   }
 
+  /**
+   * this can throw
+   */
   public getMyListKeys(): Promise<string[]> {
-    return new Promise<string[]>((resolve) => {
+    return new Promise<string[]>((resolve, reject) => {
       const req = this._db
         .transaction(IndexDb.META_STORE)
         .objectStore(IndexDb.META_STORE)
         .get(IndexDb.META_MY_LISTKEYS);
-      req.onerror = () => resolve([]);
+      req.onerror = () => reject("failed to get my list keys");
       req.onsuccess = () => resolve(req.result ?? []);
     });
   }
 
+  /**
+   * this can throw
+   */
   public getMyList(): Promise<FlatDocument[]> {
-    return new Promise<FlatDocument[]>((resolve) => {
+    return new Promise<FlatDocument[]>((resolve, reject) => {
       const req = this._db
         .transaction(IndexDb.MY_LIST_STORE)
         .objectStore(IndexDb.MY_LIST_STORE)
         .getAll();
-      req.onerror = () => resolve([]);
+      req.onerror = () => reject("failed to get my list");
       req.onsuccess = () => resolve(req.result ?? []);
     });
   }

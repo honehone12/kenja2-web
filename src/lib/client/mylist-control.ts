@@ -10,10 +10,10 @@ class MyListControl {
   /**
    * this can throw
    *
-   * this have to be called from client only hook
+   * this have to be called from client,
    * server instance panics immediately
    */
-  private async initialize() {
+  private async initialize(): Promise<void> {
     if (this._isInitialized) {
       return;
     }
@@ -24,7 +24,7 @@ class MyListControl {
     this._isInitialized = true;
   }
 
-  public async getMyList() {
+  public async getMyList(): Promise<FlatDocument[]> {
     try {
       await this.initialize();
       const db = await IndexDb.instance();
@@ -35,7 +35,7 @@ class MyListControl {
     }
   }
 
-  public async hasStar(id: string) {
+  public async hasStar(id: string): Promise<boolean> {
     try {
       await this.initialize();
       return this._myMap.has(id);
@@ -45,7 +45,7 @@ class MyListControl {
     }
   }
 
-  public async star(doc: FlatDocument | undefined) {
+  public async star(doc: FlatDocument | undefined): Promise<void> {
     if (!doc) {
       return;
     }
@@ -67,7 +67,7 @@ class MyListControl {
     }
   }
 
-  public async unstar(id: string) {
+  public async unstar(id: string): Promise<void> {
     try {
       await this.initialize();
       if (!this._myMap.has(id)) {
