@@ -9,6 +9,7 @@
     import DocumentCard from "$lib/component-layout/DocumentCard.svelte";
     import CardHead from "$lib/component-layout/CardHead.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
+    import historyCtrl from "$lib/client/history-conrol";
 
     interface Props {
         lang: Lang;
@@ -17,6 +18,10 @@
     }
 
     let { lang, doc, onUnstar }: Props = $props();
+
+    async function onsearch() {
+        await historyCtrl.pushAnimeHistory(doc.id);
+    }
 </script>
 
 <DocumentCard>
@@ -33,19 +38,10 @@
             useLink={true}
             name={doc.name}
             nameJapanese={doc.name_japanese}
+            {onsearch}
         />
     </span>
-    <ImageVectorSearch
-        {lang}
-        doc={{
-            id: doc.id,
-            itemType: ItemType.Anime,
-            name: doc.name,
-            nameJapanese: doc.name_japanese,
-            img: doc.img,
-            src: doc.src,
-        }}
-    />
+    <ImageVectorSearch {lang} {doc} {onsearch} />
     {#if doc.name_japanese}
         <div class="mt-5">
             <ExternalAnime
