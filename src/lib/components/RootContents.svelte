@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Lang } from "$lib";
+    import { Lang } from "$lib";
     import Full from "$lib/component-layout/Full.svelte";
     import type { SearchResult } from "$lib/documents/anime-search/documents";
     import ErrorMessage from "./ErrorMessage.svelte";
@@ -29,6 +29,18 @@
                 {documents}
             />
         {:else}
+            <div class="flex place-content-center">
+                <div class="card text-center border border-secondary p-5 mx-10">
+                    <p>
+                        {#if lang === Lang.Jp}
+                            💡
+                            アイテムをクリックするとおすすめが表示されるようになります。
+                        {:else}
+                            💡 Clicking on items will display recommendations.
+                        {/if}
+                    </p>
+                </div>
+            </div>
             <TopFeatures {lang} />
         {/if}
     {:catch}
