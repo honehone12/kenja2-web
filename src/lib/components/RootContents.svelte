@@ -5,7 +5,7 @@
     import ErrorMessage from "./ErrorMessage.svelte";
     import LoadingMsg from "./LoadingMsg.svelte";
     import ManualDocuments from "./ManualDocuments.svelte";
-    import TopPageFeatures from "./TopPageFeatures.svelte";
+    import TopFeatures from "./TopFeatures.svelte";
 
     interface Props {
         lang: Lang;
@@ -29,7 +29,7 @@
                 {documents}
             />
         {:else}
-            <TopPageFeatures {lang} />
+            <TopFeatures {lang} />
         {/if}
     {:catch}
         <Full>

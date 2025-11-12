@@ -4,7 +4,7 @@
     import historyCtrl from "$lib/client/history-conrol";
     import { remoteRecommend } from "$lib/functions/recommendation.remote";
     import { ItemType } from "$lib/documents/anime-search/queries";
-    import TopContents from "$lib/components/TopContents.svelte";
+    import RootContents from "$lib/components/RootContents.svelte";
     import type { SearchResult } from "$lib/documents/anime-search/documents";
     import { onMount } from "svelte";
 
@@ -123,5 +123,5 @@
             <TextSearchForm {lang} useFlexible={true} onsubmit={null} />
         </div>
     </div>
-    <TopContents {lang} {initializer} />
+    <RootContents {lang} {initializer} />
 </main>
