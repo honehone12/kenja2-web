@@ -11,11 +11,12 @@
         SearchResult,
     } from "$lib/documents/anime-search/documents";
     import LoadingMsg from "$lib/components/LoadingMsg.svelte";
-    import CandidateCard from "$lib/components/CandidateCard.svelte";
     import NoResults from "$lib/components/NoResults.svelte";
     import { Lang, SearchType, HTML_TAG } from "$lib";
     import SearchTipBottom from "$lib/components/SearchTipBottom.svelte";
     import SearchTipTop from "$lib/components/SearchTipTop.svelte";
+    import Documents from "$lib/components/Documents.svelte";
+    import Full from "$lib/component-layout/Full.svelte";
 
     interface Props {
         lang: Lang;
@@ -116,11 +117,9 @@
     </div>
     <SearchTipTop {lang} {searchType} />
     {#await buffer}
-        <div class="hero min-h-screen w-full">
-            <div class="hero-content">
-                <LoadingMsg />
-            </div>
-        </div>
+        <Full>
+            <LoadingMsg />
+        </Full>
     {:then { documents }}
         {#if documents && documents.length > 0}
             <div class="py-10">
@@ -133,13 +132,7 @@
                         </h2>
                     </div>
                 </div>
-                <div class="hero w-full">
-                    <div class="hero-content flex flex-wrap gap-x-10 gap-y-5">
-                        {#each documents as doc, i (i)}
-                            <CandidateCard {lang} {doc} />
-                        {/each}
-                    </div>
-                </div>
+                <Documents {lang} {documents} />
             </div>
         {:else}
             <NoResults {lang} />

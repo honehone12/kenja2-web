@@ -23,7 +23,7 @@
             {lang}
             name={docs.name}
             nameJapanese={docs.nameJapanese}
-            list={docs.list}
+            documents={docs.list}
         />
     </div>
 {/each}

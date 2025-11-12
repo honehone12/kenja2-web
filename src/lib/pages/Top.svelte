@@ -1,13 +1,37 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import TopPageFeatures from "$lib/components/TopPageFeatures.svelte";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
+    import historyCtrl from "$lib/client/history-conrol";
+    import { remoteRecommend } from "$lib/functions/recommendation.remote";
+    import { ItemType } from "$lib/documents/anime-search/queries";
+    import TopContents from "$lib/components/TopContents.svelte";
+    import type { SearchResult } from "$lib/documents/anime-search/documents";
+    import { onMount } from "svelte";
 
     interface Props {
         lang: Lang;
     }
 
     let { lang }: Props = $props();
+    let initializer: (() => Promise<SearchResult>) | null = $state(null);
+
+    async function initialize() {
+        const animeHist = await historyCtrl.getAnimeHistory();
+        if (animeHist.length === 0) {
+            return { documents: undefined };
+        }
+
+        const params = {
+            item_type: ItemType.Anime,
+            ids: animeHist,
+        };
+        const result = await remoteRecommend(params);
+        return result;
+    }
+
+    onMount(() => {
+        initializer = initialize;
+    });
 </script>
 
 <main class="py-20">
@@ -94,10 +118,10 @@
             </span>
         </div>
     </div>
-    <div class="hero w-full mt-10">
+    <div class="hero w-full mt-10 mb-10">
         <div class="hero-content">
             <TextSearchForm {lang} useFlexible={true} onsubmit={null} />
         </div>
     </div>
-    <TopPageFeatures {lang} />
+    <TopContents {lang} {initializer} />
 </main>

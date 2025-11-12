@@ -3,12 +3,14 @@
     import { Lang } from "$lib";
     import ai from "$lib/client/ai/ai";
     import AiImageSearchForm from "$lib/components/AiImageSearchForm.svelte";
+    import { onMount } from "svelte";
 
     interface Props {
         lang: Lang;
     }
 
     let { lang }: Props = $props();
+    let initializer: (() => Promise<void>) | null = $state(null);
 
     async function initialize() {
         await ai.init();
@@ -16,9 +18,13 @@
 
     async function onsubmit(file: File, itemType: string) {
         const vector = await ai.generateVector(file);
-        const path = `/direct-vectorsearch/buffer?item-type=${itemType}&vector=${vector}${lang === Lang.Jp ? "&lang=ja" : ""}`;
-        goto(path);
+        const searchUrl = `/direct-vectorsearch/buffer?item-type=${itemType}&vector=${vector}${lang === Lang.Jp ? "&lang=ja" : ""}`;
+        goto(searchUrl);
     }
+
+    onMount(() => {
+        initializer = initialize;
+    });
 </script>
 
 <main class="w-full min-h-screen py-20 px-10">
@@ -46,7 +52,7 @@
     </div>
     <div class="hero">
         <div class="hero-content">
-            <AiImageSearchForm {lang} {initialize} {onsubmit} />
+            <AiImageSearchForm {lang} {initializer} {onsubmit} />
         </div>
     </div>
 </main>

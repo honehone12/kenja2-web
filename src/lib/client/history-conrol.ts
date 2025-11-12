@@ -1,4 +1,4 @@
-import { IndexDb } from "./indexdb";
+import { IndexDb } from "$lib/client/indexdb";
 
 class HistoryControl {
   private static readonly HISTORY_MAX = 10;
@@ -18,9 +18,13 @@ class HistoryControl {
       const db = await IndexDb.instance();
       const history = await db.getAnimeHistory();
 
-      if (history.length > HistoryControl.HISTORY_MAX) {
-        history.shift();
+      const shift = history.length - (HistoryControl.HISTORY_MAX - 1);
+      if (shift > 0) {
+        for (let i = 0; i < shift; i++) {
+          history.shift();
+        }
       }
+
       history.push(item);
 
       await db.setAnimeHistory(history);
@@ -44,9 +48,13 @@ class HistoryControl {
       const db = await IndexDb.instance();
       const history = await db.getCharacterHistory();
 
-      if (history.length > HistoryControl.HISTORY_MAX) {
-        history.shift();
+      const shift = history.length - (HistoryControl.HISTORY_MAX - 1);
+      if (shift > 0) {
+        for (let i = 0; i < shift; i++) {
+          history.shift();
+        }
       }
+
       history.push(item);
 
       await db.setCharacterHistory(history);
