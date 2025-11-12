@@ -92,4 +92,18 @@ export class HttpBufferApi implements AnimeSearch {
 
     return this.httpQuery(body);
   }
+
+  public async multiVectorSearch(
+    item_type: ItemType,
+    ids: string[],
+  ): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.MultiVectorSearch,
+      item_type,
+      ids,
+    };
+    const body = JSON.stringify(q);
+
+    return this.httpQuery(body);
+  }
 }

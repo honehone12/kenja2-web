@@ -130,4 +130,22 @@ export class LambdaApi implements AnimeSearch {
 
     return this.lambdaQuery(input);
   }
+
+  public async multiVectorSearch(
+    item_type: ItemType,
+    ids: string[],
+  ): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.MultiVectorSearch,
+      item_type,
+      ids,
+    };
+    const payload = JSON.stringify(q);
+    const input: InvokeCommandInput = {
+      FunctionName: this._functionName,
+      Payload: payload,
+    };
+
+    return this.lambdaQuery(input);
+  }
 }
