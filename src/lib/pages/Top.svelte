@@ -13,7 +13,7 @@
     }
 
     let { lang }: Props = $props();
-    let initializer: (() => Promise<SearchResult>) | null = $state(null);
+    let initializer: (() => Promise<SearchResult>) | undefined = $state();
 
     async function initialize() {
         const animeHist = await historyCtrl.getAnimeHistory();

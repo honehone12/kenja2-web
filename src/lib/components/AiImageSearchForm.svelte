@@ -8,7 +8,7 @@
 
     interface Props {
         lang: Lang;
-        initializer: (() => Promise<void>) | null;
+        initializer: (() => Promise<void>) | undefined;
         onsubmit: (file: File, itemType: string) => Promise<void>;
     }
 
@@ -18,7 +18,7 @@
 
 {#if initializer}
     {#await initializer()}
-        <div class="text-center">
+        <div class="text-center mt-10">
             <span class="text-lg">
                 <p>
                     {lang === Lang.Jp
@@ -30,7 +30,7 @@
         </div>
     {:then}
         {#if pending}
-            <div class="text-center">
+            <div class="text-center mt-10">
                 <span class="text-lg">
                     <p>
                         {lang === Lang.Jp
@@ -90,6 +90,4 @@
     {:catch}
         <ErrorMessage {lang} />
     {/await}
-{:else}
-    <LoadingMsg />
 {/if}

@@ -10,7 +10,7 @@
     }
 
     let { lang }: Props = $props();
-    let initializer: (() => Promise<void>) | null = $state(null);
+    let initializer: (() => Promise<void>) | undefined = $state();
 
     async function initialize() {
         await ai.init();
