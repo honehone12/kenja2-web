@@ -12,6 +12,11 @@ export const handle: Handle = async ({ event, resolve }) => {
   let lang = event.url.searchParams.get("lang") ?? "en";
   lang = lang === "ja" ? "ja" : "en";
 
+  const CACHE_HEADER = {
+    "Cache-Control": "max-age=604800",
+  };
+  event.setHeaders(CACHE_HEADER);
+
   {
     const headers = event.request.headers;
     const url = event.request.url;

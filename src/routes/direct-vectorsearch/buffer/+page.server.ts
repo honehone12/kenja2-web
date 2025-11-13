@@ -1,6 +1,5 @@
 import { ITypeConv } from "$lib/documents/anime-search/queries";
 import { emptySearchResult, internalError } from "$lib/server/errors";
-import { A_DAY_CACHE_HEADER } from "$lib/server/headers.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 import {
@@ -8,7 +7,7 @@ import {
   validateVectorItemType,
 } from "$lib/server/validation.js";
 
-export async function load({ url, setHeaders }) {
+export async function load({ url }) {
   const vector = url.searchParams.get("vector");
   if (!vector || !validateVector(vector)) {
     // not showing error page
@@ -20,8 +19,6 @@ export async function load({ url, setHeaders }) {
     // not showing error page
     return { bufferedStream: emptySearchResult() };
   }
-
-  setHeaders(A_DAY_CACHE_HEADER);
 
   try {
     const bufferedStream = kenja

@@ -1,13 +1,10 @@
 import { ITypeConv } from "$lib/documents/anime-search/queries.js";
 import { internalError } from "$lib/server/errors.js";
-import { A_DAY_CACHE_HEADER } from "$lib/server/headers.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
 
-export function load({ url, setHeaders }) {
+export function load({ url }) {
   const itemType = ITypeConv.fromString(url.searchParams.get("item-type"));
-
-  setHeaders(A_DAY_CACHE_HEADER);
 
   try {
     const bufferedStream = kenja.animeSearch().random(itemType);

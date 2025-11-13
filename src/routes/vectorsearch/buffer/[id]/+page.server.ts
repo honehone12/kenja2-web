@@ -2,10 +2,9 @@ import { ITypeConv } from "$lib/documents/anime-search/queries.js";
 import { emptySearchResult, internalError } from "$lib/server/errors.js";
 import kenja from "$lib/server/kenja.js";
 import logs from "$lib/server/logs.js";
-import { A_DAY_CACHE_HEADER } from "$lib/server/headers.js";
 import { validateOid, validateVectorItemType } from "$lib/server/validation.js";
 
-export function load({ url, params, setHeaders }) {
+export function load({ url, params }) {
   const id = params.id;
   if (!validateOid(id)) {
     // not showing error page
@@ -17,8 +16,6 @@ export function load({ url, params, setHeaders }) {
     // not showing error page
     return { bufferedStream: emptySearchResult() };
   }
-
-  setHeaders(A_DAY_CACHE_HEADER);
 
   try {
     const bufferedStream = kenja.animeSearch().vectorSearch(itemType, id);
