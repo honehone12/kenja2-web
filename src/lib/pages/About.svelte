@@ -222,7 +222,7 @@
                         <p>
                             アニメを探す簡単なツールが欲しかったからです。<br />
                             ストリーミングプラットフォームでアニメをたくさん見みていると、おすすめに表示されるアニメはすでに見たタイトルか新作タイトルばかりになってしまいます。
-                            それはレコメンデーションシステムの自然な性質だとは思いますが、多くの場合パーソナライズされているので、永遠にそのまま大した変化がないままなのです。
+                            それはレコメンデーションシステムの自然な性質だとは思いますが、多くの場合パーソナライズされているデータはサーバーにあるので、永遠にそのまま大した変化がないままなのです。
                             <br />
                             するとアニメを探すのは総当りになってしまいます。実際にやりましたとも。AからZまでリストを全部見て、気になるタイトルを探しました。
                             最初のうちは楽しいのですが、だんだん辛くなってきますし、実際には何度もやるはめになります。「気分」は毎週のように変わるからです。
@@ -245,7 +245,7 @@
                             手段が目的となったレコメンデーションシステムと言えるでしょう。
                             <br />
                             そして本当に、ケンジャニメはストリーミングプラットフォームのレコメンデーションシステムだけを切り取ってウェブサイトにしたような格好ですが、
-                            閲覧履歴を収集しません。閲覧履歴はすべてブラウザーに保存され、おすすめに使うアイテムのIDのみがサーバーに送信されます。
+                            閲覧履歴を収集しません。閲覧履歴はすべてブラウザーに保存され、おすすめに使うアイテムのIDのみがサーバーに送信されます。データはいつでも削除可能です。
                         </p>
                     {:else}
                         <p>
@@ -253,8 +253,9 @@
                             If you watch a lot of anime on streaming platforms, the
                             recommendations you get will either be titles you've
                             already seen or new releases. I suppose that's the nature
-                            of recommendation systems, but because they're often
-                            personalized, they stay the same forever. <br />
+                            of recommendation systems, but because their personalized
+                            data is often on servers, they stay the same forever.
+                            <br />
                             This means finding anime becomes a brute force process.
                             I've done it before: I've gone through lists from A to
                             Z, searching for titles that touch me. It's fun at first,
@@ -292,6 +293,7 @@
                             but it doesn't collect browsing history. Your browsing
                             history is stored in your browser, and only the IDs of
                             the items used for recommendations are sent to the server.
+                            The data can be deleted at any time.
                         </p>
                     {/if}
                 </span>
