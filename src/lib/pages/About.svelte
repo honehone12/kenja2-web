@@ -245,7 +245,7 @@
                             手段が目的となったレコメンデーションシステムと言えるでしょう。
                             <br />
                             そして本当に、ケンジャニメはストリーミングプラットフォームのレコメンデーションシステムだけを切り取ってウェブサイトにしたような格好ですが、
-                            パーソナライズされませんし、閲覧履歴を収集しません。よってログインも不要になりました。
+                            閲覧履歴を収集しません。閲覧履歴はすべてブラウザーに保存され、おすすめに使うアイテムのIDのみがサーバーに送信されます。
                         </p>
                     {:else}
                         <p>
@@ -289,8 +289,9 @@
                             means have become the end. <br />
                             And really, Kenjanime is like a streaming platform's
                             recommendation system taken and turned into a website,
-                            but it's not personalized, and it doesn't collect browsing
-                            history. So, there's no need to log in.
+                            but it doesn't collect browsing history. Your browsing
+                            history is stored in your browser, and only the IDs of
+                            the items used for recommendations are sent to the server.
                         </p>
                     {/if}
                 </span>
