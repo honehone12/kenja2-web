@@ -18,6 +18,12 @@
             pathJapanese: "/?lang=ja",
         },
         {
+            name: "Character",
+            nameJapanese: "キャラクター",
+            path: "/recommend/buffer/character",
+            pathJapanese: "/recommend/buffer/character?lang=ja",
+        },
+        {
             name: "Local AI",
             nameJapanese: "ローカルAI",
             path: "/ai",

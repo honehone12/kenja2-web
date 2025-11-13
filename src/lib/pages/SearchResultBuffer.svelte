@@ -10,13 +10,14 @@
         FlatDocument,
         SearchResult,
     } from "$lib/documents/anime-search/documents";
-    import LoadingMsg from "$lib/components/LoadingMsg.svelte";
+    import LoadingMessage from "$lib/components/LoadingMessage.svelte";
     import NoResults from "$lib/components/NoResults.svelte";
     import { Lang, SearchType, HTML_TAG } from "$lib";
     import SearchTipBottom from "$lib/components/SearchTipBottom.svelte";
     import SearchTipTop from "$lib/components/SearchTipTop.svelte";
     import Documents from "$lib/components/Documents.svelte";
     import Full from "$lib/component-layout/Full.svelte";
+    import { ITypeConv } from "$lib/documents/anime-search/queries";
 
     interface Props {
         lang: Lang;
@@ -35,16 +36,7 @@
     function itemTypeLabel() {
         const iType = page.url.searchParams.get("item-type");
         // don't show unexpected values;
-        switch (iType) {
-            case "anime":
-                return lang === Lang.Jp ? "アニメ" : "Anime";
-            case "character":
-                return lang === Lang.Jp ? "キャラクター" : "Character";
-            case "trailer":
-                return lang === Lang.Jp ? "トレーラー" : "Trailer";
-            default:
-                return lang === Lang.Jp ? "全" : "All";
-        }
+        return ITypeConv.toLabel(ITypeConv.fromString(iType), lang);
     }
 
     function searchResultLabel(doc: FlatDocument | undefined) {
@@ -118,7 +110,7 @@
     <SearchTipTop {lang} {searchType} />
     {#await buffer}
         <Full>
-            <LoadingMsg />
+            <LoadingMessage />
         </Full>
     {:then { documents }}
         {#if documents && documents.length > 0}

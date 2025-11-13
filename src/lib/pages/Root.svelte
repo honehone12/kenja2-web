@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang } from "$lib";
+    import { Lang, type RecommendResult } from "$lib";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
     import historyCtrl from "$lib/client/history-conrol";
     import {
@@ -8,7 +8,6 @@
     } from "$lib/functions/recommendation.remote";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import RootContents from "$lib/components/RootContents.svelte";
-    import type { SearchResult } from "$lib/documents/anime-search/documents";
     import { onMount } from "svelte";
 
     interface Props {
@@ -16,23 +15,23 @@
     }
 
     let { lang }: Props = $props();
-    let initializer:
-        | Promise<{ isRecommended: boolean; result: SearchResult }>
-        | undefined = $state();
+    let initializer: Promise<RecommendResult> | undefined = $state();
 
-    async function initialize() {
+    async function initialize(): Promise<RecommendResult> {
         const animeHist = await historyCtrl.getAnimeHistory();
         const isRecommended = animeHist.length > 0;
+        const itemType = ItemType.Anime;
+
         if (isRecommended) {
             const params = {
-                item_type: ItemType.Anime,
+                item_type: itemType,
                 ids: animeHist,
             };
             const result = await remoteRecommend(params);
-            return { isRecommended, result };
+            return { isRecommended, itemType, result };
         } else {
             const result = await remotePlaceholder();
-            return { isRecommended, result };
+            return { isRecommended, itemType, result };
         }
     }
 

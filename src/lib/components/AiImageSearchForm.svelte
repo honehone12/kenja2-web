@@ -1,10 +1,10 @@
 <script lang="ts">
     import { Lang } from "$lib";
     import ai from "$lib/client/ai/ai";
-    import ErrorMessage from "./ErrorMessage.svelte";
-    import FilePicker from "./FilePicker.svelte";
-    import ItemTypeRadioVector from "./ItemTypeRadioVector.svelte";
-    import LoadingMsg from "./LoadingMsg.svelte";
+    import ErrorMessage from "$lib/components/ErrorMessage.svelte";
+    import FilePicker from "$lib/components/FilePicker.svelte";
+    import ItemTypeRadioVector from "$lib/components/ItemTypeRadioVector.svelte";
+    import LoadingMessage from "$lib/components/LoadingMessage.svelte";
 
     interface Props {
         lang: Lang;
@@ -26,7 +26,7 @@
                         : "Preparing AI Model"}
                 </p>
             </span>
-            <LoadingMsg />
+            <LoadingMessage />
         </div>
     {:then}
         {#if pending}
@@ -38,7 +38,7 @@
                             : "AI is inferring"}
                     </p>
                 </span>
-                <LoadingMsg />
+                <LoadingMessage />
             </div>
         {:else}
             <form
