@@ -1,3 +1,6 @@
+import type { SearchResult } from "./documents/anime-search/documents";
+import type { ItemType } from "./documents/anime-search/queries";
+
 export const KEYWORDS_MAX_LEN = 150;
 export const OBJECT_ID_LEN = 24;
 export const VECTOR_ENCODED_LEN = 1024;
@@ -13,6 +16,12 @@ export const enum Lang {
   Unspecified = 0,
   En,
   Jp,
+}
+
+export interface RecommendResult {
+  isRecommended: boolean;
+  itemType: ItemType;
+  result: SearchResult;
 }
 
 export function canonicalUrl(url: URL, lang: Lang) {

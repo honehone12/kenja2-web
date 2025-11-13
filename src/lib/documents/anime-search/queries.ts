@@ -1,3 +1,5 @@
+import { Lang } from "$lib";
+
 export const enum ItemType {
   Unspecified = 0,
   Anime,
@@ -29,6 +31,19 @@ export class ITypeConv {
         return "trailer";
       default:
         return "all";
+    }
+  }
+
+  static toLabel(iType: ItemType | undefined, lang: Lang) {
+    switch (iType) {
+      case ItemType.Anime:
+        return lang === Lang.Jp ? "アニメ" : "Anime";
+      case ItemType.Character:
+        return lang === Lang.Jp ? "キャラクター" : "Character";
+      case ItemType.YVideo:
+        return lang === Lang.Jp ? "トレーラー" : "Trailer";
+      default:
+        return lang === Lang.Jp ? "全" : "All";
     }
   }
 }

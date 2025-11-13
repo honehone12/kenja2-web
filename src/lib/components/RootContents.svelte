@@ -1,15 +1,9 @@
 <script lang="ts">
-    import { Lang } from "$lib";
+    import { Lang, type RecommendResult } from "$lib";
     import Full from "$lib/component-layout/Full.svelte";
-    import type { SearchResult } from "$lib/documents/anime-search/documents";
-    import ErrorMessage from "./ErrorMessage.svelte";
-    import LoadingMsg from "./LoadingMsg.svelte";
-    import ManualDocuments from "./ManualDocuments.svelte";
-
-    export interface RecommendResult {
-        isRecommended: boolean;
-        result: SearchResult;
-    }
+    import ErrorMessage from "$lib/components/ErrorMessage.svelte";
+    import LoadingMessage from "$lib/components/LoadingMessage.svelte";
+    import ManualDocuments from "$lib/components/ManualDocuments.svelte";
 
     interface Props {
         lang: Lang;
@@ -22,13 +16,13 @@
 {#if initializer}
     {#await initializer}
         <Full>
-            <LoadingMsg />
+            <LoadingMessage />
         </Full>
     {:then { isRecommended, result }}
         {#if isRecommended && result.documents}
             <ManualDocuments
                 {lang}
-                name="Recommended For You"
+                name="Recommended for You"
                 nameJapanese="あなたにおすすめ"
                 documents={result.documents}
             />

@@ -33,7 +33,7 @@
                             また、アニメのアートワークをたくさん見ながら、デザインのアイデアをブラッシュアップしていきたいといった用途にも便利です。
                             <br />
                             ケンジャニメではアニメやキャラクターの画像からベクトルを生成し、インデックスを作成することにより、
-                            面倒なクエリ不要で、気に入った画像をクリックするだけの簡単操作のレコメンデーションシステムの構築を目指しています。
+                            面倒なクエリ不要で、気に入った画像をクリックするだけの、簡単操作のレコメンデーションシステムを構築しています。
                         </p>
                         <br />
                         <br />
@@ -62,10 +62,9 @@
                             character design. It's also useful for looking at lots
                             of anime artwork to refine your design ideas. <br />
                             Kenjanime generated vectors from anime and character
-                            images and created an index aiming to build an easy-to-use
-                            recommendation system that allows users to simply click
-                            on images they like, without the need for complicated
-                            queries.
+                            images and created an index to build an easy-to-use recommendation
+                            system that allows users to simply click on images they
+                            like, without the need for complicated queries.
                         </p>
                         <br />
                         <br />
@@ -244,8 +243,10 @@
                             能動的に使ってやるようなウェブサイトが欲しいと思ったわけです。あえて言うなら、意図の存在しないレコメンデーションシステムとか、
                             手段が目的となったレコメンデーションシステムと言えるでしょう。
                             <br />
-                            そして本当に、ケンジャニメはストリーミングプラットフォームのレコメンデーションシステムだけを切り取ってウェブサイトにしたような格好ですが、
+                            本当に、ケンジャニメはストリーミングプラットフォームのレコメンデーションシステムだけを切り取ってウェブサイトにしたような格好ですが、
                             閲覧履歴を収集しません。閲覧履歴はすべてブラウザーに保存され、おすすめに使うアイテムのIDのみがサーバーに送信されます。データはいつでも削除可能です。
+                            そしてケンジャニメのレコメンデーションシステムは完全にコンテンツ指向のみです。ユーザーのクラスタリングや分析は一切行いません。
+                            おすすめはすべてコンテンツから決定論的に生成されます。
                         </p>
                     {:else}
                         <p>
@@ -288,12 +289,15 @@
                             would be a recommendation system without any
                             intention, or a recommendation system where the
                             means have become the end. <br />
-                            And really, Kenjanime is like a streaming platform's
-                            recommendation system taken and turned into a website,
-                            but it doesn't collect browsing history. Your browsing
-                            history is stored in your browser, and only the IDs of
-                            the items used for recommendations are sent to the server.
-                            The data can be deleted at any time.
+                            Really, Kenjanime is like a streaming platform's recommendation
+                            system taken and turned into a website, but it doesn't
+                            collect browsing history. Your browsing history is stored
+                            in your browser, and only the IDs of the items used for
+                            recommendations are sent to the server. The data can
+                            be deleted at any time. And Kenjanime's recommendation
+                            system is entirely content oriented. It does not perform
+                            any user clustering or analysis. All recommendations
+                            are generated deterministically from the content.
                         </p>
                     {/if}
                 </span>
