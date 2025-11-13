@@ -30,7 +30,7 @@ export class HttpBufferApi implements AnimeSearch {
     return result;
   }
 
-  public async ping(): Promise<SearchResult> {
+  public ping(): Promise<SearchResult> {
     const q: SearchQuery = {
       function_id: FunctionId.Ping,
     };
@@ -39,7 +39,7 @@ export class HttpBufferApi implements AnimeSearch {
     return this.httpQuery(body);
   }
 
-  public async random(item_type: ItemType | undefined): Promise<SearchResult> {
+  public random(item_type: ItemType | undefined): Promise<SearchResult> {
     const q: SearchQuery = {
       function_id: FunctionId.Random,
       item_type,
@@ -49,7 +49,7 @@ export class HttpBufferApi implements AnimeSearch {
     return this.httpQuery(body);
   }
 
-  public async textSearch(
+  public textSearch(
     item_type: ItemType | undefined,
     keywords: string,
     fuzzy_kind: FuzzyKind | undefined,
@@ -65,10 +65,7 @@ export class HttpBufferApi implements AnimeSearch {
     return this.httpQuery(body);
   }
 
-  public async vectorSearch(
-    item_type: ItemType,
-    id: string,
-  ): Promise<SearchResult> {
+  public vectorSearch(item_type: ItemType, id: string): Promise<SearchResult> {
     const q: SearchQuery = {
       function_id: FunctionId.VectorSearch,
       item_type,
@@ -79,7 +76,7 @@ export class HttpBufferApi implements AnimeSearch {
     return this.httpQuery(body);
   }
 
-  public async directVectorSearch(
+  public directVectorSearch(
     item_type: ItemType,
     vector: string,
   ): Promise<SearchResult> {
@@ -87,6 +84,20 @@ export class HttpBufferApi implements AnimeSearch {
       function_id: FunctionId.DirectVectorSearch,
       item_type,
       vector,
+    };
+    const body = JSON.stringify(q);
+
+    return this.httpQuery(body);
+  }
+
+  public multiVectorSearch(
+    item_type: ItemType,
+    ids: string[],
+  ): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.MultiVectorSearch,
+      item_type,
+      ids,
     };
     const body = JSON.stringify(q);
 

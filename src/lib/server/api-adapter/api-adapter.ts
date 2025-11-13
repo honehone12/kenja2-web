@@ -14,4 +14,5 @@ export interface AnimeSearch {
     item_type: ItemType,
     vector: string,
   ): Promise<SearchResult>;
+  multiVectorSearch(item_type: ItemType, ids: string[]): Promise<SearchResult>;
 }

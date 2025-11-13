@@ -1,13 +1,44 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import TopPageFeatures from "$lib/components/TopPageFeatures.svelte";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
+    import historyCtrl from "$lib/client/history-conrol";
+    import {
+        remotePlaceholder,
+        remoteRecommend,
+    } from "$lib/functions/recommendation.remote";
+    import { ItemType } from "$lib/documents/anime-search/queries";
+    import RootContents from "$lib/components/RootContents.svelte";
+    import type { SearchResult } from "$lib/documents/anime-search/documents";
+    import { onMount } from "svelte";
 
     interface Props {
         lang: Lang;
     }
 
     let { lang }: Props = $props();
+    let initializer:
+        | Promise<{ isRecommended: boolean; result: SearchResult }>
+        | undefined = $state();
+
+    async function initialize() {
+        const animeHist = await historyCtrl.getAnimeHistory();
+        const isRecommended = animeHist.length > 0;
+        if (isRecommended) {
+            const params = {
+                item_type: ItemType.Anime,
+                ids: animeHist,
+            };
+            const result = await remoteRecommend(params);
+            return { isRecommended, result };
+        } else {
+            const result = await remotePlaceholder();
+            return { isRecommended, result };
+        }
+    }
+
+    onMount(() => {
+        initializer = initialize();
+    });
 </script>
 
 <main class="py-20">
@@ -94,10 +125,10 @@
             </span>
         </div>
     </div>
-    <div class="hero w-full mt-10">
+    <div class="hero w-full mt-10 mb-10">
         <div class="hero-content">
             <TextSearchForm {lang} useFlexible={true} onsubmit={null} />
         </div>
     </div>
-    <TopPageFeatures {lang} />
+    <RootContents {lang} {initializer} />
 </main>

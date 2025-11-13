@@ -16,7 +16,7 @@ class Ai {
       this._device = gpu;
       return;
     } catch {
-      console.log("fallbacking to cpu");
+      console.info("using cpu");
     }
 
     const cpu = new CpuAi();

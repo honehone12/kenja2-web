@@ -48,7 +48,7 @@ export class LambdaApi implements AnimeSearch {
     return result;
   }
 
-  public async ping(): Promise<SearchResult> {
+  public ping(): Promise<SearchResult> {
     const q: SearchQuery = {
       function_id: FunctionId.Ping,
     };
@@ -61,7 +61,7 @@ export class LambdaApi implements AnimeSearch {
     return this.lambdaQuery(input);
   }
 
-  public async random(item_type: ItemType | undefined): Promise<SearchResult> {
+  public random(item_type: ItemType | undefined): Promise<SearchResult> {
     const q: SearchQuery = {
       function_id: FunctionId.Random,
       item_type,
@@ -75,7 +75,7 @@ export class LambdaApi implements AnimeSearch {
     return this.lambdaQuery(input);
   }
 
-  public async textSearch(
+  public textSearch(
     item_type: ItemType | undefined,
     keywords: string,
     fuzzy_kind: FuzzyKind | undefined,
@@ -95,10 +95,7 @@ export class LambdaApi implements AnimeSearch {
     return this.lambdaQuery(input);
   }
 
-  public async vectorSearch(
-    item_type: ItemType,
-    id: string,
-  ): Promise<SearchResult> {
+  public vectorSearch(item_type: ItemType, id: string): Promise<SearchResult> {
     const q: SearchQuery = {
       function_id: FunctionId.VectorSearch,
       item_type,
@@ -113,7 +110,7 @@ export class LambdaApi implements AnimeSearch {
     return this.lambdaQuery(input);
   }
 
-  public async directVectorSearch(
+  public directVectorSearch(
     item_type: ItemType,
     vector: string,
   ): Promise<SearchResult> {
@@ -121,6 +118,24 @@ export class LambdaApi implements AnimeSearch {
       function_id: FunctionId.DirectVectorSearch,
       item_type,
       vector,
+    };
+    const payload = JSON.stringify(q);
+    const input: InvokeCommandInput = {
+      FunctionName: this._functionName,
+      Payload: payload,
+    };
+
+    return this.lambdaQuery(input);
+  }
+
+  public multiVectorSearch(
+    item_type: ItemType,
+    ids: string[],
+  ): Promise<SearchResult> {
+    const q: SearchQuery = {
+      function_id: FunctionId.MultiVectorSearch,
+      item_type,
+      ids,
     };
     const payload = JSON.stringify(q);
     const input: InvokeCommandInput = {

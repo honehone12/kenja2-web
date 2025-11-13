@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import ManualDocumentsBundle from "$lib/components/ManualDocumentsBundle.svelte";
+    import ManualDocuments from "$lib/components/ManualDocuments.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import Meta from "$lib/meta/Meta.svelte";
 
@@ -47,7 +47,7 @@
 />
 
 <main class="py-20">
-    <div class="hero w-full">
+    <div class="hero w-full mb-10">
         <span class="text-center">
             <h1 class="text-secondary font-semibold text-3xl mb-10">
                 {#if lang === Lang.Jp}
@@ -68,15 +68,11 @@
             </p>
         </span>
     </div>
-    <ManualDocumentsBundle
+    <ManualDocuments
         {lang}
-        bundle={[
-            {
-                name: `${year} ${season}`,
-                nameJapanese: `${yearJapanese}${seasonJapanese}`,
-                list,
-            },
-        ]}
+        name="{year} {season}"
+        nameJapanese="{yearJapanese}{seasonJapanese}"
+        documents={list}
     />
     <div class="text-center mt-10">
         <a href="/archive/2025/spring{lang === Lang.Jp ? '?lang=ja' : ''}">

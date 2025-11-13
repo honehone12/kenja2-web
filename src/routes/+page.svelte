@@ -1,6 +1,6 @@
 <script lang="ts">
     import Meta from "$lib/meta/Meta.svelte";
-    import Top from "$lib/pages/Top.svelte";
+    import Root from "$lib/pages/Root.svelte";
 
     let { data } = $props();
 
@@ -27,4 +27,4 @@
     {keywordsJapanese}
 />
 
-<Top lang={data.lang} />
+<Root lang={data.lang} />

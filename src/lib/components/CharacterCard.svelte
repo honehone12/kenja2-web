@@ -10,6 +10,7 @@
     import ExternalCharacter from "$lib/components/ExternalCharacter.svelte";
     import DocumentCard from "$lib/component-layout/DocumentCard.svelte";
     import CardHead from "$lib/component-layout/CardHead.svelte";
+    import historyCtrl from "$lib/client/history-conrol";
 
     interface Props {
         lang: Lang;
@@ -18,6 +19,10 @@
     }
 
     let { lang, doc, onUnstar }: Props = $props();
+
+    async function onsearch() {
+        await historyCtrl.pushCharacterHistory(doc.id);
+    }
 </script>
 
 <DocumentCard>
@@ -29,6 +34,7 @@
         {lang}
         name={doc.parent?.name}
         nameJapanese={doc.parent?.name_japanese}
+        {onsearch}
     />
     <span class="mb-5">
         <TitleLabel
@@ -38,17 +44,7 @@
             nameJapanese={doc.name_japanese}
         />
     </span>
-    <ImageVectorSearch
-        {lang}
-        doc={{
-            id: doc.id,
-            itemType: ItemType.Character,
-            name: doc.name,
-            nameJapanese: doc.name_japanese,
-            img: doc.img,
-            src: doc.src,
-        }}
-    />
+    <ImageVectorSearch {lang} {doc} {onsearch} />
     {#if doc.name_japanese}
         <div class="mt-5">
             <ExternalCharacter

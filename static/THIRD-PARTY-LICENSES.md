@@ -20,6 +20,9 @@ https://opensource.org/licenses/MIT
 - magic-string
   - Copyright Holder: Rich Harris
   - Homepage: https://github.com/Rich-Harris/magic-string
+- devalue
+  - Copyright Holders: Rich Harris and contributers
+  - Homepage: https://github.com/sveltejs/devalue
 - nanoid
   - Copyright Holder: Ai Zongbin
   - Homepage: https://github.com/ai/nanoid
