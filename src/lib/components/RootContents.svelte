@@ -5,43 +5,40 @@
     import ErrorMessage from "./ErrorMessage.svelte";
     import LoadingMsg from "./LoadingMsg.svelte";
     import ManualDocuments from "./ManualDocuments.svelte";
-    import TopFeatures from "./TopFeatures.svelte";
+
+    export interface RecommendResult {
+        isRecommended: boolean;
+        result: SearchResult;
+    }
 
     interface Props {
         lang: Lang;
-        initializer: (() => Promise<SearchResult>) | undefined;
+        initializer: Promise<RecommendResult> | undefined;
     }
 
     let { lang, initializer }: Props = $props();
 </script>
 
 {#if initializer}
-    {#await initializer()}
+    {#await initializer}
         <Full>
             <LoadingMsg />
         </Full>
-    {:then { documents }}
-        {#if documents}
+    {:then { isRecommended, result }}
+        {#if isRecommended && result.documents}
             <ManualDocuments
                 {lang}
                 name="Recommended For You"
                 nameJapanese="あなたにおすすめ"
-                {documents}
+                documents={result.documents}
             />
-        {:else}
-            <div class="flex place-content-center">
-                <div class="card text-center border border-secondary p-5 mx-10">
-                    <p>
-                        {#if lang === Lang.Jp}
-                            💡
-                            アイテムをクリックするとおすすめが表示されるようになります。
-                        {:else}
-                            💡 Clicking on items will display recommendations.
-                        {/if}
-                    </p>
-                </div>
-            </div>
-            <TopFeatures {lang} />
+        {:else if result.documents}
+            <ManualDocuments
+                {lang}
+                name="💡Clicking on items will display recommendations."
+                nameJapanese="💡アイテムをクリックするとおすすめが表示されるようになります。"
+                documents={result.documents}
+            />
         {/if}
     {:catch}
         <Full>

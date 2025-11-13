@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Lang } from "$lib";
-    import ManualDocumentsBundle from "$lib/components/ManualDocumentsBundle.svelte";
+    import ManualDocuments from "$lib/components/ManualDocuments.svelte";
     import type { FlatDocument } from "$lib/documents/anime-search/documents";
     import Meta from "$lib/meta/Meta.svelte";
 
@@ -62,8 +62,8 @@
 />
 
 <main class="py-20">
-    <div class="hero w-full">
-        <h1 class="text-secondary font-semibold text-3xl mb-10">
+    <div class="hero w-full mb-10">
+        <h1 class="text-secondary font-semibold text-3xl">
             {#if lang === Lang.Jp}
                 アニメ 過去タイトル
             {:else}
@@ -71,15 +71,11 @@
             {/if}
         </h1>
     </div>
-    <ManualDocumentsBundle
+    <ManualDocuments
         {lang}
-        bundle={[
-            {
-                name: `${year} ${season}`,
-                nameJapanese: `${yearJapanese}${seasonJapanese}`,
-                list,
-            },
-        ]}
+        name="{year} {season}"
+        nameJapanese="{yearJapanese}{seasonJapanese}"
+        documents={list}
     />
     {#if backLink}
         <div class="text-center mt-10">

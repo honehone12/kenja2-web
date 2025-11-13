@@ -2,7 +2,10 @@
     import { Lang } from "$lib";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
     import historyCtrl from "$lib/client/history-conrol";
-    import { remoteRecommend } from "$lib/functions/recommendation.remote";
+    import {
+        remotePlaceholder,
+        remoteRecommend,
+    } from "$lib/functions/recommendation.remote";
     import { ItemType } from "$lib/documents/anime-search/queries";
     import RootContents from "$lib/components/RootContents.svelte";
     import type { SearchResult } from "$lib/documents/anime-search/documents";
@@ -13,24 +16,28 @@
     }
 
     let { lang }: Props = $props();
-    let initializer: (() => Promise<SearchResult>) | undefined = $state();
+    let initializer:
+        | Promise<{ isRecommended: boolean; result: SearchResult }>
+        | undefined = $state();
 
     async function initialize() {
         const animeHist = await historyCtrl.getAnimeHistory();
-        if (animeHist.length === 0) {
-            return { documents: undefined };
+        const isRecommended = animeHist.length > 0;
+        if (isRecommended) {
+            const params = {
+                item_type: ItemType.Anime,
+                ids: animeHist,
+            };
+            const result = await remoteRecommend(params);
+            return { isRecommended, result };
+        } else {
+            const result = await remotePlaceholder();
+            return { isRecommended, result };
         }
-
-        const params = {
-            item_type: ItemType.Anime,
-            ids: animeHist,
-        };
-        const result = await remoteRecommend(params);
-        return result;
     }
 
     onMount(() => {
-        initializer = initialize;
+        initializer = initialize();
     });
 </script>
 

@@ -10,7 +10,7 @@
     }
 
     let { lang }: Props = $props();
-    let initializer: (() => Promise<void>) | undefined = $state();
+    let initializer: Promise<void> | undefined = $state();
 
     async function initialize() {
         await ai.init();
@@ -23,7 +23,7 @@
     }
 
     onMount(() => {
-        initializer = initialize;
+        initializer = initialize();
     });
 </script>
 

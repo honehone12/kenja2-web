@@ -8,7 +8,7 @@
 
     interface Props {
         lang: Lang;
-        initializer: (() => Promise<void>) | undefined;
+        initializer: Promise<void> | undefined;
         onsubmit: (file: File, itemType: string) => Promise<void>;
     }
 
@@ -17,7 +17,7 @@
 </script>
 
 {#if initializer}
-    {#await initializer()}
+    {#await initializer}
         <div class="text-center mt-10">
             <span class="text-lg">
                 <p>
