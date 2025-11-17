@@ -34,14 +34,14 @@
                 <WarnIcon />
                 <span class="text-center text-lg">
                     {#if lang === Lang.Jp}
-                        現在AndroidとiOSはサポートしていません。期待通りに動作しない可能性があり、著しく非効率で低速です。
+                        現在ローカルAIはAndroidとiOSをサポートしていません。期待通りに動作しない可能性があり、著しく非効率で低速です。
                         AndroidとiOSで動作確認をする際はWI-FI環境下にいることを確認してください。
                     {:else}
-                        Currently, Android and iOS are not supported. It may not
-                        function as expected, resulting in significantly
-                        inefficient and slow performance. When testing the
-                        application on Android and iOS devices, please ensure
-                        you are in a Wi-Fi environment.
+                        Currently, the local AI is not supporting Android and
+                        iOS. It may not function as expected, resulting in
+                        significantly inefficient and slow performance. When
+                        testing the application on Android and iOS devices,
+                        please ensure you are in a Wi-Fi environment.
                     {/if}
                 </span>
                 <WarnIcon />
