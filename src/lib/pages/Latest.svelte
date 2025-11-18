@@ -47,8 +47,8 @@
 />
 
 <main class="py-20">
-    <div class="hero w-full mb-10">
-        <span class="text-center">
+    <div class="w-full">
+        <div class="text-center mx-5 mb-10">
             <h1 class="text-secondary font-semibold text-3xl mb-10">
                 {#if lang === Lang.Jp}
                     最新アニメ
@@ -66,7 +66,7 @@
                     The Fall 2025 anime will be added in early winter.
                 {/if}
             </p>
-        </span>
+        </div>
     </div>
     <ManualDocuments
         {lang}
