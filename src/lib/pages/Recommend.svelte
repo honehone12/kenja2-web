@@ -1,13 +1,13 @@
 <script lang="ts">
     import { Lang, type RecommendResult } from "$lib";
     import historyCtrl from "$lib/client/history-conrol";
-    import { remoteRecommend } from "$lib/functions/recommendation.remote";
     import { ItemType, ITypeConv } from "$lib/documents/anime-search/queries";
     import { onMount } from "svelte";
     import Full from "$lib/component-layout/Full.svelte";
     import ErrorMessage from "$lib/components/ErrorMessage.svelte";
     import LoadingMessage from "$lib/components/LoadingMessage.svelte";
     import ManualDocuments from "$lib/components/ManualDocuments.svelte";
+    import api from "$lib/client/api/api";
 
     interface Props {
         lang: Lang;
@@ -25,19 +25,19 @@
         const isRecommended = hist.length > 0;
 
         if (isRecommended) {
-            const params = {
-                item_type: itemType,
-                ids: hist,
-            };
-            const result = await remoteRecommend(params);
-            return { isRecommended, itemType, result };
-        } else {
-            return {
-                isRecommended,
-                itemType,
-                result: { documents: undefined },
-            };
+            try {
+                const result = await api.multiVectorSearch(itemType, hist);
+                return { isRecommended, itemType, result };
+            } catch {
+                console.error("error on multi vector search");
+            }
         }
+
+        return {
+            isRecommended,
+            itemType,
+            result: { documents: undefined },
+        };
     }
 
     function itemTypeLabel() {

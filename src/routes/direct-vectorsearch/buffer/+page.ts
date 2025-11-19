@@ -1,0 +1,26 @@
+import { ITypeConv } from "$lib/documents/anime-search/queries";
+import { emptySearchResult, internalError } from "$lib/client/errors";
+import { validateVector, validateVectorItemType } from "$lib/client/validation";
+import api from "$lib/client/api/api";
+
+export async function load({ url }) {
+  const vector = url.searchParams.get("vector");
+  if (!vector || !validateVector(vector)) {
+    // not showing error page
+    return { bufferedStream: emptySearchResult() };
+  }
+
+  const itemType = ITypeConv.fromString(url.searchParams.get("item-type"));
+  if (!itemType || !validateVectorItemType(itemType)) {
+    // not showing error page
+    return { bufferedStream: emptySearchResult() };
+  }
+
+  try {
+    const bufferedStream = api.directVectorSearch(itemType, vector);
+    return { bufferedStream };
+  } catch {
+    console.error("error on direct vector search");
+    return internalError();
+  }
+}

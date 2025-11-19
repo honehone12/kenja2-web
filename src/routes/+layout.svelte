@@ -3,10 +3,18 @@
     import Navbar from "$lib/layouts/Navbar.svelte";
     import Dock from "$lib/layouts/Dock.svelte";
     import Footer from "$lib/layouts/Footer.svelte";
-    import { canonicalUrl } from "$lib";
+    import { canonicalUrl, Lang } from "$lib";
     import { page } from "$app/state";
+    import { onMount } from "svelte";
 
     let { children, data } = $props();
+
+    onMount(() => {
+        document.documentElement.setAttribute(
+            "lang",
+            data.lang === Lang.Jp ? "ja" : "en",
+        );
+    });
 </script>
 
 <svelte:head>

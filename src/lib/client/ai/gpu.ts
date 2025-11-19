@@ -2,7 +2,7 @@ import { PreTrainedModel, Processor } from "@huggingface/transformers";
 import type { ModelInitializer } from "$lib/client/ai/initializer";
 import type { AiDevice } from "$lib/client/ai/device";
 import { vectorProcess } from "$lib/client/ai/vector-process";
-import { ModelInitializers } from "./initializers";
+import { ModelInitializers } from "$lib/client/ai/initializers";
 
 export class GpuAi implements AiDevice {
   private _initializer: ModelInitializer | null = null;
