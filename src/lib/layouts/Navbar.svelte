@@ -81,7 +81,7 @@
     }
 </script>
 
-<heaer>
+<header>
     <nav class="navbar bg-base-200" aria-label="navigation bar">
         <div class="navbar-start">
             <div class="dropdown md:hidden">
@@ -156,6 +156,10 @@
                         href={otherLangUrl()}
                         onclick={(e) => {
                             e.preventDefault();
+                            document.documentElement.setAttribute(
+                                "lang",
+                                lang === Lang.Jp ? "en" : "ja",
+                            );
                             goto(otherLangUrl(), { invalidateAll: true });
                         }}
                     >
@@ -165,4 +169,4 @@
             </menu>
         </div>
     </nav>
-</heaer>
+</header>
