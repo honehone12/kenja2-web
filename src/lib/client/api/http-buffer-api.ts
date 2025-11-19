@@ -12,15 +12,16 @@ export class HttpBufferApi implements BufferApi {
   private _apiUrl: URL;
 
   public constructor(apiUrl: string) {
-    this._apiUrl = new URL(apiUrl);
+    const host = new URL(window.location.href);
+    this._apiUrl = new URL(apiUrl, `${host.protocol}//${host.host}`);
   }
 
   private async httpQuery(body: string): Promise<SearchResult> {
     const url = new URL(this._apiUrl);
-    const payload = Base64.encodeURL(body);
+    const payload = Base64.encode(body, true);
     url.searchParams.append("payload", payload);
 
-    const res = await fetch(this._apiUrl);
+    const res = await fetch(url);
     if (!res.ok) {
       throw new Error(`HTTP FAIL: ${res.status} ${res.statusText}`);
     }
