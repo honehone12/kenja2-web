@@ -1,43 +1,14 @@
 <script lang="ts">
-    import { Lang, type RecommendResult } from "$lib";
+    import { Lang } from "$lib";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
-    import historyCtrl from "$lib/client/history-conrol";
-    import {
-        remotePlaceholder,
-        remoteRecommend,
-    } from "$lib/functions/recommendation.remote";
+    import Recommend from "$lib/components/Recommend.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
-    import RootContents from "$lib/components/RootContents.svelte";
-    import { onMount } from "svelte";
 
     interface Props {
         lang: Lang;
     }
 
     let { lang }: Props = $props();
-    let initializer: Promise<RecommendResult> | undefined = $state();
-
-    async function initialize(): Promise<RecommendResult> {
-        const animeHist = await historyCtrl.getAnimeHistory();
-        const isRecommended = animeHist.length > 0;
-        const itemType = ItemType.Anime;
-
-        if (isRecommended) {
-            const params = {
-                item_type: itemType,
-                ids: animeHist,
-            };
-            const result = await remoteRecommend(params);
-            return { isRecommended, itemType, result };
-        } else {
-            const result = await remotePlaceholder();
-            return { isRecommended, itemType, result };
-        }
-    }
-
-    onMount(() => {
-        initializer = initialize();
-    });
 </script>
 
 <main class="py-20">
@@ -129,5 +100,5 @@
             <TextSearchForm {lang} useFlexible={true} onsubmit={null} />
         </div>
     </div>
-    <RootContents {lang} {initializer} />
+    <Recommend {lang} itemType={ItemType.Anime} />
 </main>

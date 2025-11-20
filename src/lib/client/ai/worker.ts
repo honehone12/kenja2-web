@@ -5,7 +5,7 @@ import {
   type WorkerResult,
 } from "$lib/client/ai/message";
 import { vectorProcess } from "$lib/client/ai/vector-process";
-import { ModelInitializers } from "./initializers";
+import { ModelInitializers } from "$lib/client/ai/initializers";
 
 let __model: PreTrainedModel | null = null;
 let __processor: Processor | null = null;

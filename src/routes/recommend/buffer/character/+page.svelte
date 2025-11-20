@@ -2,7 +2,7 @@
     import { ItemType } from "$lib/documents/anime-search/queries.js";
     import Meta from "$lib/meta/Meta.svelte";
     import NoIndex from "$lib/meta/NoIndex.svelte";
-    import Recommend from "$lib/pages/Recommend.svelte";
+    import Recommend from "$lib/components/Recommend.svelte";
 
     let { data } = $props();
 
@@ -28,5 +28,6 @@
     {keywords}
     {keywordsJapanese}
 />
-
-<Recommend lang={data.lang} itemType={ItemType.Character} />
+<main class="py-20 min-h-screen">
+    <Recommend lang={data.lang} itemType={ItemType.Character} />
+</main>

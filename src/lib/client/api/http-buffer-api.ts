@@ -1,4 +1,3 @@
-import type { AnimeSearch } from "$lib/server/api-adapter/api-adapter";
 import {
   FunctionId,
   ItemType,
@@ -6,22 +5,23 @@ import {
   type SearchQuery,
 } from "$lib/documents/anime-search/queries";
 import type { SearchResult } from "$lib/documents/anime-search/documents";
+import type { BufferApi } from "$lib/client/api/buffer-api";
+import { Base64 } from "js-base64";
 
-export class HttpBufferApi implements AnimeSearch {
+export class HttpBufferApi implements BufferApi {
   private _apiUrl: URL;
 
-  constructor(baseUrl: string) {
-    this._apiUrl = new URL("/anime-search", baseUrl);
+  public constructor(apiUrl: string) {
+    const host = new URL(window.location.href);
+    this._apiUrl = new URL(apiUrl, `${host.protocol}//${host.host}`);
   }
 
   private async httpQuery(body: string): Promise<SearchResult> {
-    const res = await fetch(this._apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body,
-    });
+    const url = new URL(this._apiUrl);
+    const payload = Base64.encode(body, true);
+    url.searchParams.append("payload", payload);
+
+    const res = await fetch(url);
     if (!res.ok) {
       throw new Error(`HTTP FAIL: ${res.status} ${res.statusText}`);
     }

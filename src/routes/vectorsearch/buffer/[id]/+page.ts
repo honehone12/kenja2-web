@@ -1,8 +1,7 @@
-import { ITypeConv } from "$lib/documents/anime-search/queries.js";
-import { emptySearchResult, internalError } from "$lib/server/errors.js";
-import kenja from "$lib/server/kenja.js";
-import logs from "$lib/server/logs.js";
-import { validateOid, validateVectorItemType } from "$lib/server/validation.js";
+import { ITypeConv } from "$lib/documents/anime-search/queries";
+import { emptySearchResult, internalError } from "$lib/client/errors";
+import { validateOid, validateVectorItemType } from "$lib/client/validation";
+import api from "$lib/client/api/api.js";
 
 export function load({ url, params }) {
   const id = params.id;
@@ -18,10 +17,10 @@ export function load({ url, params }) {
   }
 
   try {
-    const bufferedStream = kenja.animeSearch().vectorSearch(itemType, id);
+    const bufferedStream = api.vectorSearch(itemType, id);
     return { bufferedStream };
-  } catch (err) {
-    logs.error(err, "error on vector search");
+  } catch {
+    console.error("error on vector search");
     return internalError();
   }
 }

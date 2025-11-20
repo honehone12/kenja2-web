@@ -1,7 +1,7 @@
 import type { ItemType, FuzzyKind } from "$lib/documents/anime-search/queries";
 import type { SearchResult } from "$lib/documents/anime-search/documents";
 
-export interface AnimeSearch {
+export interface BufferApi {
   ping(): Promise<SearchResult>;
   random(item_type: ItemType | undefined): Promise<SearchResult>;
   textSearch(

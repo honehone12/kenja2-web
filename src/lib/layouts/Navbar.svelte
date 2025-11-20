@@ -12,8 +12,8 @@
 
     const ROUTES: Route[] = [
         {
-            name: "Home",
-            nameJapanese: "ホーム",
+            name: "Home (Anime)",
+            nameJapanese: "ホーム (アニメ)",
             path: "/",
             pathJapanese: "/?lang=ja",
         },
@@ -28,12 +28,6 @@
             nameJapanese: "ローカルAI",
             path: "/ai",
             pathJapanese: "/ai?lang=ja",
-        },
-        {
-            name: "Latest",
-            nameJapanese: "最新",
-            path: "/latest",
-            pathJapanese: "/latest?lang=ja",
         },
         {
             name: "Random",
@@ -81,7 +75,7 @@
     }
 </script>
 
-<heaer>
+<header>
     <nav class="navbar bg-base-200" aria-label="navigation bar">
         <div class="navbar-start">
             <div class="dropdown md:hidden">
@@ -156,6 +150,10 @@
                         href={otherLangUrl()}
                         onclick={(e) => {
                             e.preventDefault();
+                            document.documentElement.setAttribute(
+                                "lang",
+                                lang === Lang.Jp ? "en" : "ja",
+                            );
                             goto(otherLangUrl(), { invalidateAll: true });
                         }}
                     >
@@ -165,4 +163,4 @@
             </menu>
         </div>
     </nav>
-</heaer>
+</header>
