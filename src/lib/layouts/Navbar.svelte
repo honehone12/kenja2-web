@@ -30,12 +30,6 @@
             pathJapanese: "/ai?lang=ja",
         },
         {
-            name: "Latest",
-            nameJapanese: "最新",
-            path: "/latest",
-            pathJapanese: "/latest?lang=ja",
-        },
-        {
             name: "Random",
             nameJapanese: "ランダム",
             path: "/random/buffer?item-type=all",
