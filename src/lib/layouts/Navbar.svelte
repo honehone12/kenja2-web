@@ -12,8 +12,8 @@
 
     const ROUTES: Route[] = [
         {
-            name: "Home",
-            nameJapanese: "ホーム",
+            name: "Home (Anime)",
+            nameJapanese: "ホーム (アニメ)",
             path: "/",
             pathJapanese: "/?lang=ja",
         },

@@ -5,7 +5,7 @@
     import { onMount } from "svelte";
     import ErrorMessage from "$lib/components/ErrorMessage.svelte";
     import LoadingMessage from "$lib/components/LoadingMessage.svelte";
-    import ManualDocuments from "$lib/components/ManualDocuments.svelte";
+    import Documents from "$lib/components/Documents.svelte";
     import api from "$lib/client/api/api";
 
     interface Props {
@@ -56,15 +56,23 @@
     </div>
     {#if initializer}
         {#await initializer}
-            <LoadingMessage />
+            <div class="text-center">
+                <LoadingMessage />
+            </div>
         {:then { isRecommended, result }}
             {#if isRecommended && result.documents}
-                <ManualDocuments
-                    {lang}
-                    name="Recommended {itemTypeLabel()} for You"
-                    nameJapanese="あなたにおすすめの{itemTypeLabel()}"
-                    documents={result.documents}
-                />
+                <div class="hero w-full">
+                    <div
+                        class="hero-content card border border-neutral-500 text-center min-w-80 p-5 mb-10 mx-5"
+                    >
+                        <h2 class="text-xl">
+                            {lang === Lang.Jp
+                                ? `あなたにおすすめの${itemTypeLabel()}`
+                                : `Recommended ${itemTypeLabel()} for You`}
+                        </h2>
+                    </div>
+                </div>
+                <Documents {lang} documents={result.documents} />
             {:else}
                 <div
                     class="text-center card outline outline-secondary p-5 mx-5"
@@ -84,7 +92,9 @@
                 </div>
             {/if}
         {:catch}
-            <ErrorMessage {lang} />
+            <div class="text-center">
+                <ErrorMessage {lang} />
+            </div>
         {/await}
     {/if}
 </main>
