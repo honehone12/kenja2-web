@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Lang } from "$lib";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
-    import Recommend from "./Recommend.svelte";
+    import Recommend from "$lib/components/Recommend.svelte";
     import { ItemType } from "$lib/documents/anime-search/queries";
 
     interface Props {
