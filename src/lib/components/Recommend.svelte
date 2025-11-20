@@ -73,19 +73,23 @@
             </div>
             <Documents {lang} documents={result.documents} />
         {:else}
-            <div class="text-center card outline outline-secondary p-5 mx-5">
-                <p>
-                    {#if lang === Lang.Jp}
-                        💡まだ{itemTypeLabel()}をクリックしていないようです。
-                        <br />
-                        アイテムをクリックするとおすすめが表示されるようになります。
-                    {:else}
-                        💡It looks like you haven't clicked on the
-                        {itemTypeLabel()} yet.
-                        <br />
-                        Clicking on items will display recommendations.
-                    {/if}
-                </p>
+            <div class="hero w-full">
+                <div
+                    class="hero-content text-center card outline outline-secondary p-5 mx-5"
+                >
+                    <p>
+                        {#if lang === Lang.Jp}
+                            💡まだ{itemTypeLabel()}をクリックしていないようです。
+                            <br />
+                            アイテムをクリックするとおすすめが表示されるようになります。
+                        {:else}
+                            💡It looks like you haven't clicked on the
+                            {itemTypeLabel()} yet.
+                            <br />
+                            Clicking on items will display recommendations.
+                        {/if}
+                    </p>
+                </div>
             </div>
         {/if}
     {:catch}
