@@ -5,30 +5,12 @@ https://opensource.org/licenses/MIT
 - svelte
   - Copyright Holders: Rich Harris and contributers
   - Homepage: https://svelte.dev
-- @sveltejs/kit
-  - Copyright Holders: Svelte Contributers Team
-  - Homepage: https://kit.svelte.dev
 - tailwindcss
   - Copyright Holder: Tailwind Labs
   - Homepage: https://tailwindcss.com
 - daisyui
   - Copyright Holder: Pouya Saadeghi
   - Homepage: https://daisyui.com
-- clsx
-  - Copyright Holders: Luke Edwards
-  - Homepage: https://github.com/lukeed/clsx
-- magic-string
-  - Copyright Holder: Rich Harris
-  - Homepage: https://github.com/Rich-Harris/magic-string
-- devalue
-  - Copyright Holders: Rich Harris and contributers
-  - Homepage: https://github.com/sveltejs/devalue
-- nanoid
-  - Copyright Holder: Ai Zongbin
-  - Homepage: https://github.com/ai/nanoid
-- Jikan Api
-  - Copyright Holder: Jikan Api
-  - Homepage: https://jikan.moe
 - browser-image-compression
   - Copyright Holder: Donald Chan
   - Homepage: https://github.com/Donaldcwl/browser-image-compression
@@ -41,15 +23,15 @@ https://opensource.org/licenses/MIT
 - onnxruntime-common
   - Copyright Holder: Microsoft Corporation
   - Homepage: https://github.com/microsoft/onnxruntime
-- guid-typescript
-  - Copyright Holder: Evgeny Zatepyakin
-  - Homepage: https://github.com/Zate/guid-typescript
 - platform
   - Copyright Holder: Benjamin Tan
   - Homepage: https://github.com/bestiejs/platform.js
 - uzip
   - Copyright Holder: Photopea
   - Homepage: https://github.com/photopea/UZIP.js
+- Jikan Api
+  - Copyright Holder: Jikan Api
+  - Homepage: https://jikan.moe
 
 ## MIT License
 ------
@@ -79,8 +61,8 @@ https://opensource.org/license/apache-2-0
 - siglip2-base-patch16-512
   - Copyright Holder: google
   - Homepage: https://huggingface.co/google/siglip2-base-patch16-512
-- transformers.js
-  - Copyright Holder: huggingface
+- @huggingface/transformers
+  - Copyright Holder: Hugging Face
   - Homepage: https://github.com/huggingface/transformers.js
 - flatbuffers
   - Copyright Holder: Google Inc.
@@ -218,6 +200,7 @@ https://opensource.org/license/apache-2-0
     reproduction, or distribution of Your modifications, or for any such
     Derivative Works as a whole, provided Your use, reproduction, and
     distribution of the Work otherwise complies with the conditions stated
+
     in this License.
 
     5. Submission of Contributions.
@@ -332,3 +315,25 @@ Redistribution and use in source and binary forms, with or without modification,
 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# ISC License
+Copyright (c) [Each Copyright Holders]
+https://opensource.org/licenses/ISC
+
+- guid-typescript
+  - Copyright Holder: Evgeny Zatepyakin
+  - Homepage: https://github.com/Zate/guid-typescript
+
+## ISC License
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
