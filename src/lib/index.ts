@@ -4,6 +4,7 @@ import type { ItemType } from "./documents/anime-search/queries";
 export const KEYWORDS_MAX_LEN = 150;
 export const OBJECT_ID_LEN = 24;
 export const VECTOR_ENCODED_LEN = 1024;
+export const MAX_RECOMMEND_SRC = 10;
 
 export const enum SearchType {
   Text = 1,

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Lang, type RecommendResult } from "$lib";
+    import { Lang, MAX_RECOMMEND_SRC, type RecommendResult } from "$lib";
     import historyCtrl from "$lib/client/history-conrol";
     import { ItemType, ITypeConv } from "$lib/documents/anime-search/queries";
     import { onMount } from "svelte";
@@ -21,7 +21,8 @@
             itemType === ItemType.Character
                 ? await historyCtrl.getCharacterHistory()
                 : await historyCtrl.getAnimeHistory();
-        const isRecommended = hist.length > 0;
+        const isRecommended =
+            hist.length > 0 && hist.length <= MAX_RECOMMEND_SRC;
 
         if (isRecommended) {
             try {
