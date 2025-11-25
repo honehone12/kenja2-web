@@ -1,7 +1,8 @@
+import { MAX_RECOMMEND_SRC } from "$lib";
 import { IndexDb } from "$lib/client/indexdb";
 
 class HistoryControl {
-  private static readonly HISTORY_MAX = 10;
+  private static readonly HISTORY_MAX = MAX_RECOMMEND_SRC;
 
   public async getAnimeHistory(): Promise<string[]> {
     try {
