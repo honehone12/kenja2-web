@@ -1,7 +1,8 @@
 <script lang="ts">
-    import { Lang, type RecommendResult } from "$lib";
+    import { Lang } from "$lib";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
     import Recommend from "$lib/components/Recommend.svelte";
+    import type { RecommendResult } from "$lib/documents/anime-search/documents";
 
     interface Props {
         lang: Lang;

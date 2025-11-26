@@ -1,5 +1,7 @@
-import type { RecommendResult } from "$lib";
-import type { SearchResult } from "$lib/documents/anime-search/documents";
+import type {
+  RecommendResult,
+  SearchResult,
+} from "$lib/documents/anime-search/documents";
 import type { ItemType } from "$lib/documents/anime-search/queries";
 import { error } from "@sveltejs/kit";
 

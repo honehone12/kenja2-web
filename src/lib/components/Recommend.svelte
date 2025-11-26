@@ -1,9 +1,12 @@
 <script lang="ts">
-    import { Lang, type RecommendResult } from "$lib";
+    import { afterNavigate, beforeNavigate } from "$app/navigation";
+    import { Lang } from "$lib";
     import { ITypeConv } from "$lib/documents/anime-search/queries";
     import ErrorMessage from "$lib/components/ErrorMessage.svelte";
     import LoadingMessage from "$lib/components/LoadingMessage.svelte";
     import Documents from "$lib/components/Documents.svelte";
+    import type { RecommendResult } from "$lib/documents/anime-search/documents";
+    import { onAfterNavigate, onBeforeNavigate } from "$lib/client/navigation";
 
     interface Props {
         lang: Lang;
@@ -15,6 +18,10 @@
     function itemTypeLabel() {
         return ITypeConv.toLabel(recommend.itemType, lang);
     }
+
+    afterNavigate(onAfterNavigate);
+
+    beforeNavigate(onBeforeNavigate);
 </script>
 
 <div class="mb-20 text-center">

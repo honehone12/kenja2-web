@@ -1,11 +1,6 @@
 <script lang="ts">
     import { page } from "$app/state";
-    import {
-        afterNavigate,
-        beforeNavigate,
-        replaceState,
-    } from "$app/navigation";
-    import { tick } from "svelte";
+    import { afterNavigate, beforeNavigate } from "$app/navigation";
     import type {
         FlatDocument,
         SearchResult,
@@ -18,6 +13,7 @@
     import Documents from "$lib/components/Documents.svelte";
     import Full from "$lib/component-layout/Full.svelte";
     import { ITypeConv } from "$lib/documents/anime-search/queries";
+    import { onAfterNavigate, onBeforeNavigate } from "$lib/client/navigation";
 
     interface Props {
         lang: Lang;
@@ -75,26 +71,9 @@
         }
     }
 
-    afterNavigate(async (nav) => {
-        await nav.complete;
+    afterNavigate(onAfterNavigate);
 
-        let y = page.state.scrollY;
-        if (!y || y < 0) {
-            y = 0;
-        }
-
-        await tick();
-
-        window.scrollTo({
-            top: y,
-            behavior: "instant",
-        });
-    });
-
-    beforeNavigate(() => {
-        const y = window.scrollY;
-        replaceState("", { scrollY: y });
-    });
+    beforeNavigate(onBeforeNavigate);
 </script>
 
 <main>
