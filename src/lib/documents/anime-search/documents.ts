@@ -20,3 +20,9 @@ export interface FlatDocument {
 export interface SearchResult {
   documents: FlatDocument[] | undefined;
 }
+
+export interface RecommendResult {
+  isRecommended: boolean;
+  itemType: ItemType;
+  bufferedStream: Promise<SearchResult>;
+}

@@ -1,4 +1,8 @@
-import type { SearchResult } from "$lib/documents/anime-search/documents";
+import type {
+  RecommendResult,
+  SearchResult,
+} from "$lib/documents/anime-search/documents";
+import type { ItemType } from "$lib/documents/anime-search/queries";
 import { error } from "@sveltejs/kit";
 
 export function badRequest() {
@@ -11,4 +15,12 @@ export function internalError() {
 
 export async function emptySearchResult(): Promise<SearchResult> {
   return { documents: undefined };
+}
+
+export function emptyRecommendResult(itemType: ItemType): RecommendResult {
+  return {
+    isRecommended: false,
+    itemType,
+    bufferedStream: emptySearchResult(),
+  };
 }
