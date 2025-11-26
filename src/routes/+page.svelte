@@ -27,4 +27,4 @@
     {keywordsJapanese}
 />
 
-<Root lang={data.lang} />
+<Root lang={data.lang} recommend={data.recommend} />

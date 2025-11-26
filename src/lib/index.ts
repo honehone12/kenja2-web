@@ -22,7 +22,7 @@ export const enum Lang {
 export interface RecommendResult {
   isRecommended: boolean;
   itemType: ItemType;
-  result: SearchResult;
+  bufferedStream: Promise<SearchResult>;
 }
 
 export function canonicalUrl(url: URL, lang: Lang) {

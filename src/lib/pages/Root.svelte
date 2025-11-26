@@ -1,14 +1,14 @@
 <script lang="ts">
-    import { Lang } from "$lib";
+    import { Lang, type RecommendResult } from "$lib";
     import TextSearchForm from "$lib/components/TextSearchForm.svelte";
     import Recommend from "$lib/components/Recommend.svelte";
-    import { ItemType } from "$lib/documents/anime-search/queries";
 
     interface Props {
         lang: Lang;
+        recommend: RecommendResult;
     }
 
-    let { lang }: Props = $props();
+    let { lang, recommend }: Props = $props();
 </script>
 
 <main class="py-20">
@@ -100,5 +100,5 @@
             <TextSearchForm {lang} useFlexible={true} onsubmit={null} />
         </div>
     </div>
-    <Recommend {lang} itemType={ItemType.Anime} />
+    <Recommend {lang} {recommend} />
 </main>
