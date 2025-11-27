@@ -34,13 +34,13 @@
                         AI Image Vector Search Engine
                     {/if}
                 </h2>
-                <h1 class="text-5xl text-secondary font-bold mb-13">
+                <h2 class="text-5xl text-secondary font-bold mb-13">
                     {#if lang === Lang.Jp}
                         ケンジャニメ
                     {:else}
                         Kenjanime
                     {/if}
-                </h1>
+                </h2>
                 <div class="mb-10">
                     <a href={lang === Lang.Jp ? "/ai?lang=ja" : "/ai"}>
                         <button class="btn btn-xl btn-accent">
