@@ -24,9 +24,11 @@
     beforeNavigate(onBeforeNavigate);
 </script>
 
-<div class="mb-20 text-center">
+<div class="mb-10 text-center">
     <h1 class="text-3xl font-semibold text-secondary">
-        {itemTypeLabel()}
+        {lang === Lang.Jp
+            ? `おすすめ${itemTypeLabel()}`
+            : `Recommended ${itemTypeLabel()}`}
     </h1>
 </div>
 {#await recommend.bufferedStream}
@@ -42,7 +44,7 @@
                 <h2 class="text-xl">
                     {lang === Lang.Jp
                         ? `あなたにおすすめの${itemTypeLabel()}`
-                        : `Recommended ${itemTypeLabel()} for You`}
+                        : `Suggested ${itemTypeLabel()} for You`}
                 </h2>
             </div>
         </div>
