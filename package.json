@@ -13,7 +13,6 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint .",
-    "kanacheck": "java -jar bin/kanacheck.jar -r -p src",
     "clean": "gio trash build"
   },
   "devDependencies": {
